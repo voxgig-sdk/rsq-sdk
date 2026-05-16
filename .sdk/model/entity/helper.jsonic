@@ -1,0 +1,70 @@
+# Entity: helper
+
+main: kit: entity: helper: {
+
+  alias: field: {}
+
+  name: "helper"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "origin"
+                orig: "origin"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                kind: "query"
+                name: "resettlement"
+                orig: "resettlement"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                kind: "query"
+                name: "type"
+                orig: "type"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "year"
+                orig: "year"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/export/csv"
+          parts: [
+            "export"
+            "csv"
+          ]
+          select: {
+            exist: [
+              "origin"
+              "resettlement"
+              "type"
+              "year"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "country_of_origin": {
+      "COUNTRY_OF_ORIGIN00": {
+        "code": "s1e",
+        "name": "s1f",
+        "region": "s20"
+      },
+      "COUNTRY_OF_ORIGIN01": {
+        "code": "s3c",
+        "name": "s3d",
+        "region": "s3e"
+      },
+      "COUNTRY_OF_ORIGIN02": {
+        "code": "s5a",
+        "name": "s5b",
+        "region": "s5c"
+      }
+    }
+  },
+  "new": {
+    "country_of_origin": {
+      "country_of_origin_ref01": {
+        "code": "s78",
+        "name": "s79",
+        "region": "s7a"
+      }
+    }
+  }
+}

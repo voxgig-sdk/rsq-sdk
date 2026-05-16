@@ -1,0 +1,106 @@
+# Entity: country_of_origin
+
+main: kit: entity: country_of_origin: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "code"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "region"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "country_of_origin"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "en"
+                kind: "query"
+                name: "language"
+                orig: "language"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/origins/departures"
+          parts: [
+            "origins"
+            "departures"
+          ]
+          select: {
+            exist: [
+              "language"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "en"
+                kind: "query"
+                name: "language"
+                orig: "language"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/origins/submissions"
+          parts: [
+            "origins"
+            "submissions"
+          ]
+          select: {
+            exist: [
+              "language"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/origins/demographics"
+          parts: [
+            "origins"
+            "demographics"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,22 @@
+# BasicCountryOfAsylumFlow
+
+main: kit: flow: BasicCountryOfAsylumFlow:
+{
+  entity: "country_of_asylum",
+  kind: "basic",
+  name: "BasicCountryOfAsylumFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "country_of_asylum_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCountryOfAsylumFlow"
+}

@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "country_of_resettlement": {
+      "COUNTRY_OF_RESETTLEMENT00": {
+        "code": "s1e",
+        "name": "s1f",
+        "region": "s20"
+      },
+      "COUNTRY_OF_RESETTLEMENT01": {
+        "code": "s3c",
+        "name": "s3d",
+        "region": "s3e"
+      },
+      "COUNTRY_OF_RESETTLEMENT02": {
+        "code": "s5a",
+        "name": "s5b",
+        "region": "s5c"
+      }
+    }
+  },
+  "new": {
+    "country_of_resettlement": {
+      "country_of_resettlement_ref01": {
+        "code": "s78",
+        "name": "s79",
+        "region": "s7a"
+      }
+    }
+  }
+}

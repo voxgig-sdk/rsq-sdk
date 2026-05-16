@@ -1,0 +1,22 @@
+# BasicSubmissionFlow
+
+main: kit: flow: BasicSubmissionFlow:
+{
+  entity: "submission",
+  kind: "basic",
+  name: "BasicSubmissionFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "submission_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSubmissionFlow"
+}

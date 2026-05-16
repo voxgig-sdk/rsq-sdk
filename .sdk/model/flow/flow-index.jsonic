@@ -1,0 +1,13 @@
+# Flows
+
+@"BasicCategoryFlow.jsonic"
+@"BasicCountryOfAsylumFlow.jsonic"
+@"BasicCountryOfOriginFlow.jsonic"
+@"BasicCountryOfResettlementFlow.jsonic"
+@"BasicDemographicFlow.jsonic"
+@"BasicDepartureFlow.jsonic"
+@"BasicHelperFlow.jsonic"
+@"BasicRegionFlow.jsonic"
+@"BasicSubmissionFlow.jsonic"
+@"BasicUrlFetchFlow.jsonic"
+@"BasicYearFlow.jsonic"

@@ -1,0 +1,86 @@
+{
+  "existing": {
+    "demographic": {
+      "DEMOGRAPHIC00": {
+        "destination": "saa",
+        "destination_name": "sab",
+        "females_adult": "sac",
+        "females_senior": "sad",
+        "females_total": "sae",
+        "females_underage": "saf",
+        "females_unknown": "sb0",
+        "males_adult": "sb1",
+        "males_senior": "sb2",
+        "males_total": "sb3",
+        "males_underage": "sb4",
+        "males_unknown": "sb5",
+        "origin": "sb6",
+        "origin_name": "sb7",
+        "other": "sb8",
+        "total": "sb9",
+        "year": "sba"
+      },
+      "DEMOGRAPHIC01": {
+        "destination": "s154",
+        "destination_name": "s155",
+        "females_adult": "s156",
+        "females_senior": "s157",
+        "females_total": "s158",
+        "females_underage": "s159",
+        "females_unknown": "s15a",
+        "males_adult": "s15b",
+        "males_senior": "s15c",
+        "males_total": "s15d",
+        "males_underage": "s15e",
+        "males_unknown": "s15f",
+        "origin": "s160",
+        "origin_name": "s161",
+        "other": "s162",
+        "total": "s163",
+        "year": "s164"
+      },
+      "DEMOGRAPHIC02": {
+        "destination": "s1fe",
+        "destination_name": "s1ff",
+        "females_adult": "s200",
+        "females_senior": "s201",
+        "females_total": "s202",
+        "females_underage": "s203",
+        "females_unknown": "s204",
+        "males_adult": "s205",
+        "males_senior": "s206",
+        "males_total": "s207",
+        "males_underage": "s208",
+        "males_unknown": "s209",
+        "origin": "s20a",
+        "origin_name": "s20b",
+        "other": "s20c",
+        "total": "s20d",
+        "year": "s20e"
+      }
+    }
+  },
+  "new": {
+    "demographic": {
+      "demographic_ref01": {
+        "destination": "s2a8",
+        "destination_name": "s2a9",
+        "females_adult": "s2aa",
+        "females_senior": "s2ab",
+        "females_total": "s2ac",
+        "females_underage": "s2ad",
+        "females_unknown": "s2ae",
+        "males_adult": "s2af",
+        "males_senior": "s2b0",
+        "males_total": "s2b1",
+        "males_underage": "s2b2",
+        "males_unknown": "s2b3",
+        "origin": "s2b4",
+        "origin_name": "s2b5",
+        "other": "s2b6",
+        "total": "s2b7",
+        "year": "s2b8"
+      }
+    }
+  }
+}

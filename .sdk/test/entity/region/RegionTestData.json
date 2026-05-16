@@ -1,0 +1,22 @@
+{
+  "existing": {
+    "region": {
+      "REGION00": {
+        "name": "sa"
+      },
+      "REGION01": {
+        "name": "s14"
+      },
+      "REGION02": {
+        "name": "s1e"
+      }
+    }
+  },
+  "new": {
+    "region": {
+      "region_ref01": {
+        "name": "s28"
+      }
+    }
+  }
+}

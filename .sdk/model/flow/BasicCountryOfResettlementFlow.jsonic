@@ -1,0 +1,22 @@
+# BasicCountryOfResettlementFlow
+
+main: kit: flow: BasicCountryOfResettlementFlow:
+{
+  entity: "country_of_resettlement",
+  kind: "basic",
+  name: "BasicCountryOfResettlementFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "country_of_resettlement_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCountryOfResettlementFlow"
+}

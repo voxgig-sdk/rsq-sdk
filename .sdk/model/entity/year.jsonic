@@ -1,0 +1,44 @@
+# Entity: year
+
+main: kit: entity: year: {
+
+  alias: field: {}
+
+  name: "year"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/years"
+          parts: [
+            "years"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/years/demographics"
+          parts: [
+            "years"
+            "demographics"
+          ]
+          select: {
+            "$action": "demographic"
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,1320 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "RSQ API",
+    "description": "Full stack RESTful API for entity lists, single entity access, and complex query built requests. Public API with versioning and no user authentication.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://api.unhcr.org/docs/index.html"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://api.unhcr.org/rsq/v1",
+      "description": "Production API server"
+    }
+  ],
+  "paths": {
+    "/categories": {
+      "get": {
+        "summary": "Get categories",
+        "description": "Returns a list of codes and names of categories for UNHCR resettlement submissions.",
+        "operationId": "getCategories",
+        "tags": [
+          "Categories and regions"
+        ],
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Return results will be translated in requested language. Defaults to english",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "en",
+                "fr"
+              ],
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Valid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Category"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        }
+      }
+    },
+    "/regions": {
+      "get": {
+        "summary": "Get regions",
+        "description": "Returns a list of names of regions used by UNHCR to group Countries of Asylum.",
+        "operationId": "getRegions",
+        "tags": [
+          "Categories and regions"
+        ],
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Return results will be translated in requested language. Defaults to english",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "en",
+                "fr"
+              ],
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Valid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Region"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        }
+      }
+    },
+    "/years": {
+      "get": {
+        "summary": "Get years",
+        "description": "Returns a list of years for which there is available data on resettlement submissions and resettlement departures.",
+        "operationId": "getYears",
+        "tags": [
+          "Years"
+        ],
+        "responses": {
+          "200": {
+            "description": "Valid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        }
+      }
+    },
+    "/years/demographics": {
+      "get": {
+        "summary": "Get demographics years",
+        "description": "Returns a list of years for which there is available data on resettlement submissions demographics.",
+        "operationId": "getDemographicsYears",
+        "tags": [
+          "Years"
+        ],
+        "responses": {
+          "200": {
+            "description": "Valid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        }
+      }
+    },
+    "/asylums": {
+      "get": {
+        "summary": "Get countries of asylum",
+        "description": "Returns a list of available countries of asylum.",
+        "operationId": "getAsylums",
+        "tags": [
+          "Countries"
+        ],
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Return results will be translated in requested language. Defaults to english",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "en",
+                "fr"
+              ],
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Valid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CountryOfAsylum"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        }
+      }
+    },
+    "/origins/submissions": {
+      "get": {
+        "summary": "Get countries of origin for submissions",
+        "description": "Returns a list of available countries of origin for resettlement submissions data.",
+        "operationId": "getOriginsSubmissions",
+        "tags": [
+          "Countries"
+        ],
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Return results will be translated in requested language. Defaults to english",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "en",
+                "fr"
+              ],
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Valid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CountryOfOrigin"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        }
+      }
+    },
+    "/origins/departures": {
+      "get": {
+        "summary": "Get countries of origin for departures",
+        "description": "Returns a list of available countries of origin for resettlement departures data.",
+        "operationId": "getOriginsDepartures",
+        "tags": [
+          "Countries"
+        ],
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Return results will be translated in requested language. Defaults to english",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "en",
+                "fr"
+              ],
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Valid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CountryOfOrigin"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        }
+      }
+    },
+    "/origins/demographics": {
+      "get": {
+        "summary": "Get countries of origin for demographics",
+        "description": "Returns a list of available countries of origin for resettlement submissions demographics data.",
+        "operationId": "getOriginsDemographics",
+        "tags": [
+          "Countries"
+        ],
+        "responses": {
+          "200": {
+            "description": "Valid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CountryOfOrigin"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        }
+      }
+    },
+    "/destinations": {
+      "get": {
+        "summary": "Get countries of resettlement",
+        "description": "Returns a list of available countries of resettlement.",
+        "operationId": "getDestinations",
+        "tags": [
+          "Countries"
+        ],
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Return results will be translated in requested language. Defaults to english",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "en",
+                "fr"
+              ],
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Valid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CountryOfResettlement"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        }
+      }
+    },
+    "/fetchUrl": {
+      "get": {
+        "summary": "Fetch URL from hash",
+        "description": "Returns a full URL for existing URL hash. Hash sign has to be converted to HTML entity.",
+        "operationId": "fetchUrl",
+        "tags": [
+          "Helper"
+        ],
+        "parameters": [
+          {
+            "name": "urlHash",
+            "in": "query",
+            "description": "# followed by a combination of 4 letters and/or numbers designating a unique query string",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Return results will be translated in requested language. Defaults to english",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "en",
+                "fr"
+              ],
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Valid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UrlFetch"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        }
+      }
+    },
+    "/export/csv": {
+      "get": {
+        "summary": "Export to CSV",
+        "description": "Returns queried data in CSV format",
+        "operationId": "exportCsv",
+        "tags": [
+          "Helper"
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Type of data to export",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "description": "One or more available years",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "origin",
+            "in": "query",
+            "description": "One or more country of origin codes",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "resettlement",
+            "in": "query",
+            "description": "One or more country of resettlement codes",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Valid request",
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        }
+      }
+    },
+    "/submissions": {
+      "get": {
+        "summary": "Get submissions data",
+        "description": "Returns paginated resettlement submissions data for specific parameters. Returns 20 results per page.",
+        "operationId": "getSubmissions",
+        "tags": [
+          "Query"
+        ],
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Return results will be translated in requested language. Defaults to english",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "en",
+                "fr"
+              ],
+              "default": "en"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Current page of results",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "description": "One or more available years",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "origin",
+            "in": "query",
+            "description": "One or more country of origin codes",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "originCompare",
+            "in": "query",
+            "description": "Used in combination with atleast one origin. Groups all other origins as 'All others' entry in results",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "asylum",
+            "in": "query",
+            "description": "One or more country of asylum codes",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "asylumCompare",
+            "in": "query",
+            "description": "Used in combination with atleast one asylum. Groups all other asylums as 'All others' entry in results",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "resettlement",
+            "in": "query",
+            "description": "One or more country of resettlement codes",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "yearSort",
+            "in": "query",
+            "description": "Sort results by year ascending or descending",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "originSort",
+            "in": "query",
+            "description": "Sort results by country of origin ascending or descending",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "asylumSort",
+            "in": "query",
+            "description": "Sort results by country of asylum ascending or descending",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "resettlementSort",
+            "in": "query",
+            "description": "Sort results by country of resettlement ascending or descending",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "personsSort",
+            "in": "query",
+            "description": "Sort results by number of persons ascending or descending",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Valid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmissionsResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        }
+      }
+    },
+    "/departures": {
+      "get": {
+        "summary": "Get departures data",
+        "description": "Returns paginated resettlement departures data for specific parameters. Returns 20 results per page.",
+        "operationId": "getDepartures",
+        "tags": [
+          "Query"
+        ],
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Return results will be translated in requested language. Defaults to english",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "en",
+                "fr"
+              ],
+              "default": "en"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Current page of results",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "description": "One or more available years",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "origin",
+            "in": "query",
+            "description": "One or more country of origin codes",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "originCompare",
+            "in": "query",
+            "description": "Used in combination with atleast one origin. Groups all other origins as 'All others' entry in results",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "asylum",
+            "in": "query",
+            "description": "One or more country of asylum codes",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "asylumCompare",
+            "in": "query",
+            "description": "Used in combination with atleast one asylum. Groups all other asylums as 'All others' entry in results",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "resettlement",
+            "in": "query",
+            "description": "One or more country of resettlement codes",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "yearSort",
+            "in": "query",
+            "description": "Sort results by year ascending or descending",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "originSort",
+            "in": "query",
+            "description": "Sort results by country of origin ascending or descending",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "asylumSort",
+            "in": "query",
+            "description": "Sort results by country of asylum ascending or descending",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "resettlementSort",
+            "in": "query",
+            "description": "Sort results by country of resettlement ascending or descending",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "personsSort",
+            "in": "query",
+            "description": "Sort results by number of persons ascending or descending",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Valid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeparturesResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        }
+      }
+    },
+    "/demographics": {
+      "get": {
+        "summary": "Get demographics data",
+        "description": "Returns resettlement submissions demographics data for specific parameters.",
+        "operationId": "getDemographics",
+        "tags": [
+          "Query"
+        ],
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Return results will be translated in requested language. Defaults to english",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "en",
+                "fr"
+              ],
+              "default": "en"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "description": "One or more available years",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "origin",
+            "in": "query",
+            "description": "One or more country of origin codes",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "originCompare",
+            "in": "query",
+            "description": "Used in combination with atleast one origin. Groups all other origins as 'All others' entry in results",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "resettlement",
+            "in": "query",
+            "description": "One or more country of resettlement codes",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Valid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemographicsResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Category": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "LPN"
+          },
+          "name": {
+            "type": "string",
+            "example": "Legal and/or Physical Protection Needs"
+          }
+        }
+      },
+      "Region": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Middle East and North Africa"
+          }
+        }
+      },
+      "CountryOfAsylum": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "HRV"
+          },
+          "name": {
+            "type": "string",
+            "example": "Croatia"
+          },
+          "region": {
+            "type": "string",
+            "example": "Europe"
+          }
+        }
+      },
+      "CountryOfOrigin": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "HRV"
+          },
+          "name": {
+            "type": "string",
+            "example": "Croatia"
+          },
+          "region": {
+            "type": "string",
+            "example": "Europe"
+          }
+        }
+      },
+      "CountryOfResettlement": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "HRV"
+          },
+          "name": {
+            "type": "string",
+            "example": "Croatia"
+          },
+          "region": {
+            "type": "string",
+            "example": "Europe"
+          }
+        }
+      },
+      "UrlFetch": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "success",
+              "invalid"
+            ],
+            "example": "success"
+          },
+          "url": {
+            "type": "string",
+            "example": "http://api.unhcr.org/rsq/v1/submissions?asylum=&asylumCompare=&asylumRegion=&origin=AFG%2CBTN%2CCOD%2CERI%2CIRN%2CIRQ%2CMMR%2CSOM%2CSDN%2CSYR&originCompare=true&resettlement=&type=submissions&year=2013%2C2014%2C2015%2C2016%2C2017"
+          }
+        }
+      },
+      "ChartFilterTypes": {
+        "type": "object",
+        "properties": {
+          "origin": {
+            "type": "boolean"
+          },
+          "asylum": {
+            "type": "boolean"
+          },
+          "resettlement": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Submissions": {
+        "type": "object",
+        "properties": {
+          "year": {
+            "type": "integer",
+            "example": 2013
+          },
+          "origin": {
+            "type": "string",
+            "example": "SYR"
+          },
+          "origin_name": {
+            "type": "string",
+            "example": "Syrian Arab Rep."
+          },
+          "asylum": {
+            "type": "string",
+            "example": "JOR"
+          },
+          "asylum_name": {
+            "type": "string",
+            "example": "Jordan"
+          },
+          "destination": {
+            "type": "string",
+            "example": "NOR"
+          },
+          "destination_name": {
+            "type": "string",
+            "example": "Norway"
+          },
+          "persons": {
+            "type": "integer",
+            "example": 14
+          }
+        }
+      },
+      "SubmissionsResponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Submissions"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "example": 12345
+          },
+          "url": {
+            "type": "string",
+            "example": "#c3X3"
+          },
+          "page": {
+            "type": "integer",
+            "example": 1
+          },
+          "totalPages": {
+            "type": "integer",
+            "example": 10
+          },
+          "chartFilterTypes": {
+            "$ref": "#/components/schemas/ChartFilterTypes"
+          }
+        }
+      },
+      "Departures": {
+        "type": "object",
+        "properties": {
+          "year": {
+            "type": "integer",
+            "example": 2013
+          },
+          "origin": {
+            "type": "string",
+            "example": "SYR"
+          },
+          "origin_name": {
+            "type": "string",
+            "example": "Syrian Arab Rep."
+          },
+          "asylum": {
+            "type": "string",
+            "example": "JOR"
+          },
+          "asylum_name": {
+            "type": "string",
+            "example": "Jordan"
+          },
+          "destination": {
+            "type": "string",
+            "example": "NOR"
+          },
+          "destination_name": {
+            "type": "string",
+            "example": "Norway"
+          },
+          "persons": {
+            "type": "integer",
+            "example": 14
+          }
+        }
+      },
+      "DeparturesResponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Departures"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "example": 12345
+          },
+          "url": {
+            "type": "string",
+            "example": "#c3X3"
+          },
+          "page": {
+            "type": "integer",
+            "example": 1
+          },
+          "totalPages": {
+            "type": "integer",
+            "example": 10
+          },
+          "chartFilterTypes": {
+            "$ref": "#/components/schemas/ChartFilterTypes"
+          }
+        }
+      },
+      "Demographics": {
+        "type": "object",
+        "properties": {
+          "year": {
+            "type": "integer",
+            "example": 2013
+          },
+          "origin": {
+            "type": "string",
+            "example": "SYR"
+          },
+          "origin_name": {
+            "type": "string",
+            "example": "Syrian Arab Rep."
+          },
+          "destination": {
+            "type": "string",
+            "example": "NOR"
+          },
+          "destination_name": {
+            "type": "string",
+            "example": "Norway"
+          },
+          "femalesUnderage": {
+            "type": "integer",
+            "example": 25
+          },
+          "femalesAdult": {
+            "type": "integer",
+            "example": 300
+          },
+          "femalesSenior": {
+            "type": "integer",
+            "example": 45
+          },
+          "femalesUnknown": {
+            "type": "integer",
+            "example": 5
+          },
+          "femalesTotal": {
+            "type": "integer",
+            "example": 375
+          },
+          "malesUnderage": {
+            "type": "integer",
+            "example": 25
+          },
+          "malesAdult": {
+            "type": "integer",
+            "example": 300
+          },
+          "malesSenior": {
+            "type": "integer",
+            "example": 45
+          },
+          "malesUnknown": {
+            "type": "integer",
+            "example": 5
+          },
+          "malesTotal": {
+            "type": "integer",
+            "example": 375
+          },
+          "other": {
+            "type": "integer",
+            "example": 5
+          },
+          "total": {
+            "type": "integer",
+            "example": 755
+          }
+        }
+      },
+      "DemographicsResponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Demographics"
+            }
+          },
+          "url": {
+            "type": "string",
+            "example": "#c3X3"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Categories and regions",
+      "description": "Operations related to categories and regions"
+    },
+    {
+      "name": "Years",
+      "description": "Operations related to available years"
+    },
+    {
+      "name": "Countries",
+      "description": "Operations related to countries"
+    },
+    {
+      "name": "Helper",
+      "description": "Helper operations for URL fetching and CSV export"
+    },
+    {
+      "name": "Query",
+      "description": "Complex query operations for submissions, departures, and demographics"
+    }
+  ]
+}

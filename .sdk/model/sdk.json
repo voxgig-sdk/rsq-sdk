@@ -1,0 +1,1721 @@
+{
+  "name": "rsq",
+  "origin": "voxgig-sdk",
+  "def": "rsq_0.1.0.json",
+  "main": {
+    "kit": {
+      "info": {
+        "contact": {
+          "url": "https://api.unhcr.org/docs/index.html"
+        },
+        "description": "Full stack RESTful API for entity lists, single entity access, and complex query built requests. Public API with versioning and no user authentication.",
+        "servers": [
+          {
+            "description": "Production API server",
+            "url": "http://api.unhcr.org/rsq/v1"
+          }
+        ],
+        "title": "RSQ API",
+        "version": "1.0.0"
+      },
+      "config": {
+        "auth": {
+          "prefix": "Bearer"
+        },
+        "headers": {
+          "content-type": "application/json"
+        }
+      },
+      "entity": {
+        "category": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "code",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "name",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "category",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "example": "en",
+                        "kind": "query",
+                        "name": "language",
+                        "orig": "language",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/categories",
+                  "parts": [
+                    "categories"
+                  ],
+                  "select": {
+                    "exist": [
+                      "language"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "country_of_asylum": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "code",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "name",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "region",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "country_of_asylum",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "example": "en",
+                        "kind": "query",
+                        "name": "language",
+                        "orig": "language",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/asylums",
+                  "parts": [
+                    "asylums"
+                  ],
+                  "select": {
+                    "exist": [
+                      "language"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "country_of_origin": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "code",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "name",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "region",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "country_of_origin",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "example": "en",
+                        "kind": "query",
+                        "name": "language",
+                        "orig": "language",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/origins/departures",
+                  "parts": [
+                    "origins",
+                    "departures"
+                  ],
+                  "select": {
+                    "exist": [
+                      "language"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "example": "en",
+                        "kind": "query",
+                        "name": "language",
+                        "orig": "language",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/origins/submissions",
+                  "parts": [
+                    "origins",
+                    "submissions"
+                  ],
+                  "select": {
+                    "exist": [
+                      "language"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                },
+                {
+                  "method": "GET",
+                  "orig": "/origins/demographics",
+                  "parts": [
+                    "origins",
+                    "demographics"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "country_of_resettlement": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "code",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "name",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "region",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "country_of_resettlement",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "example": "en",
+                        "kind": "query",
+                        "name": "language",
+                        "orig": "language",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/destinations",
+                  "parts": [
+                    "destinations"
+                  ],
+                  "select": {
+                    "exist": [
+                      "language"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "demographic": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "destination",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "destination_name",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "females_adult",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "females_senior",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "females_total",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "females_underage",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "females_unknown",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "males_adult",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "males_senior",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "males_total",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "males_underage",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "males_unknown",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "origin",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "origin_name",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "other",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "total",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "year",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            }
+          ],
+          "name": "demographic",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "example": "en",
+                        "kind": "query",
+                        "name": "language",
+                        "orig": "language",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "origin",
+                        "orig": "origin",
+                        "reqd": false,
+                        "type": "`$ARRAY`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "origin_compare",
+                        "orig": "origin_compare",
+                        "reqd": false,
+                        "type": "`$BOOLEAN`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "resettlement",
+                        "orig": "resettlement",
+                        "reqd": false,
+                        "type": "`$ARRAY`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "year",
+                        "orig": "year",
+                        "reqd": false,
+                        "type": "`$ARRAY`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/demographics",
+                  "parts": [
+                    "demographics"
+                  ],
+                  "select": {
+                    "exist": [
+                      "language",
+                      "origin",
+                      "origin_compare",
+                      "resettlement",
+                      "year"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "departure": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "asylum",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "asylum_name",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "destination",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "destination_name",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "origin",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "origin_name",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "person",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "year",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            }
+          ],
+          "name": "departure",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "kind": "query",
+                        "name": "asylum",
+                        "orig": "asylum",
+                        "reqd": false,
+                        "type": "`$ARRAY`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "asylum_compare",
+                        "orig": "asylum_compare",
+                        "reqd": false,
+                        "type": "`$BOOLEAN`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "asylum_sort",
+                        "orig": "asylum_sort",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "example": "en",
+                        "kind": "query",
+                        "name": "language",
+                        "orig": "language",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "origin",
+                        "orig": "origin",
+                        "reqd": false,
+                        "type": "`$ARRAY`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "origin_compare",
+                        "orig": "origin_compare",
+                        "reqd": false,
+                        "type": "`$BOOLEAN`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "origin_sort",
+                        "orig": "origin_sort",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "page",
+                        "orig": "page",
+                        "reqd": false,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "persons_sort",
+                        "orig": "persons_sort",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "resettlement",
+                        "orig": "resettlement",
+                        "reqd": false,
+                        "type": "`$ARRAY`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "resettlement_sort",
+                        "orig": "resettlement_sort",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "year",
+                        "orig": "year",
+                        "reqd": false,
+                        "type": "`$ARRAY`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "year_sort",
+                        "orig": "year_sort",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/departures",
+                  "parts": [
+                    "departures"
+                  ],
+                  "select": {
+                    "exist": [
+                      "asylum",
+                      "asylum_compare",
+                      "asylum_sort",
+                      "language",
+                      "origin",
+                      "origin_compare",
+                      "origin_sort",
+                      "page",
+                      "persons_sort",
+                      "resettlement",
+                      "resettlement_sort",
+                      "year",
+                      "year_sort"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "helper": {
+          "alias": {
+            "field": {}
+          },
+          "name": "helper",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "kind": "query",
+                        "name": "origin",
+                        "orig": "origin",
+                        "reqd": false,
+                        "type": "`$ARRAY`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "resettlement",
+                        "orig": "resettlement",
+                        "reqd": false,
+                        "type": "`$ARRAY`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "type",
+                        "orig": "type",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "year",
+                        "orig": "year",
+                        "reqd": false,
+                        "type": "`$ARRAY`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/export/csv",
+                  "parts": [
+                    "export",
+                    "csv"
+                  ],
+                  "select": {
+                    "exist": [
+                      "origin",
+                      "resettlement",
+                      "type",
+                      "year"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "region": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "name",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "region",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "example": "en",
+                        "kind": "query",
+                        "name": "language",
+                        "orig": "language",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/regions",
+                  "parts": [
+                    "regions"
+                  ],
+                  "select": {
+                    "exist": [
+                      "language"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "submission": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "asylum",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "asylum_name",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "destination",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "destination_name",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "origin",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "origin_name",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "person",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "year",
+              "req": false,
+              "type": "`$INTEGER`",
+              "active": true
+            }
+          ],
+          "name": "submission",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "kind": "query",
+                        "name": "asylum",
+                        "orig": "asylum",
+                        "reqd": false,
+                        "type": "`$ARRAY`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "asylum_compare",
+                        "orig": "asylum_compare",
+                        "reqd": false,
+                        "type": "`$BOOLEAN`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "asylum_sort",
+                        "orig": "asylum_sort",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "example": "en",
+                        "kind": "query",
+                        "name": "language",
+                        "orig": "language",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "origin",
+                        "orig": "origin",
+                        "reqd": false,
+                        "type": "`$ARRAY`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "origin_compare",
+                        "orig": "origin_compare",
+                        "reqd": false,
+                        "type": "`$BOOLEAN`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "origin_sort",
+                        "orig": "origin_sort",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "page",
+                        "orig": "page",
+                        "reqd": false,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "persons_sort",
+                        "orig": "persons_sort",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "resettlement",
+                        "orig": "resettlement",
+                        "reqd": false,
+                        "type": "`$ARRAY`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "resettlement_sort",
+                        "orig": "resettlement_sort",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "year",
+                        "orig": "year",
+                        "reqd": false,
+                        "type": "`$ARRAY`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "year_sort",
+                        "orig": "year_sort",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/submissions",
+                  "parts": [
+                    "submissions"
+                  ],
+                  "select": {
+                    "exist": [
+                      "asylum",
+                      "asylum_compare",
+                      "asylum_sort",
+                      "language",
+                      "origin",
+                      "origin_compare",
+                      "origin_sort",
+                      "page",
+                      "persons_sort",
+                      "resettlement",
+                      "resettlement_sort",
+                      "year",
+                      "year_sort"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "url_fetch": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "status",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "url",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "url_fetch",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "example": "en",
+                        "kind": "query",
+                        "name": "language",
+                        "orig": "language",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "url_hash",
+                        "orig": "url_hash",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/fetchUrl",
+                  "parts": [
+                    "fetchUrl"
+                  ],
+                  "select": {
+                    "exist": [
+                      "language",
+                      "url_hash"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "year": {
+          "alias": {
+            "field": {}
+          },
+          "name": "year",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/years",
+                  "parts": [
+                    "years"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                },
+                {
+                  "method": "GET",
+                  "orig": "/years/demographics",
+                  "parts": [
+                    "years",
+                    "demographics"
+                  ],
+                  "select": {
+                    "$action": "demographic"
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {}
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "fields": [],
+          "relations": {
+            "ancestors": []
+          }
+        }
+      },
+      "feature": {
+        "test": {
+          "name": "test",
+          "title": "In-memory mock transport for testing without a live server",
+          "version": "0.0.1",
+          "active": true,
+          "config": {
+            "options": {
+              "active": false
+            }
+          },
+          "hook": {
+            "PostConstruct": {
+              "active": true,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": true,
+              "await": false
+            },
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
+            "PrePoint": {
+              "active": true
+            },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
+            "PreRequest": {
+              "active": true,
+              "await": false
+            },
+            "PreResponse": {
+              "active": true,
+              "await": false
+            },
+            "PreResult": {
+              "active": true,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            }
+          },
+          "target": {
+            "ts": {
+              "deps": {}
+            },
+            "go": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            }
+          }
+        }
+      },
+      "flow": {
+        "BasicCategoryFlow": {
+          "entity": "category",
+          "kind": "basic",
+          "name": "BasicCategoryFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "category_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicCategoryFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicCountryOfAsylumFlow": {
+          "entity": "country_of_asylum",
+          "kind": "basic",
+          "name": "BasicCountryOfAsylumFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "country_of_asylum_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicCountryOfAsylumFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicCountryOfOriginFlow": {
+          "entity": "country_of_origin",
+          "kind": "basic",
+          "name": "BasicCountryOfOriginFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "country_of_origin_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicCountryOfOriginFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicCountryOfResettlementFlow": {
+          "entity": "country_of_resettlement",
+          "kind": "basic",
+          "name": "BasicCountryOfResettlementFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "country_of_resettlement_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicCountryOfResettlementFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicDemographicFlow": {
+          "entity": "demographic",
+          "kind": "basic",
+          "name": "BasicDemographicFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "demographic_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicDemographicFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicDepartureFlow": {
+          "entity": "departure",
+          "kind": "basic",
+          "name": "BasicDepartureFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "departure_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicDepartureFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicHelperFlow": {
+          "entity": "helper",
+          "kind": "basic",
+          "name": "BasicHelperFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "helper_ref01",
+                "srcdatavar": "helper_ref01_data",
+                "suffix": "_dt0"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-helper_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicHelperFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicRegionFlow": {
+          "entity": "region",
+          "kind": "basic",
+          "name": "BasicRegionFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "region_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicRegionFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicSubmissionFlow": {
+          "entity": "submission",
+          "kind": "basic",
+          "name": "BasicSubmissionFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "submission_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicSubmissionFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicUrlFetchFlow": {
+          "entity": "url_fetch",
+          "kind": "basic",
+          "name": "BasicUrlFetchFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "url_fetch_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicUrlFetchFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicYearFlow": {
+          "entity": "year",
+          "kind": "basic",
+          "name": "BasicYearFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "year_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicYearFlow",
+          "active": true,
+          "param": {}
+        }
+      },
+      "target": {
+        "ts": {
+          "title": "TypeScript",
+          "ext": "ts",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "rsq"
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "deps": {
+            "dotenv": {
+              "active": true,
+              "version": "^17.4.2",
+              "kind": "dev"
+            },
+            "typescript": {
+              "active": true,
+              "version": "^5.9.3",
+              "kind": "dev"
+            },
+            "@types/node": {
+              "active": true,
+              "version": "^25.6.0",
+              "kind": "dev"
+            }
+          },
+          "name": "ts",
+          "active": true
+        },
+        "go": {
+          "title": "Golang",
+          "ext": "go",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "rsq"
+          },
+          "srcfeature": false,
+          "deps": {
+            "github.com/voxgig/struct": {
+              "active": true,
+              "version": "v0.0.0",
+              "replace": "./utility/struct",
+              "kind": "prod"
+            }
+          },
+          "name": "go",
+          "active": true
+        },
+        "lua": {
+          "title": "Lua",
+          "ext": "lua",
+          "comment": {
+            "line": "--"
+          },
+          "module": {
+            "name": "rsq"
+          },
+          "srcfeature": false,
+          "deps": {
+            "dkjson": {
+              "active": true,
+              "version": "2.5",
+              "kind": "prod"
+            }
+          },
+          "name": "lua",
+          "active": true
+        },
+        "php": {
+          "title": "PHP",
+          "ext": "php",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "rsq"
+          },
+          "srcfeature": false,
+          "deps": {},
+          "name": "php",
+          "active": true
+        },
+        "py": {
+          "title": "Python",
+          "ext": "py",
+          "comment": {
+            "line": "#"
+          },
+          "module": {
+            "name": "rsq"
+          },
+          "srcfeature": false,
+          "deps": {
+            "requests": {
+              "active": true,
+              "version": "2.33",
+              "kind": "prod"
+            }
+          },
+          "name": "py",
+          "active": true
+        },
+        "rb": {
+          "title": "Ruby",
+          "ext": "rb",
+          "comment": {
+            "line": "#"
+          },
+          "module": {
+            "name": "rsq"
+          },
+          "srcfeature": false,
+          "deps": {
+            "voxgig-struct": {
+              "active": true,
+              "version": "0.0.10",
+              "kind": "prod"
+            },
+            "json": {
+              "active": true,
+              "version": "0",
+              "kind": "prod"
+            }
+          },
+          "name": "rb",
+          "active": true
+        }
+      },
+      "option": {}
+    },
+    "def": {
+      "desc": ""
+    },
+    "api": {
+      "guide": {},
+      "entity": {}
+    }
+  },
+  "name__orig": "rsq",
+  "Name": "Rsq",
+  "name_": "rsq",
+  "name-": "rsq",
+  "NAME": "RSQ"
+}

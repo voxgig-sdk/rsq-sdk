@@ -1,0 +1,50 @@
+{
+  "existing": {
+    "submission": {
+      "SUBMISSION00": {
+        "asylum": "s50",
+        "asylum_name": "s51",
+        "destination": "s52",
+        "destination_name": "s53",
+        "origin": "s54",
+        "origin_name": "s55",
+        "person": "s56",
+        "year": "s57"
+      },
+      "SUBMISSION01": {
+        "asylum": "sa0",
+        "asylum_name": "sa1",
+        "destination": "sa2",
+        "destination_name": "sa3",
+        "origin": "sa4",
+        "origin_name": "sa5",
+        "person": "sa6",
+        "year": "sa7"
+      },
+      "SUBMISSION02": {
+        "asylum": "sf0",
+        "asylum_name": "sf1",
+        "destination": "sf2",
+        "destination_name": "sf3",
+        "origin": "sf4",
+        "origin_name": "sf5",
+        "person": "sf6",
+        "year": "sf7"
+      }
+    }
+  },
+  "new": {
+    "submission": {
+      "submission_ref01": {
+        "asylum": "s140",
+        "asylum_name": "s141",
+        "destination": "s142",
+        "destination_name": "s143",
+        "origin": "s144",
+        "origin_name": "s145",
+        "person": "s146",
+        "year": "s147"
+      }
+    }
+  }
+}

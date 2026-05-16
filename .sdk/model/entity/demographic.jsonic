@@ -1,0 +1,166 @@
+# Entity: demographic
+
+main: kit: entity: demographic: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "destination"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "destination_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "females_adult"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "females_senior"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "females_total"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "females_underage"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "females_unknown"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "males_adult"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "males_senior"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "males_total"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "males_underage"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "males_unknown"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "origin"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "origin_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "other"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "total"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "year"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "demographic"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "en"
+                kind: "query"
+                name: "language"
+                orig: "language"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "origin"
+                orig: "origin"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                kind: "query"
+                name: "origin_compare"
+                orig: "origin_compare"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+              {
+                kind: "query"
+                name: "resettlement"
+                orig: "resettlement"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                kind: "query"
+                name: "year"
+                orig: "year"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/demographics"
+          parts: [
+            "demographics"
+          ]
+          select: {
+            exist: [
+              "language"
+              "origin"
+              "origin_compare"
+              "resettlement"
+              "year"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

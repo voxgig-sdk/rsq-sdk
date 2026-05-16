@@ -1,0 +1,724 @@
+# Rsq Python SDK Reference
+
+Complete API reference for the Rsq Python SDK.
+
+
+## RsqSDK
+
+### Constructor
+
+```python
+from rsq_sdk import RsqSDK
+
+client = RsqSDK(options)
+```
+
+Create a new SDK client instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `options` | `dict` | SDK configuration options. |
+| `options["apikey"]` | `str` | API key for authentication. |
+| `options["base"]` | `str` | Base URL for API requests. |
+| `options["prefix"]` | `str` | URL prefix appended after base. |
+| `options["suffix"]` | `str` | URL suffix appended after path. |
+| `options["headers"]` | `dict` | Custom headers for all requests. |
+| `options["feature"]` | `dict` | Feature configuration. |
+| `options["system"]` | `dict` | System overrides (e.g. custom fetch). |
+
+
+### Static Methods
+
+#### `RsqSDK.test(testopts=None, sdkopts=None)`
+
+Create a test client with mock features active. Both arguments may be `None`.
+
+```python
+client = RsqSDK.test()
+```
+
+
+### Instance Methods
+
+#### `Category(data=None)`
+
+Create a new `CategoryEntity` instance. Pass `None` for no initial data.
+
+#### `CountryOfAsylum(data=None)`
+
+Create a new `CountryOfAsylumEntity` instance. Pass `None` for no initial data.
+
+#### `CountryOfOrigin(data=None)`
+
+Create a new `CountryOfOriginEntity` instance. Pass `None` for no initial data.
+
+#### `CountryOfResettlement(data=None)`
+
+Create a new `CountryOfResettlementEntity` instance. Pass `None` for no initial data.
+
+#### `Demographic(data=None)`
+
+Create a new `DemographicEntity` instance. Pass `None` for no initial data.
+
+#### `Departure(data=None)`
+
+Create a new `DepartureEntity` instance. Pass `None` for no initial data.
+
+#### `Helper(data=None)`
+
+Create a new `HelperEntity` instance. Pass `None` for no initial data.
+
+#### `Region(data=None)`
+
+Create a new `RegionEntity` instance. Pass `None` for no initial data.
+
+#### `Submission(data=None)`
+
+Create a new `SubmissionEntity` instance. Pass `None` for no initial data.
+
+#### `UrlFetch(data=None)`
+
+Create a new `UrlFetchEntity` instance. Pass `None` for no initial data.
+
+#### `Year(data=None)`
+
+Create a new `YearEntity` instance. Pass `None` for no initial data.
+
+#### `options_map() -> dict`
+
+Return a deep copy of the current SDK options.
+
+#### `get_utility() -> Utility`
+
+Return a copy of the SDK utility object.
+
+#### `direct(fetchargs=None) -> tuple`
+
+Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `fetchargs["path"]` | `str` | URL path with optional `{param}` placeholders. |
+| `fetchargs["method"]` | `str` | HTTP method (default: `"GET"`). |
+| `fetchargs["params"]` | `dict` | Path parameter values. |
+| `fetchargs["query"]` | `dict` | Query string parameters. |
+| `fetchargs["headers"]` | `dict` | Request headers (merged with defaults). |
+| `fetchargs["body"]` | `any` | Request body (dicts are JSON-serialized). |
+
+**Returns:** `(result_dict, err)`
+
+#### `prepare(fetchargs=None) -> tuple`
+
+Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
+
+
+---
+
+## CategoryEntity
+
+```python
+category = client.Category()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `code` | ``$STRING`` | No |  |
+| `name` | ``$STRING`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.Category().list({})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CategoryEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## CountryOfAsylumEntity
+
+```python
+country_of_asylum = client.CountryOfAsylum()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `code` | ``$STRING`` | No |  |
+| `name` | ``$STRING`` | No |  |
+| `region` | ``$STRING`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.CountryOfAsylum().list({})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CountryOfAsylumEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## CountryOfOriginEntity
+
+```python
+country_of_origin = client.CountryOfOrigin()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `code` | ``$STRING`` | No |  |
+| `name` | ``$STRING`` | No |  |
+| `region` | ``$STRING`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.CountryOfOrigin().list({})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CountryOfOriginEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## CountryOfResettlementEntity
+
+```python
+country_of_resettlement = client.CountryOfResettlement()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `code` | ``$STRING`` | No |  |
+| `name` | ``$STRING`` | No |  |
+| `region` | ``$STRING`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.CountryOfResettlement().list({})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CountryOfResettlementEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DemographicEntity
+
+```python
+demographic = client.Demographic()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `destination` | ``$STRING`` | No |  |
+| `destination_name` | ``$STRING`` | No |  |
+| `females_adult` | ``$INTEGER`` | No |  |
+| `females_senior` | ``$INTEGER`` | No |  |
+| `females_total` | ``$INTEGER`` | No |  |
+| `females_underage` | ``$INTEGER`` | No |  |
+| `females_unknown` | ``$INTEGER`` | No |  |
+| `males_adult` | ``$INTEGER`` | No |  |
+| `males_senior` | ``$INTEGER`` | No |  |
+| `males_total` | ``$INTEGER`` | No |  |
+| `males_underage` | ``$INTEGER`` | No |  |
+| `males_unknown` | ``$INTEGER`` | No |  |
+| `origin` | ``$STRING`` | No |  |
+| `origin_name` | ``$STRING`` | No |  |
+| `other` | ``$INTEGER`` | No |  |
+| `total` | ``$INTEGER`` | No |  |
+| `year` | ``$INTEGER`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.Demographic().list({})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DemographicEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DepartureEntity
+
+```python
+departure = client.Departure()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `asylum` | ``$STRING`` | No |  |
+| `asylum_name` | ``$STRING`` | No |  |
+| `destination` | ``$STRING`` | No |  |
+| `destination_name` | ``$STRING`` | No |  |
+| `origin` | ``$STRING`` | No |  |
+| `origin_name` | ``$STRING`` | No |  |
+| `person` | ``$INTEGER`` | No |  |
+| `year` | ``$INTEGER`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.Departure().list({})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DepartureEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## HelperEntity
+
+```python
+helper = client.Helper()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> tuple`
+
+Load a single entity matching the given criteria.
+
+```python
+result, err = client.Helper().load({"id": "helper_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `HelperEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RegionEntity
+
+```python
+region = client.Region()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `name` | ``$STRING`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.Region().list({})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RegionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SubmissionEntity
+
+```python
+submission = client.Submission()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `asylum` | ``$STRING`` | No |  |
+| `asylum_name` | ``$STRING`` | No |  |
+| `destination` | ``$STRING`` | No |  |
+| `destination_name` | ``$STRING`` | No |  |
+| `origin` | ``$STRING`` | No |  |
+| `origin_name` | ``$STRING`` | No |  |
+| `person` | ``$INTEGER`` | No |  |
+| `year` | ``$INTEGER`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.Submission().list({})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SubmissionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## UrlFetchEntity
+
+```python
+url_fetch = client.UrlFetch()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `status` | ``$STRING`` | No |  |
+| `url` | ``$STRING`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.UrlFetch().list({})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `UrlFetchEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## YearEntity
+
+```python
+year = client.Year()
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl=None) -> tuple`
+
+List entities matching the given criteria. Returns an array.
+
+```python
+results, err = client.Year().list({})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `YearEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## Features
+
+| Feature | Version | Description |
+| --- | --- | --- |
+| `test` | 0.0.1 | In-memory mock transport for testing without a live server |
+
+
+Features are activated via the `feature` option:
+
+```python
+client = RsqSDK({
+    "feature": {
+        "test": {"active": True},
+    },
+})
+```
+

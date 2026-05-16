@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "url_fetch": {
+      "URL_FETCH00": {
+        "status": "s14",
+        "url": "s15"
+      },
+      "URL_FETCH01": {
+        "status": "s28",
+        "url": "s29"
+      },
+      "URL_FETCH02": {
+        "status": "s3c",
+        "url": "s3d"
+      }
+    }
+  },
+  "new": {
+    "url_fetch": {
+      "url_fetch_ref01": {
+        "status": "s50",
+        "url": "s51"
+      }
+    }
+  }
+}

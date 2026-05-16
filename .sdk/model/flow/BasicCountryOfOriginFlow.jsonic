@@ -1,0 +1,22 @@
+# BasicCountryOfOriginFlow
+
+main: kit: flow: BasicCountryOfOriginFlow:
+{
+  entity: "country_of_origin",
+  kind: "basic",
+  name: "BasicCountryOfOriginFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "country_of_origin_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCountryOfOriginFlow"
+}

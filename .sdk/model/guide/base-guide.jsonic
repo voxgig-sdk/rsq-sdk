@@ -1,0 +1,84 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 11
+  metrics: count: path: 14
+  metrics: count: method: 14
+
+  entity: category: {
+    path: "/categories": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: country_of_asylum: {
+    path: "/asylums": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: country_of_origin: {
+    path: "/origins/demographics": {
+      op: list: method: *GET
+    }
+    path: "/origins/departures": {
+      op: list: method: *GET
+    }
+    path: "/origins/submissions": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: country_of_resettlement: {
+    path: "/destinations": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: demographic: {
+    path: "/demographics": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: departure: {
+    path: "/departures": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: helper: {
+    path: "/export/csv": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: region: {
+    path: "/regions": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: submission: {
+    path: "/submissions": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: url_fetch: {
+    path: "/fetchUrl": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: year: {
+    path: "/years": {
+      op: list: method: *GET
+    }
+    path: "/years/demographics": {
+      action: "demographic": {}
+      op: list: method: *GET
+    }
+  }
+
+}

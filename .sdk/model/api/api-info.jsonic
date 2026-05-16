@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://api.unhcr.org/docs/index.html"
+      }
+      description: "Full stack RESTful API for entity lists, single entity access, and complex query built requests. Public API with versioning and no user authentication."
+      servers: [
+        {
+          description: "Production API server"
+          url: "http://api.unhcr.org/rsq/v1"
+        }
+      ]
+      title: "RSQ API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}
