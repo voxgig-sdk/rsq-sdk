@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/rsq-sdk/core"
+	"github.com/voxgig-sdk/rsq-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/rsq-sdk/go/utility/struct"
 )
 
 type HelperEntity struct {

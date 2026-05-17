@@ -1,9 +1,9 @@
 package utility
 
 import (
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/rsq-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/rsq-sdk/core"
+	"github.com/voxgig-sdk/rsq-sdk/go/core"
 )
 
 const headerAuth = "authorization"

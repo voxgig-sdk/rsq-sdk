@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/rsq-sdk"
+	sdk "github.com/voxgig-sdk/rsq-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {

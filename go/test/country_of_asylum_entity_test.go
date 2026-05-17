@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/rsq-sdk"
-	"github.com/voxgig-sdk/rsq-sdk/core"
+	sdk "github.com/voxgig-sdk/rsq-sdk/go"
+	"github.com/voxgig-sdk/rsq-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/rsq-sdk/go/utility/struct"
 )
 
 func TestCountryOfAsylumEntity(t *testing.T) {

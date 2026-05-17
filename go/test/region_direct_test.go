@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/rsq-sdk"
-	"github.com/voxgig-sdk/rsq-sdk/core"
+	sdk "github.com/voxgig-sdk/rsq-sdk/go"
+	"github.com/voxgig-sdk/rsq-sdk/go/core"
 )
 
 func TestRegionDirect(t *testing.T) {
