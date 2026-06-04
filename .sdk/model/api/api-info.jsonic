@@ -16,8 +16,38 @@ main: {
       ]
       title: "RSQ API"
       version: "1.0.0"
+      tagline: "Query UNHCR resettlement submissions, departures, and demographics by year, origin, asylum, and destination country"
+      homepage: "https://api.unhcr.org/docs/index.html"
+      docs_url: "https://api.unhcr.org/docs/index.html"
+      license_short: "Public UNHCR data API; no authentication required. Check UNHCR terms before redistributing data."
+      license_md: `- Public API operated by [UNHCR](https://www.unhcr.org/), the UN Refugee Agency
+- No authentication, API key, or registration required
+- No explicit licence is published with the API; data is sourced from UNHCR statistics and standard UNHCR terms of use apply
+- Attribution to UNHCR is expected when redistributing or visualising the data`
+      about_md: `The RSQ API (Resettlement Statistics Query) is a public REST API run by [UNHCR](https://www.unhcr.org/), the United Nations High Commissioner for Refugees. It exposes the statistics that underpin UNHCR's resettlement reporting, covering submissions made on behalf of refugees, actual departures to resettlement countries, and demographic breakdowns of the people involved.
+
+What you get from the API:
+
+- Reference lists: resettlement submission \`categories\`, UNHCR \`regions\`, and the available \`years\` for each dataset
+- Country lookups for countries of \`asylum\`, \`origin\` (submissions/departures/demographics), and resettlement \`destinations\`
+- Paginated query endpoints for \`submissions\`, \`departures\`, and \`demographics\`, filterable by year, origin, asylum, and destination
+- Helper endpoints to resolve hashed URLs (\`fetchUrl\`) and to export query results as CSV (\`export/csv\`)
+
+The API is served at \`http://api.unhcr.org/rsq/v1\`, returns JSON, requires no authentication, and has CORS enabled. Submission and departure queries are paginated at 20 results per page.`
+      entity_desc: {
+        category: "Resettlement submission categories (code and name) used to classify why a case was submitted; served from `GET /categories`."
+        country_of_asylum: "Countries currently hosting refugees who are candidates for resettlement; listed via `GET /asylums`."
+        country_of_origin: "Origin countries of refugees, available per dataset via `GET /origins/submissions`, `GET /origins/departures`, and `GET /origins/demographics`."
+        country_of_resettlement: "Destination countries that receive resettled refugees; listed via `GET /destinations`."
+        demographic: "Demographic breakdowns of resettled persons by gender and age band (underage, adult, senior, unknown), queryable via `GET /demographics`."
+        departure: "Records of actual resettlement departures, paginated and filterable by year, origin, asylum, and destination; served from `GET /departures`."
+        helper: "Utility endpoints such as `GET /fetchUrl` (resolve a hashed query URL) and `GET /export/csv` (export query results as CSV)."
+        region: "UNHCR regional groupings used to aggregate countries of asylum; served from `GET /regions`."
+        submission: "Resettlement submission records (cases referred for resettlement consideration), paginated 20 per page via `GET /submissions`."
+        url_fetch: "Helper to expand a short hash code back into a full query URL via `GET /fetchUrl`."
+        year: "Available reporting years for the various datasets, exposed via `GET /years` and `GET /years/demographics`."
+      }
+      auth: false
     }
   }
-}
-
 }

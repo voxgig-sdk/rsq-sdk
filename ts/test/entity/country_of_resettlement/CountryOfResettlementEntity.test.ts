@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'RSQ_TEST_COUNTRY_OF_RESETTLEMENT_ENTID': idmap,
     'RSQ_TEST_LIVE': 'FALSE',
     'RSQ_TEST_EXPLAIN': 'FALSE',
-    'RSQ_APIKEY': 'NONE',
   })
 
   idmap = env['RSQ_TEST_COUNTRY_OF_RESETTLEMENT_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new RsqSDK(merge([
       {
-        apikey: env.RSQ_APIKEY,
       },
       extra
     ]))

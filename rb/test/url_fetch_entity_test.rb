@@ -83,7 +83,6 @@ def url_fetch_basic_setup(extra)
     "RSQ_TEST_URL_FETCH_ENTID" => idmap,
     "RSQ_TEST_LIVE" => "FALSE",
     "RSQ_TEST_EXPLAIN" => "FALSE",
-    "RSQ_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +94,6 @@ def url_fetch_basic_setup(extra)
   if env["RSQ_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["RSQ_APIKEY"],
       },
       extra || {},
     ])

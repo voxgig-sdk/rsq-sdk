@@ -61,14 +61,12 @@ def _country_of_origin_direct_setup(mockres):
     env = runner.env_override({
         "RSQ_TEST_COUNTRY_OF_ORIGIN_ENTID": {},
         "RSQ_TEST_LIVE": "FALSE",
-        "RSQ_APIKEY": "NONE",
     })
 
     live = env.get("RSQ_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("RSQ_APIKEY"),
         }
         client = RsqSDK(merged_opts)
         return {
