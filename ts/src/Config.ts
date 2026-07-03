@@ -38,6 +38,10 @@ class Config {
   options = {
     base: 'http://api.unhcr.org/rsq/v1',
 
+    auth: {
+      prefix: 'Bearer',
+    },
+
     headers: {
       "content-type": "application/json"
     },
@@ -85,36 +89,38 @@ class Config {
     "category": {
       "fields": [
         {
+          "active": true,
           "name": "code",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         }
       ],
       "name": "category",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": "en",
                     "kind": "query",
                     "name": "language",
                     "orig": "language",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -132,11 +138,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -147,43 +151,45 @@ class Config {
     "country_of_asylum": {
       "fields": [
         {
+          "active": true,
           "name": "code",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "region",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 2
         }
       ],
       "name": "country_of_asylum",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": "en",
                     "kind": "query",
                     "name": "language",
                     "orig": "language",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -201,11 +207,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -216,43 +220,45 @@ class Config {
     "country_of_origin": {
       "fields": [
         {
+          "active": true,
           "name": "code",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "region",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 2
         }
       ],
       "name": "country_of_origin",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": "en",
                     "kind": "query",
                     "name": "language",
                     "orig": "language",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -271,20 +277,20 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             },
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": "en",
                     "kind": "query",
                     "name": "language",
                     "orig": "language",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -303,27 +309,25 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 1
             },
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/origins/demographics",
               "parts": [
                 "origins",
                 "demographics"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 2
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -334,43 +338,45 @@ class Config {
     "country_of_resettlement": {
       "fields": [
         {
+          "active": true,
           "name": "code",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "region",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 2
         }
       ],
       "name": "country_of_resettlement",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": "en",
                     "kind": "query",
                     "name": "language",
                     "orig": "language",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -388,11 +394,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -403,173 +407,175 @@ class Config {
     "demographic": {
       "fields": [
         {
+          "active": true,
           "name": "destination",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "destination_name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "females_adult",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "females_senior",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 3
         },
         {
+          "active": true,
           "name": "females_total",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 4
         },
         {
+          "active": true,
           "name": "females_underage",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 5
         },
         {
+          "active": true,
           "name": "females_unknown",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 6
         },
         {
+          "active": true,
           "name": "males_adult",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 7
         },
         {
+          "active": true,
           "name": "males_senior",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 8
         },
         {
+          "active": true,
           "name": "males_total",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 9
         },
         {
+          "active": true,
           "name": "males_underage",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 10
         },
         {
+          "active": true,
           "name": "males_unknown",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 11
         },
         {
+          "active": true,
           "name": "origin",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 12
         },
         {
+          "active": true,
           "name": "origin_name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 13
         },
         {
+          "active": true,
           "name": "other",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 14
         },
         {
+          "active": true,
           "name": "total",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 15
         },
         {
+          "active": true,
           "name": "year",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 16
         }
       ],
       "name": "demographic",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": "en",
                     "kind": "query",
                     "name": "language",
                     "orig": "language",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "origin",
                     "orig": "origin",
                     "reqd": false,
-                    "type": "`$ARRAY`",
-                    "active": true
+                    "type": "`$ARRAY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "origin_compare",
                     "orig": "origin_compare",
                     "reqd": false,
-                    "type": "`$BOOLEAN`",
-                    "active": true
+                    "type": "`$BOOLEAN`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "resettlement",
                     "orig": "resettlement",
                     "reqd": false,
-                    "type": "`$ARRAY`",
-                    "active": true
+                    "type": "`$ARRAY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "year",
                     "orig": "year",
                     "reqd": false,
-                    "type": "`$ARRAY`",
-                    "active": true
+                    "type": "`$ARRAY`"
                   }
                 ]
               },
@@ -591,11 +597,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -606,174 +610,176 @@ class Config {
     "departure": {
       "fields": [
         {
+          "active": true,
           "name": "asylum",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "asylum_name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "destination",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "destination_name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 3
         },
         {
+          "active": true,
           "name": "origin",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 4
         },
         {
+          "active": true,
           "name": "origin_name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 5
         },
         {
+          "active": true,
           "name": "person",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 6
         },
         {
+          "active": true,
           "name": "year",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 7
         }
       ],
       "name": "departure",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "asylum",
                     "orig": "asylum",
                     "reqd": false,
-                    "type": "`$ARRAY`",
-                    "active": true
+                    "type": "`$ARRAY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "asylum_compare",
                     "orig": "asylum_compare",
                     "reqd": false,
-                    "type": "`$BOOLEAN`",
-                    "active": true
+                    "type": "`$BOOLEAN`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "asylum_sort",
                     "orig": "asylum_sort",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": "en",
                     "kind": "query",
                     "name": "language",
                     "orig": "language",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "origin",
                     "orig": "origin",
                     "reqd": false,
-                    "type": "`$ARRAY`",
-                    "active": true
+                    "type": "`$ARRAY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "origin_compare",
                     "orig": "origin_compare",
                     "reqd": false,
-                    "type": "`$BOOLEAN`",
-                    "active": true
+                    "type": "`$BOOLEAN`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "origin_sort",
                     "orig": "origin_sort",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "page",
                     "orig": "page",
                     "reqd": false,
-                    "type": "`$INTEGER`",
-                    "active": true
+                    "type": "`$INTEGER`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "persons_sort",
                     "orig": "persons_sort",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "resettlement",
                     "orig": "resettlement",
                     "reqd": false,
-                    "type": "`$ARRAY`",
-                    "active": true
+                    "type": "`$ARRAY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "resettlement_sort",
                     "orig": "resettlement_sort",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "year",
                     "orig": "year",
                     "reqd": false,
-                    "type": "`$ARRAY`",
-                    "active": true
+                    "type": "`$ARRAY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "year_sort",
                     "orig": "year_sort",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -803,11 +809,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -820,42 +824,44 @@ class Config {
       "name": "helper",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "origin",
                     "orig": "origin",
                     "reqd": false,
-                    "type": "`$ARRAY`",
-                    "active": true
+                    "type": "`$ARRAY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "resettlement",
                     "orig": "resettlement",
                     "reqd": false,
-                    "type": "`$ARRAY`",
-                    "active": true
+                    "type": "`$ARRAY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "type",
                     "orig": "type",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "year",
                     "orig": "year",
                     "reqd": false,
-                    "type": "`$ARRAY`",
-                    "active": true
+                    "type": "`$ARRAY`"
                   }
                 ]
               },
@@ -877,11 +883,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
@@ -892,29 +896,31 @@ class Config {
     "region": {
       "fields": [
         {
+          "active": true,
           "name": "name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         }
       ],
       "name": "region",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": "en",
                     "kind": "query",
                     "name": "language",
                     "orig": "language",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -932,11 +938,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -947,174 +951,176 @@ class Config {
     "submission": {
       "fields": [
         {
+          "active": true,
           "name": "asylum",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "asylum_name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "destination",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "destination_name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 3
         },
         {
+          "active": true,
           "name": "origin",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 4
         },
         {
+          "active": true,
           "name": "origin_name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 5
         },
         {
+          "active": true,
           "name": "person",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 6
         },
         {
+          "active": true,
           "name": "year",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 7
         }
       ],
       "name": "submission",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "asylum",
                     "orig": "asylum",
                     "reqd": false,
-                    "type": "`$ARRAY`",
-                    "active": true
+                    "type": "`$ARRAY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "asylum_compare",
                     "orig": "asylum_compare",
                     "reqd": false,
-                    "type": "`$BOOLEAN`",
-                    "active": true
+                    "type": "`$BOOLEAN`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "asylum_sort",
                     "orig": "asylum_sort",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": "en",
                     "kind": "query",
                     "name": "language",
                     "orig": "language",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "origin",
                     "orig": "origin",
                     "reqd": false,
-                    "type": "`$ARRAY`",
-                    "active": true
+                    "type": "`$ARRAY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "origin_compare",
                     "orig": "origin_compare",
                     "reqd": false,
-                    "type": "`$BOOLEAN`",
-                    "active": true
+                    "type": "`$BOOLEAN`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "origin_sort",
                     "orig": "origin_sort",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "page",
                     "orig": "page",
                     "reqd": false,
-                    "type": "`$INTEGER`",
-                    "active": true
+                    "type": "`$INTEGER`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "persons_sort",
                     "orig": "persons_sort",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "resettlement",
                     "orig": "resettlement",
                     "reqd": false,
-                    "type": "`$ARRAY`",
-                    "active": true
+                    "type": "`$ARRAY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "resettlement_sort",
                     "orig": "resettlement_sort",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "year",
                     "orig": "year",
                     "reqd": false,
-                    "type": "`$ARRAY`",
-                    "active": true
+                    "type": "`$ARRAY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "year_sort",
                     "orig": "year_sort",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1144,11 +1150,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -1159,44 +1163,46 @@ class Config {
     "url_fetch": {
       "fields": [
         {
+          "active": true,
           "name": "status",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "url",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         }
       ],
       "name": "url_fetch",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": "en",
                     "kind": "query",
                     "name": "language",
                     "orig": "language",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "url_hash",
                     "orig": "url_hash",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1215,11 +1221,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -1232,24 +1236,27 @@ class Config {
       "name": "year",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/years",
               "parts": [
                 "years"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 0
             },
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/years/demographics",
               "parts": [
@@ -1263,12 +1270,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
               "index$": 1
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },

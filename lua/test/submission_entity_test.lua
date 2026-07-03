@@ -92,6 +92,7 @@ function submission_basic_setup(extra)
     ["RSQ_TEST_SUBMISSION_ENTID"] = idmap,
     ["RSQ_TEST_LIVE"] = "FALSE",
     ["RSQ_TEST_EXPLAIN"] = "FALSE",
+    ["RSQ_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -103,6 +104,7 @@ function submission_basic_setup(extra)
   if env["RSQ_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["RSQ_APIKEY"],
       },
       extra or {},
     })

@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -141,7 +141,7 @@ local category = client:Category(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Category(nil):list(nil, nil)
+local results, err = client:Category():list()
 ```
 
 ### Common Methods
@@ -195,7 +195,7 @@ local country_of_asylum = client:CountryOfAsylum(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:CountryOfAsylum(nil):list(nil, nil)
+local results, err = client:CountryOfAsylum():list()
 ```
 
 ### Common Methods
@@ -249,7 +249,7 @@ local country_of_origin = client:CountryOfOrigin(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:CountryOfOrigin(nil):list(nil, nil)
+local results, err = client:CountryOfOrigin():list()
 ```
 
 ### Common Methods
@@ -303,7 +303,7 @@ local country_of_resettlement = client:CountryOfResettlement(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:CountryOfResettlement(nil):list(nil, nil)
+local results, err = client:CountryOfResettlement():list()
 ```
 
 ### Common Methods
@@ -371,7 +371,7 @@ local demographic = client:Demographic(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Demographic(nil):list(nil, nil)
+local results, err = client:Demographic():list()
 ```
 
 ### Common Methods
@@ -430,7 +430,7 @@ local departure = client:Departure(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Departure(nil):list(nil, nil)
+local results, err = client:Departure():list()
 ```
 
 ### Common Methods
@@ -476,7 +476,7 @@ local helper = client:Helper(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Helper(nil):load({ id = "helper_id" }, nil)
+local result, err = client:Helper():load({ id = "helper_id" })
 ```
 
 ### Common Methods
@@ -528,7 +528,7 @@ local region = client:Region(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Region(nil):list(nil, nil)
+local results, err = client:Region():list()
 ```
 
 ### Common Methods
@@ -587,7 +587,7 @@ local submission = client:Submission(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Submission(nil):list(nil, nil)
+local results, err = client:Submission():list()
 ```
 
 ### Common Methods
@@ -640,7 +640,7 @@ local url_fetch = client:UrlFetch(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:UrlFetch(nil):list(nil, nil)
+local results, err = client:UrlFetch():list()
 ```
 
 ### Common Methods
@@ -686,7 +686,7 @@ local year = client:Year(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Year(nil):list(nil, nil)
+local results, err = client:Year():list()
 ```
 
 ### Common Methods

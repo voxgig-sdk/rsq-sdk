@@ -1,21 +1,8 @@
 # Rsq SDK
 
-Query UNHCR resettlement submissions, departures, and demographics by year, origin, asylum, and destination country
+RSQ API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About RSQ API
-
-The RSQ API (Resettlement Statistics Query) is a public REST API run by [UNHCR](https://www.unhcr.org/), the United Nations High Commissioner for Refugees. It exposes the statistics that underpin UNHCR's resettlement reporting, covering submissions made on behalf of refugees, actual departures to resettlement countries, and demographic breakdowns of the people involved.
-
-What you get from the API:
-
-- Reference lists: resettlement submission `categories`, UNHCR `regions`, and the available `years` for each dataset
-- Country lookups for countries of `asylum`, `origin` (submissions/departures/demographics), and resettlement `destinations`
-- Paginated query endpoints for `submissions`, `departures`, and `demographics`, filterable by year, origin, asylum, and destination
-- Helper endpoints to resolve hashed URLs (`fetchUrl`) and to export query results as CSV (`export/csv`)
-
-The API is served at `http://api.unhcr.org/rsq/v1`, returns JSON, requires no authentication, and has CORS enabled. Submission and departure queries are paginated at 20 results per page.
 
 ## Try it
 
@@ -49,29 +36,31 @@ gem install rsq-sdk
 luarocks install rsq-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { RsqSDK } from 'rsq'
 
-const client = new RsqSDK({})
+const client = new RsqSDK({
+  apikey: process.env.RSQ_APIKEY,
+})
 
 // List all categorys
 const categorys = await client.Category().list()
+console.log(categorys.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -101,17 +90,17 @@ The API exposes 11 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Category** | Resettlement submission categories (code and name) used to classify why a case was submitted; served from `GET /categories`. | `/categories` |
-| **CountryOfAsylum** | Countries currently hosting refugees who are candidates for resettlement; listed via `GET /asylums`. | `/asylums` |
-| **CountryOfOrigin** | Origin countries of refugees, available per dataset via `GET /origins/submissions`, `GET /origins/departures`, and `GET /origins/demographics`. | `/origins/departures` |
-| **CountryOfResettlement** | Destination countries that receive resettled refugees; listed via `GET /destinations`. | `/destinations` |
-| **Demographic** | Demographic breakdowns of resettled persons by gender and age band (underage, adult, senior, unknown), queryable via `GET /demographics`. | `/demographics` |
-| **Departure** | Records of actual resettlement departures, paginated and filterable by year, origin, asylum, and destination; served from `GET /departures`. | `/departures` |
-| **Helper** | Utility endpoints such as `GET /fetchUrl` (resolve a hashed query URL) and `GET /export/csv` (export query results as CSV). | `/export/csv` |
-| **Region** | UNHCR regional groupings used to aggregate countries of asylum; served from `GET /regions`. | `/regions` |
-| **Submission** | Resettlement submission records (cases referred for resettlement consideration), paginated 20 per page via `GET /submissions`. | `/submissions` |
-| **UrlFetch** | Helper to expand a short hash code back into a full query URL via `GET /fetchUrl`. | `/fetchUrl` |
-| **Year** | Available reporting years for the various datasets, exposed via `GET /years` and `GET /years/demographics`. | `/years` |
+| **Category** |  | `/categories` |
+| **CountryOfAsylum** |  | `/asylums` |
+| **CountryOfOrigin** |  | `/origins/departures` |
+| **CountryOfResettlement** |  | `/destinations` |
+| **Demographic** |  | `/demographics` |
+| **Departure** |  | `/departures` |
+| **Helper** |  | `/export/csv` |
+| **Region** |  | `/regions` |
+| **Submission** |  | `/submissions` |
+| **UrlFetch** |  | `/fetchUrl` |
+| **Year** |  | `/years` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -121,12 +110,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from rsq_sdk import RsqSDK
 
-client = RsqSDK({})
+client = RsqSDK({
+    "apikey": os.environ.get("RSQ_APIKEY"),
+})
 
 # List all categorys
-categorys, err = client.Category(None).list(None, None)
+categorys, err = client.Category().list()
+print(categorys)
 ```
 
 ### PHP
@@ -135,10 +128,13 @@ categorys, err = client.Category(None).list(None, None)
 <?php
 require_once 'rsq_sdk.php';
 
-$client = new RsqSDK([]);
+$client = new RsqSDK([
+    "apikey" => getenv("RSQ_APIKEY"),
+]);
 
 // List all categorys
-[$categorys, $err] = $client->Category(null)->list(null, null);
+[$categorys, $err] = $client->Category()->list();
+print_r($categorys);
 ```
 
 ### Golang
@@ -146,10 +142,13 @@ $client = new RsqSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/rsq-sdk/go"
 
-client := sdk.NewRsqSDK(map[string]any{})
+client := sdk.NewRsqSDK(map[string]any{
+    "apikey": os.Getenv("RSQ_APIKEY"),
+})
 
 // List all categorys
 categorys, err := client.Category(nil).List(nil, nil)
+fmt.Println(categorys)
 ```
 
 ### Ruby
@@ -157,10 +156,13 @@ categorys, err := client.Category(nil).List(nil, nil)
 ```ruby
 require_relative "Rsq_sdk"
 
-client = RsqSDK.new({})
+client = RsqSDK.new({
+  "apikey" => ENV["RSQ_APIKEY"],
+})
 
 # List all categorys
-categorys, err = client.Category(nil).list(nil, nil)
+categorys, err = client.Category().list
+puts categorys
 ```
 
 ### Lua
@@ -168,10 +170,13 @@ categorys, err = client.Category(nil).list(nil, nil)
 ```lua
 local sdk = require("rsq_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("RSQ_APIKEY"),
+})
 
 -- List all categorys
-local categorys, err = client:Category(nil):list(nil, nil)
+local categorys, err = client:Category():list()
+print(categorys)
 ```
 
 ## Unit testing in offline mode
@@ -190,25 +195,21 @@ const result = await client.Category().load({ id: 'test01' })
 ### Python
 
 ```python
-client = RsqSDK.test(None, None)
-result, err = client.Category(None).load(
-    {"id": "test01"}, None
-)
+client = RsqSDK.test()
+result, err = client.Category().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = RsqSDK::test(null, null);
-[$result, $err] = $client->Category(null)->load(
-    ["id" => "test01"], null
-);
+$client = RsqSDK::test();
+[$result, $err] = $client->Category()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Category(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -217,19 +218,15 @@ result, err := client.Category(nil).Load(
 ### Ruby
 
 ```ruby
-client = RsqSDK.test(nil, nil)
-result, err = client.Category(nil).load(
-  { "id" => "test01" }, nil
-)
+client = RsqSDK.test
+result, err = client.Category().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Category(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Category():load({ id = "test01" })
 ```
 
 ## How it works
@@ -333,15 +330,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the RSQ API
-
-- Upstream: [https://api.unhcr.org/docs/index.html](https://api.unhcr.org/docs/index.html)
-
-- Public API operated by [UNHCR](https://www.unhcr.org/), the UN Refugee Agency
-- No authentication, API key, or registration required
-- No explicit licence is published with the API; data is sourced from UNHCR statistics and standard UNHCR terms of use apply
-- Attribution to UNHCR is expected when redistributing or visualising the data
 
 ---
 

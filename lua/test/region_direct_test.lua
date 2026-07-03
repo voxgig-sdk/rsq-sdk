@@ -63,12 +63,14 @@ function region_direct_setup(mockres)
   local env = runner.env_override({
     ["RSQ_TEST_REGION_ENTID"] = {},
     ["RSQ_TEST_LIVE"] = "FALSE",
+    ["RSQ_APIKEY"] = "NONE",
   })
 
   local live = env["RSQ_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["RSQ_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

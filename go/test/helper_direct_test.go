@@ -99,12 +99,14 @@ func helperDirectSetup(mockres any) *helperDirectSetupResult {
 	env := envOverride(map[string]any{
 		"RSQ_TEST_HELPER_ENTID": map[string]any{},
 		"RSQ_TEST_LIVE":    "FALSE",
+		"RSQ_APIKEY":       "NONE",
 	})
 
 	live := env["RSQ_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["RSQ_APIKEY"],
 		}
 		client := sdk.NewRsqSDK(mergedOpts)
 

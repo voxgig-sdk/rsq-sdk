@@ -61,12 +61,14 @@ def helper_direct_setup(mockres)
   env = Runner.env_override({
     "RSQ_TEST_HELPER_ENTID" => {},
     "RSQ_TEST_LIVE" => "FALSE",
+    "RSQ_APIKEY" => "NONE",
   })
 
   live = env["RSQ_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["RSQ_APIKEY"],
     }
     client = RsqSDK.new(merged_opts)
     return {

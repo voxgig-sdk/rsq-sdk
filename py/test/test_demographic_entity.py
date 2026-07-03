@@ -92,6 +92,7 @@ def _demographic_basic_setup(extra):
         "RSQ_TEST_DEMOGRAPHIC_ENTID": idmap,
         "RSQ_TEST_LIVE": "FALSE",
         "RSQ_TEST_EXPLAIN": "FALSE",
+        "RSQ_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ def _demographic_basic_setup(extra):
     if env.get("RSQ_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("RSQ_APIKEY"),
             },
             extra or {},
         ])
