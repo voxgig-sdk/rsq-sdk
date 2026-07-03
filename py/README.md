@@ -10,7 +10,7 @@ The Python SDK for the Rsq API — an entity-oriented client following Pythonic 
 
 ## Install
 ```bash
-pip install rsq-sdk
+pip install voxgig-sdk-rsq
 ```
 
 Or install from source:

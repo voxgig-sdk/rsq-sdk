@@ -10,7 +10,7 @@ The PHP SDK for the Rsq API — an entity-oriented client using PHP conventions.
 
 ## Install
 ```bash
-composer require voxgig/rsq-sdk
+composer require voxgig-sdk/rsq
 ```
 
 

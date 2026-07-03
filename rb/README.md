@@ -10,13 +10,13 @@ The Ruby SDK for the Rsq API — an entity-oriented client using idiomatic Ruby 
 
 ## Install
 ```bash
-gem install rsq-sdk
+gem install voxgig-sdk-rsq
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "rsq-sdk"
+gem "voxgig-sdk-rsq"
 ```
 
 Then run:

@@ -1,7 +1,23 @@
 {
   "name": "@voxgig-sdk/rsq",
   "version": "0.0.1",
-  "description": "DESCRIPTION",
+  "description": "Unofficial generated TypeScript SDK for the RSQ public API. Not affiliated with or endorsed by the upstream API provider.",
+  "keywords": [
+    "voxgig",
+    "sdk",
+    "generated-sdk",
+    "openapi",
+    "api-client",
+    "rsq"
+  ],
+  "homepage": "https://github.com/voxgig-sdk/rsq-sdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voxgig-sdk/rsq-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/voxgig-sdk/rsq-sdk/issues"
+  },
   "main": "dist/RsqSDK.js",
   "type": "commonjs",
   "types": "dist/RsqSDK.d.ts",
@@ -14,7 +30,10 @@
     "clean": "rm -rf node_modules yarn.lock package-lock.json",
     "reset": "npm run clean && npm i && npm run build && npm test"
   },
-  "author": "Rsq",
+  "author": {
+    "name": "Voxgig",
+    "url": "https://voxgig.com"
+  },
   "license": "MIT",
   "dependencies": {},
   "peerDependencies": {},

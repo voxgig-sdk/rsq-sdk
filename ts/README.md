@@ -10,7 +10,7 @@ The TypeScript SDK for the Rsq API — a type-safe, entity-oriented client with 
 
 ## Install
 ```bash
-npm install rsq
+npm install @voxgig-sdk/rsq
 ```
 ## Tutorial: your first API call
 

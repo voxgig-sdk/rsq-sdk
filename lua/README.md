@@ -10,7 +10,7 @@ The Lua SDK for the Rsq API — an entity-oriented client using Lua conventions.
 
 ## Install
 ```bash
-luarocks install rsq-sdk
+luarocks install voxgig-sdk-rsq
 ```
 
 If the module is not yet published, add the source directory to
