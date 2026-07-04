@@ -50,8 +50,7 @@ class CountryOfResettlementEntityTest extends TestCase
         $country_of_resettlement_ref01_ent = $client->CountryOfResettlement(null);
         $country_of_resettlement_ref01_match = [];
 
-        [$country_of_resettlement_ref01_list_result, $err] = $country_of_resettlement_ref01_ent->list($country_of_resettlement_ref01_match, null);
-        $this->assertNull($err);
+        $country_of_resettlement_ref01_list_result = $country_of_resettlement_ref01_ent->list($country_of_resettlement_ref01_match, null);
         $this->assertIsArray($country_of_resettlement_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function country_of_resettlement_basic_setup($extra)
         "RSQ_TEST_COUNTRY_OF_RESETTLEMENT_ENTID" => $idmap,
         "RSQ_TEST_LIVE" => "FALSE",
         "RSQ_TEST_EXPLAIN" => "FALSE",
-        "RSQ_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function country_of_resettlement_basic_setup($extra)
     if ($env["RSQ_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["RSQ_APIKEY"],
             ],
             $extra ?? [],
         ]);

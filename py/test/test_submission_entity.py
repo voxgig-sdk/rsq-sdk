@@ -50,8 +50,7 @@ class TestSubmissionEntity:
         submission_ref01_ent = client.Submission(None)
         submission_ref01_match = {}
 
-        submission_ref01_list_result, err = submission_ref01_ent.list(submission_ref01_match, None)
-        assert err is None
+        submission_ref01_list_result = submission_ref01_ent.list(submission_ref01_match, None)
         assert isinstance(submission_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _submission_basic_setup(extra):
         "RSQ_TEST_SUBMISSION_ENTID": idmap,
         "RSQ_TEST_LIVE": "FALSE",
         "RSQ_TEST_EXPLAIN": "FALSE",
-        "RSQ_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _submission_basic_setup(extra):
     if env.get("RSQ_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("RSQ_APIKEY"),
             },
             extra or {},
         ])

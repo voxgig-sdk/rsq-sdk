@@ -50,8 +50,7 @@ class UrlFetchEntityTest extends TestCase
         $url_fetch_ref01_ent = $client->UrlFetch(null);
         $url_fetch_ref01_match = [];
 
-        [$url_fetch_ref01_list_result, $err] = $url_fetch_ref01_ent->list($url_fetch_ref01_match, null);
-        $this->assertNull($err);
+        $url_fetch_ref01_list_result = $url_fetch_ref01_ent->list($url_fetch_ref01_match, null);
         $this->assertIsArray($url_fetch_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function url_fetch_basic_setup($extra)
         "RSQ_TEST_URL_FETCH_ENTID" => $idmap,
         "RSQ_TEST_LIVE" => "FALSE",
         "RSQ_TEST_EXPLAIN" => "FALSE",
-        "RSQ_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function url_fetch_basic_setup($extra)
     if ($env["RSQ_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["RSQ_APIKEY"],
             ],
             $extra ?? [],
         ]);

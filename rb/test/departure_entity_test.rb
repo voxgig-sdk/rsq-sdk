@@ -43,8 +43,7 @@ class DepartureEntityTest < Minitest::Test
     departure_ref01_ent = client.Departure(nil)
     departure_ref01_match = {}
 
-    departure_ref01_list_result, err = departure_ref01_ent.list(departure_ref01_match, nil)
-    assert_nil err
+    departure_ref01_list_result = departure_ref01_ent.list(departure_ref01_match, nil)
     assert departure_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def departure_basic_setup(extra)
     "RSQ_TEST_DEPARTURE_ENTID" => idmap,
     "RSQ_TEST_LIVE" => "FALSE",
     "RSQ_TEST_EXPLAIN" => "FALSE",
-    "RSQ_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def departure_basic_setup(extra)
   if env["RSQ_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["RSQ_APIKEY"],
       },
       extra || {},
     ])

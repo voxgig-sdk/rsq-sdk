@@ -49,8 +49,7 @@ class HelperEntityTest extends TestCase
         // LOAD
         $helper_ref01_ent = $client->Helper(null);
         $helper_ref01_match_dt0 = [];
-        [$helper_ref01_data_dt0_loaded, $err] = $helper_ref01_ent->load($helper_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $helper_ref01_data_dt0_loaded = $helper_ref01_ent->load($helper_ref01_match_dt0, null);
         $this->assertNotNull($helper_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function helper_basic_setup($extra)
         "RSQ_TEST_HELPER_ENTID" => $idmap,
         "RSQ_TEST_LIVE" => "FALSE",
         "RSQ_TEST_EXPLAIN" => "FALSE",
-        "RSQ_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function helper_basic_setup($extra)
     if ($env["RSQ_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["RSQ_APIKEY"],
             ],
             $extra ?? [],
         ]);

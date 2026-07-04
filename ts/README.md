@@ -9,9 +9,12 @@ The TypeScript SDK for the Rsq API — a type-safe, entity-oriented client with 
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/rsq
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/rsq-sdk/releases](https://github.com/voxgig-sdk/rsq-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { RsqSDK } from 'rsq'
+import { RsqSDK } from '@voxgig-sdk/rsq'
 
-const client = new RsqSDK({
-  apikey: process.env.RSQ_APIKEY,
-})
+const client = new RsqSDK()
 ```
 
 ### 2. List categorys
 
 ```ts
-const result = await client.Category().list()
+const result = await client.category.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -81,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = RsqSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.category.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -89,7 +90,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new RsqSDK({ apikey: '...' })
+const client = new RsqSDK()
 const testClient = client.tester()
 ```
 
@@ -98,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.category
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -125,7 +126,6 @@ const logger = {
 }
 
 const client = new RsqSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -136,7 +136,6 @@ Create a `.env.local` file at the project root:
 
 ```
 RSQ_TEST_LIVE=TRUE
-RSQ_APIKEY=<your-key>
 ```
 
 Then run:
@@ -154,7 +153,6 @@ cd ts && npm test
 
 ```ts
 new RsqSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -165,7 +163,6 @@ new RsqSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -414,7 +411,7 @@ API path: `/years`
 
 ### Category
 
-Create an instance: `const category = client.Category()`
+Create an instance: `const category = client.category`
 
 #### Operations
 
@@ -432,13 +429,13 @@ Create an instance: `const category = client.Category()`
 #### Example: List
 
 ```ts
-const categorys = await client.Category().list()
+const categorys = await client.category.list()
 ```
 
 
 ### CountryOfAsylum
 
-Create an instance: `const country_of_asylum = client.CountryOfAsylum()`
+Create an instance: `const country_of_asylum = client.country_of_asylum`
 
 #### Operations
 
@@ -457,13 +454,13 @@ Create an instance: `const country_of_asylum = client.CountryOfAsylum()`
 #### Example: List
 
 ```ts
-const country_of_asylums = await client.CountryOfAsylum().list()
+const country_of_asylums = await client.country_of_asylum.list()
 ```
 
 
 ### CountryOfOrigin
 
-Create an instance: `const country_of_origin = client.CountryOfOrigin()`
+Create an instance: `const country_of_origin = client.country_of_origin`
 
 #### Operations
 
@@ -482,13 +479,13 @@ Create an instance: `const country_of_origin = client.CountryOfOrigin()`
 #### Example: List
 
 ```ts
-const country_of_origins = await client.CountryOfOrigin().list()
+const country_of_origins = await client.country_of_origin.list()
 ```
 
 
 ### CountryOfResettlement
 
-Create an instance: `const country_of_resettlement = client.CountryOfResettlement()`
+Create an instance: `const country_of_resettlement = client.country_of_resettlement`
 
 #### Operations
 
@@ -507,13 +504,13 @@ Create an instance: `const country_of_resettlement = client.CountryOfResettlemen
 #### Example: List
 
 ```ts
-const country_of_resettlements = await client.CountryOfResettlement().list()
+const country_of_resettlements = await client.country_of_resettlement.list()
 ```
 
 
 ### Demographic
 
-Create an instance: `const demographic = client.Demographic()`
+Create an instance: `const demographic = client.demographic`
 
 #### Operations
 
@@ -546,13 +543,13 @@ Create an instance: `const demographic = client.Demographic()`
 #### Example: List
 
 ```ts
-const demographics = await client.Demographic().list()
+const demographics = await client.demographic.list()
 ```
 
 
 ### Departure
 
-Create an instance: `const departure = client.Departure()`
+Create an instance: `const departure = client.departure`
 
 #### Operations
 
@@ -576,13 +573,13 @@ Create an instance: `const departure = client.Departure()`
 #### Example: List
 
 ```ts
-const departures = await client.Departure().list()
+const departures = await client.departure.list()
 ```
 
 
 ### Helper
 
-Create an instance: `const helper = client.Helper()`
+Create an instance: `const helper = client.helper`
 
 #### Operations
 
@@ -593,13 +590,13 @@ Create an instance: `const helper = client.Helper()`
 #### Example: Load
 
 ```ts
-const helper = await client.Helper().load({ id: 'helper_id' })
+const helper = await client.helper.load({ id: 'helper_id' })
 ```
 
 
 ### Region
 
-Create an instance: `const region = client.Region()`
+Create an instance: `const region = client.region`
 
 #### Operations
 
@@ -616,13 +613,13 @@ Create an instance: `const region = client.Region()`
 #### Example: List
 
 ```ts
-const regions = await client.Region().list()
+const regions = await client.region.list()
 ```
 
 
 ### Submission
 
-Create an instance: `const submission = client.Submission()`
+Create an instance: `const submission = client.submission`
 
 #### Operations
 
@@ -646,13 +643,13 @@ Create an instance: `const submission = client.Submission()`
 #### Example: List
 
 ```ts
-const submissions = await client.Submission().list()
+const submissions = await client.submission.list()
 ```
 
 
 ### UrlFetch
 
-Create an instance: `const url_fetch = client.UrlFetch()`
+Create an instance: `const url_fetch = client.url_fetch`
 
 #### Operations
 
@@ -670,13 +667,13 @@ Create an instance: `const url_fetch = client.UrlFetch()`
 #### Example: List
 
 ```ts
-const url_fetchs = await client.UrlFetch().list()
+const url_fetchs = await client.url_fetch.list()
 ```
 
 
 ### Year
 
-Create an instance: `const year = client.Year()`
+Create an instance: `const year = client.year`
 
 #### Operations
 
@@ -687,7 +684,7 @@ Create an instance: `const year = client.Year()`
 #### Example: List
 
 ```ts
-const years = await client.Year().list()
+const years = await client.year.list()
 ```
 
 
@@ -748,7 +745,7 @@ rsq/
 Import the SDK from the package root:
 
 ```ts
-import { RsqSDK } from 'rsq'
+import { RsqSDK } from '@voxgig-sdk/rsq'
 ```
 
 ### Entity state
@@ -758,11 +755,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const category = client.category
+await category.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// category.data() now returns the loaded category data
+// category.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

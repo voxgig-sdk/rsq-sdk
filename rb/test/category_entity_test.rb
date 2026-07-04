@@ -43,8 +43,7 @@ class CategoryEntityTest < Minitest::Test
     category_ref01_ent = client.Category(nil)
     category_ref01_match = {}
 
-    category_ref01_list_result, err = category_ref01_ent.list(category_ref01_match, nil)
-    assert_nil err
+    category_ref01_list_result = category_ref01_ent.list(category_ref01_match, nil)
     assert category_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def category_basic_setup(extra)
     "RSQ_TEST_CATEGORY_ENTID" => idmap,
     "RSQ_TEST_LIVE" => "FALSE",
     "RSQ_TEST_EXPLAIN" => "FALSE",
-    "RSQ_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def category_basic_setup(extra)
   if env["RSQ_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["RSQ_APIKEY"],
       },
       extra || {},
     ])

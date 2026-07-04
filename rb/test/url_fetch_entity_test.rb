@@ -43,8 +43,7 @@ class UrlFetchEntityTest < Minitest::Test
     url_fetch_ref01_ent = client.UrlFetch(nil)
     url_fetch_ref01_match = {}
 
-    url_fetch_ref01_list_result, err = url_fetch_ref01_ent.list(url_fetch_ref01_match, nil)
-    assert_nil err
+    url_fetch_ref01_list_result = url_fetch_ref01_ent.list(url_fetch_ref01_match, nil)
     assert url_fetch_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def url_fetch_basic_setup(extra)
     "RSQ_TEST_URL_FETCH_ENTID" => idmap,
     "RSQ_TEST_LIVE" => "FALSE",
     "RSQ_TEST_EXPLAIN" => "FALSE",
-    "RSQ_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def url_fetch_basic_setup(extra)
   if env["RSQ_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["RSQ_APIKEY"],
       },
       extra || {},
     ])

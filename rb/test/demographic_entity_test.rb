@@ -43,8 +43,7 @@ class DemographicEntityTest < Minitest::Test
     demographic_ref01_ent = client.Demographic(nil)
     demographic_ref01_match = {}
 
-    demographic_ref01_list_result, err = demographic_ref01_ent.list(demographic_ref01_match, nil)
-    assert_nil err
+    demographic_ref01_list_result = demographic_ref01_ent.list(demographic_ref01_match, nil)
     assert demographic_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def demographic_basic_setup(extra)
     "RSQ_TEST_DEMOGRAPHIC_ENTID" => idmap,
     "RSQ_TEST_LIVE" => "FALSE",
     "RSQ_TEST_EXPLAIN" => "FALSE",
-    "RSQ_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def demographic_basic_setup(extra)
   if env["RSQ_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["RSQ_APIKEY"],
       },
       extra || {},
     ])

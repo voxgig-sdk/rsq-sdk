@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -124,7 +123,7 @@ same parameters as `direct()`.
 ## CategoryEntity
 
 ```lua
-local category = client:Category(nil)
+local category = client:category(nil)
 ```
 
 ### Fields
@@ -141,7 +140,7 @@ local category = client:Category(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Category():list()
+local results, err = client:category():list()
 ```
 
 ### Common Methods
@@ -177,7 +176,7 @@ Return the entity name.
 ## CountryOfAsylumEntity
 
 ```lua
-local country_of_asylum = client:CountryOfAsylum(nil)
+local country_of_asylum = client:country_of_asylum(nil)
 ```
 
 ### Fields
@@ -195,7 +194,7 @@ local country_of_asylum = client:CountryOfAsylum(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:CountryOfAsylum():list()
+local results, err = client:country_of_asylum():list()
 ```
 
 ### Common Methods
@@ -231,7 +230,7 @@ Return the entity name.
 ## CountryOfOriginEntity
 
 ```lua
-local country_of_origin = client:CountryOfOrigin(nil)
+local country_of_origin = client:country_of_origin(nil)
 ```
 
 ### Fields
@@ -249,7 +248,7 @@ local country_of_origin = client:CountryOfOrigin(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:CountryOfOrigin():list()
+local results, err = client:country_of_origin():list()
 ```
 
 ### Common Methods
@@ -285,7 +284,7 @@ Return the entity name.
 ## CountryOfResettlementEntity
 
 ```lua
-local country_of_resettlement = client:CountryOfResettlement(nil)
+local country_of_resettlement = client:country_of_resettlement(nil)
 ```
 
 ### Fields
@@ -303,7 +302,7 @@ local country_of_resettlement = client:CountryOfResettlement(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:CountryOfResettlement():list()
+local results, err = client:country_of_resettlement():list()
 ```
 
 ### Common Methods
@@ -339,7 +338,7 @@ Return the entity name.
 ## DemographicEntity
 
 ```lua
-local demographic = client:Demographic(nil)
+local demographic = client:demographic(nil)
 ```
 
 ### Fields
@@ -371,7 +370,7 @@ local demographic = client:Demographic(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Demographic():list()
+local results, err = client:demographic():list()
 ```
 
 ### Common Methods
@@ -407,7 +406,7 @@ Return the entity name.
 ## DepartureEntity
 
 ```lua
-local departure = client:Departure(nil)
+local departure = client:departure(nil)
 ```
 
 ### Fields
@@ -430,7 +429,7 @@ local departure = client:Departure(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Departure():list()
+local results, err = client:departure():list()
 ```
 
 ### Common Methods
@@ -466,7 +465,7 @@ Return the entity name.
 ## HelperEntity
 
 ```lua
-local helper = client:Helper(nil)
+local helper = client:helper(nil)
 ```
 
 ### Operations
@@ -476,7 +475,7 @@ local helper = client:Helper(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Helper():load({ id = "helper_id" })
+local result, err = client:helper():load({ id = "helper_id" })
 ```
 
 ### Common Methods
@@ -512,7 +511,7 @@ Return the entity name.
 ## RegionEntity
 
 ```lua
-local region = client:Region(nil)
+local region = client:region(nil)
 ```
 
 ### Fields
@@ -528,7 +527,7 @@ local region = client:Region(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Region():list()
+local results, err = client:region():list()
 ```
 
 ### Common Methods
@@ -564,7 +563,7 @@ Return the entity name.
 ## SubmissionEntity
 
 ```lua
-local submission = client:Submission(nil)
+local submission = client:submission(nil)
 ```
 
 ### Fields
@@ -587,7 +586,7 @@ local submission = client:Submission(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Submission():list()
+local results, err = client:submission():list()
 ```
 
 ### Common Methods
@@ -623,7 +622,7 @@ Return the entity name.
 ## UrlFetchEntity
 
 ```lua
-local url_fetch = client:UrlFetch(nil)
+local url_fetch = client:url_fetch(nil)
 ```
 
 ### Fields
@@ -640,7 +639,7 @@ local url_fetch = client:UrlFetch(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:UrlFetch():list()
+local results, err = client:url_fetch():list()
 ```
 
 ### Common Methods
@@ -676,7 +675,7 @@ Return the entity name.
 ## YearEntity
 
 ```lua
-local year = client:Year(nil)
+local year = client:year(nil)
 ```
 
 ### Operations
@@ -686,7 +685,7 @@ local year = client:Year(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Year():list()
+local results, err = client:year():list()
 ```
 
 ### Common Methods

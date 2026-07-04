@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'RSQ_TEST_CATEGORY_ENTID': {},
     'RSQ_TEST_LIVE': 'FALSE',
-    'RSQ_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.RSQ_TEST_LIVE
 
   if (live) {
     const client = new RsqSDK({
-      apikey: env.RSQ_APIKEY,
     })
 
     let idmap: any = env['RSQ_TEST_CATEGORY_ENTID']

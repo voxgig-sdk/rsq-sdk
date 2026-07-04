@@ -50,8 +50,7 @@ class TestDemographicEntity:
         demographic_ref01_ent = client.Demographic(None)
         demographic_ref01_match = {}
 
-        demographic_ref01_list_result, err = demographic_ref01_ent.list(demographic_ref01_match, None)
-        assert err is None
+        demographic_ref01_list_result = demographic_ref01_ent.list(demographic_ref01_match, None)
         assert isinstance(demographic_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _demographic_basic_setup(extra):
         "RSQ_TEST_DEMOGRAPHIC_ENTID": idmap,
         "RSQ_TEST_LIVE": "FALSE",
         "RSQ_TEST_EXPLAIN": "FALSE",
-        "RSQ_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _demographic_basic_setup(extra):
     if env.get("RSQ_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("RSQ_APIKEY"),
             },
             extra or {},
         ])

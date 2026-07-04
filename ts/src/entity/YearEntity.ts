@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Year,
+  YearListMatch,
+} from '../RsqTypes'
 
 // TODO: needs Entity superclass
-class YearEntity extends RsqEntityBase {
+class YearEntity extends RsqEntityBase<Year> {
 
   constructor(client: RsqSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class YearEntity extends RsqEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: YearListMatch, ctrl?: Control): Promise<Year[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class YearEntity extends RsqEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Year[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

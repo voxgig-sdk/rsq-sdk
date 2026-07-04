@@ -43,8 +43,7 @@ class CountryOfAsylumEntityTest < Minitest::Test
     country_of_asylum_ref01_ent = client.CountryOfAsylum(nil)
     country_of_asylum_ref01_match = {}
 
-    country_of_asylum_ref01_list_result, err = country_of_asylum_ref01_ent.list(country_of_asylum_ref01_match, nil)
-    assert_nil err
+    country_of_asylum_ref01_list_result = country_of_asylum_ref01_ent.list(country_of_asylum_ref01_match, nil)
     assert country_of_asylum_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def country_of_asylum_basic_setup(extra)
     "RSQ_TEST_COUNTRY_OF_ASYLUM_ENTID" => idmap,
     "RSQ_TEST_LIVE" => "FALSE",
     "RSQ_TEST_EXPLAIN" => "FALSE",
-    "RSQ_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def country_of_asylum_basic_setup(extra)
   if env["RSQ_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["RSQ_APIKEY"],
       },
       extra || {},
     ])

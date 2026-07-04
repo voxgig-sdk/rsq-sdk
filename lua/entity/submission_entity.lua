@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch SubmissionListMatch
+---@param ctrl? table
+---@return Submission[]
+---@return string? err
 function SubmissionEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

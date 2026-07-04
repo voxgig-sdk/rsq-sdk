@@ -12,6 +12,8 @@ import { SubmissionEntity } from './entity/SubmissionEntity'
 import { UrlFetchEntity } from './entity/UrlFetchEntity'
 import { YearEntity } from './entity/YearEntity'
 
+export type * from './RsqTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -212,66 +214,154 @@ class RsqSDK {
 
 
 
+  _category?: CategoryEntity
+
+  // Idiomatic facade: `client.category.list()` / `client.category.load({ id })`.
+  get category(): CategoryEntity {
+    return (this._category ??= new CategoryEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.category` instead. */
   Category(data?: any) {
     const self = this
     return new CategoryEntity(self,data)
   }
 
 
+  _country_of_asylum?: CountryOfAsylumEntity
+
+  // Idiomatic facade: `client.country_of_asylum.list()` / `client.country_of_asylum.load({ id })`.
+  get country_of_asylum(): CountryOfAsylumEntity {
+    return (this._country_of_asylum ??= new CountryOfAsylumEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.country_of_asylum` instead. */
   CountryOfAsylum(data?: any) {
     const self = this
     return new CountryOfAsylumEntity(self,data)
   }
 
 
+  _country_of_origin?: CountryOfOriginEntity
+
+  // Idiomatic facade: `client.country_of_origin.list()` / `client.country_of_origin.load({ id })`.
+  get country_of_origin(): CountryOfOriginEntity {
+    return (this._country_of_origin ??= new CountryOfOriginEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.country_of_origin` instead. */
   CountryOfOrigin(data?: any) {
     const self = this
     return new CountryOfOriginEntity(self,data)
   }
 
 
+  _country_of_resettlement?: CountryOfResettlementEntity
+
+  // Idiomatic facade: `client.country_of_resettlement.list()` / `client.country_of_resettlement.load({ id })`.
+  get country_of_resettlement(): CountryOfResettlementEntity {
+    return (this._country_of_resettlement ??= new CountryOfResettlementEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.country_of_resettlement` instead. */
   CountryOfResettlement(data?: any) {
     const self = this
     return new CountryOfResettlementEntity(self,data)
   }
 
 
+  _demographic?: DemographicEntity
+
+  // Idiomatic facade: `client.demographic.list()` / `client.demographic.load({ id })`.
+  get demographic(): DemographicEntity {
+    return (this._demographic ??= new DemographicEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.demographic` instead. */
   Demographic(data?: any) {
     const self = this
     return new DemographicEntity(self,data)
   }
 
 
+  _departure?: DepartureEntity
+
+  // Idiomatic facade: `client.departure.list()` / `client.departure.load({ id })`.
+  get departure(): DepartureEntity {
+    return (this._departure ??= new DepartureEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.departure` instead. */
   Departure(data?: any) {
     const self = this
     return new DepartureEntity(self,data)
   }
 
 
+  _helper?: HelperEntity
+
+  // Idiomatic facade: `client.helper.list()` / `client.helper.load({ id })`.
+  get helper(): HelperEntity {
+    return (this._helper ??= new HelperEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.helper` instead. */
   Helper(data?: any) {
     const self = this
     return new HelperEntity(self,data)
   }
 
 
+  _region?: RegionEntity
+
+  // Idiomatic facade: `client.region.list()` / `client.region.load({ id })`.
+  get region(): RegionEntity {
+    return (this._region ??= new RegionEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.region` instead. */
   Region(data?: any) {
     const self = this
     return new RegionEntity(self,data)
   }
 
 
+  _submission?: SubmissionEntity
+
+  // Idiomatic facade: `client.submission.list()` / `client.submission.load({ id })`.
+  get submission(): SubmissionEntity {
+    return (this._submission ??= new SubmissionEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.submission` instead. */
   Submission(data?: any) {
     const self = this
     return new SubmissionEntity(self,data)
   }
 
 
+  _url_fetch?: UrlFetchEntity
+
+  // Idiomatic facade: `client.url_fetch.list()` / `client.url_fetch.load({ id })`.
+  get url_fetch(): UrlFetchEntity {
+    return (this._url_fetch ??= new UrlFetchEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.url_fetch` instead. */
   UrlFetch(data?: any) {
     const self = this
     return new UrlFetchEntity(self,data)
   }
 
 
+  _year?: YearEntity
+
+  // Idiomatic facade: `client.year.list()` / `client.year.load({ id })`.
+  get year(): YearEntity {
+    return (this._year ??= new YearEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.year` instead. */
   Year(data?: any) {
     const self = this
     return new YearEntity(self,data)

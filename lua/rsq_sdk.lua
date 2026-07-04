@@ -244,66 +244,209 @@ end
 
 
 
+-- Idiomatic facade: client:category():list() / client:category():load({ id = ... })
+function RsqSDK:category(data)
+  local EntityMod = require("entity.category_entity")
+  if data == nil then
+    if self._category == nil then
+      self._category = EntityMod.new(self, nil)
+    end
+    return self._category
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:category() instead.
 function RsqSDK:Category(data)
   local EntityMod = require("entity.category_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:country_of_asylum():list() / client:country_of_asylum():load({ id = ... })
+function RsqSDK:country_of_asylum(data)
+  local EntityMod = require("entity.country_of_asylum_entity")
+  if data == nil then
+    if self._country_of_asylum == nil then
+      self._country_of_asylum = EntityMod.new(self, nil)
+    end
+    return self._country_of_asylum
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:country_of_asylum() instead.
 function RsqSDK:CountryOfAsylum(data)
   local EntityMod = require("entity.country_of_asylum_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:country_of_origin():list() / client:country_of_origin():load({ id = ... })
+function RsqSDK:country_of_origin(data)
+  local EntityMod = require("entity.country_of_origin_entity")
+  if data == nil then
+    if self._country_of_origin == nil then
+      self._country_of_origin = EntityMod.new(self, nil)
+    end
+    return self._country_of_origin
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:country_of_origin() instead.
 function RsqSDK:CountryOfOrigin(data)
   local EntityMod = require("entity.country_of_origin_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:country_of_resettlement():list() / client:country_of_resettlement():load({ id = ... })
+function RsqSDK:country_of_resettlement(data)
+  local EntityMod = require("entity.country_of_resettlement_entity")
+  if data == nil then
+    if self._country_of_resettlement == nil then
+      self._country_of_resettlement = EntityMod.new(self, nil)
+    end
+    return self._country_of_resettlement
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:country_of_resettlement() instead.
 function RsqSDK:CountryOfResettlement(data)
   local EntityMod = require("entity.country_of_resettlement_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:demographic():list() / client:demographic():load({ id = ... })
+function RsqSDK:demographic(data)
+  local EntityMod = require("entity.demographic_entity")
+  if data == nil then
+    if self._demographic == nil then
+      self._demographic = EntityMod.new(self, nil)
+    end
+    return self._demographic
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:demographic() instead.
 function RsqSDK:Demographic(data)
   local EntityMod = require("entity.demographic_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:departure():list() / client:departure():load({ id = ... })
+function RsqSDK:departure(data)
+  local EntityMod = require("entity.departure_entity")
+  if data == nil then
+    if self._departure == nil then
+      self._departure = EntityMod.new(self, nil)
+    end
+    return self._departure
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:departure() instead.
 function RsqSDK:Departure(data)
   local EntityMod = require("entity.departure_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:helper():list() / client:helper():load({ id = ... })
+function RsqSDK:helper(data)
+  local EntityMod = require("entity.helper_entity")
+  if data == nil then
+    if self._helper == nil then
+      self._helper = EntityMod.new(self, nil)
+    end
+    return self._helper
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:helper() instead.
 function RsqSDK:Helper(data)
   local EntityMod = require("entity.helper_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:region():list() / client:region():load({ id = ... })
+function RsqSDK:region(data)
+  local EntityMod = require("entity.region_entity")
+  if data == nil then
+    if self._region == nil then
+      self._region = EntityMod.new(self, nil)
+    end
+    return self._region
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:region() instead.
 function RsqSDK:Region(data)
   local EntityMod = require("entity.region_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:submission():list() / client:submission():load({ id = ... })
+function RsqSDK:submission(data)
+  local EntityMod = require("entity.submission_entity")
+  if data == nil then
+    if self._submission == nil then
+      self._submission = EntityMod.new(self, nil)
+    end
+    return self._submission
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:submission() instead.
 function RsqSDK:Submission(data)
   local EntityMod = require("entity.submission_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:url_fetch():list() / client:url_fetch():load({ id = ... })
+function RsqSDK:url_fetch(data)
+  local EntityMod = require("entity.url_fetch_entity")
+  if data == nil then
+    if self._url_fetch == nil then
+      self._url_fetch = EntityMod.new(self, nil)
+    end
+    return self._url_fetch
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:url_fetch() instead.
 function RsqSDK:UrlFetch(data)
   local EntityMod = require("entity.url_fetch_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:year():list() / client:year():load({ id = ... })
+function RsqSDK:year(data)
+  local EntityMod = require("entity.year_entity")
+  if data == nil then
+    if self._year == nil then
+      self._year = EntityMod.new(self, nil)
+    end
+    return self._year
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:year() instead.
 function RsqSDK:Year(data)
   local EntityMod = require("entity.year_entity")
   return EntityMod.new(self, data)

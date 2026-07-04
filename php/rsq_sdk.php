@@ -103,7 +103,7 @@ class RsqSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class RsqSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class RsqSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,94 +216,215 @@ class RsqSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function Category($data = null)
+    private $_category = null;
+
+    // Idiomatic facade: $client->category()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Category() (PHP method
+    // names are case-insensitive).
+    public function category($data = null)
     {
         require_once __DIR__ . '/entity/category_entity.php';
+        if ($data === null) {
+            if ($this->_category === null) {
+                $this->_category = new CategoryEntity($this, null);
+            }
+            return $this->_category;
+        }
         return new CategoryEntity($this, $data);
     }
 
 
-    public function CountryOfAsylum($data = null)
+    private $_country_of_asylum = null;
+
+    // Idiomatic facade: $client->country_of_asylum()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias CountryOfAsylum() (PHP method
+    // names are case-insensitive).
+    public function country_of_asylum($data = null)
     {
         require_once __DIR__ . '/entity/country_of_asylum_entity.php';
+        if ($data === null) {
+            if ($this->_country_of_asylum === null) {
+                $this->_country_of_asylum = new CountryOfAsylumEntity($this, null);
+            }
+            return $this->_country_of_asylum;
+        }
         return new CountryOfAsylumEntity($this, $data);
     }
 
 
-    public function CountryOfOrigin($data = null)
+    private $_country_of_origin = null;
+
+    // Idiomatic facade: $client->country_of_origin()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias CountryOfOrigin() (PHP method
+    // names are case-insensitive).
+    public function country_of_origin($data = null)
     {
         require_once __DIR__ . '/entity/country_of_origin_entity.php';
+        if ($data === null) {
+            if ($this->_country_of_origin === null) {
+                $this->_country_of_origin = new CountryOfOriginEntity($this, null);
+            }
+            return $this->_country_of_origin;
+        }
         return new CountryOfOriginEntity($this, $data);
     }
 
 
-    public function CountryOfResettlement($data = null)
+    private $_country_of_resettlement = null;
+
+    // Idiomatic facade: $client->country_of_resettlement()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias CountryOfResettlement() (PHP method
+    // names are case-insensitive).
+    public function country_of_resettlement($data = null)
     {
         require_once __DIR__ . '/entity/country_of_resettlement_entity.php';
+        if ($data === null) {
+            if ($this->_country_of_resettlement === null) {
+                $this->_country_of_resettlement = new CountryOfResettlementEntity($this, null);
+            }
+            return $this->_country_of_resettlement;
+        }
         return new CountryOfResettlementEntity($this, $data);
     }
 
 
-    public function Demographic($data = null)
+    private $_demographic = null;
+
+    // Idiomatic facade: $client->demographic()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Demographic() (PHP method
+    // names are case-insensitive).
+    public function demographic($data = null)
     {
         require_once __DIR__ . '/entity/demographic_entity.php';
+        if ($data === null) {
+            if ($this->_demographic === null) {
+                $this->_demographic = new DemographicEntity($this, null);
+            }
+            return $this->_demographic;
+        }
         return new DemographicEntity($this, $data);
     }
 
 
-    public function Departure($data = null)
+    private $_departure = null;
+
+    // Idiomatic facade: $client->departure()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Departure() (PHP method
+    // names are case-insensitive).
+    public function departure($data = null)
     {
         require_once __DIR__ . '/entity/departure_entity.php';
+        if ($data === null) {
+            if ($this->_departure === null) {
+                $this->_departure = new DepartureEntity($this, null);
+            }
+            return $this->_departure;
+        }
         return new DepartureEntity($this, $data);
     }
 
 
-    public function Helper($data = null)
+    private $_helper = null;
+
+    // Idiomatic facade: $client->helper()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Helper() (PHP method
+    // names are case-insensitive).
+    public function helper($data = null)
     {
         require_once __DIR__ . '/entity/helper_entity.php';
+        if ($data === null) {
+            if ($this->_helper === null) {
+                $this->_helper = new HelperEntity($this, null);
+            }
+            return $this->_helper;
+        }
         return new HelperEntity($this, $data);
     }
 
 
-    public function Region($data = null)
+    private $_region = null;
+
+    // Idiomatic facade: $client->region()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Region() (PHP method
+    // names are case-insensitive).
+    public function region($data = null)
     {
         require_once __DIR__ . '/entity/region_entity.php';
+        if ($data === null) {
+            if ($this->_region === null) {
+                $this->_region = new RegionEntity($this, null);
+            }
+            return $this->_region;
+        }
         return new RegionEntity($this, $data);
     }
 
 
-    public function Submission($data = null)
+    private $_submission = null;
+
+    // Idiomatic facade: $client->submission()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Submission() (PHP method
+    // names are case-insensitive).
+    public function submission($data = null)
     {
         require_once __DIR__ . '/entity/submission_entity.php';
+        if ($data === null) {
+            if ($this->_submission === null) {
+                $this->_submission = new SubmissionEntity($this, null);
+            }
+            return $this->_submission;
+        }
         return new SubmissionEntity($this, $data);
     }
 
 
-    public function UrlFetch($data = null)
+    private $_url_fetch = null;
+
+    // Idiomatic facade: $client->url_fetch()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias UrlFetch() (PHP method
+    // names are case-insensitive).
+    public function url_fetch($data = null)
     {
         require_once __DIR__ . '/entity/url_fetch_entity.php';
+        if ($data === null) {
+            if ($this->_url_fetch === null) {
+                $this->_url_fetch = new UrlFetchEntity($this, null);
+            }
+            return $this->_url_fetch;
+        }
         return new UrlFetchEntity($this, $data);
     }
 
 
-    public function Year($data = null)
+    private $_year = null;
+
+    // Idiomatic facade: $client->year()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Year() (PHP method
+    // names are case-insensitive).
+    public function year($data = null)
     {
         require_once __DIR__ . '/entity/year_entity.php';
+        if ($data === null) {
+            if ($this->_year === null) {
+                $this->_year = new YearEntity($this, null);
+            }
+            return $this->_year;
+        }
         return new YearEntity($this, $data);
     }
 

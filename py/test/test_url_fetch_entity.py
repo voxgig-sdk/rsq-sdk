@@ -50,8 +50,7 @@ class TestUrlFetchEntity:
         url_fetch_ref01_ent = client.UrlFetch(None)
         url_fetch_ref01_match = {}
 
-        url_fetch_ref01_list_result, err = url_fetch_ref01_ent.list(url_fetch_ref01_match, None)
-        assert err is None
+        url_fetch_ref01_list_result = url_fetch_ref01_ent.list(url_fetch_ref01_match, None)
         assert isinstance(url_fetch_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _url_fetch_basic_setup(extra):
         "RSQ_TEST_URL_FETCH_ENTID": idmap,
         "RSQ_TEST_LIVE": "FALSE",
         "RSQ_TEST_EXPLAIN": "FALSE",
-        "RSQ_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _url_fetch_basic_setup(extra):
     if env.get("RSQ_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("RSQ_APIKEY"),
             },
             extra or {},
         ])

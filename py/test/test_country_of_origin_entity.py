@@ -50,8 +50,7 @@ class TestCountryOfOriginEntity:
         country_of_origin_ref01_ent = client.CountryOfOrigin(None)
         country_of_origin_ref01_match = {}
 
-        country_of_origin_ref01_list_result, err = country_of_origin_ref01_ent.list(country_of_origin_ref01_match, None)
-        assert err is None
+        country_of_origin_ref01_list_result = country_of_origin_ref01_ent.list(country_of_origin_ref01_match, None)
         assert isinstance(country_of_origin_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _country_of_origin_basic_setup(extra):
         "RSQ_TEST_COUNTRY_OF_ORIGIN_ENTID": idmap,
         "RSQ_TEST_LIVE": "FALSE",
         "RSQ_TEST_EXPLAIN": "FALSE",
-        "RSQ_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _country_of_origin_basic_setup(extra):
     if env.get("RSQ_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("RSQ_APIKEY"),
             },
             extra or {},
         ])

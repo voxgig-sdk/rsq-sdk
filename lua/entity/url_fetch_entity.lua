@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch UrlFetchListMatch
+---@param ctrl? table
+---@return UrlFetch[]
+---@return string? err
 function UrlFetchEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -50,8 +50,7 @@ class YearEntityTest extends TestCase
         $year_ref01_ent = $client->Year(null);
         $year_ref01_match = [];
 
-        [$year_ref01_list_result, $err] = $year_ref01_ent->list($year_ref01_match, null);
-        $this->assertNull($err);
+        $year_ref01_list_result = $year_ref01_ent->list($year_ref01_match, null);
         $this->assertIsArray($year_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function year_basic_setup($extra)
         "RSQ_TEST_YEAR_ENTID" => $idmap,
         "RSQ_TEST_LIVE" => "FALSE",
         "RSQ_TEST_EXPLAIN" => "FALSE",
-        "RSQ_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function year_basic_setup($extra)
     if ($env["RSQ_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["RSQ_APIKEY"],
             ],
             $extra ?? [],
         ]);

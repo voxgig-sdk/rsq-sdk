@@ -55,6 +55,9 @@ class SubmissionEntity
         return new SubmissionEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Submission|array $args Submission data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class SubmissionEntity
         }
     }
 
+    /**
+     * @return Submission|array The current Submission data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Submission fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class SubmissionEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Submission fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -86,7 +98,16 @@ class SubmissionEntity
     
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Submission items matching the given filter.
+     *
+     * @param SubmissionListMatch|array|null $reqmatch Match filter (any subset
+     *   of Submission fields) as an assoc-array; SubmissionListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Submission[]|array A list of Submission items as assoc-arrays at
+     *   the SDK boundary; throws RsqError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -114,7 +135,7 @@ class SubmissionEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

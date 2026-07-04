@@ -20,9 +20,6 @@ class RsqConfig
             ],
             "options" => [
                 "base" => "http://api.unhcr.org/rsq/v1",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

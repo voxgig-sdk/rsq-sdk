@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch YearListMatch
+---@param ctrl? table
+---@return Year[]
+---@return string? err
 function YearEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

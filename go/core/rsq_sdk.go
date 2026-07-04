@@ -245,56 +245,89 @@ func (sdk *RsqSDK) Direct(fetchargs map[string]any) (map[string]any, error) {
 }
 
 
+// Category returns a Category entity bound to this client.
+// Idiomatic usage: client.Category(nil).List(nil, nil) or
+// client.Category(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RsqSDK) Category(data map[string]any) RsqEntity {
 	return NewCategoryEntityFunc(sdk, data)
 }
 
 
+// CountryOfAsylum returns a CountryOfAsylum entity bound to this client.
+// Idiomatic usage: client.CountryOfAsylum(nil).List(nil, nil) or
+// client.CountryOfAsylum(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RsqSDK) CountryOfAsylum(data map[string]any) RsqEntity {
 	return NewCountryOfAsylumEntityFunc(sdk, data)
 }
 
 
+// CountryOfOrigin returns a CountryOfOrigin entity bound to this client.
+// Idiomatic usage: client.CountryOfOrigin(nil).List(nil, nil) or
+// client.CountryOfOrigin(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RsqSDK) CountryOfOrigin(data map[string]any) RsqEntity {
 	return NewCountryOfOriginEntityFunc(sdk, data)
 }
 
 
+// CountryOfResettlement returns a CountryOfResettlement entity bound to this client.
+// Idiomatic usage: client.CountryOfResettlement(nil).List(nil, nil) or
+// client.CountryOfResettlement(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RsqSDK) CountryOfResettlement(data map[string]any) RsqEntity {
 	return NewCountryOfResettlementEntityFunc(sdk, data)
 }
 
 
+// Demographic returns a Demographic entity bound to this client.
+// Idiomatic usage: client.Demographic(nil).List(nil, nil) or
+// client.Demographic(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RsqSDK) Demographic(data map[string]any) RsqEntity {
 	return NewDemographicEntityFunc(sdk, data)
 }
 
 
+// Departure returns a Departure entity bound to this client.
+// Idiomatic usage: client.Departure(nil).List(nil, nil) or
+// client.Departure(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RsqSDK) Departure(data map[string]any) RsqEntity {
 	return NewDepartureEntityFunc(sdk, data)
 }
 
 
+// Helper returns a Helper entity bound to this client.
+// Idiomatic usage: client.Helper(nil).List(nil, nil) or
+// client.Helper(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RsqSDK) Helper(data map[string]any) RsqEntity {
 	return NewHelperEntityFunc(sdk, data)
 }
 
 
+// Region returns a Region entity bound to this client.
+// Idiomatic usage: client.Region(nil).List(nil, nil) or
+// client.Region(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RsqSDK) Region(data map[string]any) RsqEntity {
 	return NewRegionEntityFunc(sdk, data)
 }
 
 
+// Submission returns a Submission entity bound to this client.
+// Idiomatic usage: client.Submission(nil).List(nil, nil) or
+// client.Submission(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RsqSDK) Submission(data map[string]any) RsqEntity {
 	return NewSubmissionEntityFunc(sdk, data)
 }
 
 
+// UrlFetch returns a UrlFetch entity bound to this client.
+// Idiomatic usage: client.UrlFetch(nil).List(nil, nil) or
+// client.UrlFetch(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RsqSDK) UrlFetch(data map[string]any) RsqEntity {
 	return NewUrlFetchEntityFunc(sdk, data)
 }
 
 
+// Year returns a Year entity bound to this client.
+// Idiomatic usage: client.Year(nil).List(nil, nil) or
+// client.Year(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RsqSDK) Year(data map[string]any) RsqEntity {
 	return NewYearEntityFunc(sdk, data)
 }

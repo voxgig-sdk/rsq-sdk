@@ -50,8 +50,7 @@ class TestYearEntity:
         year_ref01_ent = client.Year(None)
         year_ref01_match = {}
 
-        year_ref01_list_result, err = year_ref01_ent.list(year_ref01_match, None)
-        assert err is None
+        year_ref01_list_result = year_ref01_ent.list(year_ref01_match, None)
         assert isinstance(year_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _year_basic_setup(extra):
         "RSQ_TEST_YEAR_ENTID": idmap,
         "RSQ_TEST_LIVE": "FALSE",
         "RSQ_TEST_EXPLAIN": "FALSE",
-        "RSQ_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _year_basic_setup(extra):
     if env.get("RSQ_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("RSQ_APIKEY"),
             },
             extra or {},
         ])

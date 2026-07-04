@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'Rsq_types'
+
 
 class RsqSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class RsqSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class RsqSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue RsqError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = RsqHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class RsqSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,76 +198,153 @@ class RsqSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.category.list / client.category.load({ "id" => ... })
+  def category
+    require_relative 'entity/category_entity'
+    @category ||= CategoryEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.category instead.
   def Category(data = nil)
     require_relative 'entity/category_entity'
     CategoryEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.country_of_asylum.list / client.country_of_asylum.load({ "id" => ... })
+  def country_of_asylum
+    require_relative 'entity/country_of_asylum_entity'
+    @country_of_asylum ||= CountryOfAsylumEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.country_of_asylum instead.
   def CountryOfAsylum(data = nil)
     require_relative 'entity/country_of_asylum_entity'
     CountryOfAsylumEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.country_of_origin.list / client.country_of_origin.load({ "id" => ... })
+  def country_of_origin
+    require_relative 'entity/country_of_origin_entity'
+    @country_of_origin ||= CountryOfOriginEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.country_of_origin instead.
   def CountryOfOrigin(data = nil)
     require_relative 'entity/country_of_origin_entity'
     CountryOfOriginEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.country_of_resettlement.list / client.country_of_resettlement.load({ "id" => ... })
+  def country_of_resettlement
+    require_relative 'entity/country_of_resettlement_entity'
+    @country_of_resettlement ||= CountryOfResettlementEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.country_of_resettlement instead.
   def CountryOfResettlement(data = nil)
     require_relative 'entity/country_of_resettlement_entity'
     CountryOfResettlementEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.demographic.list / client.demographic.load({ "id" => ... })
+  def demographic
+    require_relative 'entity/demographic_entity'
+    @demographic ||= DemographicEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.demographic instead.
   def Demographic(data = nil)
     require_relative 'entity/demographic_entity'
     DemographicEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.departure.list / client.departure.load({ "id" => ... })
+  def departure
+    require_relative 'entity/departure_entity'
+    @departure ||= DepartureEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.departure instead.
   def Departure(data = nil)
     require_relative 'entity/departure_entity'
     DepartureEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.helper.list / client.helper.load({ "id" => ... })
+  def helper
+    require_relative 'entity/helper_entity'
+    @helper ||= HelperEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.helper instead.
   def Helper(data = nil)
     require_relative 'entity/helper_entity'
     HelperEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.region.list / client.region.load({ "id" => ... })
+  def region
+    require_relative 'entity/region_entity'
+    @region ||= RegionEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.region instead.
   def Region(data = nil)
     require_relative 'entity/region_entity'
     RegionEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.submission.list / client.submission.load({ "id" => ... })
+  def submission
+    require_relative 'entity/submission_entity'
+    @submission ||= SubmissionEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.submission instead.
   def Submission(data = nil)
     require_relative 'entity/submission_entity'
     SubmissionEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.url_fetch.list / client.url_fetch.load({ "id" => ... })
+  def url_fetch
+    require_relative 'entity/url_fetch_entity'
+    @url_fetch ||= UrlFetchEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.url_fetch instead.
   def UrlFetch(data = nil)
     require_relative 'entity/url_fetch_entity'
     UrlFetchEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.year.list / client.year.load({ "id" => ... })
+  def year
+    require_relative 'entity/year_entity'
+    @year ||= YearEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.year instead.
   def Year(data = nil)
     require_relative 'entity/year_entity'
     YearEntity.new(self, data)

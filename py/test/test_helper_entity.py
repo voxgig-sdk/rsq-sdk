@@ -49,8 +49,7 @@ class TestHelperEntity:
         # LOAD
         helper_ref01_ent = client.Helper(None)
         helper_ref01_match_dt0 = {}
-        helper_ref01_data_dt0_loaded, err = helper_ref01_ent.load(helper_ref01_match_dt0, None)
-        assert err is None
+        helper_ref01_data_dt0_loaded = helper_ref01_ent.load(helper_ref01_match_dt0, None)
         assert helper_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _helper_basic_setup(extra):
         "RSQ_TEST_HELPER_ENTID": idmap,
         "RSQ_TEST_LIVE": "FALSE",
         "RSQ_TEST_EXPLAIN": "FALSE",
-        "RSQ_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _helper_basic_setup(extra):
     if env.get("RSQ_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("RSQ_APIKEY"),
             },
             extra or {},
         ])

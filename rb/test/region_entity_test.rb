@@ -43,8 +43,7 @@ class RegionEntityTest < Minitest::Test
     region_ref01_ent = client.Region(nil)
     region_ref01_match = {}
 
-    region_ref01_list_result, err = region_ref01_ent.list(region_ref01_match, nil)
-    assert_nil err
+    region_ref01_list_result = region_ref01_ent.list(region_ref01_match, nil)
     assert region_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def region_basic_setup(extra)
     "RSQ_TEST_REGION_ENTID" => idmap,
     "RSQ_TEST_LIVE" => "FALSE",
     "RSQ_TEST_EXPLAIN" => "FALSE",
-    "RSQ_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def region_basic_setup(extra)
   if env["RSQ_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["RSQ_APIKEY"],
       },
       extra || {},
     ])

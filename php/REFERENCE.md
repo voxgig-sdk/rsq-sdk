@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `$options` | `array` | SDK configuration options. |
-| `$options["apikey"]` | `string` | API key for authentication. |
 | `$options["base"]` | `string` | Base URL for API requests. |
 | `$options["prefix"]` | `string` | URL prefix appended after base. |
 | `$options["suffix"]` | `string` | URL suffix appended after path. |
@@ -96,7 +95,10 @@ Return a copy of the SDK utility object.
 
 #### `direct(array $fetchargs = []): array`
 
-Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
+Make a direct HTTP request to any API endpoint. This is the raw-HTTP escape
+hatch: it does **not** throw. It returns a result array
+`["ok" => bool, "status" => int, "headers" => array, "data" => mixed]`, or
+`["ok" => false, "err" => \Exception]` on failure. Branch on `$result["ok"]`.
 
 **Parameters:**
 
@@ -110,11 +112,12 @@ Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
 | `$fetchargs["body"]` | `mixed` | Request body (arrays are JSON-serialized). |
 | `$fetchargs["ctrl"]` | `array` | Control options. |
 
-**Returns:** `array [$result, $err]`
+**Returns:** `array` — the result dict (see above); never throws.
 
-#### `prepare(array $fetchargs = []): array`
+#### `prepare(array $fetchargs = []): mixed`
 
-Prepare a fetch definition without sending the request. Returns `[$fetchdef, $err]`.
+Prepare a fetch definition without sending the request. Returns the
+`$fetchdef` array. Throws on error.
 
 
 ---
@@ -122,7 +125,7 @@ Prepare a fetch definition without sending the request. Returns `[$fetchdef, $er
 ## CategoryEntity
 
 ```php
-$category = $client->Category();
+$category = $client->category();
 ```
 
 ### Fields
@@ -134,12 +137,12 @@ $category = $client->Category();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Category()->list([]);
+$results = $client->category()->list([]);
 ```
 
 ### Common Methods
@@ -175,7 +178,7 @@ Return the entity name.
 ## CountryOfAsylumEntity
 
 ```php
-$country_of_asylum = $client->CountryOfAsylum();
+$country_of_asylum = $client->country_of_asylum();
 ```
 
 ### Fields
@@ -188,12 +191,12 @@ $country_of_asylum = $client->CountryOfAsylum();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->CountryOfAsylum()->list([]);
+$results = $client->country_of_asylum()->list([]);
 ```
 
 ### Common Methods
@@ -229,7 +232,7 @@ Return the entity name.
 ## CountryOfOriginEntity
 
 ```php
-$country_of_origin = $client->CountryOfOrigin();
+$country_of_origin = $client->country_of_origin();
 ```
 
 ### Fields
@@ -242,12 +245,12 @@ $country_of_origin = $client->CountryOfOrigin();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->CountryOfOrigin()->list([]);
+$results = $client->country_of_origin()->list([]);
 ```
 
 ### Common Methods
@@ -283,7 +286,7 @@ Return the entity name.
 ## CountryOfResettlementEntity
 
 ```php
-$country_of_resettlement = $client->CountryOfResettlement();
+$country_of_resettlement = $client->country_of_resettlement();
 ```
 
 ### Fields
@@ -296,12 +299,12 @@ $country_of_resettlement = $client->CountryOfResettlement();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->CountryOfResettlement()->list([]);
+$results = $client->country_of_resettlement()->list([]);
 ```
 
 ### Common Methods
@@ -337,7 +340,7 @@ Return the entity name.
 ## DemographicEntity
 
 ```php
-$demographic = $client->Demographic();
+$demographic = $client->demographic();
 ```
 
 ### Fields
@@ -364,12 +367,12 @@ $demographic = $client->Demographic();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Demographic()->list([]);
+$results = $client->demographic()->list([]);
 ```
 
 ### Common Methods
@@ -405,7 +408,7 @@ Return the entity name.
 ## DepartureEntity
 
 ```php
-$departure = $client->Departure();
+$departure = $client->departure();
 ```
 
 ### Fields
@@ -423,12 +426,12 @@ $departure = $client->Departure();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Departure()->list([]);
+$results = $client->departure()->list([]);
 ```
 
 ### Common Methods
@@ -464,17 +467,17 @@ Return the entity name.
 ## HelperEntity
 
 ```php
-$helper = $client->Helper();
+$helper = $client->helper();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Helper()->load(["id" => "helper_id"]);
+$result = $client->helper()->load(["id" => "helper_id"]);
 ```
 
 ### Common Methods
@@ -510,7 +513,7 @@ Return the entity name.
 ## RegionEntity
 
 ```php
-$region = $client->Region();
+$region = $client->region();
 ```
 
 ### Fields
@@ -521,12 +524,12 @@ $region = $client->Region();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Region()->list([]);
+$results = $client->region()->list([]);
 ```
 
 ### Common Methods
@@ -562,7 +565,7 @@ Return the entity name.
 ## SubmissionEntity
 
 ```php
-$submission = $client->Submission();
+$submission = $client->submission();
 ```
 
 ### Fields
@@ -580,12 +583,12 @@ $submission = $client->Submission();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Submission()->list([]);
+$results = $client->submission()->list([]);
 ```
 
 ### Common Methods
@@ -621,7 +624,7 @@ Return the entity name.
 ## UrlFetchEntity
 
 ```php
-$url_fetch = $client->UrlFetch();
+$url_fetch = $client->url_fetch();
 ```
 
 ### Fields
@@ -633,12 +636,12 @@ $url_fetch = $client->UrlFetch();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->UrlFetch()->list([]);
+$results = $client->url_fetch()->list([]);
 ```
 
 ### Common Methods
@@ -674,17 +677,17 @@ Return the entity name.
 ## YearEntity
 
 ```php
-$year = $client->Year();
+$year = $client->year();
 ```
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Year()->list([]);
+$results = $client->year()->list([]);
 ```
 
 ### Common Methods

@@ -43,8 +43,7 @@ class SubmissionEntityTest < Minitest::Test
     submission_ref01_ent = client.Submission(nil)
     submission_ref01_match = {}
 
-    submission_ref01_list_result, err = submission_ref01_ent.list(submission_ref01_match, nil)
-    assert_nil err
+    submission_ref01_list_result = submission_ref01_ent.list(submission_ref01_match, nil)
     assert submission_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def submission_basic_setup(extra)
     "RSQ_TEST_SUBMISSION_ENTID" => idmap,
     "RSQ_TEST_LIVE" => "FALSE",
     "RSQ_TEST_EXPLAIN" => "FALSE",
-    "RSQ_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def submission_basic_setup(extra)
   if env["RSQ_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["RSQ_APIKEY"],
       },
       extra || {},
     ])

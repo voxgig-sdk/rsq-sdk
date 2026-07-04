@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  CountryOfOrigin,
+  CountryOfOriginListMatch,
+} from '../RsqTypes'
 
 // TODO: needs Entity superclass
-class CountryOfOriginEntity extends RsqEntityBase {
+class CountryOfOriginEntity extends RsqEntityBase<CountryOfOrigin> {
 
   constructor(client: RsqSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class CountryOfOriginEntity extends RsqEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: CountryOfOriginListMatch, ctrl?: Control): Promise<CountryOfOrigin[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class CountryOfOriginEntity extends RsqEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<CountryOfOrigin[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

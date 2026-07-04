@@ -50,8 +50,7 @@ class TestDepartureEntity:
         departure_ref01_ent = client.Departure(None)
         departure_ref01_match = {}
 
-        departure_ref01_list_result, err = departure_ref01_ent.list(departure_ref01_match, None)
-        assert err is None
+        departure_ref01_list_result = departure_ref01_ent.list(departure_ref01_match, None)
         assert isinstance(departure_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _departure_basic_setup(extra):
         "RSQ_TEST_DEPARTURE_ENTID": idmap,
         "RSQ_TEST_LIVE": "FALSE",
         "RSQ_TEST_EXPLAIN": "FALSE",
-        "RSQ_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _departure_basic_setup(extra):
     if env.get("RSQ_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("RSQ_APIKEY"),
             },
             extra or {},
         ])

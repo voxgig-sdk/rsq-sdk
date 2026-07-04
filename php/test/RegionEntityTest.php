@@ -50,8 +50,7 @@ class RegionEntityTest extends TestCase
         $region_ref01_ent = $client->Region(null);
         $region_ref01_match = [];
 
-        [$region_ref01_list_result, $err] = $region_ref01_ent->list($region_ref01_match, null);
-        $this->assertNull($err);
+        $region_ref01_list_result = $region_ref01_ent->list($region_ref01_match, null);
         $this->assertIsArray($region_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function region_basic_setup($extra)
         "RSQ_TEST_REGION_ENTID" => $idmap,
         "RSQ_TEST_LIVE" => "FALSE",
         "RSQ_TEST_EXPLAIN" => "FALSE",
-        "RSQ_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function region_basic_setup($extra)
     if ($env["RSQ_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["RSQ_APIKEY"],
             ],
             $extra ?? [],
         ]);

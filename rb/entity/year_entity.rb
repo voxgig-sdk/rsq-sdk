@@ -45,6 +45,7 @@ class YearEntity
     end
   end
 
+  # @return [Year, Hash] the current Year data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class YearEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Year fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class YearEntity
   
 
   
+  # List Year items matching the given filter.
+  #
+  # @param reqmatch [YearListMatch, Hash, nil] match filter (any subset of Year fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Year>, Array] the matching Year items; raises RsqError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

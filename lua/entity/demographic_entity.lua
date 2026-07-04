@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch DemographicListMatch
+---@param ctrl? table
+---@return Demographic[]
+---@return string? err
 function DemographicEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

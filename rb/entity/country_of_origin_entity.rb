@@ -45,6 +45,7 @@ class CountryOfOriginEntity
     end
   end
 
+  # @return [CountryOfOrigin, Hash] the current CountryOfOrigin data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class CountryOfOriginEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of CountryOfOrigin fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class CountryOfOriginEntity
   
 
   
+  # List CountryOfOrigin items matching the given filter.
+  #
+  # @param reqmatch [CountryOfOriginListMatch, Hash, nil] match filter (any subset of CountryOfOrigin fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<CountryOfOrigin>, Array] the matching CountryOfOrigin items; raises RsqError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

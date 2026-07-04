@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Demographic,
+  DemographicListMatch,
+} from '../RsqTypes'
 
 // TODO: needs Entity superclass
-class DemographicEntity extends RsqEntityBase {
+class DemographicEntity extends RsqEntityBase<Demographic> {
 
   constructor(client: RsqSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class DemographicEntity extends RsqEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: DemographicListMatch, ctrl?: Control): Promise<Demographic[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class DemographicEntity extends RsqEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Demographic[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

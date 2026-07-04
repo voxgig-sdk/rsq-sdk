@@ -45,6 +45,7 @@ class CountryOfAsylumEntity
     end
   end
 
+  # @return [CountryOfAsylum, Hash] the current CountryOfAsylum data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class CountryOfAsylumEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of CountryOfAsylum fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class CountryOfAsylumEntity
   
 
   
+  # List CountryOfAsylum items matching the given filter.
+  #
+  # @param reqmatch [CountryOfAsylumListMatch, Hash, nil] match filter (any subset of CountryOfAsylum fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<CountryOfAsylum>, Array] the matching CountryOfAsylum items; raises RsqError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

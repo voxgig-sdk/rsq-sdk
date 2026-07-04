@@ -1,7 +1,13 @@
 # Rsq SDK Helper entity
 
+from __future__ import annotations
+
 from utility.voxgig_struct import voxgig_struct as vs
 from core import helpers
+from rsq_types import (
+    Helper,
+    HelperLoadMatch,
+)
 
 
 class HelperEntity:
@@ -44,7 +50,7 @@ class HelperEntity:
             self._data = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetData")
 
-    def data_get(self):
+    def data_get(self) -> Helper:
         self._utility.feature_hook(self._entctx, "GetData")
         return vs.clone(self._data)
 
@@ -53,12 +59,12 @@ class HelperEntity:
             self._match = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetMatch")
 
-    def match_get(self):
+    def match_get(self) -> Helper:
         self._utility.feature_hook(self._entctx, "GetMatch")
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch, ctrl=None):
+    def load(self, reqmatch: HelperLoadMatch, ctrl=None) -> Helper:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "load",

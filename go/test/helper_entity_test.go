@@ -117,7 +117,6 @@ func helperBasicSetup(extra map[string]any) *entityTestSetup {
 		"RSQ_TEST_HELPER_ENTID": idmap,
 		"RSQ_TEST_LIVE":      "FALSE",
 		"RSQ_TEST_EXPLAIN":   "FALSE",
-		"RSQ_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["RSQ_TEST_HELPER_ENTID"])
@@ -128,7 +127,6 @@ func helperBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["RSQ_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["RSQ_APIKEY"],
 			},
 			extra,
 		})

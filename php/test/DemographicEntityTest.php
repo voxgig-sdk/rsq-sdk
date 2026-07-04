@@ -50,8 +50,7 @@ class DemographicEntityTest extends TestCase
         $demographic_ref01_ent = $client->Demographic(null);
         $demographic_ref01_match = [];
 
-        [$demographic_ref01_list_result, $err] = $demographic_ref01_ent->list($demographic_ref01_match, null);
-        $this->assertNull($err);
+        $demographic_ref01_list_result = $demographic_ref01_ent->list($demographic_ref01_match, null);
         $this->assertIsArray($demographic_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function demographic_basic_setup($extra)
         "RSQ_TEST_DEMOGRAPHIC_ENTID" => $idmap,
         "RSQ_TEST_LIVE" => "FALSE",
         "RSQ_TEST_EXPLAIN" => "FALSE",
-        "RSQ_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function demographic_basic_setup($extra)
     if ($env["RSQ_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["RSQ_APIKEY"],
             ],
             $extra ?? [],
         ]);

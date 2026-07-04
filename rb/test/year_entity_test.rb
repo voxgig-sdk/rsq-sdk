@@ -43,8 +43,7 @@ class YearEntityTest < Minitest::Test
     year_ref01_ent = client.Year(nil)
     year_ref01_match = {}
 
-    year_ref01_list_result, err = year_ref01_ent.list(year_ref01_match, nil)
-    assert_nil err
+    year_ref01_list_result = year_ref01_ent.list(year_ref01_match, nil)
     assert year_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def year_basic_setup(extra)
     "RSQ_TEST_YEAR_ENTID" => idmap,
     "RSQ_TEST_LIVE" => "FALSE",
     "RSQ_TEST_EXPLAIN" => "FALSE",
-    "RSQ_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def year_basic_setup(extra)
   if env["RSQ_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["RSQ_APIKEY"],
       },
       extra || {},
     ])

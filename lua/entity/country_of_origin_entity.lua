@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch CountryOfOriginListMatch
+---@param ctrl? table
+---@return CountryOfOrigin[]
+---@return string? err
 function CountryOfOriginEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

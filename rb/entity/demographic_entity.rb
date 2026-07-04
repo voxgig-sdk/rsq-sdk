@@ -45,6 +45,7 @@ class DemographicEntity
     end
   end
 
+  # @return [Demographic, Hash] the current Demographic data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class DemographicEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Demographic fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class DemographicEntity
   
 
   
+  # List Demographic items matching the given filter.
+  #
+  # @param reqmatch [DemographicListMatch, Hash, nil] match filter (any subset of Demographic fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Demographic>, Array] the matching Demographic items; raises RsqError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

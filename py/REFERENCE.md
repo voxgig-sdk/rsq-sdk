@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `dict` | SDK configuration options. |
-| `options["apikey"]` | `str` | API key for authentication. |
 | `options["base"]` | `str` | Base URL for API requests. |
 | `options["prefix"]` | `str` | URL prefix appended after base. |
 | `options["suffix"]` | `str` | URL suffix appended after path. |
@@ -94,9 +93,9 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs=None) -> tuple`
+#### `direct(fetchargs=None) -> dict`
 
-Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
+Make a direct HTTP request to any API endpoint. Returns a result `dict` with `ok`, `status`, `headers`, and `data` (or `err` on failure). This escape hatch never raises — branch on `result["ok"]`.
 
 **Parameters:**
 
@@ -109,11 +108,11 @@ Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
 | `fetchargs["headers"]` | `dict` | Request headers (merged with defaults). |
 | `fetchargs["body"]` | `any` | Request body (dicts are JSON-serialized). |
 
-**Returns:** `(result_dict, err)`
+**Returns:** `result_dict`
 
-#### `prepare(fetchargs=None) -> tuple`
+#### `prepare(fetchargs=None) -> dict`
 
-Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
+Prepare a fetch definition without sending. Returns the `fetchdef` and raises on error.
 
 
 ---
@@ -121,7 +120,7 @@ Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
 ## CategoryEntity
 
 ```python
-category = client.Category()
+category = client.category
 ```
 
 ### Fields
@@ -133,12 +132,12 @@ category = client.Category()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Category().list({})
+results = client.category.list({})
 ```
 
 ### Common Methods
@@ -173,7 +172,7 @@ Return the entity name.
 ## CountryOfAsylumEntity
 
 ```python
-country_of_asylum = client.CountryOfAsylum()
+country_of_asylum = client.country_of_asylum
 ```
 
 ### Fields
@@ -186,12 +185,12 @@ country_of_asylum = client.CountryOfAsylum()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.CountryOfAsylum().list({})
+results = client.country_of_asylum.list({})
 ```
 
 ### Common Methods
@@ -226,7 +225,7 @@ Return the entity name.
 ## CountryOfOriginEntity
 
 ```python
-country_of_origin = client.CountryOfOrigin()
+country_of_origin = client.country_of_origin
 ```
 
 ### Fields
@@ -239,12 +238,12 @@ country_of_origin = client.CountryOfOrigin()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.CountryOfOrigin().list({})
+results = client.country_of_origin.list({})
 ```
 
 ### Common Methods
@@ -279,7 +278,7 @@ Return the entity name.
 ## CountryOfResettlementEntity
 
 ```python
-country_of_resettlement = client.CountryOfResettlement()
+country_of_resettlement = client.country_of_resettlement
 ```
 
 ### Fields
@@ -292,12 +291,12 @@ country_of_resettlement = client.CountryOfResettlement()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.CountryOfResettlement().list({})
+results = client.country_of_resettlement.list({})
 ```
 
 ### Common Methods
@@ -332,7 +331,7 @@ Return the entity name.
 ## DemographicEntity
 
 ```python
-demographic = client.Demographic()
+demographic = client.demographic
 ```
 
 ### Fields
@@ -359,12 +358,12 @@ demographic = client.Demographic()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Demographic().list({})
+results = client.demographic.list({})
 ```
 
 ### Common Methods
@@ -399,7 +398,7 @@ Return the entity name.
 ## DepartureEntity
 
 ```python
-departure = client.Departure()
+departure = client.departure
 ```
 
 ### Fields
@@ -417,12 +416,12 @@ departure = client.Departure()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Departure().list({})
+results = client.departure.list({})
 ```
 
 ### Common Methods
@@ -457,17 +456,17 @@ Return the entity name.
 ## HelperEntity
 
 ```python
-helper = client.Helper()
+helper = client.helper
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.Helper().load({"id": "helper_id"})
+result = client.helper.load({"id": "helper_id"})
 ```
 
 ### Common Methods
@@ -502,7 +501,7 @@ Return the entity name.
 ## RegionEntity
 
 ```python
-region = client.Region()
+region = client.region
 ```
 
 ### Fields
@@ -513,12 +512,12 @@ region = client.Region()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Region().list({})
+results = client.region.list({})
 ```
 
 ### Common Methods
@@ -553,7 +552,7 @@ Return the entity name.
 ## SubmissionEntity
 
 ```python
-submission = client.Submission()
+submission = client.submission
 ```
 
 ### Fields
@@ -571,12 +570,12 @@ submission = client.Submission()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Submission().list({})
+results = client.submission.list({})
 ```
 
 ### Common Methods
@@ -611,7 +610,7 @@ Return the entity name.
 ## UrlFetchEntity
 
 ```python
-url_fetch = client.UrlFetch()
+url_fetch = client.url_fetch
 ```
 
 ### Fields
@@ -623,12 +622,12 @@ url_fetch = client.UrlFetch()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.UrlFetch().list({})
+results = client.url_fetch.list({})
 ```
 
 ### Common Methods
@@ -663,17 +662,17 @@ Return the entity name.
 ## YearEntity
 
 ```python
-year = client.Year()
+year = client.year
 ```
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Year().list({})
+results = client.year.list({})
 ```
 
 ### Common Methods

@@ -42,8 +42,7 @@ class HelperEntityTest < Minitest::Test
     # LOAD
     helper_ref01_ent = client.Helper(nil)
     helper_ref01_match_dt0 = {}
-    helper_ref01_data_dt0_loaded, err = helper_ref01_ent.load(helper_ref01_match_dt0, nil)
-    assert_nil err
+    helper_ref01_data_dt0_loaded = helper_ref01_ent.load(helper_ref01_match_dt0, nil)
     assert !helper_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def helper_basic_setup(extra)
     "RSQ_TEST_HELPER_ENTID" => idmap,
     "RSQ_TEST_LIVE" => "FALSE",
     "RSQ_TEST_EXPLAIN" => "FALSE",
-    "RSQ_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def helper_basic_setup(extra)
   if env["RSQ_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["RSQ_APIKEY"],
       },
       extra || {},
     ])
