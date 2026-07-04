@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:category():list() / client:category():load({ id = ... })
-function RsqSDK:category(data)
+-- Idiomatic facade: client:Category():list() / client:Category():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function RsqSDK:Category(data)
   local EntityMod = require("entity.category_entity")
   if data == nil then
     if self._category == nil then
@@ -256,15 +257,10 @@ function RsqSDK:category(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:category() instead.
-function RsqSDK:Category(data)
-  local EntityMod = require("entity.category_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:country_of_asylum():list() / client:country_of_asylum():load({ id = ... })
-function RsqSDK:country_of_asylum(data)
+-- Idiomatic facade: client:CountryOfAsylum():list() / client:CountryOfAsylum():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function RsqSDK:CountryOfAsylum(data)
   local EntityMod = require("entity.country_of_asylum_entity")
   if data == nil then
     if self._country_of_asylum == nil then
@@ -275,15 +271,10 @@ function RsqSDK:country_of_asylum(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:country_of_asylum() instead.
-function RsqSDK:CountryOfAsylum(data)
-  local EntityMod = require("entity.country_of_asylum_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:country_of_origin():list() / client:country_of_origin():load({ id = ... })
-function RsqSDK:country_of_origin(data)
+-- Idiomatic facade: client:CountryOfOrigin():list() / client:CountryOfOrigin():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function RsqSDK:CountryOfOrigin(data)
   local EntityMod = require("entity.country_of_origin_entity")
   if data == nil then
     if self._country_of_origin == nil then
@@ -294,15 +285,10 @@ function RsqSDK:country_of_origin(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:country_of_origin() instead.
-function RsqSDK:CountryOfOrigin(data)
-  local EntityMod = require("entity.country_of_origin_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:country_of_resettlement():list() / client:country_of_resettlement():load({ id = ... })
-function RsqSDK:country_of_resettlement(data)
+-- Idiomatic facade: client:CountryOfResettlement():list() / client:CountryOfResettlement():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function RsqSDK:CountryOfResettlement(data)
   local EntityMod = require("entity.country_of_resettlement_entity")
   if data == nil then
     if self._country_of_resettlement == nil then
@@ -313,15 +299,10 @@ function RsqSDK:country_of_resettlement(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:country_of_resettlement() instead.
-function RsqSDK:CountryOfResettlement(data)
-  local EntityMod = require("entity.country_of_resettlement_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:demographic():list() / client:demographic():load({ id = ... })
-function RsqSDK:demographic(data)
+-- Idiomatic facade: client:Demographic():list() / client:Demographic():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function RsqSDK:Demographic(data)
   local EntityMod = require("entity.demographic_entity")
   if data == nil then
     if self._demographic == nil then
@@ -332,15 +313,10 @@ function RsqSDK:demographic(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:demographic() instead.
-function RsqSDK:Demographic(data)
-  local EntityMod = require("entity.demographic_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:departure():list() / client:departure():load({ id = ... })
-function RsqSDK:departure(data)
+-- Idiomatic facade: client:Departure():list() / client:Departure():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function RsqSDK:Departure(data)
   local EntityMod = require("entity.departure_entity")
   if data == nil then
     if self._departure == nil then
@@ -351,15 +327,10 @@ function RsqSDK:departure(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:departure() instead.
-function RsqSDK:Departure(data)
-  local EntityMod = require("entity.departure_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:helper():list() / client:helper():load({ id = ... })
-function RsqSDK:helper(data)
+-- Idiomatic facade: client:Helper():list() / client:Helper():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function RsqSDK:Helper(data)
   local EntityMod = require("entity.helper_entity")
   if data == nil then
     if self._helper == nil then
@@ -370,15 +341,10 @@ function RsqSDK:helper(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:helper() instead.
-function RsqSDK:Helper(data)
-  local EntityMod = require("entity.helper_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:region():list() / client:region():load({ id = ... })
-function RsqSDK:region(data)
+-- Idiomatic facade: client:Region():list() / client:Region():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function RsqSDK:Region(data)
   local EntityMod = require("entity.region_entity")
   if data == nil then
     if self._region == nil then
@@ -389,15 +355,10 @@ function RsqSDK:region(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:region() instead.
-function RsqSDK:Region(data)
-  local EntityMod = require("entity.region_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:submission():list() / client:submission():load({ id = ... })
-function RsqSDK:submission(data)
+-- Idiomatic facade: client:Submission():list() / client:Submission():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function RsqSDK:Submission(data)
   local EntityMod = require("entity.submission_entity")
   if data == nil then
     if self._submission == nil then
@@ -408,15 +369,10 @@ function RsqSDK:submission(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:submission() instead.
-function RsqSDK:Submission(data)
-  local EntityMod = require("entity.submission_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:url_fetch():list() / client:url_fetch():load({ id = ... })
-function RsqSDK:url_fetch(data)
+-- Idiomatic facade: client:UrlFetch():list() / client:UrlFetch():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function RsqSDK:UrlFetch(data)
   local EntityMod = require("entity.url_fetch_entity")
   if data == nil then
     if self._url_fetch == nil then
@@ -427,15 +383,10 @@ function RsqSDK:url_fetch(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:url_fetch() instead.
-function RsqSDK:UrlFetch(data)
-  local EntityMod = require("entity.url_fetch_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:year():list() / client:year():load({ id = ... })
-function RsqSDK:year(data)
+-- Idiomatic facade: client:Year():list() / client:Year():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function RsqSDK:Year(data)
   local EntityMod = require("entity.year_entity")
   if data == nil then
     if self._year == nil then
@@ -443,12 +394,6 @@ function RsqSDK:year(data)
     end
     return self._year
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:year() instead.
-function RsqSDK:Year(data)
-  local EntityMod = require("entity.year_entity")
   return EntityMod.new(self, data)
 end
 

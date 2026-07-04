@@ -29,18 +29,16 @@ require_once 'rsq_sdk.php';
 $client = new RsqSDK();
 ```
 
-### 2. List categorys
+### 2. List category records
 
 ```php
 try {
-    $result = $client->category()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Category records — iterate directly.
+    $categorys = $client->Category()->list();
+    foreach ($categorys as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -86,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = RsqSDK::test();
+$client = RsqSDK::test([
+    "entity" => ["category" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->category()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$category = $client->Category()->load(["id" => "test01"]);
+print_r($category);
 ```
 
 ### Use a custom fetch function
@@ -180,7 +182,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `Helper` | `($data): HelperEntity` | Create a Helper entity instance. |
 | `Region` | `($data): RegionEntity` | Create a Region entity instance. |
 | `Submission` | `($data): SubmissionEntity` | Create a Submission entity instance. |
-| `UrlFetch` | `($data): UrlFetchEntity` | Create a UrlFetch entity instance. |
+| `UrlFetch` | `($data): UrlFetchEntity` | Create an UrlFetch entity instance. |
 | `Year` | `($data): YearEntity` | Create a Year entity instance. |
 
 ### Entity interface
@@ -374,7 +376,7 @@ API path: `/years`
 
 ### Category
 
-Create an instance: `const category = client.category`
+Create an instance: `$category = $client->Category();`
 
 #### Operations
 
@@ -391,14 +393,15 @@ Create an instance: `const category = client.category`
 
 #### Example: List
 
-```ts
-const categorys = await client.category.list()
+```php
+// list() returns an array of Category records (throws on error).
+$categorys = $client->Category()->list();
 ```
 
 
 ### CountryOfAsylum
 
-Create an instance: `const country_of_asylum = client.country_of_asylum`
+Create an instance: `$country_of_asylum = $client->CountryOfAsylum();`
 
 #### Operations
 
@@ -416,14 +419,15 @@ Create an instance: `const country_of_asylum = client.country_of_asylum`
 
 #### Example: List
 
-```ts
-const country_of_asylums = await client.country_of_asylum.list()
+```php
+// list() returns an array of CountryOfAsylum records (throws on error).
+$country_of_asylums = $client->CountryOfAsylum()->list();
 ```
 
 
 ### CountryOfOrigin
 
-Create an instance: `const country_of_origin = client.country_of_origin`
+Create an instance: `$country_of_origin = $client->CountryOfOrigin();`
 
 #### Operations
 
@@ -441,14 +445,15 @@ Create an instance: `const country_of_origin = client.country_of_origin`
 
 #### Example: List
 
-```ts
-const country_of_origins = await client.country_of_origin.list()
+```php
+// list() returns an array of CountryOfOrigin records (throws on error).
+$country_of_origins = $client->CountryOfOrigin()->list();
 ```
 
 
 ### CountryOfResettlement
 
-Create an instance: `const country_of_resettlement = client.country_of_resettlement`
+Create an instance: `$country_of_resettlement = $client->CountryOfResettlement();`
 
 #### Operations
 
@@ -466,14 +471,15 @@ Create an instance: `const country_of_resettlement = client.country_of_resettlem
 
 #### Example: List
 
-```ts
-const country_of_resettlements = await client.country_of_resettlement.list()
+```php
+// list() returns an array of CountryOfResettlement records (throws on error).
+$country_of_resettlements = $client->CountryOfResettlement()->list();
 ```
 
 
 ### Demographic
 
-Create an instance: `const demographic = client.demographic`
+Create an instance: `$demographic = $client->Demographic();`
 
 #### Operations
 
@@ -505,14 +511,15 @@ Create an instance: `const demographic = client.demographic`
 
 #### Example: List
 
-```ts
-const demographics = await client.demographic.list()
+```php
+// list() returns an array of Demographic records (throws on error).
+$demographics = $client->Demographic()->list();
 ```
 
 
 ### Departure
 
-Create an instance: `const departure = client.departure`
+Create an instance: `$departure = $client->Departure();`
 
 #### Operations
 
@@ -535,14 +542,15 @@ Create an instance: `const departure = client.departure`
 
 #### Example: List
 
-```ts
-const departures = await client.departure.list()
+```php
+// list() returns an array of Departure records (throws on error).
+$departures = $client->Departure()->list();
 ```
 
 
 ### Helper
 
-Create an instance: `const helper = client.helper`
+Create an instance: `$helper = $client->Helper();`
 
 #### Operations
 
@@ -552,14 +560,15 @@ Create an instance: `const helper = client.helper`
 
 #### Example: Load
 
-```ts
-const helper = await client.helper.load({ id: 'helper_id' })
+```php
+// load() returns the bare Helper record (throws on error).
+$helper = $client->Helper()->load(["id" => "helper_id"]);
 ```
 
 
 ### Region
 
-Create an instance: `const region = client.region`
+Create an instance: `$region = $client->Region();`
 
 #### Operations
 
@@ -575,14 +584,15 @@ Create an instance: `const region = client.region`
 
 #### Example: List
 
-```ts
-const regions = await client.region.list()
+```php
+// list() returns an array of Region records (throws on error).
+$regions = $client->Region()->list();
 ```
 
 
 ### Submission
 
-Create an instance: `const submission = client.submission`
+Create an instance: `$submission = $client->Submission();`
 
 #### Operations
 
@@ -605,14 +615,15 @@ Create an instance: `const submission = client.submission`
 
 #### Example: List
 
-```ts
-const submissions = await client.submission.list()
+```php
+// list() returns an array of Submission records (throws on error).
+$submissions = $client->Submission()->list();
 ```
 
 
 ### UrlFetch
 
-Create an instance: `const url_fetch = client.url_fetch`
+Create an instance: `$url_fetch = $client->UrlFetch();`
 
 #### Operations
 
@@ -629,14 +640,15 @@ Create an instance: `const url_fetch = client.url_fetch`
 
 #### Example: List
 
-```ts
-const url_fetchs = await client.url_fetch.list()
+```php
+// list() returns an array of UrlFetch records (throws on error).
+$url_fetchs = $client->UrlFetch()->list();
 ```
 
 
 ### Year
 
-Create an instance: `const year = client.year`
+Create an instance: `$year = $client->Year();`
 
 #### Operations
 
@@ -646,8 +658,9 @@ Create an instance: `const year = client.year`
 
 #### Example: List
 
-```ts
-const years = await client.year.list()
+```php
+// list() returns an array of Year records (throws on error).
+$years = $client->Year()->list();
 ```
 
 
@@ -722,7 +735,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$category = $client->category();
+$category = $client->Category();
 $category->load(["id" => "example_id"]);
 
 // $category->dataGet() now returns the loaded category data

@@ -120,7 +120,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## CategoryEntity
 
 ```python
-category = client.category
+category = client.Category()
 ```
 
 ### Fields
@@ -137,7 +137,9 @@ category = client.category
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.category.list({})
+results = client.Category().list({})
+for category in results:
+    print(category)
 ```
 
 ### Common Methods
@@ -172,7 +174,7 @@ Return the entity name.
 ## CountryOfAsylumEntity
 
 ```python
-country_of_asylum = client.country_of_asylum
+country_of_asylum = client.CountryOfAsylum()
 ```
 
 ### Fields
@@ -190,7 +192,9 @@ country_of_asylum = client.country_of_asylum
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.country_of_asylum.list({})
+results = client.CountryOfAsylum().list({})
+for country_of_asylum in results:
+    print(country_of_asylum)
 ```
 
 ### Common Methods
@@ -225,7 +229,7 @@ Return the entity name.
 ## CountryOfOriginEntity
 
 ```python
-country_of_origin = client.country_of_origin
+country_of_origin = client.CountryOfOrigin()
 ```
 
 ### Fields
@@ -243,7 +247,9 @@ country_of_origin = client.country_of_origin
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.country_of_origin.list({})
+results = client.CountryOfOrigin().list({})
+for country_of_origin in results:
+    print(country_of_origin)
 ```
 
 ### Common Methods
@@ -278,7 +284,7 @@ Return the entity name.
 ## CountryOfResettlementEntity
 
 ```python
-country_of_resettlement = client.country_of_resettlement
+country_of_resettlement = client.CountryOfResettlement()
 ```
 
 ### Fields
@@ -296,7 +302,9 @@ country_of_resettlement = client.country_of_resettlement
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.country_of_resettlement.list({})
+results = client.CountryOfResettlement().list({})
+for country_of_resettlement in results:
+    print(country_of_resettlement)
 ```
 
 ### Common Methods
@@ -331,7 +339,7 @@ Return the entity name.
 ## DemographicEntity
 
 ```python
-demographic = client.demographic
+demographic = client.Demographic()
 ```
 
 ### Fields
@@ -363,7 +371,9 @@ demographic = client.demographic
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.demographic.list({})
+results = client.Demographic().list({})
+for demographic in results:
+    print(demographic)
 ```
 
 ### Common Methods
@@ -398,7 +408,7 @@ Return the entity name.
 ## DepartureEntity
 
 ```python
-departure = client.departure
+departure = client.Departure()
 ```
 
 ### Fields
@@ -421,7 +431,9 @@ departure = client.departure
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.departure.list({})
+results = client.Departure().list({})
+for departure in results:
+    print(departure)
 ```
 
 ### Common Methods
@@ -456,7 +468,7 @@ Return the entity name.
 ## HelperEntity
 
 ```python
-helper = client.helper
+helper = client.Helper()
 ```
 
 ### Operations
@@ -466,7 +478,7 @@ helper = client.helper
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.helper.load({"id": "helper_id"})
+result = client.Helper().load({"id": "helper_id"})
 ```
 
 ### Common Methods
@@ -501,7 +513,7 @@ Return the entity name.
 ## RegionEntity
 
 ```python
-region = client.region
+region = client.Region()
 ```
 
 ### Fields
@@ -517,7 +529,9 @@ region = client.region
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.region.list({})
+results = client.Region().list({})
+for region in results:
+    print(region)
 ```
 
 ### Common Methods
@@ -552,7 +566,7 @@ Return the entity name.
 ## SubmissionEntity
 
 ```python
-submission = client.submission
+submission = client.Submission()
 ```
 
 ### Fields
@@ -575,7 +589,9 @@ submission = client.submission
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.submission.list({})
+results = client.Submission().list({})
+for submission in results:
+    print(submission)
 ```
 
 ### Common Methods
@@ -610,7 +626,7 @@ Return the entity name.
 ## UrlFetchEntity
 
 ```python
-url_fetch = client.url_fetch
+url_fetch = client.UrlFetch()
 ```
 
 ### Fields
@@ -627,7 +643,9 @@ url_fetch = client.url_fetch
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.url_fetch.list({})
+results = client.UrlFetch().list({})
+for url_fetch in results:
+    print(url_fetch)
 ```
 
 ### Common Methods
@@ -662,7 +680,7 @@ Return the entity name.
 ## YearEntity
 
 ```python
-year = client.year
+year = client.Year()
 ```
 
 ### Operations
@@ -672,7 +690,9 @@ year = client.year
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.year.list({})
+results = client.Year().list({})
+for year in results:
+    print(year)
 ```
 
 ### Common Methods

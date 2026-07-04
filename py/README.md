@@ -31,14 +31,16 @@ from rsq_sdk import RsqSDK
 client = RsqSDK()
 ```
 
-### 2. List categorys
+### 2. List category records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.category.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    categorys = client.Category().list({})
+    for category in categorys:
+        print(category)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -86,8 +88,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = RsqSDK.test()
 
-result = client.category.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+category = client.Category().load({"id": "test01"})
+# category contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -172,7 +175,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `Helper` | `(data) -> HelperEntity` | Create a Helper entity instance. |
 | `Region` | `(data) -> RegionEntity` | Create a Region entity instance. |
 | `Submission` | `(data) -> SubmissionEntity` | Create a Submission entity instance. |
-| `UrlFetch` | `(data) -> UrlFetchEntity` | Create a UrlFetch entity instance. |
+| `UrlFetch` | `(data) -> UrlFetchEntity` | Create an UrlFetch entity instance. |
 | `Year` | `(data) -> YearEntity` | Create a Year entity instance. |
 
 ### Entity interface
@@ -366,7 +369,7 @@ API path: `/years`
 
 ### Category
 
-Create an instance: `const category = client.category`
+Create an instance: `category = client.Category()`
 
 #### Operations
 
@@ -383,14 +386,14 @@ Create an instance: `const category = client.category`
 
 #### Example: List
 
-```ts
-const categorys = await client.category.list()
+```python
+categorys = client.Category().list({})
 ```
 
 
 ### CountryOfAsylum
 
-Create an instance: `const country_of_asylum = client.country_of_asylum`
+Create an instance: `country_of_asylum = client.CountryOfAsylum()`
 
 #### Operations
 
@@ -408,14 +411,14 @@ Create an instance: `const country_of_asylum = client.country_of_asylum`
 
 #### Example: List
 
-```ts
-const country_of_asylums = await client.country_of_asylum.list()
+```python
+country_of_asylums = client.CountryOfAsylum().list({})
 ```
 
 
 ### CountryOfOrigin
 
-Create an instance: `const country_of_origin = client.country_of_origin`
+Create an instance: `country_of_origin = client.CountryOfOrigin()`
 
 #### Operations
 
@@ -433,14 +436,14 @@ Create an instance: `const country_of_origin = client.country_of_origin`
 
 #### Example: List
 
-```ts
-const country_of_origins = await client.country_of_origin.list()
+```python
+country_of_origins = client.CountryOfOrigin().list({})
 ```
 
 
 ### CountryOfResettlement
 
-Create an instance: `const country_of_resettlement = client.country_of_resettlement`
+Create an instance: `country_of_resettlement = client.CountryOfResettlement()`
 
 #### Operations
 
@@ -458,14 +461,14 @@ Create an instance: `const country_of_resettlement = client.country_of_resettlem
 
 #### Example: List
 
-```ts
-const country_of_resettlements = await client.country_of_resettlement.list()
+```python
+country_of_resettlements = client.CountryOfResettlement().list({})
 ```
 
 
 ### Demographic
 
-Create an instance: `const demographic = client.demographic`
+Create an instance: `demographic = client.Demographic()`
 
 #### Operations
 
@@ -497,14 +500,14 @@ Create an instance: `const demographic = client.demographic`
 
 #### Example: List
 
-```ts
-const demographics = await client.demographic.list()
+```python
+demographics = client.Demographic().list({})
 ```
 
 
 ### Departure
 
-Create an instance: `const departure = client.departure`
+Create an instance: `departure = client.Departure()`
 
 #### Operations
 
@@ -527,14 +530,14 @@ Create an instance: `const departure = client.departure`
 
 #### Example: List
 
-```ts
-const departures = await client.departure.list()
+```python
+departures = client.Departure().list({})
 ```
 
 
 ### Helper
 
-Create an instance: `const helper = client.helper`
+Create an instance: `helper = client.Helper()`
 
 #### Operations
 
@@ -544,14 +547,14 @@ Create an instance: `const helper = client.helper`
 
 #### Example: Load
 
-```ts
-const helper = await client.helper.load({ id: 'helper_id' })
+```python
+helper = client.Helper().load({"id": "helper_id"})
 ```
 
 
 ### Region
 
-Create an instance: `const region = client.region`
+Create an instance: `region = client.Region()`
 
 #### Operations
 
@@ -567,14 +570,14 @@ Create an instance: `const region = client.region`
 
 #### Example: List
 
-```ts
-const regions = await client.region.list()
+```python
+regions = client.Region().list({})
 ```
 
 
 ### Submission
 
-Create an instance: `const submission = client.submission`
+Create an instance: `submission = client.Submission()`
 
 #### Operations
 
@@ -597,14 +600,14 @@ Create an instance: `const submission = client.submission`
 
 #### Example: List
 
-```ts
-const submissions = await client.submission.list()
+```python
+submissions = client.Submission().list({})
 ```
 
 
 ### UrlFetch
 
-Create an instance: `const url_fetch = client.url_fetch`
+Create an instance: `url_fetch = client.UrlFetch()`
 
 #### Operations
 
@@ -621,14 +624,14 @@ Create an instance: `const url_fetch = client.url_fetch`
 
 #### Example: List
 
-```ts
-const url_fetchs = await client.url_fetch.list()
+```python
+url_fetchs = client.UrlFetch().list({})
 ```
 
 
 ### Year
 
-Create an instance: `const year = client.year`
+Create an instance: `year = client.Year()`
 
 #### Operations
 
@@ -638,8 +641,8 @@ Create an instance: `const year = client.year`
 
 #### Example: List
 
-```ts
-const years = await client.year.list()
+```python
+years = client.Year().list({})
 ```
 
 
@@ -713,7 +716,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-category = client.category
+category = client.Category()
 category.load({"id": "example_id"})
 
 # category.data_get() now returns the loaded category data

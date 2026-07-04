@@ -233,10 +233,10 @@ class RsqSDK
 
     private $_category = null;
 
-    // Idiomatic facade: $client->category()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Category() (PHP method
-    // names are case-insensitive).
-    public function category($data = null)
+    // Canonical facade: $client->Category()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->category()
+    // resolves here too.
+    public function Category($data = null)
     {
         require_once __DIR__ . '/entity/category_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class RsqSDK
 
     private $_country_of_asylum = null;
 
-    // Idiomatic facade: $client->country_of_asylum()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias CountryOfAsylum() (PHP method
-    // names are case-insensitive).
-    public function country_of_asylum($data = null)
+    // Canonical facade: $client->CountryOfAsylum()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->country_of_asylum()
+    // resolves here too.
+    public function CountryOfAsylum($data = null)
     {
         require_once __DIR__ . '/entity/country_of_asylum_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class RsqSDK
 
     private $_country_of_origin = null;
 
-    // Idiomatic facade: $client->country_of_origin()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias CountryOfOrigin() (PHP method
-    // names are case-insensitive).
-    public function country_of_origin($data = null)
+    // Canonical facade: $client->CountryOfOrigin()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->country_of_origin()
+    // resolves here too.
+    public function CountryOfOrigin($data = null)
     {
         require_once __DIR__ . '/entity/country_of_origin_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class RsqSDK
 
     private $_country_of_resettlement = null;
 
-    // Idiomatic facade: $client->country_of_resettlement()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias CountryOfResettlement() (PHP method
-    // names are case-insensitive).
-    public function country_of_resettlement($data = null)
+    // Canonical facade: $client->CountryOfResettlement()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->country_of_resettlement()
+    // resolves here too.
+    public function CountryOfResettlement($data = null)
     {
         require_once __DIR__ . '/entity/country_of_resettlement_entity.php';
         if ($data === null) {
@@ -305,10 +305,10 @@ class RsqSDK
 
     private $_demographic = null;
 
-    // Idiomatic facade: $client->demographic()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Demographic() (PHP method
-    // names are case-insensitive).
-    public function demographic($data = null)
+    // Canonical facade: $client->Demographic()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->demographic()
+    // resolves here too.
+    public function Demographic($data = null)
     {
         require_once __DIR__ . '/entity/demographic_entity.php';
         if ($data === null) {
@@ -323,10 +323,10 @@ class RsqSDK
 
     private $_departure = null;
 
-    // Idiomatic facade: $client->departure()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Departure() (PHP method
-    // names are case-insensitive).
-    public function departure($data = null)
+    // Canonical facade: $client->Departure()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->departure()
+    // resolves here too.
+    public function Departure($data = null)
     {
         require_once __DIR__ . '/entity/departure_entity.php';
         if ($data === null) {
@@ -341,10 +341,10 @@ class RsqSDK
 
     private $_helper = null;
 
-    // Idiomatic facade: $client->helper()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Helper() (PHP method
-    // names are case-insensitive).
-    public function helper($data = null)
+    // Canonical facade: $client->Helper()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->helper()
+    // resolves here too.
+    public function Helper($data = null)
     {
         require_once __DIR__ . '/entity/helper_entity.php';
         if ($data === null) {
@@ -359,10 +359,10 @@ class RsqSDK
 
     private $_region = null;
 
-    // Idiomatic facade: $client->region()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Region() (PHP method
-    // names are case-insensitive).
-    public function region($data = null)
+    // Canonical facade: $client->Region()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->region()
+    // resolves here too.
+    public function Region($data = null)
     {
         require_once __DIR__ . '/entity/region_entity.php';
         if ($data === null) {
@@ -377,10 +377,10 @@ class RsqSDK
 
     private $_submission = null;
 
-    // Idiomatic facade: $client->submission()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Submission() (PHP method
-    // names are case-insensitive).
-    public function submission($data = null)
+    // Canonical facade: $client->Submission()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->submission()
+    // resolves here too.
+    public function Submission($data = null)
     {
         require_once __DIR__ . '/entity/submission_entity.php';
         if ($data === null) {
@@ -395,10 +395,10 @@ class RsqSDK
 
     private $_url_fetch = null;
 
-    // Idiomatic facade: $client->url_fetch()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias UrlFetch() (PHP method
-    // names are case-insensitive).
-    public function url_fetch($data = null)
+    // Canonical facade: $client->UrlFetch()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->url_fetch()
+    // resolves here too.
+    public function UrlFetch($data = null)
     {
         require_once __DIR__ . '/entity/url_fetch_entity.php';
         if ($data === null) {
@@ -413,10 +413,10 @@ class RsqSDK
 
     private $_year = null;
 
-    // Idiomatic facade: $client->year()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Year() (PHP method
-    // names are case-insensitive).
-    public function year($data = null)
+    // Canonical facade: $client->Year()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->year()
+    // resolves here too.
+    public function Year($data = null)
     {
         require_once __DIR__ . '/entity/year_entity.php';
         if ($data === null) {

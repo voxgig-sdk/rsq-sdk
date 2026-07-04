@@ -31,17 +31,17 @@ local sdk = require("rsq_sdk")
 local client = sdk.new()
 ```
 
-### 2. List categorys
+### 2. List category records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:category():list()
+local categorys, err = client:Category():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(categorys) do
+  print(item["id"], item["name"])
 end
 ```
 
@@ -88,8 +88,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:category():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Category():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -176,7 +176,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Helper` | `(data) -> HelperEntity` | Create a Helper entity instance. |
 | `Region` | `(data) -> RegionEntity` | Create a Region entity instance. |
 | `Submission` | `(data) -> SubmissionEntity` | Create a Submission entity instance. |
-| `UrlFetch` | `(data) -> UrlFetchEntity` | Create a UrlFetch entity instance. |
+| `UrlFetch` | `(data) -> UrlFetchEntity` | Create an UrlFetch entity instance. |
 | `Year` | `(data) -> YearEntity` | Create a Year entity instance. |
 
 ### Entity interface
@@ -199,17 +199,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local category, err = client:Category():load({ id = "example_id" })
+    if err then error(err) end
+    -- category is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -366,7 +371,7 @@ API path: `/years`
 
 ### Category
 
-Create an instance: `const category = client.category`
+Create an instance: `local category = client:Category(nil)`
 
 #### Operations
 
@@ -383,14 +388,14 @@ Create an instance: `const category = client.category`
 
 #### Example: List
 
-```ts
-const categorys = await client.category.list()
+```lua
+local categorys, err = client:Category():list()
 ```
 
 
 ### CountryOfAsylum
 
-Create an instance: `const country_of_asylum = client.country_of_asylum`
+Create an instance: `local country_of_asylum = client:CountryOfAsylum(nil)`
 
 #### Operations
 
@@ -408,14 +413,14 @@ Create an instance: `const country_of_asylum = client.country_of_asylum`
 
 #### Example: List
 
-```ts
-const country_of_asylums = await client.country_of_asylum.list()
+```lua
+local country_of_asylums, err = client:CountryOfAsylum():list()
 ```
 
 
 ### CountryOfOrigin
 
-Create an instance: `const country_of_origin = client.country_of_origin`
+Create an instance: `local country_of_origin = client:CountryOfOrigin(nil)`
 
 #### Operations
 
@@ -433,14 +438,14 @@ Create an instance: `const country_of_origin = client.country_of_origin`
 
 #### Example: List
 
-```ts
-const country_of_origins = await client.country_of_origin.list()
+```lua
+local country_of_origins, err = client:CountryOfOrigin():list()
 ```
 
 
 ### CountryOfResettlement
 
-Create an instance: `const country_of_resettlement = client.country_of_resettlement`
+Create an instance: `local country_of_resettlement = client:CountryOfResettlement(nil)`
 
 #### Operations
 
@@ -458,14 +463,14 @@ Create an instance: `const country_of_resettlement = client.country_of_resettlem
 
 #### Example: List
 
-```ts
-const country_of_resettlements = await client.country_of_resettlement.list()
+```lua
+local country_of_resettlements, err = client:CountryOfResettlement():list()
 ```
 
 
 ### Demographic
 
-Create an instance: `const demographic = client.demographic`
+Create an instance: `local demographic = client:Demographic(nil)`
 
 #### Operations
 
@@ -497,14 +502,14 @@ Create an instance: `const demographic = client.demographic`
 
 #### Example: List
 
-```ts
-const demographics = await client.demographic.list()
+```lua
+local demographics, err = client:Demographic():list()
 ```
 
 
 ### Departure
 
-Create an instance: `const departure = client.departure`
+Create an instance: `local departure = client:Departure(nil)`
 
 #### Operations
 
@@ -527,14 +532,14 @@ Create an instance: `const departure = client.departure`
 
 #### Example: List
 
-```ts
-const departures = await client.departure.list()
+```lua
+local departures, err = client:Departure():list()
 ```
 
 
 ### Helper
 
-Create an instance: `const helper = client.helper`
+Create an instance: `local helper = client:Helper(nil)`
 
 #### Operations
 
@@ -544,14 +549,14 @@ Create an instance: `const helper = client.helper`
 
 #### Example: Load
 
-```ts
-const helper = await client.helper.load({ id: 'helper_id' })
+```lua
+local helper, err = client:Helper():load({ id = "helper_id" })
 ```
 
 
 ### Region
 
-Create an instance: `const region = client.region`
+Create an instance: `local region = client:Region(nil)`
 
 #### Operations
 
@@ -567,14 +572,14 @@ Create an instance: `const region = client.region`
 
 #### Example: List
 
-```ts
-const regions = await client.region.list()
+```lua
+local regions, err = client:Region():list()
 ```
 
 
 ### Submission
 
-Create an instance: `const submission = client.submission`
+Create an instance: `local submission = client:Submission(nil)`
 
 #### Operations
 
@@ -597,14 +602,14 @@ Create an instance: `const submission = client.submission`
 
 #### Example: List
 
-```ts
-const submissions = await client.submission.list()
+```lua
+local submissions, err = client:Submission():list()
 ```
 
 
 ### UrlFetch
 
-Create an instance: `const url_fetch = client.url_fetch`
+Create an instance: `local url_fetch = client:UrlFetch(nil)`
 
 #### Operations
 
@@ -621,14 +626,14 @@ Create an instance: `const url_fetch = client.url_fetch`
 
 #### Example: List
 
-```ts
-const url_fetchs = await client.url_fetch.list()
+```lua
+local url_fetchs, err = client:UrlFetch():list()
 ```
 
 
 ### Year
 
-Create an instance: `const year = client.year`
+Create an instance: `local year = client:Year(nil)`
 
 #### Operations
 
@@ -638,8 +643,8 @@ Create an instance: `const year = client.year`
 
 #### Example: List
 
-```ts
-const years = await client.year.list()
+```lua
+local years, err = client:Year():list()
 ```
 
 
@@ -714,7 +719,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local category = client:category()
+local category = client:Category()
 category:load({ id = "example_id" })
 
 -- category:data_get() now returns the loaded category data

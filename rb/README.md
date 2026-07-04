@@ -28,16 +28,14 @@ require_relative "Rsq_sdk"
 client = RsqSDK.new
 ```
 
-### 2. List categorys
+### 2. List category records
 
 ```ruby
 begin
-  result = client.category.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Category records — iterate directly.
+  categorys = client.Category.list
+  categorys.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -85,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = RsqSDK.test
+client = RsqSDK.test({
+  "entity" => { "category" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.category.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+category = client.Category.load({ "id" => "test01" })
+puts category
 ```
 
 ### Use a custom fetch function
@@ -176,7 +178,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Helper` | `(data) -> HelperEntity` | Create a Helper entity instance. |
 | `Region` | `(data) -> RegionEntity` | Create a Region entity instance. |
 | `Submission` | `(data) -> SubmissionEntity` | Create a Submission entity instance. |
-| `UrlFetch` | `(data) -> UrlFetchEntity` | Create a UrlFetch entity instance. |
+| `UrlFetch` | `(data) -> UrlFetchEntity` | Create an UrlFetch entity instance. |
 | `Year` | `(data) -> YearEntity` | Create a Year entity instance. |
 
 ### Entity interface
@@ -369,7 +371,7 @@ API path: `/years`
 
 ### Category
 
-Create an instance: `const category = client.category`
+Create an instance: `category = client.Category`
 
 #### Operations
 
@@ -386,14 +388,15 @@ Create an instance: `const category = client.category`
 
 #### Example: List
 
-```ts
-const categorys = await client.category.list()
+```ruby
+# list returns an Array of Category records (raises on error).
+categorys = client.Category.list
 ```
 
 
 ### CountryOfAsylum
 
-Create an instance: `const country_of_asylum = client.country_of_asylum`
+Create an instance: `country_of_asylum = client.CountryOfAsylum`
 
 #### Operations
 
@@ -411,14 +414,15 @@ Create an instance: `const country_of_asylum = client.country_of_asylum`
 
 #### Example: List
 
-```ts
-const country_of_asylums = await client.country_of_asylum.list()
+```ruby
+# list returns an Array of CountryOfAsylum records (raises on error).
+country_of_asylums = client.CountryOfAsylum.list
 ```
 
 
 ### CountryOfOrigin
 
-Create an instance: `const country_of_origin = client.country_of_origin`
+Create an instance: `country_of_origin = client.CountryOfOrigin`
 
 #### Operations
 
@@ -436,14 +440,15 @@ Create an instance: `const country_of_origin = client.country_of_origin`
 
 #### Example: List
 
-```ts
-const country_of_origins = await client.country_of_origin.list()
+```ruby
+# list returns an Array of CountryOfOrigin records (raises on error).
+country_of_origins = client.CountryOfOrigin.list
 ```
 
 
 ### CountryOfResettlement
 
-Create an instance: `const country_of_resettlement = client.country_of_resettlement`
+Create an instance: `country_of_resettlement = client.CountryOfResettlement`
 
 #### Operations
 
@@ -461,14 +466,15 @@ Create an instance: `const country_of_resettlement = client.country_of_resettlem
 
 #### Example: List
 
-```ts
-const country_of_resettlements = await client.country_of_resettlement.list()
+```ruby
+# list returns an Array of CountryOfResettlement records (raises on error).
+country_of_resettlements = client.CountryOfResettlement.list
 ```
 
 
 ### Demographic
 
-Create an instance: `const demographic = client.demographic`
+Create an instance: `demographic = client.Demographic`
 
 #### Operations
 
@@ -500,14 +506,15 @@ Create an instance: `const demographic = client.demographic`
 
 #### Example: List
 
-```ts
-const demographics = await client.demographic.list()
+```ruby
+# list returns an Array of Demographic records (raises on error).
+demographics = client.Demographic.list
 ```
 
 
 ### Departure
 
-Create an instance: `const departure = client.departure`
+Create an instance: `departure = client.Departure`
 
 #### Operations
 
@@ -530,14 +537,15 @@ Create an instance: `const departure = client.departure`
 
 #### Example: List
 
-```ts
-const departures = await client.departure.list()
+```ruby
+# list returns an Array of Departure records (raises on error).
+departures = client.Departure.list
 ```
 
 
 ### Helper
 
-Create an instance: `const helper = client.helper`
+Create an instance: `helper = client.Helper`
 
 #### Operations
 
@@ -547,14 +555,15 @@ Create an instance: `const helper = client.helper`
 
 #### Example: Load
 
-```ts
-const helper = await client.helper.load({ id: 'helper_id' })
+```ruby
+# load returns the bare Helper record (raises on error).
+helper = client.Helper.load({ "id" => "helper_id" })
 ```
 
 
 ### Region
 
-Create an instance: `const region = client.region`
+Create an instance: `region = client.Region`
 
 #### Operations
 
@@ -570,14 +579,15 @@ Create an instance: `const region = client.region`
 
 #### Example: List
 
-```ts
-const regions = await client.region.list()
+```ruby
+# list returns an Array of Region records (raises on error).
+regions = client.Region.list
 ```
 
 
 ### Submission
 
-Create an instance: `const submission = client.submission`
+Create an instance: `submission = client.Submission`
 
 #### Operations
 
@@ -600,14 +610,15 @@ Create an instance: `const submission = client.submission`
 
 #### Example: List
 
-```ts
-const submissions = await client.submission.list()
+```ruby
+# list returns an Array of Submission records (raises on error).
+submissions = client.Submission.list
 ```
 
 
 ### UrlFetch
 
-Create an instance: `const url_fetch = client.url_fetch`
+Create an instance: `url_fetch = client.UrlFetch`
 
 #### Operations
 
@@ -624,14 +635,15 @@ Create an instance: `const url_fetch = client.url_fetch`
 
 #### Example: List
 
-```ts
-const url_fetchs = await client.url_fetch.list()
+```ruby
+# list returns an Array of UrlFetch records (raises on error).
+url_fetchs = client.UrlFetch.list
 ```
 
 
 ### Year
 
-Create an instance: `const year = client.year`
+Create an instance: `year = client.Year`
 
 #### Operations
 
@@ -641,8 +653,9 @@ Create an instance: `const year = client.year`
 
 #### Example: List
 
-```ts
-const years = await client.year.list()
+```ruby
+# list returns an Array of Year records (raises on error).
+years = client.Year.list
 ```
 
 
@@ -717,7 +730,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-category = client.category
+category = client.Category
 category.load({ "id" => "example_id" })
 
 # category.data_get now returns the loaded category data

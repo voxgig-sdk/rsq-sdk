@@ -26,9 +26,11 @@ import { RsqSDK } from '@voxgig-sdk/rsq'
 
 const client = new RsqSDK()
 
-// List all categorys
-const categorys = await client.category.list()
-console.log(categorys.data)
+// List all categorys (returns Category[])
+const categorys = await client.Category().list()
+for (const category of categorys) {
+  console.log(category)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -93,9 +95,10 @@ from rsq_sdk import RsqSDK
 
 client = RsqSDK()
 
-# List all categorys
-categorys = client.category.list()
-print(categorys)
+# List all categorys (returns a list, raises on error)
+categorys = client.Category().list({})
+for category in categorys:
+    print(category)
 ```
 
 ### PHP
@@ -106,8 +109,8 @@ require_once 'rsq_sdk.php';
 
 $client = new RsqSDK();
 
-// List all categorys (throws on error)
-$categorys = $client->category()->list();
+// List all categorys (returns an array; throws on error)
+$categorys = $client->Category()->list();
 print_r($categorys);
 ```
 
@@ -130,8 +133,8 @@ require_relative "Rsq_sdk"
 
 client = RsqSDK.new
 
-# List all categorys
-categorys = client.category.list
+# List all categorys (returns an Array; raises on error)
+categorys = client.Category.list
 puts categorys
 ```
 
@@ -143,7 +146,7 @@ local sdk = require("rsq_sdk")
 local client = sdk.new()
 
 -- List all categorys
-local categorys, err = client:category():list()
+local categorys, err = client:Category():list()
 print(categorys)
 ```
 
@@ -156,22 +159,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = RsqSDK.test()
-const result = await client.category.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const category = await client.Category().load({ id: 'test01' })
+// category is a bare Category populated with mock data
+console.log(category)
 ```
 
 ### Python
 
 ```python
 client = RsqSDK.test()
-result = client.category.load({"id": "test01"})
+category = client.Category().load({"id": "test01"})
+print(category)
 ```
 
 ### PHP
 
 ```php
-$client = RsqSDK::test();
-$result = $client->category()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = RsqSDK::test([
+    "entity" => ["category" => ["test01" => ["id" => "test01"]]],
+]);
+$category = $client->Category()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -186,15 +194,18 @@ result, err := client.Category(nil).Load(
 ### Ruby
 
 ```ruby
-client = RsqSDK.test
-result = client.category.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = RsqSDK.test({
+  "entity" => { "category" => { "test01" => { "id" => "test01" } } },
+})
+category = client.Category.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:category():load({ id = "test01" })
+local result, err = client:Category():load({ id = "test01" })
 ```
 
 ## How it works
@@ -242,6 +253,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

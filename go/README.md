@@ -30,37 +30,33 @@ go mod edit -replace github.com/voxgig-sdk/rsq-sdk/go=../rsq-sdk/go
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
 
 import (
     "fmt"
-
     sdk "github.com/voxgig-sdk/rsq-sdk/go"
-    "github.com/voxgig-sdk/rsq-sdk/go/core"
 )
 
 func main() {
     client := sdk.New()
-```
 
-### 2. List categorys
-
-```go
-    result, err := client.Category(nil).List(nil, nil)
+    // List category records — the value is the array of records itself.
+    categorys, err := client.Category(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-
-    rm := core.ToMapAny(result)
-    if rm["ok"] == true {
-        for _, item := range rm["data"].([]any) {
-            p := core.ToMapAny(item)
-            fmt.Println(p["id"], p["name"])
-        }
+    for _, item := range categorys.([]any) {
+        fmt.Println(item)
     }
+}
 ```
 
 
@@ -110,10 +106,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Category(nil).Load(
+category, err := client.Category(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(category) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -199,7 +198,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Helper` | `(data map[string]any) RsqEntity` | Create a Helper entity instance. |
 | `Region` | `(data map[string]any) RsqEntity` | Create a Region entity instance. |
 | `Submission` | `(data map[string]any) RsqEntity` | Create a Submission entity instance. |
-| `UrlFetch` | `(data map[string]any) RsqEntity` | Create a UrlFetch entity instance. |
+| `UrlFetch` | `(data map[string]any) RsqEntity` | Create an UrlFetch entity instance. |
 | `Year` | `(data map[string]any) RsqEntity` | Create a Year entity instance. |
 
 ### Entity interface (RsqEntity)
@@ -220,17 +219,24 @@ All entities implement the `RsqEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    category, err := client.Category(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // category is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -405,7 +411,11 @@ Create an instance: `category := client.Category(nil)`
 #### Example: List
 
 ```go
-results, err := client.Category(nil).List(nil, nil)
+categorys, err := client.Category(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(categorys) // the array of records
 ```
 
 
@@ -430,7 +440,11 @@ Create an instance: `country_of_asylum := client.CountryOfAsylum(nil)`
 #### Example: List
 
 ```go
-results, err := client.CountryOfAsylum(nil).List(nil, nil)
+country_of_asylums, err := client.CountryOfAsylum(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(country_of_asylums) // the array of records
 ```
 
 
@@ -455,7 +469,11 @@ Create an instance: `country_of_origin := client.CountryOfOrigin(nil)`
 #### Example: List
 
 ```go
-results, err := client.CountryOfOrigin(nil).List(nil, nil)
+country_of_origins, err := client.CountryOfOrigin(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(country_of_origins) // the array of records
 ```
 
 
@@ -480,7 +498,11 @@ Create an instance: `country_of_resettlement := client.CountryOfResettlement(nil
 #### Example: List
 
 ```go
-results, err := client.CountryOfResettlement(nil).List(nil, nil)
+country_of_resettlements, err := client.CountryOfResettlement(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(country_of_resettlements) // the array of records
 ```
 
 
@@ -519,7 +541,11 @@ Create an instance: `demographic := client.Demographic(nil)`
 #### Example: List
 
 ```go
-results, err := client.Demographic(nil).List(nil, nil)
+demographics, err := client.Demographic(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(demographics) // the array of records
 ```
 
 
@@ -549,7 +575,11 @@ Create an instance: `departure := client.Departure(nil)`
 #### Example: List
 
 ```go
-results, err := client.Departure(nil).List(nil, nil)
+departures, err := client.Departure(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(departures) // the array of records
 ```
 
 
@@ -566,7 +596,11 @@ Create an instance: `helper := client.Helper(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Helper(nil).Load(map[string]any{"id": "helper_id"}, nil)
+helper, err := client.Helper(nil).Load(map[string]any{"id": "helper_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(helper) // the loaded record
 ```
 
 
@@ -589,7 +623,11 @@ Create an instance: `region := client.Region(nil)`
 #### Example: List
 
 ```go
-results, err := client.Region(nil).List(nil, nil)
+regions, err := client.Region(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(regions) // the array of records
 ```
 
 
@@ -619,7 +657,11 @@ Create an instance: `submission := client.Submission(nil)`
 #### Example: List
 
 ```go
-results, err := client.Submission(nil).List(nil, nil)
+submissions, err := client.Submission(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(submissions) // the array of records
 ```
 
 
@@ -643,7 +685,11 @@ Create an instance: `url_fetch := client.UrlFetch(nil)`
 #### Example: List
 
 ```go
-results, err := client.UrlFetch(nil).List(nil, nil)
+url_fetchs, err := client.UrlFetch(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(url_fetchs) // the array of records
 ```
 
 
@@ -660,7 +706,11 @@ Create an instance: `year := client.Year(nil)`
 #### Example: List
 
 ```go
-results, err := client.Year(nil).List(nil, nil)
+years, err := client.Year(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(years) // the array of records
 ```
 
 

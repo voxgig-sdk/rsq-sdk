@@ -220,185 +220,75 @@ class RsqSDK:
         }
 
 
-    @property
-    def category(self):
-        """Idiomatic facade: client.category.list() / client.category.load({"id": ...})."""
-        from entity.category_entity import CategoryEntity
-        cached = getattr(self, "_category", None)
-        if cached is None:
-            cached = CategoryEntity(self, None)
-            self._category = cached
-        return cached
-
-    def Category(self, data=None):
-        # Deprecated: use client.category instead.
+    def Category(self, data=None) -> "CategoryEntity":
+        """Entity factory: client.Category().list({}) / client.Category().load({"id": ...})."""
         from entity.category_entity import CategoryEntity
         return CategoryEntity(self, data)
 
 
-    @property
-    def country_of_asylum(self):
-        """Idiomatic facade: client.country_of_asylum.list() / client.country_of_asylum.load({"id": ...})."""
-        from entity.country_of_asylum_entity import CountryOfAsylumEntity
-        cached = getattr(self, "_country_of_asylum", None)
-        if cached is None:
-            cached = CountryOfAsylumEntity(self, None)
-            self._country_of_asylum = cached
-        return cached
-
-    def CountryOfAsylum(self, data=None):
-        # Deprecated: use client.country_of_asylum instead.
+    def CountryOfAsylum(self, data=None) -> "CountryOfAsylumEntity":
+        """Entity factory: client.CountryOfAsylum().list({}) / client.CountryOfAsylum().load({"id": ...})."""
         from entity.country_of_asylum_entity import CountryOfAsylumEntity
         return CountryOfAsylumEntity(self, data)
 
 
-    @property
-    def country_of_origin(self):
-        """Idiomatic facade: client.country_of_origin.list() / client.country_of_origin.load({"id": ...})."""
-        from entity.country_of_origin_entity import CountryOfOriginEntity
-        cached = getattr(self, "_country_of_origin", None)
-        if cached is None:
-            cached = CountryOfOriginEntity(self, None)
-            self._country_of_origin = cached
-        return cached
-
-    def CountryOfOrigin(self, data=None):
-        # Deprecated: use client.country_of_origin instead.
+    def CountryOfOrigin(self, data=None) -> "CountryOfOriginEntity":
+        """Entity factory: client.CountryOfOrigin().list({}) / client.CountryOfOrigin().load({"id": ...})."""
         from entity.country_of_origin_entity import CountryOfOriginEntity
         return CountryOfOriginEntity(self, data)
 
 
-    @property
-    def country_of_resettlement(self):
-        """Idiomatic facade: client.country_of_resettlement.list() / client.country_of_resettlement.load({"id": ...})."""
-        from entity.country_of_resettlement_entity import CountryOfResettlementEntity
-        cached = getattr(self, "_country_of_resettlement", None)
-        if cached is None:
-            cached = CountryOfResettlementEntity(self, None)
-            self._country_of_resettlement = cached
-        return cached
-
-    def CountryOfResettlement(self, data=None):
-        # Deprecated: use client.country_of_resettlement instead.
+    def CountryOfResettlement(self, data=None) -> "CountryOfResettlementEntity":
+        """Entity factory: client.CountryOfResettlement().list({}) / client.CountryOfResettlement().load({"id": ...})."""
         from entity.country_of_resettlement_entity import CountryOfResettlementEntity
         return CountryOfResettlementEntity(self, data)
 
 
-    @property
-    def demographic(self):
-        """Idiomatic facade: client.demographic.list() / client.demographic.load({"id": ...})."""
-        from entity.demographic_entity import DemographicEntity
-        cached = getattr(self, "_demographic", None)
-        if cached is None:
-            cached = DemographicEntity(self, None)
-            self._demographic = cached
-        return cached
-
-    def Demographic(self, data=None):
-        # Deprecated: use client.demographic instead.
+    def Demographic(self, data=None) -> "DemographicEntity":
+        """Entity factory: client.Demographic().list({}) / client.Demographic().load({"id": ...})."""
         from entity.demographic_entity import DemographicEntity
         return DemographicEntity(self, data)
 
 
-    @property
-    def departure(self):
-        """Idiomatic facade: client.departure.list() / client.departure.load({"id": ...})."""
-        from entity.departure_entity import DepartureEntity
-        cached = getattr(self, "_departure", None)
-        if cached is None:
-            cached = DepartureEntity(self, None)
-            self._departure = cached
-        return cached
-
-    def Departure(self, data=None):
-        # Deprecated: use client.departure instead.
+    def Departure(self, data=None) -> "DepartureEntity":
+        """Entity factory: client.Departure().list({}) / client.Departure().load({"id": ...})."""
         from entity.departure_entity import DepartureEntity
         return DepartureEntity(self, data)
 
 
-    @property
-    def helper(self):
-        """Idiomatic facade: client.helper.list() / client.helper.load({"id": ...})."""
-        from entity.helper_entity import HelperEntity
-        cached = getattr(self, "_helper", None)
-        if cached is None:
-            cached = HelperEntity(self, None)
-            self._helper = cached
-        return cached
-
-    def Helper(self, data=None):
-        # Deprecated: use client.helper instead.
+    def Helper(self, data=None) -> "HelperEntity":
+        """Entity factory: client.Helper().list({}) / client.Helper().load({"id": ...})."""
         from entity.helper_entity import HelperEntity
         return HelperEntity(self, data)
 
 
-    @property
-    def region(self):
-        """Idiomatic facade: client.region.list() / client.region.load({"id": ...})."""
-        from entity.region_entity import RegionEntity
-        cached = getattr(self, "_region", None)
-        if cached is None:
-            cached = RegionEntity(self, None)
-            self._region = cached
-        return cached
-
-    def Region(self, data=None):
-        # Deprecated: use client.region instead.
+    def Region(self, data=None) -> "RegionEntity":
+        """Entity factory: client.Region().list({}) / client.Region().load({"id": ...})."""
         from entity.region_entity import RegionEntity
         return RegionEntity(self, data)
 
 
-    @property
-    def submission(self):
-        """Idiomatic facade: client.submission.list() / client.submission.load({"id": ...})."""
-        from entity.submission_entity import SubmissionEntity
-        cached = getattr(self, "_submission", None)
-        if cached is None:
-            cached = SubmissionEntity(self, None)
-            self._submission = cached
-        return cached
-
-    def Submission(self, data=None):
-        # Deprecated: use client.submission instead.
+    def Submission(self, data=None) -> "SubmissionEntity":
+        """Entity factory: client.Submission().list({}) / client.Submission().load({"id": ...})."""
         from entity.submission_entity import SubmissionEntity
         return SubmissionEntity(self, data)
 
 
-    @property
-    def url_fetch(self):
-        """Idiomatic facade: client.url_fetch.list() / client.url_fetch.load({"id": ...})."""
-        from entity.url_fetch_entity import UrlFetchEntity
-        cached = getattr(self, "_url_fetch", None)
-        if cached is None:
-            cached = UrlFetchEntity(self, None)
-            self._url_fetch = cached
-        return cached
-
-    def UrlFetch(self, data=None):
-        # Deprecated: use client.url_fetch instead.
+    def UrlFetch(self, data=None) -> "UrlFetchEntity":
+        """Entity factory: client.UrlFetch().list({}) / client.UrlFetch().load({"id": ...})."""
         from entity.url_fetch_entity import UrlFetchEntity
         return UrlFetchEntity(self, data)
 
 
-    @property
-    def year(self):
-        """Idiomatic facade: client.year.list() / client.year.load({"id": ...})."""
-        from entity.year_entity import YearEntity
-        cached = getattr(self, "_year", None)
-        if cached is None:
-            cached = YearEntity(self, None)
-            self._year = cached
-        return cached
-
-    def Year(self, data=None):
-        # Deprecated: use client.year instead.
+    def Year(self, data=None) -> "YearEntity":
+        """Entity factory: client.Year().list({}) / client.Year().load({"id": ...})."""
         from entity.year_entity import YearEntity
         return YearEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "RsqSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -418,3 +308,19 @@ class RsqSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.category_entity import CategoryEntity
+    from entity.country_of_asylum_entity import CountryOfAsylumEntity
+    from entity.country_of_origin_entity import CountryOfOriginEntity
+    from entity.country_of_resettlement_entity import CountryOfResettlementEntity
+    from entity.demographic_entity import DemographicEntity
+    from entity.departure_entity import DepartureEntity
+    from entity.helper_entity import HelperEntity
+    from entity.region_entity import RegionEntity
+    from entity.submission_entity import SubmissionEntity
+    from entity.url_fetch_entity import UrlFetchEntity
+    from entity.year_entity import YearEntity

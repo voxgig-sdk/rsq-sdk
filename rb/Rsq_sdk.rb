@@ -208,143 +208,77 @@ class RsqSDK
   end
 
 
-  # Idiomatic facade: client.category.list / client.category.load({ "id" => ... })
-  def category
-    require_relative 'entity/category_entity'
-    @category ||= CategoryEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.category instead.
+  # Canonical facade: client.Category.list / client.Category.load({ "id" => ... })
   def Category(data = nil)
     require_relative 'entity/category_entity'
     CategoryEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.country_of_asylum.list / client.country_of_asylum.load({ "id" => ... })
-  def country_of_asylum
-    require_relative 'entity/country_of_asylum_entity'
-    @country_of_asylum ||= CountryOfAsylumEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.country_of_asylum instead.
+  # Canonical facade: client.CountryOfAsylum.list / client.CountryOfAsylum.load({ "id" => ... })
   def CountryOfAsylum(data = nil)
     require_relative 'entity/country_of_asylum_entity'
     CountryOfAsylumEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.country_of_origin.list / client.country_of_origin.load({ "id" => ... })
-  def country_of_origin
-    require_relative 'entity/country_of_origin_entity'
-    @country_of_origin ||= CountryOfOriginEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.country_of_origin instead.
+  # Canonical facade: client.CountryOfOrigin.list / client.CountryOfOrigin.load({ "id" => ... })
   def CountryOfOrigin(data = nil)
     require_relative 'entity/country_of_origin_entity'
     CountryOfOriginEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.country_of_resettlement.list / client.country_of_resettlement.load({ "id" => ... })
-  def country_of_resettlement
-    require_relative 'entity/country_of_resettlement_entity'
-    @country_of_resettlement ||= CountryOfResettlementEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.country_of_resettlement instead.
+  # Canonical facade: client.CountryOfResettlement.list / client.CountryOfResettlement.load({ "id" => ... })
   def CountryOfResettlement(data = nil)
     require_relative 'entity/country_of_resettlement_entity'
     CountryOfResettlementEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.demographic.list / client.demographic.load({ "id" => ... })
-  def demographic
-    require_relative 'entity/demographic_entity'
-    @demographic ||= DemographicEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.demographic instead.
+  # Canonical facade: client.Demographic.list / client.Demographic.load({ "id" => ... })
   def Demographic(data = nil)
     require_relative 'entity/demographic_entity'
     DemographicEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.departure.list / client.departure.load({ "id" => ... })
-  def departure
-    require_relative 'entity/departure_entity'
-    @departure ||= DepartureEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.departure instead.
+  # Canonical facade: client.Departure.list / client.Departure.load({ "id" => ... })
   def Departure(data = nil)
     require_relative 'entity/departure_entity'
     DepartureEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.helper.list / client.helper.load({ "id" => ... })
-  def helper
-    require_relative 'entity/helper_entity'
-    @helper ||= HelperEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.helper instead.
+  # Canonical facade: client.Helper.list / client.Helper.load({ "id" => ... })
   def Helper(data = nil)
     require_relative 'entity/helper_entity'
     HelperEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.region.list / client.region.load({ "id" => ... })
-  def region
-    require_relative 'entity/region_entity'
-    @region ||= RegionEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.region instead.
+  # Canonical facade: client.Region.list / client.Region.load({ "id" => ... })
   def Region(data = nil)
     require_relative 'entity/region_entity'
     RegionEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.submission.list / client.submission.load({ "id" => ... })
-  def submission
-    require_relative 'entity/submission_entity'
-    @submission ||= SubmissionEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.submission instead.
+  # Canonical facade: client.Submission.list / client.Submission.load({ "id" => ... })
   def Submission(data = nil)
     require_relative 'entity/submission_entity'
     SubmissionEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.url_fetch.list / client.url_fetch.load({ "id" => ... })
-  def url_fetch
-    require_relative 'entity/url_fetch_entity'
-    @url_fetch ||= UrlFetchEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.url_fetch instead.
+  # Canonical facade: client.UrlFetch.list / client.UrlFetch.load({ "id" => ... })
   def UrlFetch(data = nil)
     require_relative 'entity/url_fetch_entity'
     UrlFetchEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.year.list / client.year.load({ "id" => ... })
-  def year
-    require_relative 'entity/year_entity'
-    @year ||= YearEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.year instead.
+  # Canonical facade: client.Year.list / client.Year.load({ "id" => ... })
   def Year(data = nil)
     require_relative 'entity/year_entity'
     YearEntity.new(self, data)

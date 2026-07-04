@@ -4,195 +4,177 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Category:
-    code: Optional[str] = None
-    name: Optional[str] = None
+class Category(TypedDict, total=False):
+    code: str
+    name: str
 
 
-@dataclass
-class CategoryListMatch:
-    code: Optional[str] = None
-    name: Optional[str] = None
+class CategoryListMatch(TypedDict, total=False):
+    code: str
+    name: str
 
 
-@dataclass
-class CountryOfAsylum:
-    code: Optional[str] = None
-    name: Optional[str] = None
-    region: Optional[str] = None
+class CountryOfAsylum(TypedDict, total=False):
+    code: str
+    name: str
+    region: str
 
 
-@dataclass
-class CountryOfAsylumListMatch:
-    code: Optional[str] = None
-    name: Optional[str] = None
-    region: Optional[str] = None
+class CountryOfAsylumListMatch(TypedDict, total=False):
+    code: str
+    name: str
+    region: str
 
 
-@dataclass
-class CountryOfOrigin:
-    code: Optional[str] = None
-    name: Optional[str] = None
-    region: Optional[str] = None
+class CountryOfOrigin(TypedDict, total=False):
+    code: str
+    name: str
+    region: str
 
 
-@dataclass
-class CountryOfOriginListMatch:
-    code: Optional[str] = None
-    name: Optional[str] = None
-    region: Optional[str] = None
+class CountryOfOriginListMatch(TypedDict, total=False):
+    code: str
+    name: str
+    region: str
 
 
-@dataclass
-class CountryOfResettlement:
-    code: Optional[str] = None
-    name: Optional[str] = None
-    region: Optional[str] = None
+class CountryOfResettlement(TypedDict, total=False):
+    code: str
+    name: str
+    region: str
 
 
-@dataclass
-class CountryOfResettlementListMatch:
-    code: Optional[str] = None
-    name: Optional[str] = None
-    region: Optional[str] = None
+class CountryOfResettlementListMatch(TypedDict, total=False):
+    code: str
+    name: str
+    region: str
 
 
-@dataclass
-class Demographic:
-    destination: Optional[str] = None
-    destination_name: Optional[str] = None
-    females_adult: Optional[int] = None
-    females_senior: Optional[int] = None
-    females_total: Optional[int] = None
-    females_underage: Optional[int] = None
-    females_unknown: Optional[int] = None
-    males_adult: Optional[int] = None
-    males_senior: Optional[int] = None
-    males_total: Optional[int] = None
-    males_underage: Optional[int] = None
-    males_unknown: Optional[int] = None
-    origin: Optional[str] = None
-    origin_name: Optional[str] = None
-    other: Optional[int] = None
-    total: Optional[int] = None
-    year: Optional[int] = None
+class Demographic(TypedDict, total=False):
+    destination: str
+    destination_name: str
+    females_adult: int
+    females_senior: int
+    females_total: int
+    females_underage: int
+    females_unknown: int
+    males_adult: int
+    males_senior: int
+    males_total: int
+    males_underage: int
+    males_unknown: int
+    origin: str
+    origin_name: str
+    other: int
+    total: int
+    year: int
 
 
-@dataclass
-class DemographicListMatch:
-    destination: Optional[str] = None
-    destination_name: Optional[str] = None
-    females_adult: Optional[int] = None
-    females_senior: Optional[int] = None
-    females_total: Optional[int] = None
-    females_underage: Optional[int] = None
-    females_unknown: Optional[int] = None
-    males_adult: Optional[int] = None
-    males_senior: Optional[int] = None
-    males_total: Optional[int] = None
-    males_underage: Optional[int] = None
-    males_unknown: Optional[int] = None
-    origin: Optional[str] = None
-    origin_name: Optional[str] = None
-    other: Optional[int] = None
-    total: Optional[int] = None
-    year: Optional[int] = None
+class DemographicListMatch(TypedDict, total=False):
+    destination: str
+    destination_name: str
+    females_adult: int
+    females_senior: int
+    females_total: int
+    females_underage: int
+    females_unknown: int
+    males_adult: int
+    males_senior: int
+    males_total: int
+    males_underage: int
+    males_unknown: int
+    origin: str
+    origin_name: str
+    other: int
+    total: int
+    year: int
 
 
-@dataclass
-class Departure:
-    asylum: Optional[str] = None
-    asylum_name: Optional[str] = None
-    destination: Optional[str] = None
-    destination_name: Optional[str] = None
-    origin: Optional[str] = None
-    origin_name: Optional[str] = None
-    person: Optional[int] = None
-    year: Optional[int] = None
+class Departure(TypedDict, total=False):
+    asylum: str
+    asylum_name: str
+    destination: str
+    destination_name: str
+    origin: str
+    origin_name: str
+    person: int
+    year: int
 
 
-@dataclass
-class DepartureListMatch:
-    asylum: Optional[str] = None
-    asylum_name: Optional[str] = None
-    destination: Optional[str] = None
-    destination_name: Optional[str] = None
-    origin: Optional[str] = None
-    origin_name: Optional[str] = None
-    person: Optional[int] = None
-    year: Optional[int] = None
+class DepartureListMatch(TypedDict, total=False):
+    asylum: str
+    asylum_name: str
+    destination: str
+    destination_name: str
+    origin: str
+    origin_name: str
+    person: int
+    year: int
 
 
-@dataclass
-class Helper:
+class Helper(TypedDict):
     pass
 
 
-@dataclass
-class HelperLoadMatch:
+class HelperLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class Region:
-    name: Optional[str] = None
+class Region(TypedDict, total=False):
+    name: str
 
 
-@dataclass
-class RegionListMatch:
-    name: Optional[str] = None
+class RegionListMatch(TypedDict, total=False):
+    name: str
 
 
-@dataclass
-class Submission:
-    asylum: Optional[str] = None
-    asylum_name: Optional[str] = None
-    destination: Optional[str] = None
-    destination_name: Optional[str] = None
-    origin: Optional[str] = None
-    origin_name: Optional[str] = None
-    person: Optional[int] = None
-    year: Optional[int] = None
+class Submission(TypedDict, total=False):
+    asylum: str
+    asylum_name: str
+    destination: str
+    destination_name: str
+    origin: str
+    origin_name: str
+    person: int
+    year: int
 
 
-@dataclass
-class SubmissionListMatch:
-    asylum: Optional[str] = None
-    asylum_name: Optional[str] = None
-    destination: Optional[str] = None
-    destination_name: Optional[str] = None
-    origin: Optional[str] = None
-    origin_name: Optional[str] = None
-    person: Optional[int] = None
-    year: Optional[int] = None
+class SubmissionListMatch(TypedDict, total=False):
+    asylum: str
+    asylum_name: str
+    destination: str
+    destination_name: str
+    origin: str
+    origin_name: str
+    person: int
+    year: int
 
 
-@dataclass
-class UrlFetch:
-    status: Optional[str] = None
-    url: Optional[str] = None
+class UrlFetch(TypedDict, total=False):
+    status: str
+    url: str
 
 
-@dataclass
-class UrlFetchListMatch:
-    status: Optional[str] = None
-    url: Optional[str] = None
+class UrlFetchListMatch(TypedDict, total=False):
+    status: str
+    url: str
 
 
-@dataclass
-class Year:
+class Year(TypedDict):
     pass
 
 
-@dataclass
-class YearListMatch:
+class YearListMatch(TypedDict):
     pass
-

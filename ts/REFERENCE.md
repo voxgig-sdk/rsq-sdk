@@ -229,7 +229,7 @@ Alias for `RsqSDK.test()`.
 ## CategoryEntity
 
 ```ts
-const category = client.category
+const category = client.Category()
 ```
 
 ### Fields
@@ -246,7 +246,7 @@ const category = client.category
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.category.list()
+const results = await client.Category().list()
 ```
 
 ### Common Methods
@@ -280,7 +280,7 @@ Return a copy of the entity options.
 ## CountryOfAsylumEntity
 
 ```ts
-const country_of_asylum = client.country_of_asylum
+const country_of_asylum = client.CountryOfAsylum()
 ```
 
 ### Fields
@@ -298,7 +298,7 @@ const country_of_asylum = client.country_of_asylum
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.country_of_asylum.list()
+const results = await client.CountryOfAsylum().list()
 ```
 
 ### Common Methods
@@ -332,7 +332,7 @@ Return a copy of the entity options.
 ## CountryOfOriginEntity
 
 ```ts
-const country_of_origin = client.country_of_origin
+const country_of_origin = client.CountryOfOrigin()
 ```
 
 ### Fields
@@ -350,7 +350,7 @@ const country_of_origin = client.country_of_origin
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.country_of_origin.list()
+const results = await client.CountryOfOrigin().list()
 ```
 
 ### Common Methods
@@ -384,7 +384,7 @@ Return a copy of the entity options.
 ## CountryOfResettlementEntity
 
 ```ts
-const country_of_resettlement = client.country_of_resettlement
+const country_of_resettlement = client.CountryOfResettlement()
 ```
 
 ### Fields
@@ -402,7 +402,7 @@ const country_of_resettlement = client.country_of_resettlement
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.country_of_resettlement.list()
+const results = await client.CountryOfResettlement().list()
 ```
 
 ### Common Methods
@@ -436,7 +436,7 @@ Return a copy of the entity options.
 ## DemographicEntity
 
 ```ts
-const demographic = client.demographic
+const demographic = client.Demographic()
 ```
 
 ### Fields
@@ -468,7 +468,7 @@ const demographic = client.demographic
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.demographic.list()
+const results = await client.Demographic().list()
 ```
 
 ### Common Methods
@@ -502,7 +502,7 @@ Return a copy of the entity options.
 ## DepartureEntity
 
 ```ts
-const departure = client.departure
+const departure = client.Departure()
 ```
 
 ### Fields
@@ -525,7 +525,7 @@ const departure = client.departure
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.departure.list()
+const results = await client.Departure().list()
 ```
 
 ### Common Methods
@@ -559,7 +559,7 @@ Return a copy of the entity options.
 ## HelperEntity
 
 ```ts
-const helper = client.helper
+const helper = client.Helper()
 ```
 
 ### Operations
@@ -569,7 +569,7 @@ const helper = client.helper
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.helper.load({ id: 'helper_id' })
+const result = await client.Helper().load({ id: 'helper_id' })
 ```
 
 ### Common Methods
@@ -603,7 +603,7 @@ Return a copy of the entity options.
 ## RegionEntity
 
 ```ts
-const region = client.region
+const region = client.Region()
 ```
 
 ### Fields
@@ -619,7 +619,7 @@ const region = client.region
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.region.list()
+const results = await client.Region().list()
 ```
 
 ### Common Methods
@@ -653,7 +653,7 @@ Return a copy of the entity options.
 ## SubmissionEntity
 
 ```ts
-const submission = client.submission
+const submission = client.Submission()
 ```
 
 ### Fields
@@ -676,7 +676,7 @@ const submission = client.submission
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.submission.list()
+const results = await client.Submission().list()
 ```
 
 ### Common Methods
@@ -710,7 +710,7 @@ Return a copy of the entity options.
 ## UrlFetchEntity
 
 ```ts
-const url_fetch = client.url_fetch
+const url_fetch = client.UrlFetch()
 ```
 
 ### Fields
@@ -727,7 +727,7 @@ const url_fetch = client.url_fetch
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.url_fetch.list()
+const results = await client.UrlFetch().list()
 ```
 
 ### Common Methods
@@ -761,7 +761,7 @@ Return a copy of the entity options.
 ## YearEntity
 
 ```ts
-const year = client.year
+const year = client.Year()
 ```
 
 ### Operations
@@ -771,7 +771,7 @@ const year = client.year
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.year.list()
+const results = await client.Year().list()
 ```
 
 ### Common Methods

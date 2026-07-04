@@ -125,7 +125,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## CategoryEntity
 
 ```php
-$category = $client->category();
+$category = $client->Category();
 ```
 
 ### Fields
@@ -142,7 +142,7 @@ $category = $client->category();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->category()->list([]);
+$results = $client->Category()->list([]);
 ```
 
 ### Common Methods
@@ -178,7 +178,7 @@ Return the entity name.
 ## CountryOfAsylumEntity
 
 ```php
-$country_of_asylum = $client->country_of_asylum();
+$country_of_asylum = $client->CountryOfAsylum();
 ```
 
 ### Fields
@@ -196,7 +196,7 @@ $country_of_asylum = $client->country_of_asylum();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->country_of_asylum()->list([]);
+$results = $client->CountryOfAsylum()->list([]);
 ```
 
 ### Common Methods
@@ -232,7 +232,7 @@ Return the entity name.
 ## CountryOfOriginEntity
 
 ```php
-$country_of_origin = $client->country_of_origin();
+$country_of_origin = $client->CountryOfOrigin();
 ```
 
 ### Fields
@@ -250,7 +250,7 @@ $country_of_origin = $client->country_of_origin();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->country_of_origin()->list([]);
+$results = $client->CountryOfOrigin()->list([]);
 ```
 
 ### Common Methods
@@ -286,7 +286,7 @@ Return the entity name.
 ## CountryOfResettlementEntity
 
 ```php
-$country_of_resettlement = $client->country_of_resettlement();
+$country_of_resettlement = $client->CountryOfResettlement();
 ```
 
 ### Fields
@@ -304,7 +304,7 @@ $country_of_resettlement = $client->country_of_resettlement();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->country_of_resettlement()->list([]);
+$results = $client->CountryOfResettlement()->list([]);
 ```
 
 ### Common Methods
@@ -340,7 +340,7 @@ Return the entity name.
 ## DemographicEntity
 
 ```php
-$demographic = $client->demographic();
+$demographic = $client->Demographic();
 ```
 
 ### Fields
@@ -372,7 +372,7 @@ $demographic = $client->demographic();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->demographic()->list([]);
+$results = $client->Demographic()->list([]);
 ```
 
 ### Common Methods
@@ -408,7 +408,7 @@ Return the entity name.
 ## DepartureEntity
 
 ```php
-$departure = $client->departure();
+$departure = $client->Departure();
 ```
 
 ### Fields
@@ -431,7 +431,7 @@ $departure = $client->departure();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->departure()->list([]);
+$results = $client->Departure()->list([]);
 ```
 
 ### Common Methods
@@ -467,7 +467,7 @@ Return the entity name.
 ## HelperEntity
 
 ```php
-$helper = $client->helper();
+$helper = $client->Helper();
 ```
 
 ### Operations
@@ -477,7 +477,7 @@ $helper = $client->helper();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->helper()->load(["id" => "helper_id"]);
+$result = $client->Helper()->load(["id" => "helper_id"]);
 ```
 
 ### Common Methods
@@ -513,7 +513,7 @@ Return the entity name.
 ## RegionEntity
 
 ```php
-$region = $client->region();
+$region = $client->Region();
 ```
 
 ### Fields
@@ -529,7 +529,7 @@ $region = $client->region();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->region()->list([]);
+$results = $client->Region()->list([]);
 ```
 
 ### Common Methods
@@ -565,7 +565,7 @@ Return the entity name.
 ## SubmissionEntity
 
 ```php
-$submission = $client->submission();
+$submission = $client->Submission();
 ```
 
 ### Fields
@@ -588,7 +588,7 @@ $submission = $client->submission();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->submission()->list([]);
+$results = $client->Submission()->list([]);
 ```
 
 ### Common Methods
@@ -624,7 +624,7 @@ Return the entity name.
 ## UrlFetchEntity
 
 ```php
-$url_fetch = $client->url_fetch();
+$url_fetch = $client->UrlFetch();
 ```
 
 ### Fields
@@ -641,7 +641,7 @@ $url_fetch = $client->url_fetch();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->url_fetch()->list([]);
+$results = $client->UrlFetch()->list([]);
 ```
 
 ### Common Methods
@@ -677,7 +677,7 @@ Return the entity name.
 ## YearEntity
 
 ```php
-$year = $client->year();
+$year = $client->Year();
 ```
 
 ### Operations
@@ -687,7 +687,7 @@ $year = $client->year();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->year()->list([]);
+$results = $client->Year()->list([]);
 ```
 
 ### Common Methods
