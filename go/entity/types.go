@@ -14,8 +14,7 @@ type Category struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// CategoryListMatch mirrors the category fields as an all-optional match
-// filter (Go analog of Partial<Category>).
+// CategoryListMatch is the typed request payload for Category.ListTyped.
 type CategoryListMatch struct {
 	Code *string `json:"code,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -28,8 +27,7 @@ type CountryOfAsylum struct {
 	Region *string `json:"region,omitempty"`
 }
 
-// CountryOfAsylumListMatch mirrors the country_of_asylum fields as an all-optional match
-// filter (Go analog of Partial<CountryOfAsylum>).
+// CountryOfAsylumListMatch is the typed request payload for CountryOfAsylum.ListTyped.
 type CountryOfAsylumListMatch struct {
 	Code *string `json:"code,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -43,8 +41,7 @@ type CountryOfOrigin struct {
 	Region *string `json:"region,omitempty"`
 }
 
-// CountryOfOriginListMatch mirrors the country_of_origin fields as an all-optional match
-// filter (Go analog of Partial<CountryOfOrigin>).
+// CountryOfOriginListMatch is the typed request payload for CountryOfOrigin.ListTyped.
 type CountryOfOriginListMatch struct {
 	Code *string `json:"code,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -58,8 +55,7 @@ type CountryOfResettlement struct {
 	Region *string `json:"region,omitempty"`
 }
 
-// CountryOfResettlementListMatch mirrors the country_of_resettlement fields as an all-optional match
-// filter (Go analog of Partial<CountryOfResettlement>).
+// CountryOfResettlementListMatch is the typed request payload for CountryOfResettlement.ListTyped.
 type CountryOfResettlementListMatch struct {
 	Code *string `json:"code,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -87,8 +83,7 @@ type Demographic struct {
 	Year *int `json:"year,omitempty"`
 }
 
-// DemographicListMatch mirrors the demographic fields as an all-optional match
-// filter (Go analog of Partial<Demographic>).
+// DemographicListMatch is the typed request payload for Demographic.ListTyped.
 type DemographicListMatch struct {
 	Destination *string `json:"destination,omitempty"`
 	DestinationName *string `json:"destination_name,omitempty"`
@@ -121,8 +116,7 @@ type Departure struct {
 	Year *int `json:"year,omitempty"`
 }
 
-// DepartureListMatch mirrors the departure fields as an all-optional match
-// filter (Go analog of Partial<Departure>).
+// DepartureListMatch is the typed request payload for Departure.ListTyped.
 type DepartureListMatch struct {
 	Asylum *string `json:"asylum,omitempty"`
 	AsylumName *string `json:"asylum_name,omitempty"`
@@ -138,8 +132,7 @@ type DepartureListMatch struct {
 type Helper struct {
 }
 
-// HelperLoadMatch mirrors the helper fields as an all-optional match
-// filter (Go analog of Partial<Helper>).
+// HelperLoadMatch is the typed request payload for Helper.LoadTyped.
 type HelperLoadMatch struct {
 }
 
@@ -148,8 +141,7 @@ type Region struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// RegionListMatch mirrors the region fields as an all-optional match
-// filter (Go analog of Partial<Region>).
+// RegionListMatch is the typed request payload for Region.ListTyped.
 type RegionListMatch struct {
 	Name *string `json:"name,omitempty"`
 }
@@ -166,8 +158,7 @@ type Submission struct {
 	Year *int `json:"year,omitempty"`
 }
 
-// SubmissionListMatch mirrors the submission fields as an all-optional match
-// filter (Go analog of Partial<Submission>).
+// SubmissionListMatch is the typed request payload for Submission.ListTyped.
 type SubmissionListMatch struct {
 	Asylum *string `json:"asylum,omitempty"`
 	AsylumName *string `json:"asylum_name,omitempty"`
@@ -185,8 +176,7 @@ type UrlFetch struct {
 	Url *string `json:"url,omitempty"`
 }
 
-// UrlFetchListMatch mirrors the url_fetch fields as an all-optional match
-// filter (Go analog of Partial<UrlFetch>).
+// UrlFetchListMatch is the typed request payload for UrlFetch.ListTyped.
 type UrlFetchListMatch struct {
 	Status *string `json:"status,omitempty"`
 	Url *string `json:"url,omitempty"`
@@ -196,8 +186,7 @@ type UrlFetchListMatch struct {
 type Year struct {
 }
 
-// YearListMatch mirrors the year fields as an all-optional match
-// filter (Go analog of Partial<Year>).
+// YearListMatch is the typed request payload for Year.ListTyped.
 type YearListMatch struct {
 }
 

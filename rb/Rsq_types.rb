@@ -21,7 +21,7 @@ Category = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Category#list (any subset of Category fields).
+# Request payload for Category#list.
 #
 # @!attribute [rw] code
 #   @return [String, nil]
@@ -51,7 +51,7 @@ CountryOfAsylum = Struct.new(
   keyword_init: true
 )
 
-# Match filter for CountryOfAsylum#list (any subset of CountryOfAsylum fields).
+# Request payload for CountryOfAsylum#list.
 #
 # @!attribute [rw] code
 #   @return [String, nil]
@@ -85,7 +85,7 @@ CountryOfOrigin = Struct.new(
   keyword_init: true
 )
 
-# Match filter for CountryOfOrigin#list (any subset of CountryOfOrigin fields).
+# Request payload for CountryOfOrigin#list.
 #
 # @!attribute [rw] code
 #   @return [String, nil]
@@ -119,7 +119,7 @@ CountryOfResettlement = Struct.new(
   keyword_init: true
 )
 
-# Match filter for CountryOfResettlement#list (any subset of CountryOfResettlement fields).
+# Request payload for CountryOfResettlement#list.
 #
 # @!attribute [rw] code
 #   @return [String, nil]
@@ -209,7 +209,7 @@ Demographic = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Demographic#list (any subset of Demographic fields).
+# Request payload for Demographic#list.
 #
 # @!attribute [rw] destination
 #   @return [String, nil]
@@ -319,7 +319,7 @@ Departure = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Departure#list (any subset of Departure fields).
+# Request payload for Departure#list.
 #
 # @!attribute [rw] asylum
 #   @return [String, nil]
@@ -360,7 +360,7 @@ DepartureListMatch = Struct.new(
 class Helper
 end
 
-# Match filter for Helper#load (any subset of Helper fields).
+# Request payload for Helper#load.
 class HelperLoadMatch
 end
 
@@ -373,7 +373,7 @@ Region = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Region#list (any subset of Region fields).
+# Request payload for Region#list.
 #
 # @!attribute [rw] name
 #   @return [String, nil]
@@ -419,7 +419,7 @@ Submission = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Submission#list (any subset of Submission fields).
+# Request payload for Submission#list.
 #
 # @!attribute [rw] asylum
 #   @return [String, nil]
@@ -469,7 +469,7 @@ UrlFetch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for UrlFetch#list (any subset of UrlFetch fields).
+# Request payload for UrlFetch#list.
 #
 # @!attribute [rw] status
 #   @return [String, nil]
@@ -486,7 +486,7 @@ UrlFetchListMatch = Struct.new(
 class Year
 end
 
-# Match filter for Year#list (any subset of Year fields).
+# Request payload for Year#list.
 class YearListMatch
 end
 

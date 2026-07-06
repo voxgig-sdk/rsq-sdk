@@ -221,67 +221,67 @@ class RsqSDK:
 
 
     def Category(self, data=None) -> "CategoryEntity":
-        """Entity factory: client.Category().list({}) / client.Category().load({"id": ...})."""
+        """Entity factory: client.Category().list() / client.Category().load({"id": ...})."""
         from entity.category_entity import CategoryEntity
         return CategoryEntity(self, data)
 
 
     def CountryOfAsylum(self, data=None) -> "CountryOfAsylumEntity":
-        """Entity factory: client.CountryOfAsylum().list({}) / client.CountryOfAsylum().load({"id": ...})."""
+        """Entity factory: client.CountryOfAsylum().list() / client.CountryOfAsylum().load({"id": ...})."""
         from entity.country_of_asylum_entity import CountryOfAsylumEntity
         return CountryOfAsylumEntity(self, data)
 
 
     def CountryOfOrigin(self, data=None) -> "CountryOfOriginEntity":
-        """Entity factory: client.CountryOfOrigin().list({}) / client.CountryOfOrigin().load({"id": ...})."""
+        """Entity factory: client.CountryOfOrigin().list() / client.CountryOfOrigin().load({"id": ...})."""
         from entity.country_of_origin_entity import CountryOfOriginEntity
         return CountryOfOriginEntity(self, data)
 
 
     def CountryOfResettlement(self, data=None) -> "CountryOfResettlementEntity":
-        """Entity factory: client.CountryOfResettlement().list({}) / client.CountryOfResettlement().load({"id": ...})."""
+        """Entity factory: client.CountryOfResettlement().list() / client.CountryOfResettlement().load({"id": ...})."""
         from entity.country_of_resettlement_entity import CountryOfResettlementEntity
         return CountryOfResettlementEntity(self, data)
 
 
     def Demographic(self, data=None) -> "DemographicEntity":
-        """Entity factory: client.Demographic().list({}) / client.Demographic().load({"id": ...})."""
+        """Entity factory: client.Demographic().list() / client.Demographic().load({"id": ...})."""
         from entity.demographic_entity import DemographicEntity
         return DemographicEntity(self, data)
 
 
     def Departure(self, data=None) -> "DepartureEntity":
-        """Entity factory: client.Departure().list({}) / client.Departure().load({"id": ...})."""
+        """Entity factory: client.Departure().list() / client.Departure().load({"id": ...})."""
         from entity.departure_entity import DepartureEntity
         return DepartureEntity(self, data)
 
 
     def Helper(self, data=None) -> "HelperEntity":
-        """Entity factory: client.Helper().list({}) / client.Helper().load({"id": ...})."""
+        """Entity factory: client.Helper().list() / client.Helper().load({"id": ...})."""
         from entity.helper_entity import HelperEntity
         return HelperEntity(self, data)
 
 
     def Region(self, data=None) -> "RegionEntity":
-        """Entity factory: client.Region().list({}) / client.Region().load({"id": ...})."""
+        """Entity factory: client.Region().list() / client.Region().load({"id": ...})."""
         from entity.region_entity import RegionEntity
         return RegionEntity(self, data)
 
 
     def Submission(self, data=None) -> "SubmissionEntity":
-        """Entity factory: client.Submission().list({}) / client.Submission().load({"id": ...})."""
+        """Entity factory: client.Submission().list() / client.Submission().load({"id": ...})."""
         from entity.submission_entity import SubmissionEntity
         return SubmissionEntity(self, data)
 
 
     def UrlFetch(self, data=None) -> "UrlFetchEntity":
-        """Entity factory: client.UrlFetch().list({}) / client.UrlFetch().load({"id": ...})."""
+        """Entity factory: client.UrlFetch().list() / client.UrlFetch().load({"id": ...})."""
         from entity.url_fetch_entity import UrlFetchEntity
         return UrlFetchEntity(self, data)
 
 
     def Year(self, data=None) -> "YearEntity":
-        """Entity factory: client.Year().list({}) / client.Year().load({"id": ...})."""
+        """Entity factory: client.Year().list() / client.Year().load({"id": ...})."""
         from entity.year_entity import YearEntity
         return YearEntity(self, data)
 

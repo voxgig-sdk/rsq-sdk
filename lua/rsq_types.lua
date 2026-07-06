@@ -11,6 +11,8 @@
 ---@field name? string
 
 ---@class CategoryListMatch
+---@field code? string
+---@field name? string
 
 ---@class CountryOfAsylum
 ---@field code? string
@@ -18,6 +20,9 @@
 ---@field region? string
 
 ---@class CountryOfAsylumListMatch
+---@field code? string
+---@field name? string
+---@field region? string
 
 ---@class CountryOfOrigin
 ---@field code? string
@@ -25,6 +30,9 @@
 ---@field region? string
 
 ---@class CountryOfOriginListMatch
+---@field code? string
+---@field name? string
+---@field region? string
 
 ---@class CountryOfResettlement
 ---@field code? string
@@ -32,6 +40,9 @@
 ---@field region? string
 
 ---@class CountryOfResettlementListMatch
+---@field code? string
+---@field name? string
+---@field region? string
 
 ---@class Demographic
 ---@field destination? string
@@ -53,6 +64,23 @@
 ---@field year? number
 
 ---@class DemographicListMatch
+---@field destination? string
+---@field destination_name? string
+---@field females_adult? number
+---@field females_senior? number
+---@field females_total? number
+---@field females_underage? number
+---@field females_unknown? number
+---@field males_adult? number
+---@field males_senior? number
+---@field males_total? number
+---@field males_underage? number
+---@field males_unknown? number
+---@field origin? string
+---@field origin_name? string
+---@field other? number
+---@field total? number
+---@field year? number
 
 ---@class Departure
 ---@field asylum? string
@@ -65,6 +93,14 @@
 ---@field year? number
 
 ---@class DepartureListMatch
+---@field asylum? string
+---@field asylum_name? string
+---@field destination? string
+---@field destination_name? string
+---@field origin? string
+---@field origin_name? string
+---@field person? number
+---@field year? number
 
 ---@class Helper
 
@@ -74,6 +110,7 @@
 ---@field name? string
 
 ---@class RegionListMatch
+---@field name? string
 
 ---@class Submission
 ---@field asylum? string
@@ -86,12 +123,22 @@
 ---@field year? number
 
 ---@class SubmissionListMatch
+---@field asylum? string
+---@field asylum_name? string
+---@field destination? string
+---@field destination_name? string
+---@field origin? string
+---@field origin_name? string
+---@field person? number
+---@field year? number
 
 ---@class UrlFetch
 ---@field status? string
 ---@field url? string
 
 ---@class UrlFetchListMatch
+---@field status? string
+---@field url? string
 
 ---@class Year
 

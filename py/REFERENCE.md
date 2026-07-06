@@ -127,17 +127,17 @@ category = client.Category()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `code` | `str` | No |  |
+| `name` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Category().list({})
+results = client.Category().list()
 for category in results:
     print(category)
 ```
@@ -181,18 +181,18 @@ country_of_asylum = client.CountryOfAsylum()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
+| `code` | `str` | No |  |
+| `name` | `str` | No |  |
+| `region` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.CountryOfAsylum().list({})
+results = client.CountryOfAsylum().list()
 for country_of_asylum in results:
     print(country_of_asylum)
 ```
@@ -236,18 +236,18 @@ country_of_origin = client.CountryOfOrigin()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
+| `code` | `str` | No |  |
+| `name` | `str` | No |  |
+| `region` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.CountryOfOrigin().list({})
+results = client.CountryOfOrigin().list()
 for country_of_origin in results:
     print(country_of_origin)
 ```
@@ -291,18 +291,18 @@ country_of_resettlement = client.CountryOfResettlement()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
+| `code` | `str` | No |  |
+| `name` | `str` | No |  |
+| `region` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.CountryOfResettlement().list({})
+results = client.CountryOfResettlement().list()
 for country_of_resettlement in results:
     print(country_of_resettlement)
 ```
@@ -346,32 +346,32 @@ demographic = client.Demographic()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `destination` | ``$STRING`` | No |  |
-| `destination_name` | ``$STRING`` | No |  |
-| `females_adult` | ``$INTEGER`` | No |  |
-| `females_senior` | ``$INTEGER`` | No |  |
-| `females_total` | ``$INTEGER`` | No |  |
-| `females_underage` | ``$INTEGER`` | No |  |
-| `females_unknown` | ``$INTEGER`` | No |  |
-| `males_adult` | ``$INTEGER`` | No |  |
-| `males_senior` | ``$INTEGER`` | No |  |
-| `males_total` | ``$INTEGER`` | No |  |
-| `males_underage` | ``$INTEGER`` | No |  |
-| `males_unknown` | ``$INTEGER`` | No |  |
-| `origin` | ``$STRING`` | No |  |
-| `origin_name` | ``$STRING`` | No |  |
-| `other` | ``$INTEGER`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `destination` | `str` | No |  |
+| `destination_name` | `str` | No |  |
+| `females_adult` | `int` | No |  |
+| `females_senior` | `int` | No |  |
+| `females_total` | `int` | No |  |
+| `females_underage` | `int` | No |  |
+| `females_unknown` | `int` | No |  |
+| `males_adult` | `int` | No |  |
+| `males_senior` | `int` | No |  |
+| `males_total` | `int` | No |  |
+| `males_underage` | `int` | No |  |
+| `males_unknown` | `int` | No |  |
+| `origin` | `str` | No |  |
+| `origin_name` | `str` | No |  |
+| `other` | `int` | No |  |
+| `total` | `int` | No |  |
+| `year` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Demographic().list({})
+results = client.Demographic().list()
 for demographic in results:
     print(demographic)
 ```
@@ -415,23 +415,23 @@ departure = client.Departure()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asylum` | ``$STRING`` | No |  |
-| `asylum_name` | ``$STRING`` | No |  |
-| `destination` | ``$STRING`` | No |  |
-| `destination_name` | ``$STRING`` | No |  |
-| `origin` | ``$STRING`` | No |  |
-| `origin_name` | ``$STRING`` | No |  |
-| `person` | ``$INTEGER`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `asylum` | `str` | No |  |
+| `asylum_name` | `str` | No |  |
+| `destination` | `str` | No |  |
+| `destination_name` | `str` | No |  |
+| `origin` | `str` | No |  |
+| `origin_name` | `str` | No |  |
+| `person` | `int` | No |  |
+| `year` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Departure().list({})
+results = client.Departure().list()
 for departure in results:
     print(departure)
 ```
@@ -478,7 +478,7 @@ helper = client.Helper()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Helper().load({"id": "helper_id"})
+result = client.Helper().load()
 ```
 
 ### Common Methods
@@ -520,16 +520,16 @@ region = client.Region()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | ``$STRING`` | No |  |
+| `name` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Region().list({})
+results = client.Region().list()
 for region in results:
     print(region)
 ```
@@ -573,23 +573,23 @@ submission = client.Submission()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asylum` | ``$STRING`` | No |  |
-| `asylum_name` | ``$STRING`` | No |  |
-| `destination` | ``$STRING`` | No |  |
-| `destination_name` | ``$STRING`` | No |  |
-| `origin` | ``$STRING`` | No |  |
-| `origin_name` | ``$STRING`` | No |  |
-| `person` | ``$INTEGER`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `asylum` | `str` | No |  |
+| `asylum_name` | `str` | No |  |
+| `destination` | `str` | No |  |
+| `destination_name` | `str` | No |  |
+| `origin` | `str` | No |  |
+| `origin_name` | `str` | No |  |
+| `person` | `int` | No |  |
+| `year` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Submission().list({})
+results = client.Submission().list()
 for submission in results:
     print(submission)
 ```
@@ -633,17 +633,17 @@ url_fetch = client.UrlFetch()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `status` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `status` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.UrlFetch().list({})
+results = client.UrlFetch().list()
 for url_fetch in results:
     print(url_fetch)
 ```
@@ -685,12 +685,12 @@ year = client.Year()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Year().list({})
+results = client.Year().list()
 for year in results:
     print(year)
 ```

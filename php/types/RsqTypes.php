@@ -19,7 +19,7 @@ class Category
     public ?string $name = null;
 }
 
-/** Match filter for Category#list (any subset of Category fields). */
+/** Request payload for Category#list. */
 class CategoryListMatch
 {
     public ?string $code = null;
@@ -34,7 +34,7 @@ class CountryOfAsylum
     public ?string $region = null;
 }
 
-/** Match filter for CountryOfAsylum#list (any subset of CountryOfAsylum fields). */
+/** Request payload for CountryOfAsylum#list. */
 class CountryOfAsylumListMatch
 {
     public ?string $code = null;
@@ -50,7 +50,7 @@ class CountryOfOrigin
     public ?string $region = null;
 }
 
-/** Match filter for CountryOfOrigin#list (any subset of CountryOfOrigin fields). */
+/** Request payload for CountryOfOrigin#list. */
 class CountryOfOriginListMatch
 {
     public ?string $code = null;
@@ -66,7 +66,7 @@ class CountryOfResettlement
     public ?string $region = null;
 }
 
-/** Match filter for CountryOfResettlement#list (any subset of CountryOfResettlement fields). */
+/** Request payload for CountryOfResettlement#list. */
 class CountryOfResettlementListMatch
 {
     public ?string $code = null;
@@ -96,7 +96,7 @@ class Demographic
     public ?int $year = null;
 }
 
-/** Match filter for Demographic#list (any subset of Demographic fields). */
+/** Request payload for Demographic#list. */
 class DemographicListMatch
 {
     public ?string $destination = null;
@@ -131,7 +131,7 @@ class Departure
     public ?int $year = null;
 }
 
-/** Match filter for Departure#list (any subset of Departure fields). */
+/** Request payload for Departure#list. */
 class DepartureListMatch
 {
     public ?string $asylum = null;
@@ -149,7 +149,7 @@ class Helper
 {
 }
 
-/** Match filter for Helper#load (any subset of Helper fields). */
+/** Request payload for Helper#load. */
 class HelperLoadMatch
 {
 }
@@ -160,7 +160,7 @@ class Region
     public ?string $name = null;
 }
 
-/** Match filter for Region#list (any subset of Region fields). */
+/** Request payload for Region#list. */
 class RegionListMatch
 {
     public ?string $name = null;
@@ -179,7 +179,7 @@ class Submission
     public ?int $year = null;
 }
 
-/** Match filter for Submission#list (any subset of Submission fields). */
+/** Request payload for Submission#list. */
 class SubmissionListMatch
 {
     public ?string $asylum = null;
@@ -199,7 +199,7 @@ class UrlFetch
     public ?string $url = null;
 }
 
-/** Match filter for UrlFetch#list (any subset of UrlFetch fields). */
+/** Request payload for UrlFetch#list. */
 class UrlFetchListMatch
 {
     public ?string $status = null;
@@ -211,7 +211,7 @@ class Year
 {
 }
 
-/** Match filter for Year#list (any subset of Year fields). */
+/** Request payload for Year#list. */
 class YearListMatch
 {
 }

@@ -130,8 +130,8 @@ local category = client:Category(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `code` | `string` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -183,9 +183,9 @@ local country_of_asylum = client:CountryOfAsylum(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
+| `code` | `string` | No |  |
+| `name` | `string` | No |  |
+| `region` | `string` | No |  |
 
 ### Operations
 
@@ -237,9 +237,9 @@ local country_of_origin = client:CountryOfOrigin(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
+| `code` | `string` | No |  |
+| `name` | `string` | No |  |
+| `region` | `string` | No |  |
 
 ### Operations
 
@@ -291,9 +291,9 @@ local country_of_resettlement = client:CountryOfResettlement(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
+| `code` | `string` | No |  |
+| `name` | `string` | No |  |
+| `region` | `string` | No |  |
 
 ### Operations
 
@@ -345,23 +345,23 @@ local demographic = client:Demographic(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `destination` | ``$STRING`` | No |  |
-| `destination_name` | ``$STRING`` | No |  |
-| `females_adult` | ``$INTEGER`` | No |  |
-| `females_senior` | ``$INTEGER`` | No |  |
-| `females_total` | ``$INTEGER`` | No |  |
-| `females_underage` | ``$INTEGER`` | No |  |
-| `females_unknown` | ``$INTEGER`` | No |  |
-| `males_adult` | ``$INTEGER`` | No |  |
-| `males_senior` | ``$INTEGER`` | No |  |
-| `males_total` | ``$INTEGER`` | No |  |
-| `males_underage` | ``$INTEGER`` | No |  |
-| `males_unknown` | ``$INTEGER`` | No |  |
-| `origin` | ``$STRING`` | No |  |
-| `origin_name` | ``$STRING`` | No |  |
-| `other` | ``$INTEGER`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `destination` | `string` | No |  |
+| `destination_name` | `string` | No |  |
+| `females_adult` | `number` | No |  |
+| `females_senior` | `number` | No |  |
+| `females_total` | `number` | No |  |
+| `females_underage` | `number` | No |  |
+| `females_unknown` | `number` | No |  |
+| `males_adult` | `number` | No |  |
+| `males_senior` | `number` | No |  |
+| `males_total` | `number` | No |  |
+| `males_underage` | `number` | No |  |
+| `males_unknown` | `number` | No |  |
+| `origin` | `string` | No |  |
+| `origin_name` | `string` | No |  |
+| `other` | `number` | No |  |
+| `total` | `number` | No |  |
+| `year` | `number` | No |  |
 
 ### Operations
 
@@ -413,14 +413,14 @@ local departure = client:Departure(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asylum` | ``$STRING`` | No |  |
-| `asylum_name` | ``$STRING`` | No |  |
-| `destination` | ``$STRING`` | No |  |
-| `destination_name` | ``$STRING`` | No |  |
-| `origin` | ``$STRING`` | No |  |
-| `origin_name` | ``$STRING`` | No |  |
-| `person` | ``$INTEGER`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `asylum` | `string` | No |  |
+| `asylum_name` | `string` | No |  |
+| `destination` | `string` | No |  |
+| `destination_name` | `string` | No |  |
+| `origin` | `string` | No |  |
+| `origin_name` | `string` | No |  |
+| `person` | `number` | No |  |
+| `year` | `number` | No |  |
 
 ### Operations
 
@@ -475,7 +475,7 @@ local helper = client:Helper(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Helper():load({ id = "helper_id" })
+local result, err = client:Helper():load()
 ```
 
 ### Common Methods
@@ -518,7 +518,7 @@ local region = client:Region(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | ``$STRING`` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -570,14 +570,14 @@ local submission = client:Submission(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asylum` | ``$STRING`` | No |  |
-| `asylum_name` | ``$STRING`` | No |  |
-| `destination` | ``$STRING`` | No |  |
-| `destination_name` | ``$STRING`` | No |  |
-| `origin` | ``$STRING`` | No |  |
-| `origin_name` | ``$STRING`` | No |  |
-| `person` | ``$INTEGER`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `asylum` | `string` | No |  |
+| `asylum_name` | `string` | No |  |
+| `destination` | `string` | No |  |
+| `destination_name` | `string` | No |  |
+| `origin` | `string` | No |  |
+| `origin_name` | `string` | No |  |
+| `person` | `number` | No |  |
+| `year` | `number` | No |  |
 
 ### Operations
 
@@ -629,8 +629,8 @@ local url_fetch = client:UrlFetch(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `status` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `status` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 

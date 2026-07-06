@@ -17,8 +17,6 @@ go build -o rsq-cli ./...
 ```sh
 # One-shot: arguments form a single AQL expression
 ./rsq-cli list category
-./rsq-cli load 1 category
-./rsq-cli load '{id:1}' category
 
 # REPL
 ./rsq-cli
@@ -30,7 +28,6 @@ go build -o rsq-cli ./...
 |----------|----------------------------------------------|----------------------------|
 | `list`   | `[entity]` · `[query entity]`                | List records               |
 | `load`   | `[entity]` · `[query entity]`                | Load a single record       |
-| `update` | `[entity]` · `[query entity]`                | Update a record            |
 
 `query` is either a Map (`{id:1}`) or a Scalar (`1`, treated as `{id:1}`).
 `entity` is one of the SDK's entity names (auto-quoted as an atom).

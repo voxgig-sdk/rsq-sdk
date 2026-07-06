@@ -66,8 +66,12 @@ class RegionEntity:
     
 
     
-    def list(self, reqmatch: RegionListMatch, ctrl=None) -> list[Region]:
+    def list(self, reqmatch=None, ctrl=None) -> list[Region]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.Region().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

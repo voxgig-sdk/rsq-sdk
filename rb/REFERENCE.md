@@ -8,7 +8,7 @@ Complete API reference for the Rsq Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'rsq_sdk'
+require_relative 'Rsq_sdk'
 
 client = RsqSDK.new(options)
 ```
@@ -133,17 +133,17 @@ category = client.Category
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `code` | `String` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Category.list(nil)
+results = client.Category.list
 ```
 
 ### Common Methods
@@ -186,18 +186,18 @@ country_of_asylum = client.CountryOfAsylum
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
+| `code` | `String` | No |  |
+| `name` | `String` | No |  |
+| `region` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.CountryOfAsylum.list(nil)
+results = client.CountryOfAsylum.list
 ```
 
 ### Common Methods
@@ -240,18 +240,18 @@ country_of_origin = client.CountryOfOrigin
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
+| `code` | `String` | No |  |
+| `name` | `String` | No |  |
+| `region` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.CountryOfOrigin.list(nil)
+results = client.CountryOfOrigin.list
 ```
 
 ### Common Methods
@@ -294,18 +294,18 @@ country_of_resettlement = client.CountryOfResettlement
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
+| `code` | `String` | No |  |
+| `name` | `String` | No |  |
+| `region` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.CountryOfResettlement.list(nil)
+results = client.CountryOfResettlement.list
 ```
 
 ### Common Methods
@@ -348,32 +348,32 @@ demographic = client.Demographic
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `destination` | ``$STRING`` | No |  |
-| `destination_name` | ``$STRING`` | No |  |
-| `females_adult` | ``$INTEGER`` | No |  |
-| `females_senior` | ``$INTEGER`` | No |  |
-| `females_total` | ``$INTEGER`` | No |  |
-| `females_underage` | ``$INTEGER`` | No |  |
-| `females_unknown` | ``$INTEGER`` | No |  |
-| `males_adult` | ``$INTEGER`` | No |  |
-| `males_senior` | ``$INTEGER`` | No |  |
-| `males_total` | ``$INTEGER`` | No |  |
-| `males_underage` | ``$INTEGER`` | No |  |
-| `males_unknown` | ``$INTEGER`` | No |  |
-| `origin` | ``$STRING`` | No |  |
-| `origin_name` | ``$STRING`` | No |  |
-| `other` | ``$INTEGER`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `destination` | `String` | No |  |
+| `destination_name` | `String` | No |  |
+| `females_adult` | `Integer` | No |  |
+| `females_senior` | `Integer` | No |  |
+| `females_total` | `Integer` | No |  |
+| `females_underage` | `Integer` | No |  |
+| `females_unknown` | `Integer` | No |  |
+| `males_adult` | `Integer` | No |  |
+| `males_senior` | `Integer` | No |  |
+| `males_total` | `Integer` | No |  |
+| `males_underage` | `Integer` | No |  |
+| `males_unknown` | `Integer` | No |  |
+| `origin` | `String` | No |  |
+| `origin_name` | `String` | No |  |
+| `other` | `Integer` | No |  |
+| `total` | `Integer` | No |  |
+| `year` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Demographic.list(nil)
+results = client.Demographic.list
 ```
 
 ### Common Methods
@@ -416,23 +416,23 @@ departure = client.Departure
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asylum` | ``$STRING`` | No |  |
-| `asylum_name` | ``$STRING`` | No |  |
-| `destination` | ``$STRING`` | No |  |
-| `destination_name` | ``$STRING`` | No |  |
-| `origin` | ``$STRING`` | No |  |
-| `origin_name` | ``$STRING`` | No |  |
-| `person` | ``$INTEGER`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `asylum` | `String` | No |  |
+| `asylum_name` | `String` | No |  |
+| `destination` | `String` | No |  |
+| `destination_name` | `String` | No |  |
+| `origin` | `String` | No |  |
+| `origin_name` | `String` | No |  |
+| `person` | `Integer` | No |  |
+| `year` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Departure.list(nil)
+results = client.Departure.list
 ```
 
 ### Common Methods
@@ -478,7 +478,7 @@ helper = client.Helper
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Helper.load({ "id" => "helper_id" })
+result = client.Helper.load()
 ```
 
 ### Common Methods
@@ -521,16 +521,16 @@ region = client.Region
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | ``$STRING`` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Region.list(nil)
+results = client.Region.list
 ```
 
 ### Common Methods
@@ -573,23 +573,23 @@ submission = client.Submission
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asylum` | ``$STRING`` | No |  |
-| `asylum_name` | ``$STRING`` | No |  |
-| `destination` | ``$STRING`` | No |  |
-| `destination_name` | ``$STRING`` | No |  |
-| `origin` | ``$STRING`` | No |  |
-| `origin_name` | ``$STRING`` | No |  |
-| `person` | ``$INTEGER`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `asylum` | `String` | No |  |
+| `asylum_name` | `String` | No |  |
+| `destination` | `String` | No |  |
+| `destination_name` | `String` | No |  |
+| `origin` | `String` | No |  |
+| `origin_name` | `String` | No |  |
+| `person` | `Integer` | No |  |
+| `year` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Submission.list(nil)
+results = client.Submission.list
 ```
 
 ### Common Methods
@@ -632,17 +632,17 @@ url_fetch = client.UrlFetch
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `status` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `status` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.UrlFetch.list(nil)
+results = client.UrlFetch.list
 ```
 
 ### Common Methods
@@ -683,12 +683,12 @@ year = client.Year
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Year.list(nil)
+results = client.Year.list
 ```
 
 ### Common Methods

@@ -4,6 +4,11 @@
 
 The Python SDK for the Rsq API — an entity-oriented client following Pythonic conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Category()` — each
+carrying a small, uniform set of operations (`list`, `load`) instead of raw URL
+paths and query strings. You work with named resources and verbs, which
+keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -38,11 +43,39 @@ error — iterate it directly.
 
 ```python
 try:
-    categorys = client.Category().list({})
+    categorys = client.Category().list()
     for category in categorys:
         print(category)
 except Exception as err:
     print(f"list failed: {err}")
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so wrap them in `try` / `except`:
+
+```python
+try:
+    categorys = client.Category().list()
+    print(categorys)
+except Exception as err:
+    print(f"list failed: {err}")
+```
+
+`direct()` does **not** raise — it returns the result envelope. Branch
+on `ok`; on failure `status` holds the HTTP status (for error responses)
+and `err` holds a transport error, so read both defensively:
+
+```python
+result = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example_id"},
+})
+
+if not result["ok"]:
+    print("request failed:", result.get("status"), result.get("err"))
 ```
 
 
@@ -63,7 +96,10 @@ if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
 else:
-    print(result["err"])     # error value
+    # A non-2xx response carries status + data (the error body); a
+    # transport-level failure carries err instead. Only one is present, so
+    # read both with .get() rather than indexing a key that may be absent.
+    print(result.get("status"), result.get("err"))
 ```
 
 ### Prepare a request without sending it
@@ -89,7 +125,7 @@ Create a mock client for unit testing — no server required:
 client = RsqSDK.test()
 
 # Entity ops return the bare record and raise on error.
-category = client.Category().load({"id": "test01"})
+category = client.Category().list()
 # category contains the mock response record
 ```
 
@@ -186,9 +222,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
 | `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -375,19 +408,19 @@ Create an instance: `category = client.Category()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
+| `code` | `str` |  |
+| `name` | `str` |  |
 
 #### Example: List
 
 ```python
-categorys = client.Category().list({})
+categorys = client.Category().list()
 ```
 
 
@@ -399,20 +432,20 @@ Create an instance: `country_of_asylum = client.CountryOfAsylum()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `region` | ``$STRING`` |  |
+| `code` | `str` |  |
+| `name` | `str` |  |
+| `region` | `str` |  |
 
 #### Example: List
 
 ```python
-country_of_asylums = client.CountryOfAsylum().list({})
+country_of_asylums = client.CountryOfAsylum().list()
 ```
 
 
@@ -424,20 +457,20 @@ Create an instance: `country_of_origin = client.CountryOfOrigin()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `region` | ``$STRING`` |  |
+| `code` | `str` |  |
+| `name` | `str` |  |
+| `region` | `str` |  |
 
 #### Example: List
 
 ```python
-country_of_origins = client.CountryOfOrigin().list({})
+country_of_origins = client.CountryOfOrigin().list()
 ```
 
 
@@ -449,20 +482,20 @@ Create an instance: `country_of_resettlement = client.CountryOfResettlement()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `region` | ``$STRING`` |  |
+| `code` | `str` |  |
+| `name` | `str` |  |
+| `region` | `str` |  |
 
 #### Example: List
 
 ```python
-country_of_resettlements = client.CountryOfResettlement().list({})
+country_of_resettlements = client.CountryOfResettlement().list()
 ```
 
 
@@ -474,34 +507,34 @@ Create an instance: `demographic = client.Demographic()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `destination` | ``$STRING`` |  |
-| `destination_name` | ``$STRING`` |  |
-| `females_adult` | ``$INTEGER`` |  |
-| `females_senior` | ``$INTEGER`` |  |
-| `females_total` | ``$INTEGER`` |  |
-| `females_underage` | ``$INTEGER`` |  |
-| `females_unknown` | ``$INTEGER`` |  |
-| `males_adult` | ``$INTEGER`` |  |
-| `males_senior` | ``$INTEGER`` |  |
-| `males_total` | ``$INTEGER`` |  |
-| `males_underage` | ``$INTEGER`` |  |
-| `males_unknown` | ``$INTEGER`` |  |
-| `origin` | ``$STRING`` |  |
-| `origin_name` | ``$STRING`` |  |
-| `other` | ``$INTEGER`` |  |
-| `total` | ``$INTEGER`` |  |
-| `year` | ``$INTEGER`` |  |
+| `destination` | `str` |  |
+| `destination_name` | `str` |  |
+| `females_adult` | `int` |  |
+| `females_senior` | `int` |  |
+| `females_total` | `int` |  |
+| `females_underage` | `int` |  |
+| `females_unknown` | `int` |  |
+| `males_adult` | `int` |  |
+| `males_senior` | `int` |  |
+| `males_total` | `int` |  |
+| `males_underage` | `int` |  |
+| `males_unknown` | `int` |  |
+| `origin` | `str` |  |
+| `origin_name` | `str` |  |
+| `other` | `int` |  |
+| `total` | `int` |  |
+| `year` | `int` |  |
 
 #### Example: List
 
 ```python
-demographics = client.Demographic().list({})
+demographics = client.Demographic().list()
 ```
 
 
@@ -513,25 +546,25 @@ Create an instance: `departure = client.Departure()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asylum` | ``$STRING`` |  |
-| `asylum_name` | ``$STRING`` |  |
-| `destination` | ``$STRING`` |  |
-| `destination_name` | ``$STRING`` |  |
-| `origin` | ``$STRING`` |  |
-| `origin_name` | ``$STRING`` |  |
-| `person` | ``$INTEGER`` |  |
-| `year` | ``$INTEGER`` |  |
+| `asylum` | `str` |  |
+| `asylum_name` | `str` |  |
+| `destination` | `str` |  |
+| `destination_name` | `str` |  |
+| `origin` | `str` |  |
+| `origin_name` | `str` |  |
+| `person` | `int` |  |
+| `year` | `int` |  |
 
 #### Example: List
 
 ```python
-departures = client.Departure().list({})
+departures = client.Departure().list()
 ```
 
 
@@ -548,7 +581,7 @@ Create an instance: `helper = client.Helper()`
 #### Example: Load
 
 ```python
-helper = client.Helper().load({"id": "helper_id"})
+helper = client.Helper().load()
 ```
 
 
@@ -560,18 +593,18 @@ Create an instance: `region = client.Region()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `name` | ``$STRING`` |  |
+| `name` | `str` |  |
 
 #### Example: List
 
 ```python
-regions = client.Region().list({})
+regions = client.Region().list()
 ```
 
 
@@ -583,25 +616,25 @@ Create an instance: `submission = client.Submission()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asylum` | ``$STRING`` |  |
-| `asylum_name` | ``$STRING`` |  |
-| `destination` | ``$STRING`` |  |
-| `destination_name` | ``$STRING`` |  |
-| `origin` | ``$STRING`` |  |
-| `origin_name` | ``$STRING`` |  |
-| `person` | ``$INTEGER`` |  |
-| `year` | ``$INTEGER`` |  |
+| `asylum` | `str` |  |
+| `asylum_name` | `str` |  |
+| `destination` | `str` |  |
+| `destination_name` | `str` |  |
+| `origin` | `str` |  |
+| `origin_name` | `str` |  |
+| `person` | `int` |  |
+| `year` | `int` |  |
 
 #### Example: List
 
 ```python
-submissions = client.Submission().list({})
+submissions = client.Submission().list()
 ```
 
 
@@ -613,19 +646,19 @@ Create an instance: `url_fetch = client.UrlFetch()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `status` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `status` | `str` |  |
+| `url` | `str` |  |
 
 #### Example: List
 
 ```python
-url_fetchs = client.UrlFetch().list({})
+url_fetchs = client.UrlFetch().list()
 ```
 
 
@@ -637,21 +670,25 @@ Create an instance: `year = client.Year()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Example: List
 
 ```python
-years = client.Year().list({})
+years = client.Year().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -668,8 +705,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return tuple.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -712,14 +750,14 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
 category = client.Category()
-category.load({"id": "example_id"})
+category.list()
 
-# category.data_get() now returns the loaded category data
+# category.data_get() now returns the category data from the last list
 # category.match_get() returns the last match criteria
 ```
 

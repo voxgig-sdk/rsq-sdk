@@ -236,8 +236,8 @@ const category = client.Category()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `code` | `string` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -287,9 +287,9 @@ const country_of_asylum = client.CountryOfAsylum()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
+| `code` | `string` | No |  |
+| `name` | `string` | No |  |
+| `region` | `string` | No |  |
 
 ### Operations
 
@@ -339,9 +339,9 @@ const country_of_origin = client.CountryOfOrigin()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
+| `code` | `string` | No |  |
+| `name` | `string` | No |  |
+| `region` | `string` | No |  |
 
 ### Operations
 
@@ -391,9 +391,9 @@ const country_of_resettlement = client.CountryOfResettlement()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
+| `code` | `string` | No |  |
+| `name` | `string` | No |  |
+| `region` | `string` | No |  |
 
 ### Operations
 
@@ -443,23 +443,23 @@ const demographic = client.Demographic()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `destination` | ``$STRING`` | No |  |
-| `destination_name` | ``$STRING`` | No |  |
-| `females_adult` | ``$INTEGER`` | No |  |
-| `females_senior` | ``$INTEGER`` | No |  |
-| `females_total` | ``$INTEGER`` | No |  |
-| `females_underage` | ``$INTEGER`` | No |  |
-| `females_unknown` | ``$INTEGER`` | No |  |
-| `males_adult` | ``$INTEGER`` | No |  |
-| `males_senior` | ``$INTEGER`` | No |  |
-| `males_total` | ``$INTEGER`` | No |  |
-| `males_underage` | ``$INTEGER`` | No |  |
-| `males_unknown` | ``$INTEGER`` | No |  |
-| `origin` | ``$STRING`` | No |  |
-| `origin_name` | ``$STRING`` | No |  |
-| `other` | ``$INTEGER`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `destination` | `string` | No |  |
+| `destination_name` | `string` | No |  |
+| `females_adult` | `number` | No |  |
+| `females_senior` | `number` | No |  |
+| `females_total` | `number` | No |  |
+| `females_underage` | `number` | No |  |
+| `females_unknown` | `number` | No |  |
+| `males_adult` | `number` | No |  |
+| `males_senior` | `number` | No |  |
+| `males_total` | `number` | No |  |
+| `males_underage` | `number` | No |  |
+| `males_unknown` | `number` | No |  |
+| `origin` | `string` | No |  |
+| `origin_name` | `string` | No |  |
+| `other` | `number` | No |  |
+| `total` | `number` | No |  |
+| `year` | `number` | No |  |
 
 ### Operations
 
@@ -509,14 +509,14 @@ const departure = client.Departure()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asylum` | ``$STRING`` | No |  |
-| `asylum_name` | ``$STRING`` | No |  |
-| `destination` | ``$STRING`` | No |  |
-| `destination_name` | ``$STRING`` | No |  |
-| `origin` | ``$STRING`` | No |  |
-| `origin_name` | ``$STRING`` | No |  |
-| `person` | ``$INTEGER`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `asylum` | `string` | No |  |
+| `asylum_name` | `string` | No |  |
+| `destination` | `string` | No |  |
+| `destination_name` | `string` | No |  |
+| `origin` | `string` | No |  |
+| `origin_name` | `string` | No |  |
+| `person` | `number` | No |  |
+| `year` | `number` | No |  |
 
 ### Operations
 
@@ -569,7 +569,7 @@ const helper = client.Helper()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Helper().load({ id: 'helper_id' })
+const result = await client.Helper().load()
 ```
 
 ### Common Methods
@@ -610,7 +610,7 @@ const region = client.Region()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | ``$STRING`` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -660,14 +660,14 @@ const submission = client.Submission()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asylum` | ``$STRING`` | No |  |
-| `asylum_name` | ``$STRING`` | No |  |
-| `destination` | ``$STRING`` | No |  |
-| `destination_name` | ``$STRING`` | No |  |
-| `origin` | ``$STRING`` | No |  |
-| `origin_name` | ``$STRING`` | No |  |
-| `person` | ``$INTEGER`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `asylum` | `string` | No |  |
+| `asylum_name` | `string` | No |  |
+| `destination` | `string` | No |  |
+| `destination_name` | `string` | No |  |
+| `origin` | `string` | No |  |
+| `origin_name` | `string` | No |  |
+| `person` | `number` | No |  |
+| `year` | `number` | No |  |
 
 ### Operations
 
@@ -717,8 +717,8 @@ const url_fetch = client.UrlFetch()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `status` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `status` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 

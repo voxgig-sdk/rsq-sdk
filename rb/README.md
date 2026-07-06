@@ -4,6 +4,8 @@
 
 The Ruby SDK for the Rsq API — an entity-oriented client using idiomatic Ruby conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Category` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -35,11 +37,38 @@ begin
   # list returns an Array of Category records — iterate directly.
   categorys = client.Category.list
   categorys.each do |item|
-    puts "#{item["id"]} #{item["name"]}"
+    puts "#{item["code"]}"
   end
 rescue => err
   warn "list failed: #{err}"
 end
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so rescue them:
+
+```ruby
+begin
+  categorys = client.Category.list()
+rescue => err
+  warn "list failed: #{err}"
+end
+```
+
+`direct` does **not** raise — it returns the result hash. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```ruby
+result = client.direct({
+  "path" => "/api/resource/{id}",
+  "method" => "GET",
+  "params" => { "id" => "example_id" },
+})
+
+warn "request failed: #{result["err"] || "HTTP #{result["status"]}"}" unless result["ok"]
 ```
 
 
@@ -60,7 +89,9 @@ if result["ok"]
   puts result["status"]  # 200
   puts result["data"]    # response body
 else
-  warn result["err"]
+  # On an HTTP error status there is no err (only a transport failure sets
+  # it), so fall back to the status code.
+  warn(result["err"] || "HTTP #{result["status"]}")
 end
 ```
 
@@ -83,16 +114,13 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```ruby
-client = RsqSDK.test({
-  "entity" => { "category" => { "test01" => { "id" => "test01" } } },
-})
+client = RsqSDK.test
 
-# load returns the bare mock record (raises on error).
-category = client.Category.load({ "id" => "test01" })
+# Entity ops return the bare mock record (raises on error).
+category = client.Category.list()
 puts category
 ```
 
@@ -188,10 +216,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch, ctrl) -> Array` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -383,8 +408,8 @@ Create an instance: `category = client.Category`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
+| `code` | `String` |  |
+| `name` | `String` |  |
 
 #### Example: List
 
@@ -408,9 +433,9 @@ Create an instance: `country_of_asylum = client.CountryOfAsylum`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `region` | ``$STRING`` |  |
+| `code` | `String` |  |
+| `name` | `String` |  |
+| `region` | `String` |  |
 
 #### Example: List
 
@@ -434,9 +459,9 @@ Create an instance: `country_of_origin = client.CountryOfOrigin`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `region` | ``$STRING`` |  |
+| `code` | `String` |  |
+| `name` | `String` |  |
+| `region` | `String` |  |
 
 #### Example: List
 
@@ -460,9 +485,9 @@ Create an instance: `country_of_resettlement = client.CountryOfResettlement`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `region` | ``$STRING`` |  |
+| `code` | `String` |  |
+| `name` | `String` |  |
+| `region` | `String` |  |
 
 #### Example: List
 
@@ -486,23 +511,23 @@ Create an instance: `demographic = client.Demographic`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `destination` | ``$STRING`` |  |
-| `destination_name` | ``$STRING`` |  |
-| `females_adult` | ``$INTEGER`` |  |
-| `females_senior` | ``$INTEGER`` |  |
-| `females_total` | ``$INTEGER`` |  |
-| `females_underage` | ``$INTEGER`` |  |
-| `females_unknown` | ``$INTEGER`` |  |
-| `males_adult` | ``$INTEGER`` |  |
-| `males_senior` | ``$INTEGER`` |  |
-| `males_total` | ``$INTEGER`` |  |
-| `males_underage` | ``$INTEGER`` |  |
-| `males_unknown` | ``$INTEGER`` |  |
-| `origin` | ``$STRING`` |  |
-| `origin_name` | ``$STRING`` |  |
-| `other` | ``$INTEGER`` |  |
-| `total` | ``$INTEGER`` |  |
-| `year` | ``$INTEGER`` |  |
+| `destination` | `String` |  |
+| `destination_name` | `String` |  |
+| `females_adult` | `Integer` |  |
+| `females_senior` | `Integer` |  |
+| `females_total` | `Integer` |  |
+| `females_underage` | `Integer` |  |
+| `females_unknown` | `Integer` |  |
+| `males_adult` | `Integer` |  |
+| `males_senior` | `Integer` |  |
+| `males_total` | `Integer` |  |
+| `males_underage` | `Integer` |  |
+| `males_unknown` | `Integer` |  |
+| `origin` | `String` |  |
+| `origin_name` | `String` |  |
+| `other` | `Integer` |  |
+| `total` | `Integer` |  |
+| `year` | `Integer` |  |
 
 #### Example: List
 
@@ -526,14 +551,14 @@ Create an instance: `departure = client.Departure`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asylum` | ``$STRING`` |  |
-| `asylum_name` | ``$STRING`` |  |
-| `destination` | ``$STRING`` |  |
-| `destination_name` | ``$STRING`` |  |
-| `origin` | ``$STRING`` |  |
-| `origin_name` | ``$STRING`` |  |
-| `person` | ``$INTEGER`` |  |
-| `year` | ``$INTEGER`` |  |
+| `asylum` | `String` |  |
+| `asylum_name` | `String` |  |
+| `destination` | `String` |  |
+| `destination_name` | `String` |  |
+| `origin` | `String` |  |
+| `origin_name` | `String` |  |
+| `person` | `Integer` |  |
+| `year` | `Integer` |  |
 
 #### Example: List
 
@@ -557,7 +582,7 @@ Create an instance: `helper = client.Helper`
 
 ```ruby
 # load returns the bare Helper record (raises on error).
-helper = client.Helper.load({ "id" => "helper_id" })
+helper = client.Helper.load()
 ```
 
 
@@ -575,7 +600,7 @@ Create an instance: `region = client.Region`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `name` | ``$STRING`` |  |
+| `name` | `String` |  |
 
 #### Example: List
 
@@ -599,14 +624,14 @@ Create an instance: `submission = client.Submission`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asylum` | ``$STRING`` |  |
-| `asylum_name` | ``$STRING`` |  |
-| `destination` | ``$STRING`` |  |
-| `destination_name` | ``$STRING`` |  |
-| `origin` | ``$STRING`` |  |
-| `origin_name` | ``$STRING`` |  |
-| `person` | ``$INTEGER`` |  |
-| `year` | ``$INTEGER`` |  |
+| `asylum` | `String` |  |
+| `asylum_name` | `String` |  |
+| `destination` | `String` |  |
+| `destination_name` | `String` |  |
+| `origin` | `String` |  |
+| `origin_name` | `String` |  |
+| `person` | `Integer` |  |
+| `year` | `Integer` |  |
 
 #### Example: List
 
@@ -630,8 +655,8 @@ Create an instance: `url_fetch = client.UrlFetch`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `status` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `status` | `String` |  |
+| `url` | `String` |  |
 
 #### Example: List
 
@@ -659,12 +684,16 @@ years = client.Year.list
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -681,8 +710,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -726,14 +756,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
 category = client.Category
-category.load({ "id" => "example_id" })
+category.list()
 
-# category.data_get now returns the loaded category data
+# category.data_get now returns the category data from the last list
 # category.match_get returns the last match criteria
 ```
 

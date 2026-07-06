@@ -10,7 +10,10 @@ export interface Category {
   name?: string
 }
 
-export type CategoryListMatch = Partial<Category>
+export interface CategoryListMatch {
+  code?: string
+  name?: string
+}
 
 export interface CountryOfAsylum {
   code?: string
@@ -18,7 +21,11 @@ export interface CountryOfAsylum {
   region?: string
 }
 
-export type CountryOfAsylumListMatch = Partial<CountryOfAsylum>
+export interface CountryOfAsylumListMatch {
+  code?: string
+  name?: string
+  region?: string
+}
 
 export interface CountryOfOrigin {
   code?: string
@@ -26,7 +33,11 @@ export interface CountryOfOrigin {
   region?: string
 }
 
-export type CountryOfOriginListMatch = Partial<CountryOfOrigin>
+export interface CountryOfOriginListMatch {
+  code?: string
+  name?: string
+  region?: string
+}
 
 export interface CountryOfResettlement {
   code?: string
@@ -34,7 +45,11 @@ export interface CountryOfResettlement {
   region?: string
 }
 
-export type CountryOfResettlementListMatch = Partial<CountryOfResettlement>
+export interface CountryOfResettlementListMatch {
+  code?: string
+  name?: string
+  region?: string
+}
 
 export interface Demographic {
   destination?: string
@@ -56,7 +71,25 @@ export interface Demographic {
   year?: number
 }
 
-export type DemographicListMatch = Partial<Demographic>
+export interface DemographicListMatch {
+  destination?: string
+  destination_name?: string
+  females_adult?: number
+  females_senior?: number
+  females_total?: number
+  females_underage?: number
+  females_unknown?: number
+  males_adult?: number
+  males_senior?: number
+  males_total?: number
+  males_underage?: number
+  males_unknown?: number
+  origin?: string
+  origin_name?: string
+  other?: number
+  total?: number
+  year?: number
+}
 
 export interface Departure {
   asylum?: string
@@ -69,18 +102,30 @@ export interface Departure {
   year?: number
 }
 
-export type DepartureListMatch = Partial<Departure>
+export interface DepartureListMatch {
+  asylum?: string
+  asylum_name?: string
+  destination?: string
+  destination_name?: string
+  origin?: string
+  origin_name?: string
+  person?: number
+  year?: number
+}
 
 export interface Helper {
 }
 
-export type HelperLoadMatch = Partial<Helper>
+export interface HelperLoadMatch {
+}
 
 export interface Region {
   name?: string
 }
 
-export type RegionListMatch = Partial<Region>
+export interface RegionListMatch {
+  name?: string
+}
 
 export interface Submission {
   asylum?: string
@@ -93,17 +138,30 @@ export interface Submission {
   year?: number
 }
 
-export type SubmissionListMatch = Partial<Submission>
+export interface SubmissionListMatch {
+  asylum?: string
+  asylum_name?: string
+  destination?: string
+  destination_name?: string
+  origin?: string
+  origin_name?: string
+  person?: number
+  year?: number
+}
 
 export interface UrlFetch {
   status?: string
   url?: string
 }
 
-export type UrlFetchListMatch = Partial<UrlFetch>
+export interface UrlFetchListMatch {
+  status?: string
+  url?: string
+}
 
 export interface Year {
 }
 
-export type YearListMatch = Partial<Year>
+export interface YearListMatch {
+}
 
