@@ -131,6 +131,7 @@ same parameters as `Direct()`.
 
 ```go
 category := client.Category(nil)
+fmt.Println(category.GetName()) // "category"
 ```
 
 ### Fields
@@ -148,6 +149,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Category(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -177,7 +182,8 @@ Return the entity name.
 ## CountryOfAsylumEntity
 
 ```go
-country_of_asylum := client.CountryOfAsylum(nil)
+countryOfAsylum := client.CountryOfAsylum(nil)
+fmt.Println(countryOfAsylum.GetName()) // "country_of_asylum"
 ```
 
 ### Fields
@@ -196,6 +202,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.CountryOfAsylum(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -225,7 +235,8 @@ Return the entity name.
 ## CountryOfOriginEntity
 
 ```go
-country_of_origin := client.CountryOfOrigin(nil)
+countryOfOrigin := client.CountryOfOrigin(nil)
+fmt.Println(countryOfOrigin.GetName()) // "country_of_origin"
 ```
 
 ### Fields
@@ -244,6 +255,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.CountryOfOrigin(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -273,7 +288,8 @@ Return the entity name.
 ## CountryOfResettlementEntity
 
 ```go
-country_of_resettlement := client.CountryOfResettlement(nil)
+countryOfResettlement := client.CountryOfResettlement(nil)
+fmt.Println(countryOfResettlement.GetName()) // "country_of_resettlement"
 ```
 
 ### Fields
@@ -292,6 +308,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.CountryOfResettlement(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -322,6 +342,7 @@ Return the entity name.
 
 ```go
 demographic := client.Demographic(nil)
+fmt.Println(demographic.GetName()) // "demographic"
 ```
 
 ### Fields
@@ -354,6 +375,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Demographic(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -384,6 +409,7 @@ Return the entity name.
 
 ```go
 departure := client.Departure(nil)
+fmt.Println(departure.GetName()) // "departure"
 ```
 
 ### Fields
@@ -407,6 +433,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Departure(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -437,6 +467,7 @@ Return the entity name.
 
 ```go
 helper := client.Helper(nil)
+fmt.Println(helper.GetName()) // "helper"
 ```
 
 ### Operations
@@ -447,6 +478,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Helper(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -477,6 +512,7 @@ Return the entity name.
 
 ```go
 region := client.Region(nil)
+fmt.Println(region.GetName()) // "region"
 ```
 
 ### Fields
@@ -493,6 +529,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Region(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -523,6 +563,7 @@ Return the entity name.
 
 ```go
 submission := client.Submission(nil)
+fmt.Println(submission.GetName()) // "submission"
 ```
 
 ### Fields
@@ -546,6 +587,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Submission(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -575,7 +620,8 @@ Return the entity name.
 ## UrlFetchEntity
 
 ```go
-url_fetch := client.UrlFetch(nil)
+urlFetch := client.UrlFetch(nil)
+fmt.Println(urlFetch.GetName()) // "url_fetch"
 ```
 
 ### Fields
@@ -593,6 +639,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.UrlFetch(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -623,6 +673,7 @@ Return the entity name.
 
 ```go
 year := client.Year(nil)
+fmt.Println(year.GetName()) // "year"
 ```
 
 ### Operations
@@ -633,6 +684,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Year(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

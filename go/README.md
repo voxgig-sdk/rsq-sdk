@@ -449,7 +449,7 @@ fmt.Println(categorys) // the array of records
 
 ### CountryOfAsylum
 
-Create an instance: `country_of_asylum := client.CountryOfAsylum(nil)`
+Create an instance: `countryOfAsylum := client.CountryOfAsylum(nil)`
 
 #### Operations
 
@@ -468,17 +468,17 @@ Create an instance: `country_of_asylum := client.CountryOfAsylum(nil)`
 #### Example: List
 
 ```go
-country_of_asylums, err := client.CountryOfAsylum(nil).List(nil, nil)
+countryOfAsylums, err := client.CountryOfAsylum(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(country_of_asylums) // the array of records
+fmt.Println(countryOfAsylums) // the array of records
 ```
 
 
 ### CountryOfOrigin
 
-Create an instance: `country_of_origin := client.CountryOfOrigin(nil)`
+Create an instance: `countryOfOrigin := client.CountryOfOrigin(nil)`
 
 #### Operations
 
@@ -497,17 +497,17 @@ Create an instance: `country_of_origin := client.CountryOfOrigin(nil)`
 #### Example: List
 
 ```go
-country_of_origins, err := client.CountryOfOrigin(nil).List(nil, nil)
+countryOfOrigins, err := client.CountryOfOrigin(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(country_of_origins) // the array of records
+fmt.Println(countryOfOrigins) // the array of records
 ```
 
 
 ### CountryOfResettlement
 
-Create an instance: `country_of_resettlement := client.CountryOfResettlement(nil)`
+Create an instance: `countryOfResettlement := client.CountryOfResettlement(nil)`
 
 #### Operations
 
@@ -526,11 +526,11 @@ Create an instance: `country_of_resettlement := client.CountryOfResettlement(nil
 #### Example: List
 
 ```go
-country_of_resettlements, err := client.CountryOfResettlement(nil).List(nil, nil)
+countryOfResettlements, err := client.CountryOfResettlement(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(country_of_resettlements) // the array of records
+fmt.Println(countryOfResettlements) // the array of records
 ```
 
 
@@ -695,7 +695,7 @@ fmt.Println(submissions) // the array of records
 
 ### UrlFetch
 
-Create an instance: `url_fetch := client.UrlFetch(nil)`
+Create an instance: `urlFetch := client.UrlFetch(nil)`
 
 #### Operations
 
@@ -713,11 +713,11 @@ Create an instance: `url_fetch := client.UrlFetch(nil)`
 #### Example: List
 
 ```go
-url_fetchs, err := client.UrlFetch(nil).List(nil, nil)
+urlFetchs, err := client.UrlFetch(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(url_fetchs) // the array of records
+fmt.Println(urlFetchs) // the array of records
 ```
 
 

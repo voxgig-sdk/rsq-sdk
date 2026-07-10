@@ -15,9 +15,9 @@ main: {
           url: "http://api.unhcr.org/rsq/v1"
         }
       ]
+      summary: "Full stack RESTful API for entity lists, single entity access, and complex query built requests."
       title: "RSQ API"
       version: "1.0.0"
+      website: "http://unhcr.org"
     }
   }
-}
-
