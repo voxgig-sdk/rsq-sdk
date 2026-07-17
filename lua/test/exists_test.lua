@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Rsq SDK exists test
 
 local sdk = require("rsq_sdk")
 
