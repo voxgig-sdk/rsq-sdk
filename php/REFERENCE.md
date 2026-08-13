@@ -349,16 +349,16 @@ $demographic = $client->Demographic();
 | --- | --- | --- | --- |
 | `destination` | `string` | No |  |
 | `destination_name` | `string` | No |  |
-| `females_adult` | `int` | No |  |
-| `females_senior` | `int` | No |  |
-| `females_total` | `int` | No |  |
-| `females_underage` | `int` | No |  |
-| `females_unknown` | `int` | No |  |
-| `males_adult` | `int` | No |  |
-| `males_senior` | `int` | No |  |
-| `males_total` | `int` | No |  |
-| `males_underage` | `int` | No |  |
-| `males_unknown` | `int` | No |  |
+| `femalesAdult` | `int` | No |  |
+| `femalesSenior` | `int` | No |  |
+| `femalesTotal` | `int` | No |  |
+| `femalesUnderage` | `int` | No |  |
+| `femalesUnknown` | `int` | No |  |
+| `malesAdult` | `int` | No |  |
+| `malesSenior` | `int` | No |  |
+| `malesTotal` | `int` | No |  |
+| `malesUnderage` | `int` | No |  |
+| `malesUnknown` | `int` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
 | `other` | `int` | No |  |
@@ -421,7 +421,7 @@ $departure = $client->Departure();
 | `destination_name` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
-| `person` | `int` | No |  |
+| `persons` | `int` | No |  |
 | `year` | `int` | No |  |
 
 ### Operations
@@ -578,7 +578,7 @@ $submission = $client->Submission();
 | `destination_name` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
-| `person` | `int` | No |  |
+| `persons` | `int` | No |  |
 | `year` | `int` | No |  |
 
 ### Operations

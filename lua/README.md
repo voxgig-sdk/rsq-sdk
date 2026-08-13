@@ -54,7 +54,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local categorys, err = client:Category():list()
+local urlfetchs, err = client:UrlFetch():list()
 if err then error(err) end
 ```
 
@@ -112,7 +112,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Category():list()
+local result, err = client:UrlFetch():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -230,9 +230,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local category, err = client:Category():load()
+    local helper, err = client:Helper():load()
     if err then error(err) end
-    -- category is the loaded record
+    -- helper is the loaded record
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -292,16 +292,16 @@ API path: `/destinations`
 | --- | --- |
 | `destination` |  |
 | `destination_name` |  |
-| `females_adult` |  |
-| `females_senior` |  |
-| `females_total` |  |
-| `females_underage` |  |
-| `females_unknown` |  |
-| `males_adult` |  |
-| `males_senior` |  |
-| `males_total` |  |
-| `males_underage` |  |
-| `males_unknown` |  |
+| `femalesAdult` |  |
+| `femalesSenior` |  |
+| `femalesTotal` |  |
+| `femalesUnderage` |  |
+| `femalesUnknown` |  |
+| `malesAdult` |  |
+| `malesSenior` |  |
+| `malesTotal` |  |
+| `malesUnderage` |  |
+| `malesUnknown` |  |
 | `origin` |  |
 | `origin_name` |  |
 | `other` |  |
@@ -322,7 +322,7 @@ API path: `/demographics`
 | `destination_name` |  |
 | `origin` |  |
 | `origin_name` |  |
-| `person` |  |
+| `persons` |  |
 | `year` |  |
 
 Operations: List.
@@ -358,7 +358,7 @@ API path: `/regions`
 | `destination_name` |  |
 | `origin` |  |
 | `origin_name` |  |
-| `person` |  |
+| `persons` |  |
 | `year` |  |
 
 Operations: List.
@@ -505,16 +505,16 @@ Create an instance: `local demographic = client:Demographic(nil)`
 | --- | --- | --- |
 | `destination` | `string` |  |
 | `destination_name` | `string` |  |
-| `females_adult` | `number` |  |
-| `females_senior` | `number` |  |
-| `females_total` | `number` |  |
-| `females_underage` | `number` |  |
-| `females_unknown` | `number` |  |
-| `males_adult` | `number` |  |
-| `males_senior` | `number` |  |
-| `males_total` | `number` |  |
-| `males_underage` | `number` |  |
-| `males_unknown` | `number` |  |
+| `femalesAdult` | `number` |  |
+| `femalesSenior` | `number` |  |
+| `femalesTotal` | `number` |  |
+| `femalesUnderage` | `number` |  |
+| `femalesUnknown` | `number` |  |
+| `malesAdult` | `number` |  |
+| `malesSenior` | `number` |  |
+| `malesTotal` | `number` |  |
+| `malesUnderage` | `number` |  |
+| `malesUnknown` | `number` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
 | `other` | `number` |  |
@@ -548,7 +548,7 @@ Create an instance: `local departure = client:Departure(nil)`
 | `destination_name` | `string` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
-| `person` | `number` |  |
+| `persons` | `number` |  |
 | `year` | `number` |  |
 
 #### Example: List
@@ -618,7 +618,7 @@ Create an instance: `local submission = client:Submission(nil)`
 | `destination_name` | `string` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
-| `person` | `number` |  |
+| `persons` | `number` |  |
 | `year` | `number` |  |
 
 #### Example: List
@@ -745,11 +745,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local category = client:Category()
-category:list()
+local urlfetch = client:UrlFetch()
+urlfetch:list()
 
--- category:data_get() now returns the category data from the last list
--- category:match_get() returns the last match criteria
+-- urlfetch:data_get() now returns the urlfetch data from the last list
+-- urlfetch:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -38,6 +38,7 @@ guide: {
   entity: demographic: {
     path: "/demographics": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
   }
 

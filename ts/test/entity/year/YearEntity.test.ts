@@ -63,7 +63,7 @@ describe('YearEntity', async () => {
     const year_ref01_ent = client.Year()
     const year_ref01_match: any = {}
 
-    const year_ref01_list = await year_ref01_ent.list(year_ref01_match)
+    const year_ref01_list = (await year_ref01_ent.list(year_ref01_match)).map((e: any) => e.data())
 
 
   })

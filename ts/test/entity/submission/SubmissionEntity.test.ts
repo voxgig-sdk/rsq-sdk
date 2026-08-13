@@ -63,7 +63,7 @@ describe('SubmissionEntity', async () => {
     const submission_ref01_ent = client.Submission()
     const submission_ref01_match: any = {}
 
-    const submission_ref01_list = await submission_ref01_ent.list(submission_ref01_match)
+    const submission_ref01_list = (await submission_ref01_ent.list(submission_ref01_match)).map((e: any) => e.data())
 
 
   })

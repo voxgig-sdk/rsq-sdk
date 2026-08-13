@@ -37,7 +37,7 @@ class DepartureEntity extends RsqEntityBase<Departure> {
 
 
 
-  async list(this: any, reqmatch?: DepartureListMatch, ctrl?: Control): Promise<Departure[]> {
+  async list(this: any, reqmatch?: DepartureListMatch, ctrl?: Control): Promise<DepartureEntity[]> {
 
     const utility = this._utility
 

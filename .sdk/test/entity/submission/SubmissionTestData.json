@@ -8,7 +8,7 @@
         "destination_name": "s53",
         "origin": "s54",
         "origin_name": "s55",
-        "person": "s56",
+        "persons": "s56",
         "year": "s57"
       },
       "SUBMISSION01": {
@@ -18,7 +18,7 @@
         "destination_name": "sa3",
         "origin": "sa4",
         "origin_name": "sa5",
-        "person": "sa6",
+        "persons": "sa6",
         "year": "sa7"
       },
       "SUBMISSION02": {
@@ -28,7 +28,7 @@
         "destination_name": "sf3",
         "origin": "sf4",
         "origin_name": "sf5",
-        "person": "sf6",
+        "persons": "sf6",
         "year": "sf7"
       }
     }
@@ -42,7 +42,7 @@
         "destination_name": "s143",
         "origin": "s144",
         "origin_name": "s145",
-        "person": "s146",
+        "persons": "s146",
         "year": "s147"
       }
     }

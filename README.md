@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = RsqSDK.test()
-const categorys = await client.Category().list()
-// categorys is an array of bare Category records populated with mock data
-console.log(categorys)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = RsqSDK.test({
+  entity: {
+    url_fetch: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const urlfetchs = await client.UrlFetch().list()
+// urlfetchs is an array of UrlFetch entities, populated with mock data
+// — call urlfetchs[0].data() for the record itself
+console.log(urlfetchs)
 ```
 
 ### Python
 
 ```python
 client = RsqSDK.test()
-categorys = client.Category().list()
-print(categorys)
+urlfetchs = client.UrlFetch().list()
+print(urlfetchs)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(categorys)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = RsqSDK::test([
-    "entity" => ["category" => ["test01" => []]],
+    "entity" => ["urlfetch" => ["test01" => []]],
 ]);
-$categorys = $client->Category()->list();
+$urlfetchs = $client->UrlFetch()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Category(nil).List(
+result, err := client.UrlFetch(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Category(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = RsqSDK.test({
-  "entity" => { "category" => { "test01" => {} } },
+  "entity" => { "urlfetch" => { "test01" => {} } },
 })
-categorys = client.Category.list()
+urlfetchs = client.UrlFetch.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Category():list()
+local results, err = client:UrlFetch():list()
 ```
 
 ## Packages
@@ -110,7 +119,7 @@ import { RsqSDK } from '@voxgig-sdk/rsq'
 
 const client = new RsqSDK()
 
-// List all categorys (returns Category[])
+// List all categorys (returns CategoryEntity[] — .data() for the record)
 const categorys = await client.Category().list()
 for (const category of categorys) {
   console.log(category)
@@ -353,6 +362,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://api.unhcr.org/docs/index.html](https://api.unhcr.org/docs/index.html)
 

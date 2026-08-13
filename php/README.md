@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $categorys = $client->Category()->list();
+    $urlfetchs = $client->UrlFetch()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,9 +125,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = RsqSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$category = $client->Category()->list();
-print_r($category);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$urlfetch = $client->UrlFetch()->list();
+print_r($urlfetch);
 ```
 
 ### Use a custom fetch function
@@ -235,7 +236,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -306,16 +307,16 @@ API path: `/destinations`
 | --- | --- |
 | `destination` |  |
 | `destination_name` |  |
-| `females_adult` |  |
-| `females_senior` |  |
-| `females_total` |  |
-| `females_underage` |  |
-| `females_unknown` |  |
-| `males_adult` |  |
-| `males_senior` |  |
-| `males_total` |  |
-| `males_underage` |  |
-| `males_unknown` |  |
+| `femalesAdult` |  |
+| `femalesSenior` |  |
+| `femalesTotal` |  |
+| `femalesUnderage` |  |
+| `femalesUnknown` |  |
+| `malesAdult` |  |
+| `malesSenior` |  |
+| `malesTotal` |  |
+| `malesUnderage` |  |
+| `malesUnknown` |  |
 | `origin` |  |
 | `origin_name` |  |
 | `other` |  |
@@ -336,7 +337,7 @@ API path: `/demographics`
 | `destination_name` |  |
 | `origin` |  |
 | `origin_name` |  |
-| `person` |  |
+| `persons` |  |
 | `year` |  |
 
 Operations: List.
@@ -372,7 +373,7 @@ API path: `/regions`
 | `destination_name` |  |
 | `origin` |  |
 | `origin_name` |  |
-| `person` |  |
+| `persons` |  |
 | `year` |  |
 
 Operations: List.
@@ -523,16 +524,16 @@ Create an instance: `$demographic = $client->Demographic();`
 | --- | --- | --- |
 | `destination` | `string` |  |
 | `destination_name` | `string` |  |
-| `females_adult` | `int` |  |
-| `females_senior` | `int` |  |
-| `females_total` | `int` |  |
-| `females_underage` | `int` |  |
-| `females_unknown` | `int` |  |
-| `males_adult` | `int` |  |
-| `males_senior` | `int` |  |
-| `males_total` | `int` |  |
-| `males_underage` | `int` |  |
-| `males_unknown` | `int` |  |
+| `femalesAdult` | `int` |  |
+| `femalesSenior` | `int` |  |
+| `femalesTotal` | `int` |  |
+| `femalesUnderage` | `int` |  |
+| `femalesUnknown` | `int` |  |
+| `malesAdult` | `int` |  |
+| `malesSenior` | `int` |  |
+| `malesTotal` | `int` |  |
+| `malesUnderage` | `int` |  |
+| `malesUnknown` | `int` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
 | `other` | `int` |  |
@@ -567,7 +568,7 @@ Create an instance: `$departure = $client->Departure();`
 | `destination_name` | `string` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
-| `person` | `int` |  |
+| `persons` | `int` |  |
 | `year` | `int` |  |
 
 #### Example: List
@@ -591,7 +592,7 @@ Create an instance: `$helper = $client->Helper();`
 #### Example: Load
 
 ```php
-// load() returns the bare Helper record (throws on error).
+// load() returns the ENTITY — call data_get() for the Helper record (throws on error).
 $helper = $client->Helper()->load();
 ```
 
@@ -640,7 +641,7 @@ Create an instance: `$submission = $client->Submission();`
 | `destination_name` | `string` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
-| `person` | `int` |  |
+| `persons` | `int` |  |
 | `year` | `int` |  |
 
 #### Example: List
@@ -770,11 +771,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$category = $client->Category();
-$category->list();
+$urlfetch = $client->UrlFetch();
+$urlfetch->list();
 
-// $category->data_get() now returns the category data from the last list
-// $category->match_get() returns the last match criteria
+// $urlfetch->data_get() now returns the urlfetch data from the last list
+// $urlfetch->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -63,7 +63,7 @@ describe('DemographicEntity', async () => {
     const demographic_ref01_ent = client.Demographic()
     const demographic_ref01_match: any = {}
 
-    const demographic_ref01_list = await demographic_ref01_ent.list(demographic_ref01_match)
+    const demographic_ref01_list = (await demographic_ref01_ent.list(demographic_ref01_match)).map((e: any) => e.data())
 
 
   })

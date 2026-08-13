@@ -47,16 +47,16 @@
 ---@class Demographic
 ---@field destination? string
 ---@field destination_name? string
----@field females_adult? number
----@field females_senior? number
----@field females_total? number
----@field females_underage? number
----@field females_unknown? number
----@field males_adult? number
----@field males_senior? number
----@field males_total? number
----@field males_underage? number
----@field males_unknown? number
+---@field femalesAdult? number
+---@field femalesSenior? number
+---@field femalesTotal? number
+---@field femalesUnderage? number
+---@field femalesUnknown? number
+---@field malesAdult? number
+---@field malesSenior? number
+---@field malesTotal? number
+---@field malesUnderage? number
+---@field malesUnknown? number
 ---@field origin? string
 ---@field origin_name? string
 ---@field other? number
@@ -66,16 +66,16 @@
 ---@class DemographicListMatch
 ---@field destination? string
 ---@field destination_name? string
----@field females_adult? number
----@field females_senior? number
----@field females_total? number
----@field females_underage? number
----@field females_unknown? number
----@field males_adult? number
----@field males_senior? number
----@field males_total? number
----@field males_underage? number
----@field males_unknown? number
+---@field femalesAdult? number
+---@field femalesSenior? number
+---@field femalesTotal? number
+---@field femalesUnderage? number
+---@field femalesUnknown? number
+---@field malesAdult? number
+---@field malesSenior? number
+---@field malesTotal? number
+---@field malesUnderage? number
+---@field malesUnknown? number
 ---@field origin? string
 ---@field origin_name? string
 ---@field other? number
@@ -89,7 +89,7 @@
 ---@field destination_name? string
 ---@field origin? string
 ---@field origin_name? string
----@field person? number
+---@field persons? number
 ---@field year? number
 
 ---@class DepartureListMatch
@@ -99,7 +99,7 @@
 ---@field destination_name? string
 ---@field origin? string
 ---@field origin_name? string
----@field person? number
+---@field persons? number
 ---@field year? number
 
 ---@class Helper
@@ -119,7 +119,7 @@
 ---@field destination_name? string
 ---@field origin? string
 ---@field origin_name? string
----@field person? number
+---@field persons? number
 ---@field year? number
 
 ---@class SubmissionListMatch
@@ -129,7 +129,7 @@
 ---@field destination_name? string
 ---@field origin? string
 ---@field origin_name? string
----@field person? number
+---@field persons? number
 ---@field year? number
 
 ---@class UrlFetch

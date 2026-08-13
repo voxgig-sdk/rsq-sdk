@@ -35,7 +35,9 @@ const client = new RsqSDK()
 
 ### 2. List category records
 
-`list()` resolves to an array of Category objects — iterate it directly:
+`list()` resolves to an array of Category ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const categorys = await client.Category().list()
@@ -52,8 +54,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const categorys = await client.Category().list()
-  console.log(categorys)
+  const urlfetchs = await client.UrlFetch().list()
+  console.log(urlfetchs)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -119,9 +121,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = RsqSDK.test()
 
-const category = await client.Category().list()
-// category is a bare entity populated with mock response data
-console.log(category)
+const urlfetch = await client.UrlFetch().list()
+// urlfetch is the entity, populated with mock response data
+// — call urlfetch.data() for the record itself
+console.log(urlfetch)
 ```
 
 You can also use the instance method:
@@ -136,7 +139,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Category()
+const entity = client.UrlFetch()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -345,16 +348,16 @@ API path: `/destinations`
 | --- | --- |
 | `destination` |  |
 | `destination_name` |  |
-| `females_adult` |  |
-| `females_senior` |  |
-| `females_total` |  |
-| `females_underage` |  |
-| `females_unknown` |  |
-| `males_adult` |  |
-| `males_senior` |  |
-| `males_total` |  |
-| `males_underage` |  |
-| `males_unknown` |  |
+| `femalesAdult` |  |
+| `femalesSenior` |  |
+| `femalesTotal` |  |
+| `femalesUnderage` |  |
+| `femalesUnknown` |  |
+| `malesAdult` |  |
+| `malesSenior` |  |
+| `malesTotal` |  |
+| `malesUnderage` |  |
+| `malesUnknown` |  |
 | `origin` |  |
 | `origin_name` |  |
 | `other` |  |
@@ -375,7 +378,7 @@ API path: `/demographics`
 | `destination_name` |  |
 | `origin` |  |
 | `origin_name` |  |
-| `person` |  |
+| `persons` |  |
 | `year` |  |
 
 Operations: list.
@@ -411,7 +414,7 @@ API path: `/regions`
 | `destination_name` |  |
 | `origin` |  |
 | `origin_name` |  |
-| `person` |  |
+| `persons` |  |
 | `year` |  |
 
 Operations: list.
@@ -558,16 +561,16 @@ Create an instance: `const demographic = client.Demographic()`
 | --- | --- | --- |
 | `destination` | `string` |  |
 | `destination_name` | `string` |  |
-| `females_adult` | `number` |  |
-| `females_senior` | `number` |  |
-| `females_total` | `number` |  |
-| `females_underage` | `number` |  |
-| `females_unknown` | `number` |  |
-| `males_adult` | `number` |  |
-| `males_senior` | `number` |  |
-| `males_total` | `number` |  |
-| `males_underage` | `number` |  |
-| `males_unknown` | `number` |  |
+| `femalesAdult` | `number` |  |
+| `femalesSenior` | `number` |  |
+| `femalesTotal` | `number` |  |
+| `femalesUnderage` | `number` |  |
+| `femalesUnknown` | `number` |  |
+| `malesAdult` | `number` |  |
+| `malesSenior` | `number` |  |
+| `malesTotal` | `number` |  |
+| `malesUnderage` | `number` |  |
+| `malesUnknown` | `number` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
 | `other` | `number` |  |
@@ -601,7 +604,7 @@ Create an instance: `const departure = client.Departure()`
 | `destination_name` | `string` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
-| `person` | `number` |  |
+| `persons` | `number` |  |
 | `year` | `number` |  |
 
 #### Example: List
@@ -671,7 +674,7 @@ Create an instance: `const submission = client.Submission()`
 | `destination_name` | `string` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
-| `person` | `number` |  |
+| `persons` | `number` |  |
 | `year` | `number` |  |
 
 #### Example: List
@@ -791,11 +794,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const category = client.Category()
-await category.list()
+const urlfetch = client.UrlFetch()
+await urlfetch.list()
 
-// category.data() now returns the category data from the last `list`
-// category.match() returns the last match criteria
+// urlfetch.data() now returns the urlfetch data from the last `list`
+// urlfetch.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

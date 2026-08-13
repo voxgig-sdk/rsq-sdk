@@ -63,7 +63,7 @@ describe('UrlFetchEntity', async () => {
     const url_fetch_ref01_ent = client.UrlFetch()
     const url_fetch_ref01_match: any = {}
 
-    const url_fetch_ref01_list = await url_fetch_ref01_ent.list(url_fetch_ref01_match)
+    const url_fetch_ref01_list = (await url_fetch_ref01_ent.list(url_fetch_ref01_match)).map((e: any) => e.data())
 
 
   })

@@ -36,7 +36,7 @@ main: kit: entity: departure: {
       type: "`$STRING`"
     }
     {
-      name: "person"
+      name: "persons"
       req: false
       type: "`$INTEGER`"
     }

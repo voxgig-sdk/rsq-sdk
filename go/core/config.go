@@ -70,6 +70,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/categories",
 								"parts": []any{
@@ -87,7 +88,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -139,6 +139,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/asylums",
 								"parts": []any{
@@ -156,7 +157,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -208,6 +208,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/origins/departures",
 								"parts": []any{
@@ -240,6 +241,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/origins/submissions",
 								"parts": []any{
@@ -260,6 +262,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/origins/demographics",
 								"parts": []any{
@@ -274,7 +277,6 @@ func MakeConfig() map[string]any {
 								"index$": 2,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -326,6 +328,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/destinations",
 								"parts": []any{
@@ -343,7 +346,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -368,70 +370,70 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "females_adult",
+						"name": "femalesAdult",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 2,
 					},
 					map[string]any{
 						"active": true,
-						"name": "females_senior",
+						"name": "femalesSenior",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 3,
 					},
 					map[string]any{
 						"active": true,
-						"name": "females_total",
+						"name": "femalesTotal",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 4,
 					},
 					map[string]any{
 						"active": true,
-						"name": "females_underage",
+						"name": "femalesUnderage",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 5,
 					},
 					map[string]any{
 						"active": true,
-						"name": "females_unknown",
+						"name": "femalesUnknown",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 6,
 					},
 					map[string]any{
 						"active": true,
-						"name": "males_adult",
+						"name": "malesAdult",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 7,
 					},
 					map[string]any{
 						"active": true,
-						"name": "males_senior",
+						"name": "malesSenior",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 8,
 					},
 					map[string]any{
 						"active": true,
-						"name": "males_total",
+						"name": "malesTotal",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 9,
 					},
 					map[string]any{
 						"active": true,
-						"name": "males_underage",
+						"name": "malesUnderage",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 10,
 					},
 					map[string]any{
 						"active": true,
-						"name": "males_unknown",
+						"name": "malesUnknown",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 11,
@@ -525,6 +527,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/demographics",
 								"parts": []any{
@@ -541,12 +544,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.results`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -599,7 +601,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "person",
+						"name": "persons",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 6,
@@ -729,6 +731,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/departures",
 								"parts": []any{
@@ -758,7 +761,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -811,6 +813,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/export/csv",
 								"parts": []any{
@@ -832,7 +835,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -870,6 +872,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/regions",
 								"parts": []any{
@@ -887,7 +890,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -940,7 +942,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "person",
+						"name": "persons",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 6,
@@ -1070,6 +1072,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/submissions",
 								"parts": []any{
@@ -1099,7 +1102,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -1152,6 +1154,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/fetchUrl",
 								"parts": []any{
@@ -1170,7 +1173,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -1188,6 +1190,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/years",
 								"parts": []any{
@@ -1203,6 +1206,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/years/demographics",
 								"parts": []any{
@@ -1219,7 +1223,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{

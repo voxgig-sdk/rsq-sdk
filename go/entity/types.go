@@ -6,7 +6,11 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/rsq-sdk/go/core"
+)
 
 // Category is the typed data model for the category entity.
 type Category struct {
@@ -66,16 +70,16 @@ type CountryOfResettlementListMatch struct {
 type Demographic struct {
 	Destination *string `json:"destination,omitempty"`
 	DestinationName *string `json:"destination_name,omitempty"`
-	FemalesAdult *int `json:"females_adult,omitempty"`
-	FemalesSenior *int `json:"females_senior,omitempty"`
-	FemalesTotal *int `json:"females_total,omitempty"`
-	FemalesUnderage *int `json:"females_underage,omitempty"`
-	FemalesUnknown *int `json:"females_unknown,omitempty"`
-	MalesAdult *int `json:"males_adult,omitempty"`
-	MalesSenior *int `json:"males_senior,omitempty"`
-	MalesTotal *int `json:"males_total,omitempty"`
-	MalesUnderage *int `json:"males_underage,omitempty"`
-	MalesUnknown *int `json:"males_unknown,omitempty"`
+	FemalesAdult *int `json:"femalesAdult,omitempty"`
+	FemalesSenior *int `json:"femalesSenior,omitempty"`
+	FemalesTotal *int `json:"femalesTotal,omitempty"`
+	FemalesUnderage *int `json:"femalesUnderage,omitempty"`
+	FemalesUnknown *int `json:"femalesUnknown,omitempty"`
+	MalesAdult *int `json:"malesAdult,omitempty"`
+	MalesSenior *int `json:"malesSenior,omitempty"`
+	MalesTotal *int `json:"malesTotal,omitempty"`
+	MalesUnderage *int `json:"malesUnderage,omitempty"`
+	MalesUnknown *int `json:"malesUnknown,omitempty"`
 	Origin *string `json:"origin,omitempty"`
 	OriginName *string `json:"origin_name,omitempty"`
 	Other *int `json:"other,omitempty"`
@@ -87,16 +91,16 @@ type Demographic struct {
 type DemographicListMatch struct {
 	Destination *string `json:"destination,omitempty"`
 	DestinationName *string `json:"destination_name,omitempty"`
-	FemalesAdult *int `json:"females_adult,omitempty"`
-	FemalesSenior *int `json:"females_senior,omitempty"`
-	FemalesTotal *int `json:"females_total,omitempty"`
-	FemalesUnderage *int `json:"females_underage,omitempty"`
-	FemalesUnknown *int `json:"females_unknown,omitempty"`
-	MalesAdult *int `json:"males_adult,omitempty"`
-	MalesSenior *int `json:"males_senior,omitempty"`
-	MalesTotal *int `json:"males_total,omitempty"`
-	MalesUnderage *int `json:"males_underage,omitempty"`
-	MalesUnknown *int `json:"males_unknown,omitempty"`
+	FemalesAdult *int `json:"femalesAdult,omitempty"`
+	FemalesSenior *int `json:"femalesSenior,omitempty"`
+	FemalesTotal *int `json:"femalesTotal,omitempty"`
+	FemalesUnderage *int `json:"femalesUnderage,omitempty"`
+	FemalesUnknown *int `json:"femalesUnknown,omitempty"`
+	MalesAdult *int `json:"malesAdult,omitempty"`
+	MalesSenior *int `json:"malesSenior,omitempty"`
+	MalesTotal *int `json:"malesTotal,omitempty"`
+	MalesUnderage *int `json:"malesUnderage,omitempty"`
+	MalesUnknown *int `json:"malesUnknown,omitempty"`
 	Origin *string `json:"origin,omitempty"`
 	OriginName *string `json:"origin_name,omitempty"`
 	Other *int `json:"other,omitempty"`
@@ -112,7 +116,7 @@ type Departure struct {
 	DestinationName *string `json:"destination_name,omitempty"`
 	Origin *string `json:"origin,omitempty"`
 	OriginName *string `json:"origin_name,omitempty"`
-	Person *int `json:"person,omitempty"`
+	Persons *int `json:"persons,omitempty"`
 	Year *int `json:"year,omitempty"`
 }
 
@@ -124,7 +128,7 @@ type DepartureListMatch struct {
 	DestinationName *string `json:"destination_name,omitempty"`
 	Origin *string `json:"origin,omitempty"`
 	OriginName *string `json:"origin_name,omitempty"`
-	Person *int `json:"person,omitempty"`
+	Persons *int `json:"persons,omitempty"`
 	Year *int `json:"year,omitempty"`
 }
 
@@ -154,7 +158,7 @@ type Submission struct {
 	DestinationName *string `json:"destination_name,omitempty"`
 	Origin *string `json:"origin,omitempty"`
 	OriginName *string `json:"origin_name,omitempty"`
-	Person *int `json:"person,omitempty"`
+	Persons *int `json:"persons,omitempty"`
 	Year *int `json:"year,omitempty"`
 }
 
@@ -166,7 +170,7 @@ type SubmissionListMatch struct {
 	DestinationName *string `json:"destination_name,omitempty"`
 	Origin *string `json:"origin,omitempty"`
 	OriginName *string `json:"origin_name,omitempty"`
-	Person *int `json:"person,omitempty"`
+	Persons *int `json:"persons,omitempty"`
 	Year *int `json:"year,omitempty"`
 }
 
@@ -202,12 +206,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -219,12 +237,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

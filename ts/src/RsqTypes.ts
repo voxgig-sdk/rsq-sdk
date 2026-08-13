@@ -54,16 +54,16 @@ export interface CountryOfResettlementListMatch {
 export interface Demographic {
   destination?: string
   destination_name?: string
-  females_adult?: number
-  females_senior?: number
-  females_total?: number
-  females_underage?: number
-  females_unknown?: number
-  males_adult?: number
-  males_senior?: number
-  males_total?: number
-  males_underage?: number
-  males_unknown?: number
+  femalesAdult?: number
+  femalesSenior?: number
+  femalesTotal?: number
+  femalesUnderage?: number
+  femalesUnknown?: number
+  malesAdult?: number
+  malesSenior?: number
+  malesTotal?: number
+  malesUnderage?: number
+  malesUnknown?: number
   origin?: string
   origin_name?: string
   other?: number
@@ -74,16 +74,16 @@ export interface Demographic {
 export interface DemographicListMatch {
   destination?: string
   destination_name?: string
-  females_adult?: number
-  females_senior?: number
-  females_total?: number
-  females_underage?: number
-  females_unknown?: number
-  males_adult?: number
-  males_senior?: number
-  males_total?: number
-  males_underage?: number
-  males_unknown?: number
+  femalesAdult?: number
+  femalesSenior?: number
+  femalesTotal?: number
+  femalesUnderage?: number
+  femalesUnknown?: number
+  malesAdult?: number
+  malesSenior?: number
+  malesTotal?: number
+  malesUnderage?: number
+  malesUnknown?: number
   origin?: string
   origin_name?: string
   other?: number
@@ -98,7 +98,7 @@ export interface Departure {
   destination_name?: string
   origin?: string
   origin_name?: string
-  person?: number
+  persons?: number
   year?: number
 }
 
@@ -109,7 +109,7 @@ export interface DepartureListMatch {
   destination_name?: string
   origin?: string
   origin_name?: string
-  person?: number
+  persons?: number
   year?: number
 }
 
@@ -134,7 +134,7 @@ export interface Submission {
   destination_name?: string
   origin?: string
   origin_name?: string
-  person?: number
+  persons?: number
   year?: number
 }
 
@@ -145,7 +145,7 @@ export interface SubmissionListMatch {
   destination_name?: string
   origin?: string
   origin_name?: string
-  person?: number
+  persons?: number
   year?: number
 }
 
@@ -163,5 +163,11 @@ export interface Year {
 }
 
 export interface YearListMatch {
+
+  // Selects a custom action instead of the plain list:
+  //   'demographic'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 

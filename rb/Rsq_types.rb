@@ -144,34 +144,34 @@ CountryOfResettlementListMatch = Struct.new(
 # @!attribute [rw] destination_name
 #   @return [String, nil]
 #
-# @!attribute [rw] females_adult
+# @!attribute [rw] femalesAdult
 #   @return [Integer, nil]
 #
-# @!attribute [rw] females_senior
+# @!attribute [rw] femalesSenior
 #   @return [Integer, nil]
 #
-# @!attribute [rw] females_total
+# @!attribute [rw] femalesTotal
 #   @return [Integer, nil]
 #
-# @!attribute [rw] females_underage
+# @!attribute [rw] femalesUnderage
 #   @return [Integer, nil]
 #
-# @!attribute [rw] females_unknown
+# @!attribute [rw] femalesUnknown
 #   @return [Integer, nil]
 #
-# @!attribute [rw] males_adult
+# @!attribute [rw] malesAdult
 #   @return [Integer, nil]
 #
-# @!attribute [rw] males_senior
+# @!attribute [rw] malesSenior
 #   @return [Integer, nil]
 #
-# @!attribute [rw] males_total
+# @!attribute [rw] malesTotal
 #   @return [Integer, nil]
 #
-# @!attribute [rw] males_underage
+# @!attribute [rw] malesUnderage
 #   @return [Integer, nil]
 #
-# @!attribute [rw] males_unknown
+# @!attribute [rw] malesUnknown
 #   @return [Integer, nil]
 #
 # @!attribute [rw] origin
@@ -191,16 +191,16 @@ CountryOfResettlementListMatch = Struct.new(
 Demographic = Struct.new(
   :destination,
   :destination_name,
-  :females_adult,
-  :females_senior,
-  :females_total,
-  :females_underage,
-  :females_unknown,
-  :males_adult,
-  :males_senior,
-  :males_total,
-  :males_underage,
-  :males_unknown,
+  :femalesAdult,
+  :femalesSenior,
+  :femalesTotal,
+  :femalesUnderage,
+  :femalesUnknown,
+  :malesAdult,
+  :malesSenior,
+  :malesTotal,
+  :malesUnderage,
+  :malesUnknown,
   :origin,
   :origin_name,
   :other,
@@ -217,34 +217,34 @@ Demographic = Struct.new(
 # @!attribute [rw] destination_name
 #   @return [String, nil]
 #
-# @!attribute [rw] females_adult
+# @!attribute [rw] femalesAdult
 #   @return [Integer, nil]
 #
-# @!attribute [rw] females_senior
+# @!attribute [rw] femalesSenior
 #   @return [Integer, nil]
 #
-# @!attribute [rw] females_total
+# @!attribute [rw] femalesTotal
 #   @return [Integer, nil]
 #
-# @!attribute [rw] females_underage
+# @!attribute [rw] femalesUnderage
 #   @return [Integer, nil]
 #
-# @!attribute [rw] females_unknown
+# @!attribute [rw] femalesUnknown
 #   @return [Integer, nil]
 #
-# @!attribute [rw] males_adult
+# @!attribute [rw] malesAdult
 #   @return [Integer, nil]
 #
-# @!attribute [rw] males_senior
+# @!attribute [rw] malesSenior
 #   @return [Integer, nil]
 #
-# @!attribute [rw] males_total
+# @!attribute [rw] malesTotal
 #   @return [Integer, nil]
 #
-# @!attribute [rw] males_underage
+# @!attribute [rw] malesUnderage
 #   @return [Integer, nil]
 #
-# @!attribute [rw] males_unknown
+# @!attribute [rw] malesUnknown
 #   @return [Integer, nil]
 #
 # @!attribute [rw] origin
@@ -264,16 +264,16 @@ Demographic = Struct.new(
 DemographicListMatch = Struct.new(
   :destination,
   :destination_name,
-  :females_adult,
-  :females_senior,
-  :females_total,
-  :females_underage,
-  :females_unknown,
-  :males_adult,
-  :males_senior,
-  :males_total,
-  :males_underage,
-  :males_unknown,
+  :femalesAdult,
+  :femalesSenior,
+  :femalesTotal,
+  :femalesUnderage,
+  :femalesUnknown,
+  :malesAdult,
+  :malesSenior,
+  :malesTotal,
+  :malesUnderage,
+  :malesUnknown,
   :origin,
   :origin_name,
   :other,
@@ -302,7 +302,7 @@ DemographicListMatch = Struct.new(
 # @!attribute [rw] origin_name
 #   @return [String, nil]
 #
-# @!attribute [rw] person
+# @!attribute [rw] persons
 #   @return [Integer, nil]
 #
 # @!attribute [rw] year
@@ -314,7 +314,7 @@ Departure = Struct.new(
   :destination_name,
   :origin,
   :origin_name,
-  :person,
+  :persons,
   :year,
   keyword_init: true
 )
@@ -339,7 +339,7 @@ Departure = Struct.new(
 # @!attribute [rw] origin_name
 #   @return [String, nil]
 #
-# @!attribute [rw] person
+# @!attribute [rw] persons
 #   @return [Integer, nil]
 #
 # @!attribute [rw] year
@@ -351,7 +351,7 @@ DepartureListMatch = Struct.new(
   :destination_name,
   :origin,
   :origin_name,
-  :person,
+  :persons,
   :year,
   keyword_init: true
 )
@@ -402,7 +402,7 @@ RegionListMatch = Struct.new(
 # @!attribute [rw] origin_name
 #   @return [String, nil]
 #
-# @!attribute [rw] person
+# @!attribute [rw] persons
 #   @return [Integer, nil]
 #
 # @!attribute [rw] year
@@ -414,7 +414,7 @@ Submission = Struct.new(
   :destination_name,
   :origin,
   :origin_name,
-  :person,
+  :persons,
   :year,
   keyword_init: true
 )
@@ -439,7 +439,7 @@ Submission = Struct.new(
 # @!attribute [rw] origin_name
 #   @return [String, nil]
 #
-# @!attribute [rw] person
+# @!attribute [rw] persons
 #   @return [Integer, nil]
 #
 # @!attribute [rw] year
@@ -451,7 +451,7 @@ SubmissionListMatch = Struct.new(
   :destination_name,
   :origin,
   :origin_name,
-  :person,
+  :persons,
   :year,
   keyword_init: true
 )

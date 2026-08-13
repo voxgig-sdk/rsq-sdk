@@ -37,7 +37,7 @@ class RegionEntity extends RsqEntityBase<Region> {
 
 
 
-  async list(this: any, reqmatch?: RegionListMatch, ctrl?: Control): Promise<Region[]> {
+  async list(this: any, reqmatch?: RegionListMatch, ctrl?: Control): Promise<RegionEntity[]> {
 
     const utility = this._utility
 

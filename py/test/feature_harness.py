@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import RsqControl
-from core.error import RsqError
-from core.result import RsqResult
-from core.spec import RsqSpec
+from rsq_sdk.config import make_config
+from rsq_sdk.features import _make_feature
+from rsq_sdk.core.control import RsqControl
+from rsq_sdk.core.error import RsqError
+from rsq_sdk.core.result import RsqResult
+from rsq_sdk.core.spec import RsqSpec
 
 
 # True when this SDK was generated with the named feature.

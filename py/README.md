@@ -57,8 +57,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    categorys = client.Category().list()
-    print(categorys)
+    urlfetchs = client.UrlFetch().list()
+    print(urlfetchs)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -124,9 +124,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = RsqSDK.test()
 
-# Entity ops return the bare record and raise on error.
-category = client.Category().list()
-# category contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+urlfetch = client.UrlFetch().list()
+# urlfetch contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -231,7 +232,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -302,16 +303,16 @@ API path: `/destinations`
 | --- | --- |
 | `destination` |  |
 | `destination_name` |  |
-| `females_adult` |  |
-| `females_senior` |  |
-| `females_total` |  |
-| `females_underage` |  |
-| `females_unknown` |  |
-| `males_adult` |  |
-| `males_senior` |  |
-| `males_total` |  |
-| `males_underage` |  |
-| `males_unknown` |  |
+| `femalesAdult` |  |
+| `femalesSenior` |  |
+| `femalesTotal` |  |
+| `femalesUnderage` |  |
+| `femalesUnknown` |  |
+| `malesAdult` |  |
+| `malesSenior` |  |
+| `malesTotal` |  |
+| `malesUnderage` |  |
+| `malesUnknown` |  |
 | `origin` |  |
 | `origin_name` |  |
 | `other` |  |
@@ -332,7 +333,7 @@ API path: `/demographics`
 | `destination_name` |  |
 | `origin` |  |
 | `origin_name` |  |
-| `person` |  |
+| `persons` |  |
 | `year` |  |
 
 Operations: List.
@@ -368,7 +369,7 @@ API path: `/regions`
 | `destination_name` |  |
 | `origin` |  |
 | `origin_name` |  |
-| `person` |  |
+| `persons` |  |
 | `year` |  |
 
 Operations: List.
@@ -515,16 +516,16 @@ Create an instance: `demographic = client.Demographic()`
 | --- | --- | --- |
 | `destination` | `str` |  |
 | `destination_name` | `str` |  |
-| `females_adult` | `int` |  |
-| `females_senior` | `int` |  |
-| `females_total` | `int` |  |
-| `females_underage` | `int` |  |
-| `females_unknown` | `int` |  |
-| `males_adult` | `int` |  |
-| `males_senior` | `int` |  |
-| `males_total` | `int` |  |
-| `males_underage` | `int` |  |
-| `males_unknown` | `int` |  |
+| `femalesAdult` | `int` |  |
+| `femalesSenior` | `int` |  |
+| `femalesTotal` | `int` |  |
+| `femalesUnderage` | `int` |  |
+| `femalesUnknown` | `int` |  |
+| `malesAdult` | `int` |  |
+| `malesSenior` | `int` |  |
+| `malesTotal` | `int` |  |
+| `malesUnderage` | `int` |  |
+| `malesUnknown` | `int` |  |
 | `origin` | `str` |  |
 | `origin_name` | `str` |  |
 | `other` | `int` |  |
@@ -558,7 +559,7 @@ Create an instance: `departure = client.Departure()`
 | `destination_name` | `str` |  |
 | `origin` | `str` |  |
 | `origin_name` | `str` |  |
-| `person` | `int` |  |
+| `persons` | `int` |  |
 | `year` | `int` |  |
 
 #### Example: List
@@ -628,7 +629,7 @@ Create an instance: `submission = client.Submission()`
 | `destination_name` | `str` |  |
 | `origin` | `str` |  |
 | `origin_name` | `str` |  |
-| `person` | `int` |  |
+| `persons` | `int` |  |
 | `year` | `int` |  |
 
 #### Example: List
@@ -754,11 +755,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-category = client.Category()
-category.list()
+urlfetch = client.UrlFetch()
+urlfetch.list()
 
-# category.data_get() now returns the category data from the last list
-# category.match_get() returns the last match criteria
+# urlfetch.data_get() now returns the urlfetch data from the last list
+# urlfetch.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

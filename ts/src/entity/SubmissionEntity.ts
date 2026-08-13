@@ -37,7 +37,7 @@ class SubmissionEntity extends RsqEntityBase<Submission> {
 
 
 
-  async list(this: any, reqmatch?: SubmissionListMatch, ctrl?: Control): Promise<Submission[]> {
+  async list(this: any, reqmatch?: SubmissionListMatch, ctrl?: Control): Promise<SubmissionEntity[]> {
 
     const utility = this._utility
 

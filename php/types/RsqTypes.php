@@ -79,16 +79,16 @@ class Demographic
 {
     public ?string $destination = null;
     public ?string $destination_name = null;
-    public ?int $females_adult = null;
-    public ?int $females_senior = null;
-    public ?int $females_total = null;
-    public ?int $females_underage = null;
-    public ?int $females_unknown = null;
-    public ?int $males_adult = null;
-    public ?int $males_senior = null;
-    public ?int $males_total = null;
-    public ?int $males_underage = null;
-    public ?int $males_unknown = null;
+    public ?int $femalesAdult = null;
+    public ?int $femalesSenior = null;
+    public ?int $femalesTotal = null;
+    public ?int $femalesUnderage = null;
+    public ?int $femalesUnknown = null;
+    public ?int $malesAdult = null;
+    public ?int $malesSenior = null;
+    public ?int $malesTotal = null;
+    public ?int $malesUnderage = null;
+    public ?int $malesUnknown = null;
     public ?string $origin = null;
     public ?string $origin_name = null;
     public ?int $other = null;
@@ -101,16 +101,16 @@ class DemographicListMatch
 {
     public ?string $destination = null;
     public ?string $destination_name = null;
-    public ?int $females_adult = null;
-    public ?int $females_senior = null;
-    public ?int $females_total = null;
-    public ?int $females_underage = null;
-    public ?int $females_unknown = null;
-    public ?int $males_adult = null;
-    public ?int $males_senior = null;
-    public ?int $males_total = null;
-    public ?int $males_underage = null;
-    public ?int $males_unknown = null;
+    public ?int $femalesAdult = null;
+    public ?int $femalesSenior = null;
+    public ?int $femalesTotal = null;
+    public ?int $femalesUnderage = null;
+    public ?int $femalesUnknown = null;
+    public ?int $malesAdult = null;
+    public ?int $malesSenior = null;
+    public ?int $malesTotal = null;
+    public ?int $malesUnderage = null;
+    public ?int $malesUnknown = null;
     public ?string $origin = null;
     public ?string $origin_name = null;
     public ?int $other = null;
@@ -127,7 +127,7 @@ class Departure
     public ?string $destination_name = null;
     public ?string $origin = null;
     public ?string $origin_name = null;
-    public ?int $person = null;
+    public ?int $persons = null;
     public ?int $year = null;
 }
 
@@ -140,7 +140,7 @@ class DepartureListMatch
     public ?string $destination_name = null;
     public ?string $origin = null;
     public ?string $origin_name = null;
-    public ?int $person = null;
+    public ?int $persons = null;
     public ?int $year = null;
 }
 
@@ -175,7 +175,7 @@ class Submission
     public ?string $destination_name = null;
     public ?string $origin = null;
     public ?string $origin_name = null;
-    public ?int $person = null;
+    public ?int $persons = null;
     public ?int $year = null;
 }
 
@@ -188,7 +188,7 @@ class SubmissionListMatch
     public ?string $destination_name = null;
     public ?string $origin = null;
     public ?string $origin_name = null;
-    public ?int $person = null;
+    public ?int $persons = null;
     public ?int $year = null;
 }
 

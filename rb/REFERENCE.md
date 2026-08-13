@@ -350,16 +350,16 @@ demographic = client.Demographic
 | --- | --- | --- | --- |
 | `destination` | `String` | No |  |
 | `destination_name` | `String` | No |  |
-| `females_adult` | `Integer` | No |  |
-| `females_senior` | `Integer` | No |  |
-| `females_total` | `Integer` | No |  |
-| `females_underage` | `Integer` | No |  |
-| `females_unknown` | `Integer` | No |  |
-| `males_adult` | `Integer` | No |  |
-| `males_senior` | `Integer` | No |  |
-| `males_total` | `Integer` | No |  |
-| `males_underage` | `Integer` | No |  |
-| `males_unknown` | `Integer` | No |  |
+| `femalesAdult` | `Integer` | No |  |
+| `femalesSenior` | `Integer` | No |  |
+| `femalesTotal` | `Integer` | No |  |
+| `femalesUnderage` | `Integer` | No |  |
+| `femalesUnknown` | `Integer` | No |  |
+| `malesAdult` | `Integer` | No |  |
+| `malesSenior` | `Integer` | No |  |
+| `malesTotal` | `Integer` | No |  |
+| `malesUnderage` | `Integer` | No |  |
+| `malesUnknown` | `Integer` | No |  |
 | `origin` | `String` | No |  |
 | `origin_name` | `String` | No |  |
 | `other` | `Integer` | No |  |
@@ -422,7 +422,7 @@ departure = client.Departure
 | `destination_name` | `String` | No |  |
 | `origin` | `String` | No |  |
 | `origin_name` | `String` | No |  |
-| `person` | `Integer` | No |  |
+| `persons` | `Integer` | No |  |
 | `year` | `Integer` | No |  |
 
 ### Operations
@@ -579,7 +579,7 @@ submission = client.Submission
 | `destination_name` | `String` | No |  |
 | `origin` | `String` | No |  |
 | `origin_name` | `String` | No |  |
-| `person` | `Integer` | No |  |
+| `persons` | `Integer` | No |  |
 | `year` | `Integer` | No |  |
 
 ### Operations

@@ -51,7 +51,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  categorys = client.Category.list()
+  urlfetchs = client.UrlFetch.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -119,9 +119,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = RsqSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-category = client.Category.list()
-puts category
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+urlfetch = client.UrlFetch.list()
+puts urlfetch
 ```
 
 ### Use a custom fetch function
@@ -296,16 +297,16 @@ API path: `/destinations`
 | --- | --- |
 | `destination` |  |
 | `destination_name` |  |
-| `females_adult` |  |
-| `females_senior` |  |
-| `females_total` |  |
-| `females_underage` |  |
-| `females_unknown` |  |
-| `males_adult` |  |
-| `males_senior` |  |
-| `males_total` |  |
-| `males_underage` |  |
-| `males_unknown` |  |
+| `femalesAdult` |  |
+| `femalesSenior` |  |
+| `femalesTotal` |  |
+| `femalesUnderage` |  |
+| `femalesUnknown` |  |
+| `malesAdult` |  |
+| `malesSenior` |  |
+| `malesTotal` |  |
+| `malesUnderage` |  |
+| `malesUnknown` |  |
 | `origin` |  |
 | `origin_name` |  |
 | `other` |  |
@@ -326,7 +327,7 @@ API path: `/demographics`
 | `destination_name` |  |
 | `origin` |  |
 | `origin_name` |  |
-| `person` |  |
+| `persons` |  |
 | `year` |  |
 
 Operations: List.
@@ -362,7 +363,7 @@ API path: `/regions`
 | `destination_name` |  |
 | `origin` |  |
 | `origin_name` |  |
-| `person` |  |
+| `persons` |  |
 | `year` |  |
 
 Operations: List.
@@ -513,16 +514,16 @@ Create an instance: `demographic = client.Demographic`
 | --- | --- | --- |
 | `destination` | `String` |  |
 | `destination_name` | `String` |  |
-| `females_adult` | `Integer` |  |
-| `females_senior` | `Integer` |  |
-| `females_total` | `Integer` |  |
-| `females_underage` | `Integer` |  |
-| `females_unknown` | `Integer` |  |
-| `males_adult` | `Integer` |  |
-| `males_senior` | `Integer` |  |
-| `males_total` | `Integer` |  |
-| `males_underage` | `Integer` |  |
-| `males_unknown` | `Integer` |  |
+| `femalesAdult` | `Integer` |  |
+| `femalesSenior` | `Integer` |  |
+| `femalesTotal` | `Integer` |  |
+| `femalesUnderage` | `Integer` |  |
+| `femalesUnknown` | `Integer` |  |
+| `malesAdult` | `Integer` |  |
+| `malesSenior` | `Integer` |  |
+| `malesTotal` | `Integer` |  |
+| `malesUnderage` | `Integer` |  |
+| `malesUnknown` | `Integer` |  |
 | `origin` | `String` |  |
 | `origin_name` | `String` |  |
 | `other` | `Integer` |  |
@@ -557,7 +558,7 @@ Create an instance: `departure = client.Departure`
 | `destination_name` | `String` |  |
 | `origin` | `String` |  |
 | `origin_name` | `String` |  |
-| `person` | `Integer` |  |
+| `persons` | `Integer` |  |
 | `year` | `Integer` |  |
 
 #### Example: List
@@ -581,7 +582,7 @@ Create an instance: `helper = client.Helper`
 #### Example: Load
 
 ```ruby
-# load returns the bare Helper record (raises on error).
+# load returns the ENTITY — call data_get for the Helper record (raises on error).
 helper = client.Helper.load()
 ```
 
@@ -630,7 +631,7 @@ Create an instance: `submission = client.Submission`
 | `destination_name` | `String` |  |
 | `origin` | `String` |  |
 | `origin_name` | `String` |  |
-| `person` | `Integer` |  |
+| `persons` | `Integer` |  |
 | `year` | `Integer` |  |
 
 #### Example: List
@@ -760,11 +761,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-category = client.Category
-category.list()
+urlfetch = client.UrlFetch
+urlfetch.list()
 
-# category.data_get now returns the category data from the last list
-# category.match_get returns the last match criteria
+# urlfetch.data_get now returns the urlfetch data from the last list
+# urlfetch.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

@@ -63,7 +63,7 @@ describe('CountryOfResettlementEntity', async () => {
     const country_of_resettlement_ref01_ent = client.CountryOfResettlement()
     const country_of_resettlement_ref01_match: any = {}
 
-    const country_of_resettlement_ref01_list = await country_of_resettlement_ref01_ent.list(country_of_resettlement_ref01_match)
+    const country_of_resettlement_ref01_list = (await country_of_resettlement_ref01_ent.list(country_of_resettlement_ref01_match)).map((e: any) => e.data())
 
 
   })

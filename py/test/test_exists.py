@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Rsq SDK exists test
 
 import pytest
 from rsq_sdk import RsqSDK

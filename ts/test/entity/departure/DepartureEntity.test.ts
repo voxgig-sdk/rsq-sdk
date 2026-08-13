@@ -63,7 +63,7 @@ describe('DepartureEntity', async () => {
     const departure_ref01_ent = client.Departure()
     const departure_ref01_match: any = {}
 
-    const departure_ref01_list = await departure_ref01_ent.list(departure_ref01_match)
+    const departure_ref01_list = (await departure_ref01_ent.list(departure_ref01_match)).map((e: any) => e.data())
 
 
   })

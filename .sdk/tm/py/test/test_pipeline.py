@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import RsqSDK
-from core.error import RsqError
-from core.result import RsqResult
-from core.response import RsqResponse
-from core.spec import RsqSpec
-from feature.base_feature import RsqBaseFeature
+from projectname_sdk.core.error import RsqError
+from projectname_sdk.core.result import RsqResult
+from projectname_sdk.core.response import RsqResponse
+from projectname_sdk.core.spec import RsqSpec
+from projectname_sdk.feature.base_feature import RsqBaseFeature
 
 
 def _client():

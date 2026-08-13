@@ -36,7 +36,7 @@ main: kit: entity: submission: {
       type: "`$STRING`"
     }
     {
-      name: "person"
+      name: "persons"
       req: false
       type: "`$INTEGER`"
     }

@@ -76,6 +76,7 @@ class RsqConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/categories',
                   'parts' => [
@@ -145,6 +146,7 @@ class RsqConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/asylums',
                   'parts' => [
@@ -214,6 +216,7 @@ class RsqConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/origins/departures',
                   'parts' => [
@@ -246,6 +249,7 @@ class RsqConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/origins/submissions',
                   'parts' => [
@@ -266,6 +270,7 @@ class RsqConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/origins/demographics',
                   'parts' => [
@@ -332,6 +337,7 @@ class RsqConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/destinations',
                   'parts' => [
@@ -374,70 +380,70 @@ class RsqConfig
             ],
             [
               'active' => true,
-              'name' => 'females_adult',
+              'name' => 'femalesAdult',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 2,
             ],
             [
               'active' => true,
-              'name' => 'females_senior',
+              'name' => 'femalesSenior',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 3,
             ],
             [
               'active' => true,
-              'name' => 'females_total',
+              'name' => 'femalesTotal',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 4,
             ],
             [
               'active' => true,
-              'name' => 'females_underage',
+              'name' => 'femalesUnderage',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 5,
             ],
             [
               'active' => true,
-              'name' => 'females_unknown',
+              'name' => 'femalesUnknown',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 6,
             ],
             [
               'active' => true,
-              'name' => 'males_adult',
+              'name' => 'malesAdult',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 7,
             ],
             [
               'active' => true,
-              'name' => 'males_senior',
+              'name' => 'malesSenior',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 8,
             ],
             [
               'active' => true,
-              'name' => 'males_total',
+              'name' => 'malesTotal',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 9,
             ],
             [
               'active' => true,
-              'name' => 'males_underage',
+              'name' => 'malesUnderage',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 10,
             ],
             [
               'active' => true,
-              'name' => 'males_unknown',
+              'name' => 'malesUnknown',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 11,
@@ -531,6 +537,7 @@ class RsqConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/demographics',
                   'parts' => [
@@ -547,7 +554,7 @@ class RsqConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'index$' => 0,
                 ],
@@ -605,7 +612,7 @@ class RsqConfig
             ],
             [
               'active' => true,
-              'name' => 'person',
+              'name' => 'persons',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 6,
@@ -735,6 +742,7 @@ class RsqConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/departures',
                   'parts' => [
@@ -817,6 +825,7 @@ class RsqConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/export/csv',
                   'parts' => [
@@ -876,6 +885,7 @@ class RsqConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/regions',
                   'parts' => [
@@ -946,7 +956,7 @@ class RsqConfig
             ],
             [
               'active' => true,
-              'name' => 'person',
+              'name' => 'persons',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 6,
@@ -1076,6 +1086,7 @@ class RsqConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/submissions',
                   'parts' => [
@@ -1158,6 +1169,7 @@ class RsqConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/fetchUrl',
                   'parts' => [
@@ -1194,6 +1206,7 @@ class RsqConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/years',
                   'parts' => [
@@ -1209,6 +1222,7 @@ class RsqConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/years/demographics',
                   'parts' => [

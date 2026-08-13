@@ -37,7 +37,7 @@ class UrlFetchEntity extends RsqEntityBase<UrlFetch> {
 
 
 
-  async list(this: any, reqmatch?: UrlFetchListMatch, ctrl?: Control): Promise<UrlFetch[]> {
+  async list(this: any, reqmatch?: UrlFetchListMatch, ctrl?: Control): Promise<UrlFetchEntity[]> {
 
     const utility = this._utility
 

@@ -37,7 +37,7 @@ class CountryOfOriginEntity extends RsqEntityBase<CountryOfOrigin> {
 
 
 
-  async list(this: any, reqmatch?: CountryOfOriginListMatch, ctrl?: Control): Promise<CountryOfOrigin[]> {
+  async list(this: any, reqmatch?: CountryOfOriginListMatch, ctrl?: Control): Promise<CountryOfOriginEntity[]> {
 
     const utility = this._utility
 

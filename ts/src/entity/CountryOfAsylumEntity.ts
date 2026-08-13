@@ -37,7 +37,7 @@ class CountryOfAsylumEntity extends RsqEntityBase<CountryOfAsylum> {
 
 
 
-  async list(this: any, reqmatch?: CountryOfAsylumListMatch, ctrl?: Control): Promise<CountryOfAsylum[]> {
+  async list(this: any, reqmatch?: CountryOfAsylumListMatch, ctrl?: Control): Promise<CountryOfAsylumEntity[]> {
 
     const utility = this._utility
 

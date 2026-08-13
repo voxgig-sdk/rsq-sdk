@@ -62,7 +62,7 @@ describe('HelperEntity', async () => {
     // LOAD
     const helper_ref01_ent = client.Helper()
     const helper_ref01_match_dt0: any = {}
-    const helper_ref01_data_dt0 = await helper_ref01_ent.load(helper_ref01_match_dt0)
+    const helper_ref01_data_dt0 = (await helper_ref01_ent.load(helper_ref01_match_dt0)).data()
     assert(null != helper_ref01_data_dt0)
 
 

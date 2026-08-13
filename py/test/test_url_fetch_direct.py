@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from rsq_sdk.utility.voxgig_struct import voxgig_struct as vs
 from rsq_sdk import RsqSDK
-from core import helpers
+from rsq_sdk.core import helpers
 from test import runner
 
 

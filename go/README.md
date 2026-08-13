@@ -68,12 +68,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-categorys, err := client.Category(nil).List(nil, nil)
+urlfetchs, err := client.UrlFetch(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = categorys
+_ = urlfetchs
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -137,13 +137,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-category, err := client.Category(nil).List(
+urlFetch, err := client.UrlFetch(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(category) // the returned mock data
+fmt.Println(urlFetch) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -321,16 +321,16 @@ API path: `/destinations`
 | --- | --- |
 | `"destination"` |  |
 | `"destination_name"` |  |
-| `"females_adult"` |  |
-| `"females_senior"` |  |
-| `"females_total"` |  |
-| `"females_underage"` |  |
-| `"females_unknown"` |  |
-| `"males_adult"` |  |
-| `"males_senior"` |  |
-| `"males_total"` |  |
-| `"males_underage"` |  |
-| `"males_unknown"` |  |
+| `"femalesAdult"` |  |
+| `"femalesSenior"` |  |
+| `"femalesTotal"` |  |
+| `"femalesUnderage"` |  |
+| `"femalesUnknown"` |  |
+| `"malesAdult"` |  |
+| `"malesSenior"` |  |
+| `"malesTotal"` |  |
+| `"malesUnderage"` |  |
+| `"malesUnknown"` |  |
 | `"origin"` |  |
 | `"origin_name"` |  |
 | `"other"` |  |
@@ -351,7 +351,7 @@ API path: `/demographics`
 | `"destination_name"` |  |
 | `"origin"` |  |
 | `"origin_name"` |  |
-| `"person"` |  |
+| `"persons"` |  |
 | `"year"` |  |
 
 Operations: List.
@@ -387,7 +387,7 @@ API path: `/regions`
 | `"destination_name"` |  |
 | `"origin"` |  |
 | `"origin_name"` |  |
-| `"person"` |  |
+| `"persons"` |  |
 | `"year"` |  |
 
 Operations: List.
@@ -550,16 +550,16 @@ Create an instance: `demographic := client.Demographic(nil)`
 | --- | --- | --- |
 | `destination` | `string` |  |
 | `destination_name` | `string` |  |
-| `females_adult` | `int` |  |
-| `females_senior` | `int` |  |
-| `females_total` | `int` |  |
-| `females_underage` | `int` |  |
-| `females_unknown` | `int` |  |
-| `males_adult` | `int` |  |
-| `males_senior` | `int` |  |
-| `males_total` | `int` |  |
-| `males_underage` | `int` |  |
-| `males_unknown` | `int` |  |
+| `femalesAdult` | `int` |  |
+| `femalesSenior` | `int` |  |
+| `femalesTotal` | `int` |  |
+| `femalesUnderage` | `int` |  |
+| `femalesUnknown` | `int` |  |
+| `malesAdult` | `int` |  |
+| `malesSenior` | `int` |  |
+| `malesTotal` | `int` |  |
+| `malesUnderage` | `int` |  |
+| `malesUnknown` | `int` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
 | `other` | `int` |  |
@@ -597,7 +597,7 @@ Create an instance: `departure := client.Departure(nil)`
 | `destination_name` | `string` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
-| `person` | `int` |  |
+| `persons` | `int` |  |
 | `year` | `int` |  |
 
 #### Example: List
@@ -679,7 +679,7 @@ Create an instance: `submission := client.Submission(nil)`
 | `destination_name` | `string` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
-| `person` | `int` |  |
+| `persons` | `int` |  |
 | `year` | `int` |  |
 
 #### Example: List
@@ -815,11 +815,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-category := client.Category(nil)
-category.List(nil, nil)
+urlfetch := client.UrlFetch(nil)
+urlfetch.List(nil, nil)
 
-// category.Data() now returns the category data from the last list
-// category.Match() returns the last match criteria
+// urlfetch.Data() now returns the urlfetch data from the last list
+// urlfetch.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

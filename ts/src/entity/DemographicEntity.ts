@@ -37,7 +37,7 @@ class DemographicEntity extends RsqEntityBase<Demographic> {
 
 
 
-  async list(this: any, reqmatch?: DemographicListMatch, ctrl?: Control): Promise<Demographic[]> {
+  async list(this: any, reqmatch?: DemographicListMatch, ctrl?: Control): Promise<DemographicEntity[]> {
 
     const utility = this._utility
 

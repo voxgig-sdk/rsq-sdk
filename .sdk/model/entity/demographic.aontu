@@ -16,52 +16,52 @@ main: kit: entity: demographic: {
       type: "`$STRING`"
     }
     {
-      name: "females_adult"
+      name: "femalesAdult"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "females_senior"
+      name: "femalesSenior"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "females_total"
+      name: "femalesTotal"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "females_underage"
+      name: "femalesUnderage"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "females_unknown"
+      name: "femalesUnknown"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "males_adult"
+      name: "malesAdult"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "males_senior"
+      name: "malesSenior"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "males_total"
+      name: "malesTotal"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "males_underage"
+      name: "malesUnderage"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "males_unknown"
+      name: "malesUnknown"
       req: false
       type: "`$INTEGER`"
     }
@@ -154,7 +154,7 @@ main: kit: entity: demographic: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

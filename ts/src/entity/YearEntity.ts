@@ -37,7 +37,7 @@ class YearEntity extends RsqEntityBase<Year> {
 
 
 
-  async list(this: any, reqmatch?: YearListMatch, ctrl?: Control): Promise<Year[]> {
+  async list(this: any, reqmatch?: YearListMatch, ctrl?: Control): Promise<YearEntity[]> {
 
     const utility = this._utility
 

@@ -445,16 +445,16 @@ const demographic = client.Demographic()
 | --- | --- | --- | --- |
 | `destination` | `string` | No |  |
 | `destination_name` | `string` | No |  |
-| `females_adult` | `number` | No |  |
-| `females_senior` | `number` | No |  |
-| `females_total` | `number` | No |  |
-| `females_underage` | `number` | No |  |
-| `females_unknown` | `number` | No |  |
-| `males_adult` | `number` | No |  |
-| `males_senior` | `number` | No |  |
-| `males_total` | `number` | No |  |
-| `males_underage` | `number` | No |  |
-| `males_unknown` | `number` | No |  |
+| `femalesAdult` | `number` | No |  |
+| `femalesSenior` | `number` | No |  |
+| `femalesTotal` | `number` | No |  |
+| `femalesUnderage` | `number` | No |  |
+| `femalesUnknown` | `number` | No |  |
+| `malesAdult` | `number` | No |  |
+| `malesSenior` | `number` | No |  |
+| `malesTotal` | `number` | No |  |
+| `malesUnderage` | `number` | No |  |
+| `malesUnknown` | `number` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
 | `other` | `number` | No |  |
@@ -515,7 +515,7 @@ const departure = client.Departure()
 | `destination_name` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
-| `person` | `number` | No |  |
+| `persons` | `number` | No |  |
 | `year` | `number` | No |  |
 
 ### Operations
@@ -666,7 +666,7 @@ const submission = client.Submission()
 | `destination_name` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
-| `person` | `number` | No |  |
+| `persons` | `number` | No |  |
 | `year` | `number` | No |  |
 
 ### Operations
@@ -762,6 +762,26 @@ Return a copy of the entity options.
 
 ```ts
 const year = client.Year()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `demographic` | `/years/demographics` | `client.Year().list({ $action: 'demographic', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Year record — check the API definition for its shape.
+
+```ts
+const result = await client.Year().list({
+  $action: 'demographic',
+  /* ...the action's own arguments */
+})
 ```
 
 ### Operations

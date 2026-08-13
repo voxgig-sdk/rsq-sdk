@@ -347,16 +347,16 @@ local demographic = client:Demographic(nil)
 | --- | --- | --- | --- |
 | `destination` | `string` | No |  |
 | `destination_name` | `string` | No |  |
-| `females_adult` | `number` | No |  |
-| `females_senior` | `number` | No |  |
-| `females_total` | `number` | No |  |
-| `females_underage` | `number` | No |  |
-| `females_unknown` | `number` | No |  |
-| `males_adult` | `number` | No |  |
-| `males_senior` | `number` | No |  |
-| `males_total` | `number` | No |  |
-| `males_underage` | `number` | No |  |
-| `males_unknown` | `number` | No |  |
+| `femalesAdult` | `number` | No |  |
+| `femalesSenior` | `number` | No |  |
+| `femalesTotal` | `number` | No |  |
+| `femalesUnderage` | `number` | No |  |
+| `femalesUnknown` | `number` | No |  |
+| `malesAdult` | `number` | No |  |
+| `malesSenior` | `number` | No |  |
+| `malesTotal` | `number` | No |  |
+| `malesUnderage` | `number` | No |  |
+| `malesUnknown` | `number` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
 | `other` | `number` | No |  |
@@ -419,7 +419,7 @@ local departure = client:Departure(nil)
 | `destination_name` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
-| `person` | `number` | No |  |
+| `persons` | `number` | No |  |
 | `year` | `number` | No |  |
 
 ### Operations
@@ -576,7 +576,7 @@ local submission = client:Submission(nil)
 | `destination_name` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
-| `person` | `number` | No |  |
+| `persons` | `number` | No |  |
 | `year` | `number` | No |  |
 
 ### Operations
