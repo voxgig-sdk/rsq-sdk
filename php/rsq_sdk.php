@@ -40,7 +40,7 @@ class RsqSDK
         $utility = new RsqUtility();
         $this->_utility = $utility;
 
-        $config = RsqConfig::make_config();
+        $config = RsqConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

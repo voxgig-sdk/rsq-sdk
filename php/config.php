@@ -5,6 +5,29 @@ declare(strict_types=1);
 
 class RsqConfig
 {
+    /** @var array<string,mixed>|null */
+    private static ?array $shared_config = null;
+
+    /**
+     * Return the process-wide config, built once on first use. The SDK reads
+     * the config on every request and never writes to it, so one instance is
+     * shared by every client rather than rebuilt per client.
+     *
+     * PHP arrays are copy-on-write, so callers that do mutate the result get
+     * their own copy and cannot disturb the shared one.
+     */
+    public static function shared_config(): array
+    {
+        if (self::$shared_config === null) {
+            self::$shared_config = self::make_config();
+        }
+        return self::$shared_config;
+    }
+
+    /**
+     * Build a fresh, fully materialised config array. Every call rebuilds the
+     * whole structure, so prefer shared_config unless you need a private copy.
+     */
     public static function make_config(): array
     {
         return [
@@ -41,18 +64,12 @@ class RsqConfig
         'category' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'code',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'name',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 1,
             ],
           ],
           'name' => 'category',
@@ -62,16 +79,13 @@ class RsqConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'en',
                         'kind' => 'query',
                         'name' => 'language',
                         'orig' => 'language',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                     ],
@@ -91,10 +105,8 @@ class RsqConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -104,25 +116,16 @@ class RsqConfig
         'country_of_asylum' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'code',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'name',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'region',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 2,
             ],
           ],
           'name' => 'country_of_asylum',
@@ -132,16 +135,13 @@ class RsqConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'en',
                         'kind' => 'query',
                         'name' => 'language',
                         'orig' => 'language',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                     ],
@@ -161,10 +161,8 @@ class RsqConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -174,25 +172,16 @@ class RsqConfig
         'country_of_origin' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'code',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'name',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'region',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 2,
             ],
           ],
           'name' => 'country_of_origin',
@@ -202,16 +191,13 @@ class RsqConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'en',
                         'kind' => 'query',
                         'name' => 'language',
                         'orig' => 'language',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                     ],
@@ -232,19 +218,15 @@ class RsqConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'en',
                         'kind' => 'query',
                         'name' => 'language',
                         'orig' => 'language',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                     ],
@@ -265,10 +247,8 @@ class RsqConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -282,10 +262,8 @@ class RsqConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 2,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -295,25 +273,16 @@ class RsqConfig
         'country_of_resettlement' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'code',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'name',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'region',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 2,
             ],
           ],
           'name' => 'country_of_resettlement',
@@ -323,16 +292,13 @@ class RsqConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'en',
                         'kind' => 'query',
                         'name' => 'language',
                         'orig' => 'language',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                     ],
@@ -352,10 +318,8 @@ class RsqConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -365,123 +329,72 @@ class RsqConfig
         'demographic' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'destination',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'destination_name',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'femalesAdult',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'femalesSenior',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 3,
             ],
             [
-              'active' => true,
               'name' => 'femalesTotal',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 4,
             ],
             [
-              'active' => true,
               'name' => 'femalesUnderage',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 5,
             ],
             [
-              'active' => true,
               'name' => 'femalesUnknown',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 6,
             ],
             [
-              'active' => true,
               'name' => 'malesAdult',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 7,
             ],
             [
-              'active' => true,
               'name' => 'malesSenior',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 8,
             ],
             [
-              'active' => true,
               'name' => 'malesTotal',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 9,
             ],
             [
-              'active' => true,
               'name' => 'malesUnderage',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 10,
             ],
             [
-              'active' => true,
               'name' => 'malesUnknown',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 11,
             ],
             [
-              'active' => true,
               'name' => 'origin',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 12,
             ],
             [
-              'active' => true,
               'name' => 'origin_name',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 13,
             ],
             [
-              'active' => true,
               'name' => 'other',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 14,
             ],
             [
-              'active' => true,
               'name' => 'total',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 15,
             ],
             [
-              'active' => true,
               'name' => 'year',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 16,
             ],
           ],
           'name' => 'demographic',
@@ -491,48 +404,37 @@ class RsqConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'en',
                         'kind' => 'query',
                         'name' => 'language',
                         'orig' => 'language',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'origin',
                         'orig' => 'origin',
-                        'reqd' => false,
                         'type' => '`$ARRAY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'origin_compare',
                         'orig' => 'origin_compare',
-                        'reqd' => false,
                         'type' => '`$BOOLEAN`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'resettlement',
                         'orig' => 'resettlement',
-                        'reqd' => false,
                         'type' => '`$ARRAY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'year',
                         'orig' => 'year',
-                        'reqd' => false,
                         'type' => '`$ARRAY`',
                       ],
                     ],
@@ -556,10 +458,8 @@ class RsqConfig
                     'req' => '`reqdata`',
                     'res' => '`body.results`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -569,60 +469,36 @@ class RsqConfig
         'departure' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'asylum',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'asylum_name',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'destination',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'destination_name',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 3,
             ],
             [
-              'active' => true,
               'name' => 'origin',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 4,
             ],
             [
-              'active' => true,
               'name' => 'origin_name',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 5,
             ],
             [
-              'active' => true,
               'name' => 'persons',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 6,
             ],
             [
-              'active' => true,
               'name' => 'year',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 7,
             ],
           ],
           'name' => 'departure',
@@ -632,112 +508,85 @@ class RsqConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'asylum',
                         'orig' => 'asylum',
-                        'reqd' => false,
                         'type' => '`$ARRAY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'asylum_compare',
                         'orig' => 'asylum_compare',
-                        'reqd' => false,
                         'type' => '`$BOOLEAN`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'asylum_sort',
                         'orig' => 'asylum_sort',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 'en',
                         'kind' => 'query',
                         'name' => 'language',
                         'orig' => 'language',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'origin',
                         'orig' => 'origin',
-                        'reqd' => false,
                         'type' => '`$ARRAY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'origin_compare',
                         'orig' => 'origin_compare',
-                        'reqd' => false,
                         'type' => '`$BOOLEAN`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'origin_sort',
                         'orig' => 'origin_sort',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'page',
                         'orig' => 'page',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'persons_sort',
                         'orig' => 'persons_sort',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'resettlement',
                         'orig' => 'resettlement',
-                        'reqd' => false,
                         'type' => '`$ARRAY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'resettlement_sort',
                         'orig' => 'resettlement_sort',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'year',
                         'orig' => 'year',
-                        'reqd' => false,
                         'type' => '`$ARRAY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'year_sort',
                         'orig' => 'year_sort',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                     ],
@@ -769,10 +618,8 @@ class RsqConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -788,39 +635,30 @@ class RsqConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'origin',
                         'orig' => 'origin',
-                        'reqd' => false,
                         'type' => '`$ARRAY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'resettlement',
                         'orig' => 'resettlement',
-                        'reqd' => false,
                         'type' => '`$ARRAY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'type',
                         'orig' => 'type',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'year',
                         'orig' => 'year',
-                        'reqd' => false,
                         'type' => '`$ARRAY`',
                       ],
                     ],
@@ -844,10 +682,8 @@ class RsqConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -857,11 +693,8 @@ class RsqConfig
         'region' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'name',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
           ],
           'name' => 'region',
@@ -871,16 +704,13 @@ class RsqConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'en',
                         'kind' => 'query',
                         'name' => 'language',
                         'orig' => 'language',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                     ],
@@ -900,10 +730,8 @@ class RsqConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -913,60 +741,36 @@ class RsqConfig
         'submission' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'asylum',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'asylum_name',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'destination',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'destination_name',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 3,
             ],
             [
-              'active' => true,
               'name' => 'origin',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 4,
             ],
             [
-              'active' => true,
               'name' => 'origin_name',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 5,
             ],
             [
-              'active' => true,
               'name' => 'persons',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 6,
             ],
             [
-              'active' => true,
               'name' => 'year',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 7,
             ],
           ],
           'name' => 'submission',
@@ -976,112 +780,85 @@ class RsqConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'asylum',
                         'orig' => 'asylum',
-                        'reqd' => false,
                         'type' => '`$ARRAY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'asylum_compare',
                         'orig' => 'asylum_compare',
-                        'reqd' => false,
                         'type' => '`$BOOLEAN`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'asylum_sort',
                         'orig' => 'asylum_sort',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 'en',
                         'kind' => 'query',
                         'name' => 'language',
                         'orig' => 'language',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'origin',
                         'orig' => 'origin',
-                        'reqd' => false,
                         'type' => '`$ARRAY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'origin_compare',
                         'orig' => 'origin_compare',
-                        'reqd' => false,
                         'type' => '`$BOOLEAN`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'origin_sort',
                         'orig' => 'origin_sort',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'page',
                         'orig' => 'page',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'persons_sort',
                         'orig' => 'persons_sort',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'resettlement',
                         'orig' => 'resettlement',
-                        'reqd' => false,
                         'type' => '`$ARRAY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'resettlement_sort',
                         'orig' => 'resettlement_sort',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'year',
                         'orig' => 'year',
-                        'reqd' => false,
                         'type' => '`$ARRAY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'year_sort',
                         'orig' => 'year_sort',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                     ],
@@ -1113,10 +890,8 @@ class RsqConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -1126,18 +901,12 @@ class RsqConfig
         'url_fetch' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'status',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'url',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 1,
             ],
           ],
           'name' => 'url_fetch',
@@ -1147,20 +916,16 @@ class RsqConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'en',
                         'kind' => 'query',
                         'name' => 'language',
                         'orig' => 'language',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'url_hash',
                         'orig' => 'url_hash',
@@ -1185,10 +950,8 @@ class RsqConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -1204,7 +967,6 @@ class RsqConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -1217,10 +979,8 @@ class RsqConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -1236,10 +996,8 @@ class RsqConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [

@@ -23,6 +23,7 @@ build = {
   modules = {
     ["rsq_sdk"] = "rsq_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

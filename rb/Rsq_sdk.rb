@@ -28,7 +28,7 @@ class RsqSDK
     utility = RsqUtility.new
     @_utility = utility
 
-    config = RsqConfig.make_config
+    config = RsqConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
