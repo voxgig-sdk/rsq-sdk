@@ -1,0 +1,13 @@
+# Flows
+
+@"BasicCategoryFlow.aon"
+@"BasicCountryOfAsylumFlow.aon"
+@"BasicCountryOfOriginFlow.aon"
+@"BasicCountryOfResettlementFlow.aon"
+@"BasicDemographicFlow.aon"
+@"BasicDepartureFlow.aon"
+@"BasicHelperFlow.aon"
+@"BasicRegionFlow.aon"
+@"BasicSubmissionFlow.aon"
+@"BasicUrlFetchFlow.aon"
+@"BasicYearFlow.aon"

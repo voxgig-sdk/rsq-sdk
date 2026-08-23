@@ -33,6 +33,9 @@ class RsqConfig
         return [
             "main" => [
                 "name" => "Rsq",
+                "slug" => "rsq",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
