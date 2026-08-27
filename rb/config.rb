@@ -28,6 +28,7 @@ module RsqConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
