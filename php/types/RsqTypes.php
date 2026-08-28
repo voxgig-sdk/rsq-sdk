@@ -22,8 +22,7 @@ class Category
 /** Request payload for Category#list. */
 class CategoryListMatch
 {
-    public ?string $code = null;
-    public ?string $name = null;
+    public ?string $language = null;
 }
 
 /** CountryOfAsylum entity data model. */
@@ -37,9 +36,7 @@ class CountryOfAsylum
 /** Request payload for CountryOfAsylum#list. */
 class CountryOfAsylumListMatch
 {
-    public ?string $code = null;
-    public ?string $name = null;
-    public ?string $region = null;
+    public ?string $language = null;
 }
 
 /** CountryOfOrigin entity data model. */
@@ -53,9 +50,7 @@ class CountryOfOrigin
 /** Request payload for CountryOfOrigin#list. */
 class CountryOfOriginListMatch
 {
-    public ?string $code = null;
-    public ?string $name = null;
-    public ?string $region = null;
+    public ?string $language = null;
 }
 
 /** CountryOfResettlement entity data model. */
@@ -69,9 +64,7 @@ class CountryOfResettlement
 /** Request payload for CountryOfResettlement#list. */
 class CountryOfResettlementListMatch
 {
-    public ?string $code = null;
-    public ?string $name = null;
-    public ?string $region = null;
+    public ?string $language = null;
 }
 
 /** Demographic entity data model. */
@@ -99,23 +92,11 @@ class Demographic
 /** Request payload for Demographic#list. */
 class DemographicListMatch
 {
-    public ?string $destination = null;
-    public ?string $destination_name = null;
-    public ?int $femalesAdult = null;
-    public ?int $femalesSenior = null;
-    public ?int $femalesTotal = null;
-    public ?int $femalesUnderage = null;
-    public ?int $femalesUnknown = null;
-    public ?int $malesAdult = null;
-    public ?int $malesSenior = null;
-    public ?int $malesTotal = null;
-    public ?int $malesUnderage = null;
-    public ?int $malesUnknown = null;
-    public ?string $origin = null;
-    public ?string $origin_name = null;
-    public ?int $other = null;
-    public ?int $total = null;
-    public ?int $year = null;
+    public ?string $language = null;
+    public ?array $origin = null;
+    public ?bool $origin_compare = null;
+    public ?array $resettlement = null;
+    public ?array $year = null;
 }
 
 /** Departure entity data model. */
@@ -134,14 +115,19 @@ class Departure
 /** Request payload for Departure#list. */
 class DepartureListMatch
 {
-    public ?string $asylum = null;
-    public ?string $asylum_name = null;
-    public ?string $destination = null;
-    public ?string $destination_name = null;
-    public ?string $origin = null;
-    public ?string $origin_name = null;
-    public ?int $persons = null;
-    public ?int $year = null;
+    public ?array $asylum = null;
+    public ?bool $asylum_compare = null;
+    public ?string $asylum_sort = null;
+    public ?string $language = null;
+    public ?array $origin = null;
+    public ?bool $origin_compare = null;
+    public ?string $origin_sort = null;
+    public ?int $page = null;
+    public ?string $persons_sort = null;
+    public ?array $resettlement = null;
+    public ?string $resettlement_sort = null;
+    public ?array $year = null;
+    public ?string $year_sort = null;
 }
 
 /** Helper entity data model. */
@@ -152,6 +138,10 @@ class Helper
 /** Request payload for Helper#load. */
 class HelperLoadMatch
 {
+    public ?array $origin = null;
+    public ?array $resettlement = null;
+    public ?string $type = null;
+    public ?array $year = null;
 }
 
 /** Region entity data model. */
@@ -163,7 +153,7 @@ class Region
 /** Request payload for Region#list. */
 class RegionListMatch
 {
-    public ?string $name = null;
+    public ?string $language = null;
 }
 
 /** Submission entity data model. */
@@ -182,14 +172,19 @@ class Submission
 /** Request payload for Submission#list. */
 class SubmissionListMatch
 {
-    public ?string $asylum = null;
-    public ?string $asylum_name = null;
-    public ?string $destination = null;
-    public ?string $destination_name = null;
-    public ?string $origin = null;
-    public ?string $origin_name = null;
-    public ?int $persons = null;
-    public ?int $year = null;
+    public ?array $asylum = null;
+    public ?bool $asylum_compare = null;
+    public ?string $asylum_sort = null;
+    public ?string $language = null;
+    public ?array $origin = null;
+    public ?bool $origin_compare = null;
+    public ?string $origin_sort = null;
+    public ?int $page = null;
+    public ?string $persons_sort = null;
+    public ?array $resettlement = null;
+    public ?string $resettlement_sort = null;
+    public ?array $year = null;
+    public ?string $year_sort = null;
 }
 
 /** UrlFetch entity data model. */
@@ -202,8 +197,8 @@ class UrlFetch
 /** Request payload for UrlFetch#list. */
 class UrlFetchListMatch
 {
-    public ?string $status = null;
-    public ?string $url = null;
+    public ?string $language = null;
+    public string $url_hash;
 }
 
 /** Year entity data model. */

@@ -23,14 +23,10 @@ Category = Struct.new(
 
 # Request payload for Category#list.
 #
-# @!attribute [rw] code
-#   @return [String, nil]
-#
-# @!attribute [rw] name
+# @!attribute [rw] language
 #   @return [String, nil]
 CategoryListMatch = Struct.new(
-  :code,
-  :name,
+  :language,
   keyword_init: true
 )
 
@@ -53,18 +49,10 @@ CountryOfAsylum = Struct.new(
 
 # Request payload for CountryOfAsylum#list.
 #
-# @!attribute [rw] code
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] region
+# @!attribute [rw] language
 #   @return [String, nil]
 CountryOfAsylumListMatch = Struct.new(
-  :code,
-  :name,
-  :region,
+  :language,
   keyword_init: true
 )
 
@@ -87,18 +75,10 @@ CountryOfOrigin = Struct.new(
 
 # Request payload for CountryOfOrigin#list.
 #
-# @!attribute [rw] code
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] region
+# @!attribute [rw] language
 #   @return [String, nil]
 CountryOfOriginListMatch = Struct.new(
-  :code,
-  :name,
-  :region,
+  :language,
   keyword_init: true
 )
 
@@ -121,18 +101,10 @@ CountryOfResettlement = Struct.new(
 
 # Request payload for CountryOfResettlement#list.
 #
-# @!attribute [rw] code
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] region
+# @!attribute [rw] language
 #   @return [String, nil]
 CountryOfResettlementListMatch = Struct.new(
-  :code,
-  :name,
-  :region,
+  :language,
   keyword_init: true
 )
 
@@ -211,73 +183,25 @@ Demographic = Struct.new(
 
 # Request payload for Demographic#list.
 #
-# @!attribute [rw] destination
+# @!attribute [rw] language
 #   @return [String, nil]
-#
-# @!attribute [rw] destination_name
-#   @return [String, nil]
-#
-# @!attribute [rw] femalesAdult
-#   @return [Integer, nil]
-#
-# @!attribute [rw] femalesSenior
-#   @return [Integer, nil]
-#
-# @!attribute [rw] femalesTotal
-#   @return [Integer, nil]
-#
-# @!attribute [rw] femalesUnderage
-#   @return [Integer, nil]
-#
-# @!attribute [rw] femalesUnknown
-#   @return [Integer, nil]
-#
-# @!attribute [rw] malesAdult
-#   @return [Integer, nil]
-#
-# @!attribute [rw] malesSenior
-#   @return [Integer, nil]
-#
-# @!attribute [rw] malesTotal
-#   @return [Integer, nil]
-#
-# @!attribute [rw] malesUnderage
-#   @return [Integer, nil]
-#
-# @!attribute [rw] malesUnknown
-#   @return [Integer, nil]
 #
 # @!attribute [rw] origin
-#   @return [String, nil]
+#   @return [Array, nil]
 #
-# @!attribute [rw] origin_name
-#   @return [String, nil]
+# @!attribute [rw] origin_compare
+#   @return [Boolean, nil]
 #
-# @!attribute [rw] other
-#   @return [Integer, nil]
-#
-# @!attribute [rw] total
-#   @return [Integer, nil]
+# @!attribute [rw] resettlement
+#   @return [Array, nil]
 #
 # @!attribute [rw] year
-#   @return [Integer, nil]
+#   @return [Array, nil]
 DemographicListMatch = Struct.new(
-  :destination,
-  :destination_name,
-  :femalesAdult,
-  :femalesSenior,
-  :femalesTotal,
-  :femalesUnderage,
-  :femalesUnknown,
-  :malesAdult,
-  :malesSenior,
-  :malesTotal,
-  :malesUnderage,
-  :malesUnknown,
+  :language,
   :origin,
-  :origin_name,
-  :other,
-  :total,
+  :origin_compare,
+  :resettlement,
   :year,
   keyword_init: true
 )
@@ -322,37 +246,57 @@ Departure = Struct.new(
 # Request payload for Departure#list.
 #
 # @!attribute [rw] asylum
+#   @return [Array, nil]
+#
+# @!attribute [rw] asylum_compare
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] asylum_sort
 #   @return [String, nil]
 #
-# @!attribute [rw] asylum_name
-#   @return [String, nil]
-#
-# @!attribute [rw] destination
-#   @return [String, nil]
-#
-# @!attribute [rw] destination_name
+# @!attribute [rw] language
 #   @return [String, nil]
 #
 # @!attribute [rw] origin
+#   @return [Array, nil]
+#
+# @!attribute [rw] origin_compare
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] origin_sort
 #   @return [String, nil]
 #
-# @!attribute [rw] origin_name
-#   @return [String, nil]
-#
-# @!attribute [rw] persons
+# @!attribute [rw] page
 #   @return [Integer, nil]
+#
+# @!attribute [rw] persons_sort
+#   @return [String, nil]
+#
+# @!attribute [rw] resettlement
+#   @return [Array, nil]
+#
+# @!attribute [rw] resettlement_sort
+#   @return [String, nil]
 #
 # @!attribute [rw] year
-#   @return [Integer, nil]
+#   @return [Array, nil]
+#
+# @!attribute [rw] year_sort
+#   @return [String, nil]
 DepartureListMatch = Struct.new(
   :asylum,
-  :asylum_name,
-  :destination,
-  :destination_name,
+  :asylum_compare,
+  :asylum_sort,
+  :language,
   :origin,
-  :origin_name,
-  :persons,
+  :origin_compare,
+  :origin_sort,
+  :page,
+  :persons_sort,
+  :resettlement,
+  :resettlement_sort,
   :year,
+  :year_sort,
   keyword_init: true
 )
 
@@ -361,8 +305,25 @@ class Helper
 end
 
 # Request payload for Helper#load.
-class HelperLoadMatch
-end
+#
+# @!attribute [rw] origin
+#   @return [Array, nil]
+#
+# @!attribute [rw] resettlement
+#   @return [Array, nil]
+#
+# @!attribute [rw] type
+#   @return [String, nil]
+#
+# @!attribute [rw] year
+#   @return [Array, nil]
+HelperLoadMatch = Struct.new(
+  :origin,
+  :resettlement,
+  :type,
+  :year,
+  keyword_init: true
+)
 
 # Region entity data model.
 #
@@ -375,10 +336,10 @@ Region = Struct.new(
 
 # Request payload for Region#list.
 #
-# @!attribute [rw] name
+# @!attribute [rw] language
 #   @return [String, nil]
 RegionListMatch = Struct.new(
-  :name,
+  :language,
   keyword_init: true
 )
 
@@ -422,37 +383,57 @@ Submission = Struct.new(
 # Request payload for Submission#list.
 #
 # @!attribute [rw] asylum
+#   @return [Array, nil]
+#
+# @!attribute [rw] asylum_compare
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] asylum_sort
 #   @return [String, nil]
 #
-# @!attribute [rw] asylum_name
-#   @return [String, nil]
-#
-# @!attribute [rw] destination
-#   @return [String, nil]
-#
-# @!attribute [rw] destination_name
+# @!attribute [rw] language
 #   @return [String, nil]
 #
 # @!attribute [rw] origin
+#   @return [Array, nil]
+#
+# @!attribute [rw] origin_compare
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] origin_sort
 #   @return [String, nil]
 #
-# @!attribute [rw] origin_name
-#   @return [String, nil]
-#
-# @!attribute [rw] persons
+# @!attribute [rw] page
 #   @return [Integer, nil]
+#
+# @!attribute [rw] persons_sort
+#   @return [String, nil]
+#
+# @!attribute [rw] resettlement
+#   @return [Array, nil]
+#
+# @!attribute [rw] resettlement_sort
+#   @return [String, nil]
 #
 # @!attribute [rw] year
-#   @return [Integer, nil]
+#   @return [Array, nil]
+#
+# @!attribute [rw] year_sort
+#   @return [String, nil]
 SubmissionListMatch = Struct.new(
   :asylum,
-  :asylum_name,
-  :destination,
-  :destination_name,
+  :asylum_compare,
+  :asylum_sort,
+  :language,
   :origin,
-  :origin_name,
-  :persons,
+  :origin_compare,
+  :origin_sort,
+  :page,
+  :persons_sort,
+  :resettlement,
+  :resettlement_sort,
   :year,
+  :year_sort,
   keyword_init: true
 )
 
@@ -471,14 +452,14 @@ UrlFetch = Struct.new(
 
 # Request payload for UrlFetch#list.
 #
-# @!attribute [rw] status
+# @!attribute [rw] language
 #   @return [String, nil]
 #
-# @!attribute [rw] url
-#   @return [String, nil]
+# @!attribute [rw] url_hash
+#   @return [String]
 UrlFetchListMatch = Struct.new(
-  :status,
-  :url,
+  :language,
+  :url_hash,
   keyword_init: true
 )
 

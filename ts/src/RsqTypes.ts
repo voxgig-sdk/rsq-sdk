@@ -11,8 +11,7 @@ export interface Category {
 }
 
 export interface CategoryListMatch {
-  code?: string
-  name?: string
+  language?: string
 }
 
 export interface CountryOfAsylum {
@@ -22,9 +21,7 @@ export interface CountryOfAsylum {
 }
 
 export interface CountryOfAsylumListMatch {
-  code?: string
-  name?: string
-  region?: string
+  language?: string
 }
 
 export interface CountryOfOrigin {
@@ -34,9 +31,7 @@ export interface CountryOfOrigin {
 }
 
 export interface CountryOfOriginListMatch {
-  code?: string
-  name?: string
-  region?: string
+  language?: string
 }
 
 export interface CountryOfResettlement {
@@ -46,9 +41,7 @@ export interface CountryOfResettlement {
 }
 
 export interface CountryOfResettlementListMatch {
-  code?: string
-  name?: string
-  region?: string
+  language?: string
 }
 
 export interface Demographic {
@@ -72,23 +65,11 @@ export interface Demographic {
 }
 
 export interface DemographicListMatch {
-  destination?: string
-  destination_name?: string
-  femalesAdult?: number
-  femalesSenior?: number
-  femalesTotal?: number
-  femalesUnderage?: number
-  femalesUnknown?: number
-  malesAdult?: number
-  malesSenior?: number
-  malesTotal?: number
-  malesUnderage?: number
-  malesUnknown?: number
-  origin?: string
-  origin_name?: string
-  other?: number
-  total?: number
-  year?: number
+  language?: string
+  origin?: any[]
+  origin_compare?: boolean
+  resettlement?: any[]
+  year?: any[]
 }
 
 export interface Departure {
@@ -103,20 +84,29 @@ export interface Departure {
 }
 
 export interface DepartureListMatch {
-  asylum?: string
-  asylum_name?: string
-  destination?: string
-  destination_name?: string
-  origin?: string
-  origin_name?: string
-  persons?: number
-  year?: number
+  asylum?: any[]
+  asylum_compare?: boolean
+  asylum_sort?: string
+  language?: string
+  origin?: any[]
+  origin_compare?: boolean
+  origin_sort?: string
+  page?: number
+  persons_sort?: string
+  resettlement?: any[]
+  resettlement_sort?: string
+  year?: any[]
+  year_sort?: string
 }
 
 export interface Helper {
 }
 
 export interface HelperLoadMatch {
+  origin?: any[]
+  resettlement?: any[]
+  type?: string
+  year?: any[]
 }
 
 export interface Region {
@@ -124,7 +114,7 @@ export interface Region {
 }
 
 export interface RegionListMatch {
-  name?: string
+  language?: string
 }
 
 export interface Submission {
@@ -139,14 +129,19 @@ export interface Submission {
 }
 
 export interface SubmissionListMatch {
-  asylum?: string
-  asylum_name?: string
-  destination?: string
-  destination_name?: string
-  origin?: string
-  origin_name?: string
-  persons?: number
-  year?: number
+  asylum?: any[]
+  asylum_compare?: boolean
+  asylum_sort?: string
+  language?: string
+  origin?: any[]
+  origin_compare?: boolean
+  origin_sort?: string
+  page?: number
+  persons_sort?: string
+  resettlement?: any[]
+  resettlement_sort?: string
+  year?: any[]
+  year_sort?: string
 }
 
 export interface UrlFetch {
@@ -155,8 +150,8 @@ export interface UrlFetch {
 }
 
 export interface UrlFetchListMatch {
-  status?: string
-  url?: string
+  language?: string
+  url_hash: string
 }
 
 export interface Year {

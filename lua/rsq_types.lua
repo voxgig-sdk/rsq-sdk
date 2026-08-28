@@ -11,8 +11,7 @@
 ---@field name? string
 
 ---@class CategoryListMatch
----@field code? string
----@field name? string
+---@field language? string
 
 ---@class CountryOfAsylum
 ---@field code? string
@@ -20,9 +19,7 @@
 ---@field region? string
 
 ---@class CountryOfAsylumListMatch
----@field code? string
----@field name? string
----@field region? string
+---@field language? string
 
 ---@class CountryOfOrigin
 ---@field code? string
@@ -30,9 +27,7 @@
 ---@field region? string
 
 ---@class CountryOfOriginListMatch
----@field code? string
----@field name? string
----@field region? string
+---@field language? string
 
 ---@class CountryOfResettlement
 ---@field code? string
@@ -40,9 +35,7 @@
 ---@field region? string
 
 ---@class CountryOfResettlementListMatch
----@field code? string
----@field name? string
----@field region? string
+---@field language? string
 
 ---@class Demographic
 ---@field destination? string
@@ -64,23 +57,11 @@
 ---@field year? number
 
 ---@class DemographicListMatch
----@field destination? string
----@field destination_name? string
----@field femalesAdult? number
----@field femalesSenior? number
----@field femalesTotal? number
----@field femalesUnderage? number
----@field femalesUnknown? number
----@field malesAdult? number
----@field malesSenior? number
----@field malesTotal? number
----@field malesUnderage? number
----@field malesUnknown? number
----@field origin? string
----@field origin_name? string
----@field other? number
----@field total? number
----@field year? number
+---@field language? string
+---@field origin? table
+---@field origin_compare? boolean
+---@field resettlement? table
+---@field year? table
 
 ---@class Departure
 ---@field asylum? string
@@ -93,24 +74,33 @@
 ---@field year? number
 
 ---@class DepartureListMatch
----@field asylum? string
----@field asylum_name? string
----@field destination? string
----@field destination_name? string
----@field origin? string
----@field origin_name? string
----@field persons? number
----@field year? number
+---@field asylum? table
+---@field asylum_compare? boolean
+---@field asylum_sort? string
+---@field language? string
+---@field origin? table
+---@field origin_compare? boolean
+---@field origin_sort? string
+---@field page? number
+---@field persons_sort? string
+---@field resettlement? table
+---@field resettlement_sort? string
+---@field year? table
+---@field year_sort? string
 
 ---@class Helper
 
 ---@class HelperLoadMatch
+---@field origin? table
+---@field resettlement? table
+---@field type? string
+---@field year? table
 
 ---@class Region
 ---@field name? string
 
 ---@class RegionListMatch
----@field name? string
+---@field language? string
 
 ---@class Submission
 ---@field asylum? string
@@ -123,22 +113,27 @@
 ---@field year? number
 
 ---@class SubmissionListMatch
----@field asylum? string
----@field asylum_name? string
----@field destination? string
----@field destination_name? string
----@field origin? string
----@field origin_name? string
----@field persons? number
----@field year? number
+---@field asylum? table
+---@field asylum_compare? boolean
+---@field asylum_sort? string
+---@field language? string
+---@field origin? table
+---@field origin_compare? boolean
+---@field origin_sort? string
+---@field page? number
+---@field persons_sort? string
+---@field resettlement? table
+---@field resettlement_sort? string
+---@field year? table
+---@field year_sort? string
 
 ---@class UrlFetch
 ---@field status? string
 ---@field url? string
 
 ---@class UrlFetchListMatch
----@field status? string
----@field url? string
+---@field language? string
+---@field url_hash string
 
 ---@class Year
 
