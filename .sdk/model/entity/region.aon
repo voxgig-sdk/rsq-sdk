@@ -32,8 +32,10 @@ main: kit: entity: region: {
           }
           method: "GET"
           orig: "/regions"
-          parts: [
-            "regions"
+          segments: [
+            {
+              lit: "regions"
+            }
           ]
           select: {
             exist: [

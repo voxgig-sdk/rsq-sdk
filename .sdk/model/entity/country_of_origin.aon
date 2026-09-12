@@ -42,9 +42,13 @@ main: kit: entity: country_of_origin: {
           }
           method: "GET"
           orig: "/origins/departures"
-          parts: [
-            "origins"
-            "departures"
+          segments: [
+            {
+              lit: "origins"
+            }
+            {
+              lit: "departures"
+            }
           ]
           select: {
             exist: [
@@ -71,9 +75,13 @@ main: kit: entity: country_of_origin: {
           }
           method: "GET"
           orig: "/origins/submissions"
-          parts: [
-            "origins"
-            "submissions"
+          segments: [
+            {
+              lit: "origins"
+            }
+            {
+              lit: "submissions"
+            }
           ]
           select: {
             exist: [
@@ -88,9 +96,13 @@ main: kit: entity: country_of_origin: {
         {
           method: "GET"
           orig: "/origins/demographics"
-          parts: [
-            "origins"
-            "demographics"
+          segments: [
+            {
+              lit: "origins"
+            }
+            {
+              lit: "demographics"
+            }
           ]
           transform: {
             req: "`reqdata`"

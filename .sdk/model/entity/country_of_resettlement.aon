@@ -42,8 +42,10 @@ main: kit: entity: country_of_resettlement: {
           }
           method: "GET"
           orig: "/destinations"
-          parts: [
-            "destinations"
+          segments: [
+            {
+              lit: "destinations"
+            }
           ]
           select: {
             exist: [

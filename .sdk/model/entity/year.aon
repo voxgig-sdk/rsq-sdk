@@ -12,8 +12,10 @@ main: kit: entity: year: {
         {
           method: "GET"
           orig: "/years"
-          parts: [
-            "years"
+          segments: [
+            {
+              lit: "years"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -23,9 +25,13 @@ main: kit: entity: year: {
         {
           method: "GET"
           orig: "/years/demographics"
-          parts: [
-            "years"
-            "demographics"
+          segments: [
+            {
+              lit: "years"
+            }
+            {
+              lit: "demographics"
+            }
           ]
           select: {
             "$action": "demographic"

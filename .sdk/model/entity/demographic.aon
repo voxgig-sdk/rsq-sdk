@@ -140,8 +140,10 @@ main: kit: entity: demographic: {
           }
           method: "GET"
           orig: "/demographics"
-          parts: [
-            "demographics"
+          segments: [
+            {
+              lit: "demographics"
+            }
           ]
           select: {
             exist: [

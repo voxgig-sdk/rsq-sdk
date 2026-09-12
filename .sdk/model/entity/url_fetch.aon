@@ -44,8 +44,10 @@ main: kit: entity: url_fetch: {
           }
           method: "GET"
           orig: "/fetchUrl"
-          parts: [
-            "fetchUrl"
+          segments: [
+            {
+              lit: "fetchUrl"
+            }
           ]
           select: {
             exist: [

@@ -69,8 +69,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/categories",
-                  "parts": [
-                    "categories"
+                  "segments": [
+                    {
+                      "lit": "categories"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -138,8 +140,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/asylums",
-                  "parts": [
-                    "asylums"
+                  "segments": [
+                    {
+                      "lit": "asylums"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -207,9 +211,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/origins/departures",
-                  "parts": [
-                    "origins",
-                    "departures"
+                  "segments": [
+                    {
+                      "lit": "origins"
+                    },
+                    {
+                      "lit": "departures"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -239,9 +247,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/origins/submissions",
-                  "parts": [
-                    "origins",
-                    "submissions"
+                  "segments": [
+                    {
+                      "lit": "origins"
+                    },
+                    {
+                      "lit": "submissions"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -259,9 +271,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/origins/demographics",
-                  "parts": [
-                    "origins",
-                    "demographics"
+                  "segments": [
+                    {
+                      "lit": "origins"
+                    },
+                    {
+                      "lit": "demographics"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -325,8 +341,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/destinations",
-                  "parts": [
-                    "destinations"
+                  "segments": [
+                    {
+                      "lit": "destinations"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -510,8 +528,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/demographics",
-                  "parts": [
-                    "demographics"
+                  "segments": [
+                    {
+                      "lit": "demographics"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -709,8 +729,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/departures",
-                  "parts": [
-                    "departures"
+                  "segments": [
+                    {
+                      "lit": "departures"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -794,9 +816,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/export/csv",
-                  "parts": [
-                    "export",
-                    "csv"
+                  "segments": [
+                    {
+                      "lit": "export"
+                    },
+                    {
+                      "lit": "csv"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -855,8 +881,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/regions",
-                  "parts": [
-                    "regions"
+                  "segments": [
+                    {
+                      "lit": "regions"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1050,8 +1078,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/submissions",
-                  "parts": [
-                    "submissions"
+                  "segments": [
+                    {
+                      "lit": "submissions"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1133,8 +1163,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/fetchUrl",
-                  "parts": [
-                    "fetchUrl"
+                  "segments": [
+                    {
+                      "lit": "fetchUrl"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1172,8 +1204,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/years",
-                  "parts": [
-                    "years"
+                  "segments": [
+                    {
+                      "lit": "years"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1187,9 +1221,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/years/demographics",
-                  "parts": [
-                    "years",
-                    "demographics"
+                  "segments": [
+                    {
+                      "lit": "years"
+                    },
+                    {
+                      "lit": "demographics"
+                    }
                   ],
                   "select": {
                     "$action": "demographic"
@@ -1271,8 +1309,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -1654,6 +1695,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1679,6 +1723,10 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -1730,6 +1778,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1754,6 +1803,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -1805,6 +1855,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1829,6 +1880,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -1869,6 +1921,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1894,6 +1949,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -1928,6 +1986,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1953,6 +2014,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -1993,6 +2057,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2018,6 +2085,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -2063,6 +2133,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2088,6 +2161,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -2105,11 +2181,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -2138,6 +2209,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2162,6 +2236,14 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },

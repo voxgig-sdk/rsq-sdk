@@ -42,8 +42,10 @@ main: kit: entity: country_of_asylum: {
           }
           method: "GET"
           orig: "/asylums"
-          parts: [
-            "asylums"
+          segments: [
+            {
+              lit: "asylums"
+            }
           ]
           select: {
             exist: [

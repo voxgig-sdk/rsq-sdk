@@ -151,8 +151,10 @@ main: kit: entity: submission: {
           }
           method: "GET"
           orig: "/submissions"
-          parts: [
-            "submissions"
+          segments: [
+            {
+              lit: "submissions"
+            }
           ]
           select: {
             exist: [

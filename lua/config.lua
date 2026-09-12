@@ -71,8 +71,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/categories",
-                ["parts"] = {
-                  "categories",
+                ["segments"] = {
+                  {
+                    ["lit"] = "categories",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -82,6 +84,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "categories",
                 },
               },
             },
@@ -127,8 +132,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/asylums",
-                ["parts"] = {
-                  "asylums",
+                ["segments"] = {
+                  {
+                    ["lit"] = "asylums",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -138,6 +145,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "asylums",
                 },
               },
             },
@@ -183,9 +193,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/origins/departures",
-                ["parts"] = {
-                  "origins",
-                  "departures",
+                ["segments"] = {
+                  {
+                    ["lit"] = "origins",
+                  },
+                  {
+                    ["lit"] = "departures",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -195,6 +209,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "origins",
+                  "departures",
                 },
               },
               {
@@ -212,9 +230,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/origins/submissions",
-                ["parts"] = {
-                  "origins",
-                  "submissions",
+                ["segments"] = {
+                  {
+                    ["lit"] = "origins",
+                  },
+                  {
+                    ["lit"] = "submissions",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -225,20 +247,32 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "origins",
+                  "submissions",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/origins/demographics",
-                ["parts"] = {
-                  "origins",
-                  "demographics",
+                ["segments"] = {
+                  {
+                    ["lit"] = "origins",
+                  },
+                  {
+                    ["lit"] = "demographics",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "origins",
+                  "demographics",
                 },
               },
             },
@@ -284,8 +318,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/destinations",
-                ["parts"] = {
-                  "destinations",
+                ["segments"] = {
+                  {
+                    ["lit"] = "destinations",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -295,6 +331,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "destinations",
                 },
               },
             },
@@ -420,8 +459,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/demographics",
-                ["parts"] = {
-                  "demographics",
+                ["segments"] = {
+                  {
+                    ["lit"] = "demographics",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -435,6 +476,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.results`",
+                },
+                ["parts"] = {
+                  "demographics",
                 },
               },
             },
@@ -572,8 +616,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/departures",
-                ["parts"] = {
-                  "departures",
+                ["segments"] = {
+                  {
+                    ["lit"] = "departures",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -595,6 +641,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "departures",
                 },
               },
             },
@@ -644,9 +693,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/export/csv",
-                ["parts"] = {
-                  "export",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "export",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -659,6 +712,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "export",
+                  "csv",
                 },
               },
             },
@@ -696,8 +753,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/regions",
-                ["parts"] = {
-                  "regions",
+                ["segments"] = {
+                  {
+                    ["lit"] = "regions",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -707,6 +766,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "regions",
                 },
               },
             },
@@ -844,8 +906,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/submissions",
-                ["parts"] = {
-                  "submissions",
+                ["segments"] = {
+                  {
+                    ["lit"] = "submissions",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -867,6 +931,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "submissions",
                 },
               },
             },
@@ -915,8 +982,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/fetchUrl",
-                ["parts"] = {
-                  "fetchUrl",
+                ["segments"] = {
+                  {
+                    ["lit"] = "fetchUrl",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -927,6 +996,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "fetchUrl",
                 },
               },
             },
@@ -949,13 +1021,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/years",
-                ["parts"] = {
-                  "years",
+                ["segments"] = {
+                  {
+                    ["lit"] = "years",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "years",
                 },
               },
               {
@@ -963,9 +1040,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/years/demographics",
-                ["parts"] = {
-                  "years",
-                  "demographics",
+                ["segments"] = {
+                  {
+                    ["lit"] = "years",
+                  },
+                  {
+                    ["lit"] = "demographics",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "demographic",
@@ -973,6 +1054,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "years",
+                  "demographics",
                 },
               },
             },

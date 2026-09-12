@@ -97,8 +97,10 @@ class RsqConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/categories',
-                  'parts' => [
-                    'categories',
+                  'segments' => [
+                    [
+                      'lit' => 'categories',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -108,6 +110,9 @@ class RsqConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'categories',
                   ],
                 ],
               ],
@@ -153,8 +158,10 @@ class RsqConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/asylums',
-                  'parts' => [
-                    'asylums',
+                  'segments' => [
+                    [
+                      'lit' => 'asylums',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -164,6 +171,9 @@ class RsqConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'asylums',
                   ],
                 ],
               ],
@@ -209,9 +219,13 @@ class RsqConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/origins/departures',
-                  'parts' => [
-                    'origins',
-                    'departures',
+                  'segments' => [
+                    [
+                      'lit' => 'origins',
+                    ],
+                    [
+                      'lit' => 'departures',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -221,6 +235,10 @@ class RsqConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'origins',
+                    'departures',
                   ],
                 ],
                 [
@@ -238,9 +256,13 @@ class RsqConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/origins/submissions',
-                  'parts' => [
-                    'origins',
-                    'submissions',
+                  'segments' => [
+                    [
+                      'lit' => 'origins',
+                    ],
+                    [
+                      'lit' => 'submissions',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -251,20 +273,32 @@ class RsqConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [
+                    'origins',
+                    'submissions',
+                  ],
                 ],
                 [
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/origins/demographics',
-                  'parts' => [
-                    'origins',
-                    'demographics',
+                  'segments' => [
+                    [
+                      'lit' => 'origins',
+                    ],
+                    [
+                      'lit' => 'demographics',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'origins',
+                    'demographics',
                   ],
                 ],
               ],
@@ -310,8 +344,10 @@ class RsqConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/destinations',
-                  'parts' => [
-                    'destinations',
+                  'segments' => [
+                    [
+                      'lit' => 'destinations',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -321,6 +357,9 @@ class RsqConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'destinations',
                   ],
                 ],
               ],
@@ -446,8 +485,10 @@ class RsqConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/demographics',
-                  'parts' => [
-                    'demographics',
+                  'segments' => [
+                    [
+                      'lit' => 'demographics',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -461,6 +502,9 @@ class RsqConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.results`',
+                  ],
+                  'parts' => [
+                    'demographics',
                   ],
                 ],
               ],
@@ -598,8 +642,10 @@ class RsqConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/departures',
-                  'parts' => [
-                    'departures',
+                  'segments' => [
+                    [
+                      'lit' => 'departures',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -621,6 +667,9 @@ class RsqConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'departures',
                   ],
                 ],
               ],
@@ -670,9 +719,13 @@ class RsqConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/export/csv',
-                  'parts' => [
-                    'export',
-                    'csv',
+                  'segments' => [
+                    [
+                      'lit' => 'export',
+                    ],
+                    [
+                      'lit' => 'csv',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -685,6 +738,10 @@ class RsqConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'export',
+                    'csv',
                   ],
                 ],
               ],
@@ -722,8 +779,10 @@ class RsqConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/regions',
-                  'parts' => [
-                    'regions',
+                  'segments' => [
+                    [
+                      'lit' => 'regions',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -733,6 +792,9 @@ class RsqConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'regions',
                   ],
                 ],
               ],
@@ -870,8 +932,10 @@ class RsqConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/submissions',
-                  'parts' => [
-                    'submissions',
+                  'segments' => [
+                    [
+                      'lit' => 'submissions',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -893,6 +957,9 @@ class RsqConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'submissions',
                   ],
                 ],
               ],
@@ -941,8 +1008,10 @@ class RsqConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/fetchUrl',
-                  'parts' => [
-                    'fetchUrl',
+                  'segments' => [
+                    [
+                      'lit' => 'fetchUrl',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -953,6 +1022,9 @@ class RsqConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'fetchUrl',
                   ],
                 ],
               ],
@@ -975,13 +1047,18 @@ class RsqConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/years',
-                  'parts' => [
-                    'years',
+                  'segments' => [
+                    [
+                      'lit' => 'years',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'years',
                   ],
                 ],
                 [
@@ -989,9 +1066,13 @@ class RsqConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/years/demographics',
-                  'parts' => [
-                    'years',
-                    'demographics',
+                  'segments' => [
+                    [
+                      'lit' => 'years',
+                    ],
+                    [
+                      'lit' => 'demographics',
+                    ],
                   ],
                   'select' => [
                     '$action' => 'demographic',
@@ -999,6 +1080,10 @@ class RsqConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'years',
+                    'demographics',
                   ],
                 ],
               ],

@@ -83,8 +83,10 @@ module RsqConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/categories",
-                  "parts" => [
-                    "categories",
+                  "segments" => [
+                    {
+                      "lit" => "categories",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -95,6 +97,9 @@ module RsqConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "categories",
+                  ],
                 },
               ],
             },
@@ -139,8 +144,10 @@ module RsqConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/asylums",
-                  "parts" => [
-                    "asylums",
+                  "segments" => [
+                    {
+                      "lit" => "asylums",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -151,6 +158,9 @@ module RsqConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "asylums",
+                  ],
                 },
               ],
             },
@@ -195,9 +205,13 @@ module RsqConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/origins/departures",
-                  "parts" => [
-                    "origins",
-                    "departures",
+                  "segments" => [
+                    {
+                      "lit" => "origins",
+                    },
+                    {
+                      "lit" => "departures",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -208,6 +222,10 @@ module RsqConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "origins",
+                    "departures",
+                  ],
                 },
                 {
                   "args" => {
@@ -224,9 +242,13 @@ module RsqConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/origins/submissions",
-                  "parts" => [
-                    "origins",
-                    "submissions",
+                  "segments" => [
+                    {
+                      "lit" => "origins",
+                    },
+                    {
+                      "lit" => "submissions",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -237,21 +259,33 @@ module RsqConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "origins",
+                    "submissions",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/origins/demographics",
-                  "parts" => [
-                    "origins",
-                    "demographics",
+                  "segments" => [
+                    {
+                      "lit" => "origins",
+                    },
+                    {
+                      "lit" => "demographics",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "origins",
+                    "demographics",
+                  ],
                 },
               ],
             },
@@ -296,8 +330,10 @@ module RsqConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/destinations",
-                  "parts" => [
-                    "destinations",
+                  "segments" => [
+                    {
+                      "lit" => "destinations",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -308,6 +344,9 @@ module RsqConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "destinations",
+                  ],
                 },
               ],
             },
@@ -432,8 +471,10 @@ module RsqConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/demographics",
-                  "parts" => [
-                    "demographics",
+                  "segments" => [
+                    {
+                      "lit" => "demographics",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -448,6 +489,9 @@ module RsqConfig
                     "req" => "`reqdata`",
                     "res" => "`body.results`",
                   },
+                  "parts" => [
+                    "demographics",
+                  ],
                 },
               ],
             },
@@ -584,8 +628,10 @@ module RsqConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/departures",
-                  "parts" => [
-                    "departures",
+                  "segments" => [
+                    {
+                      "lit" => "departures",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -608,6 +654,9 @@ module RsqConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "departures",
+                  ],
                 },
               ],
             },
@@ -656,9 +705,13 @@ module RsqConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/export/csv",
-                  "parts" => [
-                    "export",
-                    "csv",
+                  "segments" => [
+                    {
+                      "lit" => "export",
+                    },
+                    {
+                      "lit" => "csv",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -672,6 +725,10 @@ module RsqConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "export",
+                    "csv",
+                  ],
                 },
               ],
             },
@@ -708,8 +765,10 @@ module RsqConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/regions",
-                  "parts" => [
-                    "regions",
+                  "segments" => [
+                    {
+                      "lit" => "regions",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -720,6 +779,9 @@ module RsqConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "regions",
+                  ],
                 },
               ],
             },
@@ -856,8 +918,10 @@ module RsqConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/submissions",
-                  "parts" => [
-                    "submissions",
+                  "segments" => [
+                    {
+                      "lit" => "submissions",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -880,6 +944,9 @@ module RsqConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "submissions",
+                  ],
                 },
               ],
             },
@@ -927,8 +994,10 @@ module RsqConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/fetchUrl",
-                  "parts" => [
-                    "fetchUrl",
+                  "segments" => [
+                    {
+                      "lit" => "fetchUrl",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -940,6 +1009,9 @@ module RsqConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "fetchUrl",
+                  ],
                 },
               ],
             },
@@ -961,23 +1033,32 @@ module RsqConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/years",
-                  "parts" => [
-                    "years",
+                  "segments" => [
+                    {
+                      "lit" => "years",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "years",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/years/demographics",
-                  "parts" => [
-                    "years",
-                    "demographics",
+                  "segments" => [
+                    {
+                      "lit" => "years",
+                    },
+                    {
+                      "lit" => "demographics",
+                    },
                   ],
                   "select" => {
                     "$action" => "demographic",
@@ -986,6 +1067,10 @@ module RsqConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "years",
+                    "demographics",
+                  ],
                 },
               ],
             },
