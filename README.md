@@ -105,7 +105,7 @@ local results, err = client:UrlFetch():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/rsq` | publish pending — [install from git tag](https://github.com/voxgig-sdk/rsq-sdk/releases) |
+| TypeScript | `@voxgig-sdk/rsq-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/rsq-sdk/releases) |
 | Python | `voxgig-sdk-rsq` | publish pending — [install from git tag](https://github.com/voxgig-sdk/rsq-sdk/releases) |
 | PHP | `voxgig-sdk/rsq` | publish pending — [install from git tag](https://github.com/voxgig-sdk/rsq-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/rsq-sdk/go` | `go get github.com/voxgig-sdk/rsq-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:UrlFetch():list()
 ### TypeScript
 
 ```ts
-import { RsqSDK } from '@voxgig-sdk/rsq'
+import { RsqSDK } from '@voxgig-sdk/rsq-sdk'
 
 const client = new RsqSDK()
 

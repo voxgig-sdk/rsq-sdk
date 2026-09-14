@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { RsqSDK } from '@voxgig-sdk/rsq'
+import { RsqSDK } from '@voxgig-sdk/rsq-sdk'
 
 const client = new RsqSDK()
 ```
@@ -807,7 +807,7 @@ rsq/
 Import the SDK from the package root:
 
 ```ts
-import { RsqSDK } from '@voxgig-sdk/rsq'
+import { RsqSDK } from '@voxgig-sdk/rsq-sdk'
 ```
 
 ### Entity state
