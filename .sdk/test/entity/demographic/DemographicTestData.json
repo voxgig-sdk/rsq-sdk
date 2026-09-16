@@ -4,59 +4,59 @@
       "DEMOGRAPHIC00": {
         "destination": "saa",
         "destination_name": "sab",
-        "femalesAdult": "sac",
-        "femalesSenior": "sad",
-        "femalesTotal": "sae",
-        "femalesUnderage": "saf",
-        "femalesUnknown": "sb0",
-        "malesAdult": "sb1",
-        "malesSenior": "sb2",
-        "malesTotal": "sb3",
-        "malesUnderage": "sb4",
-        "malesUnknown": "sb5",
+        "femalesAdult": 172,
+        "femalesSenior": 173,
+        "femalesTotal": 174,
+        "femalesUnderage": 175,
+        "femalesUnknown": 176,
+        "malesAdult": 177,
+        "malesSenior": 178,
+        "malesTotal": 179,
+        "malesUnderage": 180,
+        "malesUnknown": 181,
         "origin": "sb6",
         "origin_name": "sb7",
-        "other": "sb8",
-        "total": "sb9",
-        "year": "sba"
+        "other": 184,
+        "total": 185,
+        "year": 186
       },
       "DEMOGRAPHIC01": {
         "destination": "s154",
         "destination_name": "s155",
-        "femalesAdult": "s156",
-        "femalesSenior": "s157",
-        "femalesTotal": "s158",
-        "femalesUnderage": "s159",
-        "femalesUnknown": "s15a",
-        "malesAdult": "s15b",
-        "malesSenior": "s15c",
-        "malesTotal": "s15d",
-        "malesUnderage": "s15e",
-        "malesUnknown": "s15f",
+        "femalesAdult": 342,
+        "femalesSenior": 343,
+        "femalesTotal": 344,
+        "femalesUnderage": 345,
+        "femalesUnknown": 346,
+        "malesAdult": 347,
+        "malesSenior": 348,
+        "malesTotal": 349,
+        "malesUnderage": 350,
+        "malesUnknown": 351,
         "origin": "s160",
         "origin_name": "s161",
-        "other": "s162",
-        "total": "s163",
-        "year": "s164"
+        "other": 354,
+        "total": 355,
+        "year": 356
       },
       "DEMOGRAPHIC02": {
         "destination": "s1fe",
         "destination_name": "s1ff",
-        "femalesAdult": "s200",
-        "femalesSenior": "s201",
-        "femalesTotal": "s202",
-        "femalesUnderage": "s203",
-        "femalesUnknown": "s204",
-        "malesAdult": "s205",
-        "malesSenior": "s206",
-        "malesTotal": "s207",
-        "malesUnderage": "s208",
-        "malesUnknown": "s209",
+        "femalesAdult": 512,
+        "femalesSenior": 513,
+        "femalesTotal": 514,
+        "femalesUnderage": 515,
+        "femalesUnknown": 516,
+        "malesAdult": 517,
+        "malesSenior": 518,
+        "malesTotal": 519,
+        "malesUnderage": 520,
+        "malesUnknown": 521,
         "origin": "s20a",
         "origin_name": "s20b",
-        "other": "s20c",
-        "total": "s20d",
-        "year": "s20e"
+        "other": 524,
+        "total": 525,
+        "year": 526
       }
     }
   },
@@ -65,21 +65,195 @@
       "demographic_ref01": {
         "destination": "s2a8",
         "destination_name": "s2a9",
-        "femalesAdult": "s2aa",
-        "femalesSenior": "s2ab",
-        "femalesTotal": "s2ac",
-        "femalesUnderage": "s2ad",
-        "femalesUnknown": "s2ae",
-        "malesAdult": "s2af",
-        "malesSenior": "s2b0",
-        "malesTotal": "s2b1",
-        "malesUnderage": "s2b2",
-        "malesUnknown": "s2b3",
+        "femalesAdult": 682,
+        "femalesSenior": 683,
+        "femalesTotal": 684,
+        "femalesUnderage": 685,
+        "femalesUnknown": 686,
+        "malesAdult": 687,
+        "malesSenior": 688,
+        "malesTotal": 689,
+        "malesUnderage": 690,
+        "malesUnknown": 691,
         "origin": "s2b4",
         "origin_name": "s2b5",
-        "other": "s2b6",
-        "total": "s2b7",
-        "year": "s2b8"
+        "other": 694,
+        "total": 695,
+        "year": 696
+      }
+    }
+  },
+  "requests": {
+    "GET /demographics": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getDemographics",
+        "parameters": [
+          {
+            "description": "Return results will be translated in requested language. Defaults to english",
+            "in": "query",
+            "name": "language",
+            "required": false,
+            "schema": {
+              "default": "en",
+              "enum": [
+                "en",
+                "fr"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "One or more available years",
+            "explode": false,
+            "in": "query",
+            "name": "year",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "style": "form"
+          },
+          {
+            "description": "One or more country of origin codes",
+            "explode": false,
+            "in": "query",
+            "name": "origin",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "style": "form"
+          },
+          {
+            "description": "Used in combination with atleast one origin. Groups all other origins as 'All others' entry in results",
+            "in": "query",
+            "name": "originCompare",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "One or more country of resettlement codes",
+            "explode": false,
+            "in": "query",
+            "name": "resettlement",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "style": "form"
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "results": {
+                      "items": {
+                        "properties": {
+                          "destination": {
+                            "example": "NOR",
+                            "type": "string"
+                          },
+                          "destination_name": {
+                            "example": "Norway",
+                            "type": "string"
+                          },
+                          "femalesAdult": {
+                            "example": 300,
+                            "type": "integer"
+                          },
+                          "femalesSenior": {
+                            "example": 45,
+                            "type": "integer"
+                          },
+                          "femalesTotal": {
+                            "example": 375,
+                            "type": "integer"
+                          },
+                          "femalesUnderage": {
+                            "example": 25,
+                            "type": "integer"
+                          },
+                          "femalesUnknown": {
+                            "example": 5,
+                            "type": "integer"
+                          },
+                          "malesAdult": {
+                            "example": 300,
+                            "type": "integer"
+                          },
+                          "malesSenior": {
+                            "example": 45,
+                            "type": "integer"
+                          },
+                          "malesTotal": {
+                            "example": 375,
+                            "type": "integer"
+                          },
+                          "malesUnderage": {
+                            "example": 25,
+                            "type": "integer"
+                          },
+                          "malesUnknown": {
+                            "example": 5,
+                            "type": "integer"
+                          },
+                          "origin": {
+                            "example": "SYR",
+                            "type": "string"
+                          },
+                          "origin_name": {
+                            "example": "Syrian Arab Rep.",
+                            "type": "string"
+                          },
+                          "other": {
+                            "example": 5,
+                            "type": "integer"
+                          },
+                          "total": {
+                            "example": 755,
+                            "type": "integer"
+                          },
+                          "year": {
+                            "example": 2013,
+                            "type": "integer"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "url": {
+                      "example": "#c3X3",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Valid request"
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

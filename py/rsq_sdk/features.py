@@ -1,12 +1,18 @@
 # Rsq SDK feature factory
 
 from rsq_sdk.feature.base_feature import RsqBaseFeature
+from rsq_sdk.feature.ratelimit_feature import RsqRatelimitFeature
+from rsq_sdk.feature.retry_feature import RsqRetryFeature
 from rsq_sdk.feature.test_feature import RsqTestFeature
+from rsq_sdk.feature.timeout_feature import RsqTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: RsqBaseFeature(),
+    "ratelimit": lambda: RsqRatelimitFeature(),
+    "retry": lambda: RsqRetryFeature(),
     "test": lambda: RsqTestFeature(),
+    "timeout": lambda: RsqTimeoutFeature(),
 }
 
 

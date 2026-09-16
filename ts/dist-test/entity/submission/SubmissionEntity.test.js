@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.RSQ_TEST_LIVE;
         for (const op of ['list']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'submission.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'submission.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set RSQ_TEST_SUBMISSION_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "asylum", "req": false, "type": "`$STRING`", "index$": 0 }, { "active": true, "name": "asylum_name", "req": false, "type": "`$STRING`", "index$": 1 }, { "active": true, "name": "destination", "req": false, "type": "`$STRING`", "index$": 2 }, { "active": true, "name": "destination_name", "req": false, "type": "`$STRING`", "index$": 3 }, { "active": true, "name": "origin", "req": false, "type": "`$STRING`", "index$": 4 }, { "active": true, "name": "origin_name", "req": false, "type": "`$STRING`", "index$": 5 }, { "active": true, "name": "persons", "req": false, "type": "`$INTEGER`", "index$": 6 }, { "active": true, "name": "year", "req": false, "type": "`$INTEGER`", "index$": 7 }], "name": "submission", "op": { "list": { "input": "data", "name": "list", "points": [{ "active": true, "args": { "query": [{ "active": true, "kind": "query", "name": "asylum", "orig": "asylum", "reqd": false, "type": "`$ARRAY`", "index$": 0 }, { "active": true, "kind": "query", "name": "asylum_compare", "orig": "asylum_compare", "reqd": false, "type": "`$BOOLEAN`", "index$": 1 }, { "active": true, "kind": "query", "name": "asylum_sort", "orig": "asylum_sort", "reqd": false, "type": "`$STRING`", "index$": 2 }, { "active": true, "example": "en", "kind": "query", "name": "language", "orig": "language", "reqd": false, "type": "`$STRING`", "index$": 3 }, { "active": true, "kind": "query", "name": "origin", "orig": "origin", "reqd": false, "type": "`$ARRAY`", "index$": 4 }, { "active": true, "kind": "query", "name": "origin_compare", "orig": "origin_compare", "reqd": false, "type": "`$BOOLEAN`", "index$": 5 }, { "active": true, "kind": "query", "name": "origin_sort", "orig": "origin_sort", "reqd": false, "type": "`$STRING`", "index$": 6 }, { "active": true, "kind": "query", "name": "page", "orig": "page", "reqd": false, "type": "`$INTEGER`", "index$": 7 }, { "active": true, "kind": "query", "name": "persons_sort", "orig": "persons_sort", "reqd": false, "type": "`$STRING`", "index$": 8 }, { "active": true, "kind": "query", "name": "resettlement", "orig": "resettlement", "reqd": false, "type": "`$ARRAY`", "index$": 9 }, { "active": true, "kind": "query", "name": "resettlement_sort", "orig": "resettlement_sort", "reqd": false, "type": "`$STRING`", "index$": 10 }, { "active": true, "kind": "query", "name": "year", "orig": "year", "reqd": false, "type": "`$ARRAY`", "index$": 11 }, { "active": true, "kind": "query", "name": "year_sort", "orig": "year_sort", "reqd": false, "type": "`$STRING`", "index$": 12 }] }, "contract": { "id": "GET /submissions", "json": "{\"operationId\":\"getSubmissions\",\"parameters\":[{\"description\":\"Return results will be translated in requested language. Defaults to english\",\"in\":\"query\",\"name\":\"language\",\"required\":false,\"schema\":{\"default\":\"en\",\"enum\":[\"en\",\"fr\"],\"type\":\"string\"}},{\"description\":\"Current page of results\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"type\":\"integer\"}},{\"description\":\"One or more available years\",\"explode\":false,\"in\":\"query\",\"name\":\"year\",\"required\":false,\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"One or more country of origin codes\",\"explode\":false,\"in\":\"query\",\"name\":\"origin\",\"required\":false,\"schema\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"Used in combination with atleast one origin. Groups all other origins as 'All others' entry in results\",\"in\":\"query\",\"name\":\"originCompare\",\"required\":false,\"schema\":{\"type\":\"boolean\"}},{\"description\":\"One or more country of asylum codes\",\"explode\":false,\"in\":\"query\",\"name\":\"asylum\",\"required\":false,\"schema\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"Used in combination with atleast one asylum. Groups all other asylums as 'All others' entry in results\",\"in\":\"query\",\"name\":\"asylumCompare\",\"required\":false,\"schema\":{\"type\":\"boolean\"}},{\"description\":\"One or more country of resettlement codes\",\"explode\":false,\"in\":\"query\",\"name\":\"resettlement\",\"required\":false,\"schema\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"Sort results by year ascending or descending\",\"in\":\"query\",\"name\":\"yearSort\",\"required\":false,\"schema\":{\"enum\":[\"asc\",\"desc\"],\"type\":\"string\"}},{\"description\":\"Sort results by country of origin ascending or descending\",\"in\":\"query\",\"name\":\"originSort\",\"required\":false,\"schema\":{\"enum\":[\"asc\",\"desc\"],\"type\":\"string\"}},{\"description\":\"Sort results by country of asylum ascending or descending\",\"in\":\"query\",\"name\":\"asylumSort\",\"required\":false,\"schema\":{\"enum\":[\"asc\",\"desc\"],\"type\":\"string\"}},{\"description\":\"Sort results by country of resettlement ascending or descending\",\"in\":\"query\",\"name\":\"resettlementSort\",\"required\":false,\"schema\":{\"enum\":[\"asc\",\"desc\"],\"type\":\"string\"}},{\"description\":\"Sort results by number of persons ascending or descending\",\"in\":\"query\",\"name\":\"personsSort\",\"required\":false,\"schema\":{\"enum\":[\"asc\",\"desc\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"chartFilterTypes\":{\"properties\":{\"asylum\":{\"type\":\"boolean\"},\"origin\":{\"type\":\"boolean\"},\"resettlement\":{\"type\":\"boolean\"}},\"type\":\"object\"},\"page\":{\"example\":1,\"type\":\"integer\"},\"results\":{\"items\":{\"properties\":{\"asylum\":{\"example\":\"JOR\",\"type\":\"string\"},\"asylum_name\":{\"example\":\"Jordan\",\"type\":\"string\"},\"destination\":{\"example\":\"NOR\",\"type\":\"string\"},\"destination_name\":{\"example\":\"Norway\",\"type\":\"string\"},\"origin\":{\"example\":\"SYR\",\"type\":\"string\"},\"origin_name\":{\"example\":\"Syrian Arab Rep.\",\"type\":\"string\"},\"persons\":{\"example\":14,\"type\":\"integer\"},\"year\":{\"example\":2013,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"total\":{\"example\":12345,\"type\":\"integer\"},\"totalPages\":{\"example\":10,\"type\":\"integer\"},\"url\":{\"example\":\"#c3X3\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Valid request\"},\"default\":{\"description\":\"Unexpected error occurred\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/submissions", "segments": [{ "lit": "submissions" }], "select": { "exist": ["asylum", "asylum_compare", "asylum_sort", "language", "origin", "origin_compare", "origin_sort", "page", "persons_sort", "resettlement", "resettlement_sort", "year", "year_sort"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "submission", "name__orig": "submission", "Name": "Submission", "name_": "submission", "name-": "submission", "NAME": "SUBMISSION", "index$": 8 }, { "active": true, "entity": "submission", "key$": "BasicSubmissionFlow", "kind": "basic", "name": "BasicSubmissionFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": {}, "match": {}, "op": "list", "spec": [], "valid": [{ "apply": "ItemExists", "def": { "ref": "submission_ref01" } }], "index$": 0 }] }, 'Submission');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -101,12 +99,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['RSQ_TEST_SUBMISSION_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'RSQ_TEST_SUBMISSION_ENTID': idmap,
         'RSQ_TEST_LIVE': 'FALSE',
@@ -114,7 +106,13 @@ function basicSetup(extra) {
     });
     idmap = env['RSQ_TEST_SUBMISSION_ENTID'];
     const live = 'TRUE' === env.RSQ_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['RSQ_TEST_SUBMISSION_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.RsqSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -125,7 +123,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -137,7 +136,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.RSQ_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

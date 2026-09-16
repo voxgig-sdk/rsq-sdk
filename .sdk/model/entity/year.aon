@@ -10,6 +10,12 @@ main: kit: entity: year: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /years"
+            json: "{\"operationId\":\"getYears\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Valid request\"},\"default\":{\"description\":\"Unexpected error occurred\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/years"
           segments: [
@@ -23,6 +29,12 @@ main: kit: entity: year: {
           }
         }
         {
+          contract: {
+            id: "GET /years/demographics"
+            json: "{\"operationId\":\"getDemographicsYears\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Valid request\"},\"default\":{\"description\":\"Unexpected error occurred\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/years/demographics"
           segments: [

@@ -26,5 +26,160 @@
         "region": "s7a"
       }
     }
+  },
+  "requests": {
+    "GET /origins/departures": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getOriginsDepartures",
+        "parameters": [
+          {
+            "description": "Return results will be translated in requested language. Defaults to english",
+            "in": "query",
+            "name": "language",
+            "required": false,
+            "schema": {
+              "default": "en",
+              "enum": [
+                "en",
+                "fr"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "code": {
+                        "example": "HRV",
+                        "type": "string"
+                      },
+                      "name": {
+                        "example": "Croatia",
+                        "type": "string"
+                      },
+                      "region": {
+                        "example": "Europe",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Valid request"
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /origins/submissions": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getOriginsSubmissions",
+        "parameters": [
+          {
+            "description": "Return results will be translated in requested language. Defaults to english",
+            "in": "query",
+            "name": "language",
+            "required": false,
+            "schema": {
+              "default": "en",
+              "enum": [
+                "en",
+                "fr"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "code": {
+                        "example": "HRV",
+                        "type": "string"
+                      },
+                      "name": {
+                        "example": "Croatia",
+                        "type": "string"
+                      },
+                      "region": {
+                        "example": "Europe",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Valid request"
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /origins/demographics": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getOriginsDemographics",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "code": {
+                        "example": "HRV",
+                        "type": "string"
+                      },
+                      "name": {
+                        "example": "Croatia",
+                        "type": "string"
+                      },
+                      "region": {
+                        "example": "Europe",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Valid request"
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

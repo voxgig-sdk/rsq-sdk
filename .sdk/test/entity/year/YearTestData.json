@@ -10,5 +10,61 @@
     "year": {
       "year_ref01": {}
     }
+  },
+  "requests": {
+    "GET /years": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getYears",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Valid request"
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /years/demographics": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getDemographicsYears",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "integer"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Valid request"
+          },
+          "default": {
+            "description": "Unexpected error occurred"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

@@ -42,6 +42,12 @@ main: kit: entity: url_fetch: {
               }
             ]
           }
+          contract: {
+            id: "GET /fetchUrl"
+            json: "{\"operationId\":\"fetchUrl\",\"parameters\":[{\"description\":\"# followed by a combination of 4 letters and/or numbers designating a unique query string\",\"in\":\"query\",\"name\":\"urlHash\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Return results will be translated in requested language. Defaults to english\",\"in\":\"query\",\"name\":\"language\",\"required\":false,\"schema\":{\"default\":\"en\",\"enum\":[\"en\",\"fr\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"status\":{\"enum\":[\"success\",\"invalid\"],\"example\":\"success\",\"type\":\"string\"},\"url\":{\"example\":\"http://api.unhcr.org/rsq/v1/submissions?asylum=&asylumCompare=&asylumRegion=&origin=AFG%2CBTN%2CCOD%2CERI%2CIRN%2CIRQ%2CMMR%2CSOM%2CSDN%2CSYR&originCompare=true&resettlement=&type=submissions&year=2013%2C2014%2C2015%2C2016%2C2017\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Valid request\"},\"default\":{\"description\":\"Unexpected error occurred\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/fetchUrl"
           segments: [
