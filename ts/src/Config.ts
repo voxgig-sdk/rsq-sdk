@@ -127,39 +127,39 @@ class Config {
 
     entity: {
       
-      category: {
-      },
-
-      country_of_asylum: {
-      },
-
-      country_of_origin: {
-      },
-
-      country_of_resettlement: {
-      },
-
-      demographic: {
-      },
-
-      departure: {
-      },
-
-      helper: {
-      },
-
-      region: {
-      },
-
-      submission: {
-      },
-
-      url_fetch: {
-      },
-
-      year: {
-      },
-
+        category: {
+        },
+  
+        country_of_asylum: {
+        },
+  
+        country_of_origin: {
+        },
+  
+        country_of_resettlement: {
+        },
+  
+        demographic: {
+        },
+  
+        departure: {
+        },
+  
+        helper: {
+        },
+  
+        region: {
+        },
+  
+        submission: {
+        },
+  
+        url_fetch: {
+        },
+  
+        year: {
+        },
+  
     }
   }
 
