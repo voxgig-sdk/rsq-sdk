@@ -2,8 +2,8 @@
 
 # Typed models for the Rsq SDK.
 #
-# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-# params (op.<name>.points[].args.params[]). Member types come from the
+# GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+# params (op.<name>.points[].g.params[]). Member types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Ruby types are unenforced; these YARD
 # annotations document the shapes. Do not edit by hand.
@@ -56,32 +56,6 @@ CountryOfAsylumListMatch = Struct.new(
   keyword_init: true
 )
 
-# CountryOfOrigin entity data model.
-#
-# @!attribute [rw] code
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] region
-#   @return [String, nil]
-CountryOfOrigin = Struct.new(
-  :code,
-  :name,
-  :region,
-  keyword_init: true
-)
-
-# Request payload for CountryOfOrigin#list.
-#
-# @!attribute [rw] language
-#   @return [String, nil]
-CountryOfOriginListMatch = Struct.new(
-  :language,
-  keyword_init: true
-)
-
 # CountryOfResettlement entity data model.
 #
 # @!attribute [rw] code
@@ -109,6 +83,9 @@ CountryOfResettlementListMatch = Struct.new(
 )
 
 # Demographic entity data model.
+#
+# @!attribute [rw] code
+#   @return [String, nil]
 #
 # @!attribute [rw] destination
 #   @return [String, nil]
@@ -146,6 +123,9 @@ CountryOfResettlementListMatch = Struct.new(
 # @!attribute [rw] malesUnknown
 #   @return [Integer, nil]
 #
+# @!attribute [rw] name
+#   @return [String, nil]
+#
 # @!attribute [rw] origin
 #   @return [String, nil]
 #
@@ -155,12 +135,16 @@ CountryOfResettlementListMatch = Struct.new(
 # @!attribute [rw] other
 #   @return [Integer, nil]
 #
+# @!attribute [rw] region
+#   @return [String, nil]
+#
 # @!attribute [rw] total
 #   @return [Integer, nil]
 #
 # @!attribute [rw] year
 #   @return [Integer, nil]
 Demographic = Struct.new(
+  :code,
   :destination,
   :destination_name,
   :femalesAdult,
@@ -173,9 +157,11 @@ Demographic = Struct.new(
   :malesTotal,
   :malesUnderage,
   :malesUnknown,
+  :name,
   :origin,
   :origin_name,
   :other,
+  :region,
   :total,
   :year,
   keyword_init: true
@@ -214,10 +200,16 @@ DemographicListMatch = Struct.new(
 # @!attribute [rw] asylum_name
 #   @return [String, nil]
 #
+# @!attribute [rw] code
+#   @return [String, nil]
+#
 # @!attribute [rw] destination
 #   @return [String, nil]
 #
 # @!attribute [rw] destination_name
+#   @return [String, nil]
+#
+# @!attribute [rw] name
 #   @return [String, nil]
 #
 # @!attribute [rw] origin
@@ -229,16 +221,22 @@ DemographicListMatch = Struct.new(
 # @!attribute [rw] persons
 #   @return [Integer, nil]
 #
+# @!attribute [rw] region
+#   @return [String, nil]
+#
 # @!attribute [rw] year
 #   @return [Integer, nil]
 Departure = Struct.new(
   :asylum,
   :asylum_name,
+  :code,
   :destination,
   :destination_name,
+  :name,
   :origin,
   :origin_name,
   :persons,
+  :region,
   :year,
   keyword_init: true
 )
@@ -351,10 +349,16 @@ RegionListMatch = Struct.new(
 # @!attribute [rw] asylum_name
 #   @return [String, nil]
 #
+# @!attribute [rw] code
+#   @return [String, nil]
+#
 # @!attribute [rw] destination
 #   @return [String, nil]
 #
 # @!attribute [rw] destination_name
+#   @return [String, nil]
+#
+# @!attribute [rw] name
 #   @return [String, nil]
 #
 # @!attribute [rw] origin
@@ -366,16 +370,22 @@ RegionListMatch = Struct.new(
 # @!attribute [rw] persons
 #   @return [Integer, nil]
 #
+# @!attribute [rw] region
+#   @return [String, nil]
+#
 # @!attribute [rw] year
 #   @return [Integer, nil]
 Submission = Struct.new(
   :asylum,
   :asylum_name,
+  :code,
   :destination,
   :destination_name,
+  :name,
   :origin,
   :origin_name,
   :persons,
+  :region,
   :year,
   keyword_init: true
 )

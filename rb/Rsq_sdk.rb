@@ -303,13 +303,6 @@ class RsqSDK
   end
 
 
-  # Canonical facade: client.CountryOfOrigin.list / client.CountryOfOrigin.load({ "id" => ... })
-  def CountryOfOrigin(data = nil)
-    require_relative 'entity/country_of_origin_entity'
-    CountryOfOriginEntity.new(self, data)
-  end
-
-
   # Canonical facade: client.CountryOfResettlement.list / client.CountryOfResettlement.load({ "id" => ... })
   def CountryOfResettlement(data = nil)
     require_relative 'entity/country_of_resettlement_entity'

@@ -47,9 +47,6 @@ func init() {
 	core.NewCountryOfAsylumEntityFunc = func(client *core.RsqSDK, entopts map[string]any) core.RsqEntity {
 		return entity.NewCountryOfAsylumEntity(client, entopts)
 	}
-	core.NewCountryOfOriginEntityFunc = func(client *core.RsqSDK, entopts map[string]any) core.RsqEntity {
-		return entity.NewCountryOfOriginEntity(client, entopts)
-	}
 	core.NewCountryOfResettlementEntityFunc = func(client *core.RsqSDK, entopts map[string]any) core.RsqEntity {
 		return entity.NewCountryOfResettlementEntity(client, entopts)
 	}

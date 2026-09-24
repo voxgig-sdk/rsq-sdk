@@ -49,10 +49,6 @@ Create a new `CategoryEntity` instance. Pass `None` for no initial data.
 
 Create a new `CountryOfAsylumEntity` instance. Pass `None` for no initial data.
 
-#### `CountryOfOrigin(data=None)`
-
-Create a new `CountryOfOriginEntity` instance. Pass `None` for no initial data.
-
 #### `CountryOfResettlement(data=None)`
 
 Create a new `CountryOfResettlementEntity` instance. Pass `None` for no initial data.
@@ -226,61 +222,6 @@ Return the entity name.
 
 ---
 
-## CountryOfOriginEntity
-
-```python
-country_of_origin = client.CountryOfOrigin()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `code` | `str` | No |  |
-| `name` | `str` | No |  |
-| `region` | `str` | No |  |
-
-### Operations
-
-#### `list(reqmatch=None, ctrl=None) -> list`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
-
-```python
-results = client.CountryOfOrigin().list()
-for country_of_origin in results:
-    print(country_of_origin)
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `CountryOfOriginEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
 ## CountryOfResettlementEntity
 
 ```python
@@ -346,6 +287,7 @@ demographic = client.Demographic()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `code` | `str` | No |  |
 | `destination` | `str` | No |  |
 | `destination_name` | `str` | No |  |
 | `femalesAdult` | `int` | No |  |
@@ -358,9 +300,11 @@ demographic = client.Demographic()
 | `malesTotal` | `int` | No |  |
 | `malesUnderage` | `int` | No |  |
 | `malesUnknown` | `int` | No |  |
+| `name` | `str` | No |  |
 | `origin` | `str` | No |  |
 | `origin_name` | `str` | No |  |
 | `other` | `int` | No |  |
+| `region` | `str` | No |  |
 | `total` | `int` | No |  |
 | `year` | `int` | No |  |
 
@@ -417,11 +361,14 @@ departure = client.Departure()
 | --- | --- | --- | --- |
 | `asylum` | `str` | No |  |
 | `asylum_name` | `str` | No |  |
+| `code` | `str` | No |  |
 | `destination` | `str` | No |  |
 | `destination_name` | `str` | No |  |
+| `name` | `str` | No |  |
 | `origin` | `str` | No |  |
 | `origin_name` | `str` | No |  |
 | `persons` | `int` | No |  |
+| `region` | `str` | No |  |
 | `year` | `int` | No |  |
 
 ### Operations
@@ -575,11 +522,14 @@ submission = client.Submission()
 | --- | --- | --- | --- |
 | `asylum` | `str` | No |  |
 | `asylum_name` | `str` | No |  |
+| `code` | `str` | No |  |
 | `destination` | `str` | No |  |
 | `destination_name` | `str` | No |  |
+| `name` | `str` | No |  |
 | `origin` | `str` | No |  |
 | `origin_name` | `str` | No |  |
 | `persons` | `int` | No |  |
+| `region` | `str` | No |  |
 | `year` | `int` | No |  |
 
 ### Operations

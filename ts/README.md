@@ -224,7 +224,6 @@ new RsqSDK(options?: {
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
 | `Category(data?)` | `CategoryEntity` | Create a Category entity instance. |
 | `CountryOfAsylum(data?)` | `CountryOfAsylumEntity` | Create a CountryOfAsylum entity instance. |
-| `CountryOfOrigin(data?)` | `CountryOfOriginEntity` | Create a CountryOfOrigin entity instance. |
 | `CountryOfResettlement(data?)` | `CountryOfResettlementEntity` | Create a CountryOfResettlement entity instance. |
 | `Demographic(data?)` | `DemographicEntity` | Create a Demographic entity instance. |
 | `Departure(data?)` | `DepartureEntity` | Create a Departure entity instance. |
@@ -323,18 +322,6 @@ Operations: list.
 
 API path: `/asylums`
 
-#### CountryOfOrigin
-
-| Field | Description |
-| --- | --- |
-| `code` |  |
-| `name` |  |
-| `region` |  |
-
-Operations: list.
-
-API path: `/origins/departures`
-
 #### CountryOfResettlement
 
 | Field | Description |
@@ -351,6 +338,7 @@ API path: `/destinations`
 
 | Field | Description |
 | --- | --- |
+| `code` |  |
 | `destination` |  |
 | `destination_name` |  |
 | `femalesAdult` |  |
@@ -363,9 +351,11 @@ API path: `/destinations`
 | `malesTotal` |  |
 | `malesUnderage` |  |
 | `malesUnknown` |  |
+| `name` |  |
 | `origin` |  |
 | `origin_name` |  |
 | `other` |  |
+| `region` |  |
 | `total` |  |
 | `year` |  |
 
@@ -379,11 +369,14 @@ API path: `/demographics`
 | --- | --- |
 | `asylum` |  |
 | `asylum_name` |  |
+| `code` |  |
 | `destination` |  |
 | `destination_name` |  |
+| `name` |  |
 | `origin` |  |
 | `origin_name` |  |
 | `persons` |  |
+| `region` |  |
 | `year` |  |
 
 Operations: list.
@@ -415,11 +408,14 @@ API path: `/regions`
 | --- | --- |
 | `asylum` |  |
 | `asylum_name` |  |
+| `code` |  |
 | `destination` |  |
 | `destination_name` |  |
+| `name` |  |
 | `origin` |  |
 | `origin_name` |  |
 | `persons` |  |
+| `region` |  |
 | `year` |  |
 
 Operations: list.
@@ -500,31 +496,6 @@ const country_of_asylums = await client.CountryOfAsylum().list()
 ```
 
 
-### CountryOfOrigin
-
-Create an instance: `const country_of_origin = client.CountryOfOrigin()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `code` | `string` |  |
-| `name` | `string` |  |
-| `region` | `string` |  |
-
-#### Example: List
-
-```ts
-const country_of_origins = await client.CountryOfOrigin().list()
-```
-
-
 ### CountryOfResettlement
 
 Create an instance: `const country_of_resettlement = client.CountryOfResettlement()`
@@ -564,6 +535,7 @@ Create an instance: `const demographic = client.Demographic()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `code` | `string` |  |
 | `destination` | `string` |  |
 | `destination_name` | `string` |  |
 | `femalesAdult` | `number` |  |
@@ -576,9 +548,11 @@ Create an instance: `const demographic = client.Demographic()`
 | `malesTotal` | `number` |  |
 | `malesUnderage` | `number` |  |
 | `malesUnknown` | `number` |  |
+| `name` | `string` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
 | `other` | `number` |  |
+| `region` | `string` |  |
 | `total` | `number` |  |
 | `year` | `number` |  |
 
@@ -605,11 +579,14 @@ Create an instance: `const departure = client.Departure()`
 | --- | --- | --- |
 | `asylum` | `string` |  |
 | `asylum_name` | `string` |  |
+| `code` | `string` |  |
 | `destination` | `string` |  |
 | `destination_name` | `string` |  |
+| `name` | `string` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
 | `persons` | `number` |  |
+| `region` | `string` |  |
 | `year` | `number` |  |
 
 #### Example: List
@@ -675,11 +652,14 @@ Create an instance: `const submission = client.Submission()`
 | --- | --- | --- |
 | `asylum` | `string` |  |
 | `asylum_name` | `string` |  |
+| `code` | `string` |  |
 | `destination` | `string` |  |
 | `destination_name` | `string` |  |
+| `name` | `string` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
 | `persons` | `number` |  |
+| `region` | `string` |  |
 | `year` | `number` |  |
 
 #### Example: List

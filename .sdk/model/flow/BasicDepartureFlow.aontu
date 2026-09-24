@@ -1,0 +1,22 @@
+# BasicDepartureFlow
+
+main: kit: flow: BasicDepartureFlow:
+{
+  entity: "departure",
+  kind: "basic",
+  name: "BasicDepartureFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "departure_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDepartureFlow"
+}

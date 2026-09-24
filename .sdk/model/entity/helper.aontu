@@ -1,0 +1,82 @@
+# Entity: helper
+
+main: kit: entity: helper: {
+
+  alias: field: {}
+
+  name: "helper"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /export/csv"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "origin"
+                or: "origin"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "resettlement"
+                or: "resettlement"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "year"
+                or: "year"
+                r: false
+                t: "`$ARRAY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/export/csv"
+          q: {
+            exist: [
+              "origin"
+              "resettlement"
+              "type"
+              "year"
+            ]
+          }
+          s: [
+            {
+              lit: "export"
+            }
+            {
+              lit: "csv"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

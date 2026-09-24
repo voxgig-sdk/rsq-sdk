@@ -1,7 +1,7 @@
 // Typed models for the Rsq SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,8 +14,6 @@ import (
 
 // Category is the typed data model for the category entity.
 type Category struct {
-	Code *string `json:"code,omitempty"`
-	Name *string `json:"name,omitempty"`
 }
 
 // CategoryListMatch is the typed request payload for Category.ListTyped.
@@ -25,9 +23,6 @@ type CategoryListMatch struct {
 
 // CountryOfAsylum is the typed data model for the country_of_asylum entity.
 type CountryOfAsylum struct {
-	Code *string `json:"code,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Region *string `json:"region,omitempty"`
 }
 
 // CountryOfAsylumListMatch is the typed request payload for CountryOfAsylum.ListTyped.
@@ -35,23 +30,8 @@ type CountryOfAsylumListMatch struct {
 	Language *string `json:"language,omitempty"`
 }
 
-// CountryOfOrigin is the typed data model for the country_of_origin entity.
-type CountryOfOrigin struct {
-	Code *string `json:"code,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Region *string `json:"region,omitempty"`
-}
-
-// CountryOfOriginListMatch is the typed request payload for CountryOfOrigin.ListTyped.
-type CountryOfOriginListMatch struct {
-	Language *string `json:"language,omitempty"`
-}
-
 // CountryOfResettlement is the typed data model for the country_of_resettlement entity.
 type CountryOfResettlement struct {
-	Code *string `json:"code,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Region *string `json:"region,omitempty"`
 }
 
 // CountryOfResettlementListMatch is the typed request payload for CountryOfResettlement.ListTyped.
@@ -61,23 +41,6 @@ type CountryOfResettlementListMatch struct {
 
 // Demographic is the typed data model for the demographic entity.
 type Demographic struct {
-	Destination *string `json:"destination,omitempty"`
-	DestinationName *string `json:"destination_name,omitempty"`
-	FemalesAdult *int `json:"femalesAdult,omitempty"`
-	FemalesSenior *int `json:"femalesSenior,omitempty"`
-	FemalesTotal *int `json:"femalesTotal,omitempty"`
-	FemalesUnderage *int `json:"femalesUnderage,omitempty"`
-	FemalesUnknown *int `json:"femalesUnknown,omitempty"`
-	MalesAdult *int `json:"malesAdult,omitempty"`
-	MalesSenior *int `json:"malesSenior,omitempty"`
-	MalesTotal *int `json:"malesTotal,omitempty"`
-	MalesUnderage *int `json:"malesUnderage,omitempty"`
-	MalesUnknown *int `json:"malesUnknown,omitempty"`
-	Origin *string `json:"origin,omitempty"`
-	OriginName *string `json:"origin_name,omitempty"`
-	Other *int `json:"other,omitempty"`
-	Total *int `json:"total,omitempty"`
-	Year *int `json:"year,omitempty"`
 }
 
 // DemographicListMatch is the typed request payload for Demographic.ListTyped.
@@ -91,14 +54,6 @@ type DemographicListMatch struct {
 
 // Departure is the typed data model for the departure entity.
 type Departure struct {
-	Asylum *string `json:"asylum,omitempty"`
-	AsylumName *string `json:"asylum_name,omitempty"`
-	Destination *string `json:"destination,omitempty"`
-	DestinationName *string `json:"destination_name,omitempty"`
-	Origin *string `json:"origin,omitempty"`
-	OriginName *string `json:"origin_name,omitempty"`
-	Persons *int `json:"persons,omitempty"`
-	Year *int `json:"year,omitempty"`
 }
 
 // DepartureListMatch is the typed request payload for Departure.ListTyped.
@@ -132,7 +87,6 @@ type HelperLoadMatch struct {
 
 // Region is the typed data model for the region entity.
 type Region struct {
-	Name *string `json:"name,omitempty"`
 }
 
 // RegionListMatch is the typed request payload for Region.ListTyped.
@@ -142,14 +96,6 @@ type RegionListMatch struct {
 
 // Submission is the typed data model for the submission entity.
 type Submission struct {
-	Asylum *string `json:"asylum,omitempty"`
-	AsylumName *string `json:"asylum_name,omitempty"`
-	Destination *string `json:"destination,omitempty"`
-	DestinationName *string `json:"destination_name,omitempty"`
-	Origin *string `json:"origin,omitempty"`
-	OriginName *string `json:"origin_name,omitempty"`
-	Persons *int `json:"persons,omitempty"`
-	Year *int `json:"year,omitempty"`
 }
 
 // SubmissionListMatch is the typed request payload for Submission.ListTyped.
@@ -171,8 +117,6 @@ type SubmissionListMatch struct {
 
 // UrlFetch is the typed data model for the url_fetch entity.
 type UrlFetch struct {
-	Status *string `json:"status,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // UrlFetchListMatch is the typed request payload for UrlFetch.ListTyped.

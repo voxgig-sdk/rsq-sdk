@@ -1,0 +1,76 @@
+# Entity: url_fetch
+
+main: kit: entity: url_fetch: {
+
+  alias: field: {}
+
+  fields: {
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "url_fetch"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /fetchUrl"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "en"
+                k: "query"
+                n: "language"
+                or: "language"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "url_hash"
+                or: "url_hash"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/fetchUrl"
+          q: {
+            exist: [
+              "language"
+              "url_hash"
+            ]
+          }
+          s: [
+            {
+              lit: "fetchUrl"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

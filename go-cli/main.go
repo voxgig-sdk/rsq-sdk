@@ -20,7 +20,7 @@ import (
 const prompt = "rsq"
 
 // entitiesHelp is the space-separated entity list shown by /help.
-const entitiesHelp = "category country_of_asylum country_of_origin country_of_resettlement demographic departure helper region submission url_fetch year"
+const entitiesHelp = "category country_of_asylum country_of_resettlement demographic departure helper region submission url_fetch year"
 
 func main() {
 	os.Exit(run(os.Args[1:], os.Stdin, os.Stdout, os.Stderr))

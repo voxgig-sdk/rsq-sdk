@@ -49,10 +49,6 @@ Create a new `CategoryEntity` instance. Pass `null` for no initial data.
 
 Create a new `CountryOfAsylumEntity` instance. Pass `null` for no initial data.
 
-#### `CountryOfOrigin($data = null)`
-
-Create a new `CountryOfOriginEntity` instance. Pass `null` for no initial data.
-
 #### `CountryOfResettlement($data = null)`
 
 Create a new `CountryOfResettlementEntity` instance. Pass `null` for no initial data.
@@ -229,60 +225,6 @@ Return the entity name.
 
 ---
 
-## CountryOfOriginEntity
-
-```php
-$country_of_origin = $client->CountryOfOrigin();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `code` | `string` | No |  |
-| `name` | `string` | No |  |
-| `region` | `string` | No |  |
-
-### Operations
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
-
-```php
-$results = $client->CountryOfOrigin()->list();
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): CountryOfOriginEntity`
-
-Create a new `CountryOfOriginEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
 ## CountryOfResettlementEntity
 
 ```php
@@ -347,6 +289,7 @@ $demographic = $client->Demographic();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `code` | `string` | No |  |
 | `destination` | `string` | No |  |
 | `destination_name` | `string` | No |  |
 | `femalesAdult` | `int` | No |  |
@@ -359,9 +302,11 @@ $demographic = $client->Demographic();
 | `malesTotal` | `int` | No |  |
 | `malesUnderage` | `int` | No |  |
 | `malesUnknown` | `int` | No |  |
+| `name` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
 | `other` | `int` | No |  |
+| `region` | `string` | No |  |
 | `total` | `int` | No |  |
 | `year` | `int` | No |  |
 
@@ -417,11 +362,14 @@ $departure = $client->Departure();
 | --- | --- | --- | --- |
 | `asylum` | `string` | No |  |
 | `asylum_name` | `string` | No |  |
+| `code` | `string` | No |  |
 | `destination` | `string` | No |  |
 | `destination_name` | `string` | No |  |
+| `name` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
 | `persons` | `int` | No |  |
+| `region` | `string` | No |  |
 | `year` | `int` | No |  |
 
 ### Operations
@@ -574,11 +522,14 @@ $submission = $client->Submission();
 | --- | --- | --- | --- |
 | `asylum` | `string` | No |  |
 | `asylum_name` | `string` | No |  |
+| `code` | `string` | No |  |
 | `destination` | `string` | No |  |
 | `destination_name` | `string` | No |  |
+| `name` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
 | `persons` | `int` | No |  |
+| `region` | `string` | No |  |
 | `year` | `int` | No |  |
 
 ### Operations

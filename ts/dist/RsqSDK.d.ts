@@ -1,6 +1,5 @@
 import { CategoryEntity } from './entity/CategoryEntity';
 import { CountryOfAsylumEntity } from './entity/CountryOfAsylumEntity';
-import { CountryOfOriginEntity } from './entity/CountryOfOriginEntity';
 import { CountryOfResettlementEntity } from './entity/CountryOfResettlementEntity';
 import { DemographicEntity } from './entity/DemographicEntity';
 import { DepartureEntity } from './entity/DepartureEntity';
@@ -56,7 +55,6 @@ declare class RsqSDK {
     graphql(query: string, variables?: any, ctrl?: any): Promise<any>;
     Category(entopts?: Record<string, any>): CategoryEntity;
     CountryOfAsylum(entopts?: Record<string, any>): CountryOfAsylumEntity;
-    CountryOfOrigin(entopts?: Record<string, any>): CountryOfOriginEntity;
     CountryOfResettlement(entopts?: Record<string, any>): CountryOfResettlementEntity;
     Demographic(entopts?: Record<string, any>): DemographicEntity;
     Departure(entopts?: Record<string, any>): DepartureEntity;

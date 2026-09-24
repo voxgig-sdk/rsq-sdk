@@ -4,7 +4,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SDK = exports.RsqSDK = exports.RsqEntityBase = exports.BaseFeature = exports.config = exports.stdutil = void 0;
 const CategoryEntity_1 = require("./entity/CategoryEntity");
 const CountryOfAsylumEntity_1 = require("./entity/CountryOfAsylumEntity");
-const CountryOfOriginEntity_1 = require("./entity/CountryOfOriginEntity");
 const CountryOfResettlementEntity_1 = require("./entity/CountryOfResettlementEntity");
 const DemographicEntity_1 = require("./entity/DemographicEntity");
 const DepartureEntity_1 = require("./entity/DepartureEntity");
@@ -94,7 +93,6 @@ class RsqSDK {
             ctrl: fetchargs.ctrl || {},
         }, this._rootctx);
         const options = this._options;
-        // Build spec directly from SDK options + user-provided fetch args.
         const spec = {
             base: options.base,
             prefix: options.prefix,
@@ -108,14 +106,12 @@ class RsqSDK {
             step: 'start',
         };
         ctx.spec = spec;
-        // Merge user-provided headers over SDK defaults.
         if (fetchargs.headers) {
             const uheaders = fetchargs.headers;
             for (let key in uheaders) {
                 spec.headers[key] = uheaders[key];
             }
         }
-        // Apply SDK auth (apikey, auth prefix, etc.)
         const authResult = prepareAuth(ctx);
         if (authResult instanceof Error) {
             return authResult;
@@ -190,18 +186,6 @@ class RsqSDK {
             return { ok: false, err };
         }
     }
-    // Raw GraphQL access: the pressure valve that makes the generated
-    // surface's deliberate omissions (per-call selection sets, typed filter
-    // builders, batching, subscriptions) livable — the whole schema stays
-    // reachable.
-    //
-    // Thin wrapper over the same prepare/fetch path `direct` uses, with the
-    // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
-    // HTTP 200 as a top-level `errors` array, so status alone would report a
-    // failed query as ok.
-    //
-    // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
-    // ratelimit or paging features apply.
     async graphql(query, variables, ctrl) {
         const options = this._options;
         if (!options.allow.op.includes('graphql')) {
@@ -248,13 +232,6 @@ class RsqSDK {
     CountryOfAsylum(entopts) {
         const self = this;
         return new CountryOfAsylumEntity_1.CountryOfAsylumEntity(self, entopts);
-    }
-    // Entity access: `client.CountryOfOrigin().list()` / `client.CountryOfOrigin().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    CountryOfOrigin(entopts) {
-        const self = this;
-        return new CountryOfOriginEntity_1.CountryOfOriginEntity(self, entopts);
     }
     // Entity access: `client.CountryOfResettlement().list()` / `client.CountryOfResettlement().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity

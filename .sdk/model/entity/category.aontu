@@ -1,0 +1,68 @@
+# Entity: category
+
+main: kit: entity: category: {
+
+  alias: field: {}
+
+  fields: {
+    code: {
+      h: "Code"
+      n: "code"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "category"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /categories"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "en"
+                k: "query"
+                n: "language"
+                or: "language"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/categories"
+          q: {
+            exist: [
+              "language"
+            ]
+          }
+          s: [
+            {
+              lit: "categories"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

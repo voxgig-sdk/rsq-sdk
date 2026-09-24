@@ -19,7 +19,6 @@ import type {
   CountryOfAsylumListMatch,
 } from '../RsqTypes'
 
-// TODO: needs Entity superclass
 class CountryOfAsylumEntity extends RsqEntityBase<CountryOfAsylum> {
 
   constructor(client: RsqSDK, entopts: any) {

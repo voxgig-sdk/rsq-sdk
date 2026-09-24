@@ -1,0 +1,22 @@
+# BasicUrlFetchFlow
+
+main: kit: flow: BasicUrlFetchFlow:
+{
+  entity: "url_fetch",
+  kind: "basic",
+  name: "BasicUrlFetchFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "url_fetch_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUrlFetchFlow"
+}

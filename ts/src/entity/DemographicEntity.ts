@@ -19,7 +19,6 @@ import type {
   DemographicListMatch,
 } from '../RsqTypes'
 
-// TODO: needs Entity superclass
 class DemographicEntity extends RsqEntityBase<Demographic> {
 
   constructor(client: RsqSDK, entopts: any) {

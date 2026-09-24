@@ -210,7 +210,6 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
 | `Category` | `($data): CategoryEntity` | Create a Category entity instance. |
 | `CountryOfAsylum` | `($data): CountryOfAsylumEntity` | Create a CountryOfAsylum entity instance. |
-| `CountryOfOrigin` | `($data): CountryOfOriginEntity` | Create a CountryOfOrigin entity instance. |
 | `CountryOfResettlement` | `($data): CountryOfResettlementEntity` | Create a CountryOfResettlement entity instance. |
 | `Demographic` | `($data): DemographicEntity` | Create a Demographic entity instance. |
 | `Departure` | `($data): DepartureEntity` | Create a Departure entity instance. |
@@ -278,18 +277,6 @@ Operations: List.
 
 API path: `/asylums`
 
-#### CountryOfOrigin
-
-| Field | Description |
-| --- | --- |
-| `code` |  |
-| `name` |  |
-| `region` |  |
-
-Operations: List.
-
-API path: `/origins/departures`
-
 #### CountryOfResettlement
 
 | Field | Description |
@@ -306,6 +293,7 @@ API path: `/destinations`
 
 | Field | Description |
 | --- | --- |
+| `code` |  |
 | `destination` |  |
 | `destination_name` |  |
 | `femalesAdult` |  |
@@ -318,9 +306,11 @@ API path: `/destinations`
 | `malesTotal` |  |
 | `malesUnderage` |  |
 | `malesUnknown` |  |
+| `name` |  |
 | `origin` |  |
 | `origin_name` |  |
 | `other` |  |
+| `region` |  |
 | `total` |  |
 | `year` |  |
 
@@ -334,11 +324,14 @@ API path: `/demographics`
 | --- | --- |
 | `asylum` |  |
 | `asylum_name` |  |
+| `code` |  |
 | `destination` |  |
 | `destination_name` |  |
+| `name` |  |
 | `origin` |  |
 | `origin_name` |  |
 | `persons` |  |
+| `region` |  |
 | `year` |  |
 
 Operations: List.
@@ -370,11 +363,14 @@ API path: `/regions`
 | --- | --- |
 | `asylum` |  |
 | `asylum_name` |  |
+| `code` |  |
 | `destination` |  |
 | `destination_name` |  |
+| `name` |  |
 | `origin` |  |
 | `origin_name` |  |
 | `persons` |  |
+| `region` |  |
 | `year` |  |
 
 Operations: List.
@@ -457,32 +453,6 @@ $country_of_asylums = $client->CountryOfAsylum()->list();
 ```
 
 
-### CountryOfOrigin
-
-Create an instance: `$country_of_origin = $client->CountryOfOrigin();`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `code` | `string` |  |
-| `name` | `string` |  |
-| `region` | `string` |  |
-
-#### Example: List
-
-```php
-// list() returns an array of CountryOfOrigin records (throws on error).
-$country_of_origins = $client->CountryOfOrigin()->list();
-```
-
-
 ### CountryOfResettlement
 
 Create an instance: `$country_of_resettlement = $client->CountryOfResettlement();`
@@ -523,6 +493,7 @@ Create an instance: `$demographic = $client->Demographic();`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `code` | `string` |  |
 | `destination` | `string` |  |
 | `destination_name` | `string` |  |
 | `femalesAdult` | `int` |  |
@@ -535,9 +506,11 @@ Create an instance: `$demographic = $client->Demographic();`
 | `malesTotal` | `int` |  |
 | `malesUnderage` | `int` |  |
 | `malesUnknown` | `int` |  |
+| `name` | `string` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
 | `other` | `int` |  |
+| `region` | `string` |  |
 | `total` | `int` |  |
 | `year` | `int` |  |
 
@@ -565,11 +538,14 @@ Create an instance: `$departure = $client->Departure();`
 | --- | --- | --- |
 | `asylum` | `string` |  |
 | `asylum_name` | `string` |  |
+| `code` | `string` |  |
 | `destination` | `string` |  |
 | `destination_name` | `string` |  |
+| `name` | `string` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
 | `persons` | `int` |  |
+| `region` | `string` |  |
 | `year` | `int` |  |
 
 #### Example: List
@@ -638,11 +614,14 @@ Create an instance: `$submission = $client->Submission();`
 | --- | --- | --- |
 | `asylum` | `string` |  |
 | `asylum_name` | `string` |  |
+| `code` | `string` |  |
 | `destination` | `string` |  |
 | `destination_name` | `string` |  |
+| `name` | `string` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
 | `persons` | `int` |  |
+| `region` | `string` |  |
 | `year` | `int` |  |
 
 #### Example: List

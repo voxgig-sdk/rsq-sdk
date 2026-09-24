@@ -377,20 +377,6 @@ function RsqSDK:CountryOfAsylum(data)
 end
 
 
--- Idiomatic facade: client:CountryOfOrigin():list() / client:CountryOfOrigin():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function RsqSDK:CountryOfOrigin(data)
-  local EntityMod = require("entity.country_of_origin_entity")
-  if data == nil then
-    if self._country_of_origin == nil then
-      self._country_of_origin = EntityMod.new(self, nil)
-    end
-    return self._country_of_origin
-  end
-  return EntityMod.new(self, data)
-end
-
-
 -- Idiomatic facade: client:CountryOfResettlement():list() / client:CountryOfResettlement():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function RsqSDK:CountryOfResettlement(data)

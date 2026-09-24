@@ -55,10 +55,6 @@ Create a new `Category` entity instance. Pass `nil` for no initial data.
 
 Create a new `CountryOfAsylum` entity instance. Pass `nil` for no initial data.
 
-#### `CountryOfOrigin(data map[string]any) RsqEntity`
-
-Create a new `CountryOfOrigin` entity instance. Pass `nil` for no initial data.
-
 #### `CountryOfResettlement(data map[string]any) RsqEntity`
 
 Create a new `CountryOfResettlement` entity instance. Pass `nil` for no initial data.
@@ -232,59 +228,6 @@ Return the entity name.
 
 ---
 
-## CountryOfOriginEntity
-
-```go
-countryOfOrigin := client.CountryOfOrigin(nil)
-fmt.Println(countryOfOrigin.GetName()) // "country_of_origin"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `code` | `string` | No |  |
-| `name` | `string` | No |  |
-| `region` | `string` | No |  |
-
-### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns an array.
-
-```go
-results, err := client.CountryOfOrigin(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(results)
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `CountryOfOriginEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
 ## CountryOfResettlementEntity
 
 ```go
@@ -349,6 +292,7 @@ fmt.Println(demographic.GetName()) // "demographic"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `code` | `string` | No |  |
 | `destination` | `string` | No |  |
 | `destination_name` | `string` | No |  |
 | `femalesAdult` | `int` | No |  |
@@ -361,9 +305,11 @@ fmt.Println(demographic.GetName()) // "demographic"
 | `malesTotal` | `int` | No |  |
 | `malesUnderage` | `int` | No |  |
 | `malesUnknown` | `int` | No |  |
+| `name` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
 | `other` | `int` | No |  |
+| `region` | `string` | No |  |
 | `total` | `int` | No |  |
 | `year` | `int` | No |  |
 
@@ -418,11 +364,14 @@ fmt.Println(departure.GetName()) // "departure"
 | --- | --- | --- | --- |
 | `asylum` | `string` | No |  |
 | `asylum_name` | `string` | No |  |
+| `code` | `string` | No |  |
 | `destination` | `string` | No |  |
 | `destination_name` | `string` | No |  |
+| `name` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
 | `persons` | `int` | No |  |
+| `region` | `string` | No |  |
 | `year` | `int` | No |  |
 
 ### Operations
@@ -572,11 +521,14 @@ fmt.Println(submission.GetName()) // "submission"
 | --- | --- | --- | --- |
 | `asylum` | `string` | No |  |
 | `asylum_name` | `string` | No |  |
+| `code` | `string` | No |  |
 | `destination` | `string` | No |  |
 | `destination_name` | `string` | No |  |
+| `name` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
 | `persons` | `int` | No |  |
+| `region` | `string` | No |  |
 | `year` | `int` | No |  |
 
 ### Operations

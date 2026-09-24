@@ -19,7 +19,6 @@ import type {
   RegionListMatch,
 } from '../RsqTypes'
 
-// TODO: needs Entity superclass
 class RegionEntity extends RsqEntityBase<Region> {
 
   constructor(client: RsqSDK, entopts: any) {

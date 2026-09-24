@@ -13,14 +13,6 @@ export interface CountryOfAsylum {
 export interface CountryOfAsylumListMatch {
     language?: string;
 }
-export interface CountryOfOrigin {
-    code?: string;
-    name?: string;
-    region?: string;
-}
-export interface CountryOfOriginListMatch {
-    language?: string;
-}
 export interface CountryOfResettlement {
     code?: string;
     name?: string;
@@ -30,6 +22,7 @@ export interface CountryOfResettlementListMatch {
     language?: string;
 }
 export interface Demographic {
+    code?: string;
     destination?: string;
     destination_name?: string;
     femalesAdult?: number;
@@ -42,9 +35,11 @@ export interface Demographic {
     malesTotal?: number;
     malesUnderage?: number;
     malesUnknown?: number;
+    name?: string;
     origin?: string;
     origin_name?: string;
     other?: number;
+    region?: string;
     total?: number;
     year?: number;
 }
@@ -58,11 +53,14 @@ export interface DemographicListMatch {
 export interface Departure {
     asylum?: string;
     asylum_name?: string;
+    code?: string;
     destination?: string;
     destination_name?: string;
+    name?: string;
     origin?: string;
     origin_name?: string;
     persons?: number;
+    region?: string;
     year?: number;
 }
 export interface DepartureListMatch {
@@ -97,11 +95,14 @@ export interface RegionListMatch {
 export interface Submission {
     asylum?: string;
     asylum_name?: string;
+    code?: string;
     destination?: string;
     destination_name?: string;
+    name?: string;
     origin?: string;
     origin_name?: string;
     persons?: number;
+    region?: string;
     year?: number;
 }
 export interface SubmissionListMatch {

@@ -1,0 +1,63 @@
+# Entity: year
+
+main: kit: entity: year: {
+
+  alias: field: {}
+
+  name: "year"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /years"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/years"
+          s: [
+            {
+              lit: "years"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /years/demographics"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/years/demographics"
+          q: {
+            "$action": "demographic"
+          }
+          s: [
+            {
+              lit: "years"
+            }
+            {
+              lit: "demographics"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

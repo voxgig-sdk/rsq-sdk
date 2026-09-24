@@ -1,0 +1,256 @@
+# Entity: submission
+
+main: kit: entity: submission: {
+
+  alias: field: {}
+
+  fields: {
+    asylum: {
+      h: "Asylum"
+      n: "asylum"
+      r: false
+      t: "`$STRING`"
+    }
+    asylum_name: {
+      h: "Asylum Name"
+      n: "asylum_name"
+      r: false
+      t: "`$STRING`"
+    }
+    code: {
+      h: "Code"
+      n: "code"
+      r: false
+      t: "`$STRING`"
+    }
+    destination: {
+      h: "Destination"
+      n: "destination"
+      r: false
+      t: "`$STRING`"
+    }
+    destination_name: {
+      h: "Destination Name"
+      n: "destination_name"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    origin: {
+      h: "Origin"
+      n: "origin"
+      r: false
+      t: "`$STRING`"
+    }
+    origin_name: {
+      h: "Origin Name"
+      n: "origin_name"
+      r: false
+      t: "`$STRING`"
+    }
+    persons: {
+      h: "Persons"
+      n: "persons"
+      r: false
+      t: "`$INTEGER`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: false
+      t: "`$STRING`"
+    }
+    year: {
+      h: "Year"
+      n: "year"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "submission"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /submissions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "asylum"
+                or: "asylum"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "asylum_compare"
+                or: "asylum_compare"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "asylum_sort"
+                or: "asylum_sort"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "en"
+                k: "query"
+                n: "language"
+                or: "language"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "origin"
+                or: "origin"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "origin_compare"
+                or: "origin_compare"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "origin_sort"
+                or: "origin_sort"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "persons_sort"
+                or: "persons_sort"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "resettlement"
+                or: "resettlement"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "resettlement_sort"
+                or: "resettlement_sort"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "year"
+                or: "year"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "year_sort"
+                or: "year_sort"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/submissions"
+          q: {
+            exist: [
+              "asylum"
+              "asylum_compare"
+              "asylum_sort"
+              "language"
+              "origin"
+              "origin_compare"
+              "origin_sort"
+              "page"
+              "persons_sort"
+              "resettlement"
+              "resettlement_sort"
+              "year"
+              "year_sort"
+            ]
+          }
+          s: [
+            {
+              lit: "submissions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /origins/submissions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "en"
+                k: "query"
+                n: "language"
+                or: "language"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/origins/submissions"
+          q: {
+            exist: [
+              "language"
+            ]
+          }
+          s: [
+            {
+              lit: "origins"
+            }
+            {
+              lit: "submissions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

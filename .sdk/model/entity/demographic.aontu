@@ -1,0 +1,229 @@
+# Entity: demographic
+
+main: kit: entity: demographic: {
+
+  alias: field: {}
+
+  fields: {
+    code: {
+      h: "Code"
+      n: "code"
+      r: false
+      t: "`$STRING`"
+    }
+    destination: {
+      h: "Destination"
+      n: "destination"
+      r: false
+      t: "`$STRING`"
+    }
+    destination_name: {
+      h: "Destination Name"
+      n: "destination_name"
+      r: false
+      t: "`$STRING`"
+    }
+    femalesAdult: {
+      h: "Females Adult"
+      n: "femalesAdult"
+      r: false
+      t: "`$INTEGER`"
+    }
+    femalesSenior: {
+      h: "Females Senior"
+      n: "femalesSenior"
+      r: false
+      t: "`$INTEGER`"
+    }
+    femalesTotal: {
+      h: "Females Total"
+      n: "femalesTotal"
+      r: false
+      t: "`$INTEGER`"
+    }
+    femalesUnderage: {
+      h: "Females Underage"
+      n: "femalesUnderage"
+      r: false
+      t: "`$INTEGER`"
+    }
+    femalesUnknown: {
+      h: "Females Unknown"
+      n: "femalesUnknown"
+      r: false
+      t: "`$INTEGER`"
+    }
+    malesAdult: {
+      h: "Males Adult"
+      n: "malesAdult"
+      r: false
+      t: "`$INTEGER`"
+    }
+    malesSenior: {
+      h: "Males Senior"
+      n: "malesSenior"
+      r: false
+      t: "`$INTEGER`"
+    }
+    malesTotal: {
+      h: "Males Total"
+      n: "malesTotal"
+      r: false
+      t: "`$INTEGER`"
+    }
+    malesUnderage: {
+      h: "Males Underage"
+      n: "malesUnderage"
+      r: false
+      t: "`$INTEGER`"
+    }
+    malesUnknown: {
+      h: "Males Unknown"
+      n: "malesUnknown"
+      r: false
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    origin: {
+      h: "Origin"
+      n: "origin"
+      r: false
+      t: "`$STRING`"
+    }
+    origin_name: {
+      h: "Origin Name"
+      n: "origin_name"
+      r: false
+      t: "`$STRING`"
+    }
+    other: {
+      h: "Other"
+      n: "other"
+      r: false
+      t: "`$INTEGER`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: false
+      t: "`$STRING`"
+    }
+    total: {
+      h: "Total"
+      n: "total"
+      r: false
+      t: "`$INTEGER`"
+    }
+    year: {
+      h: "Year"
+      n: "year"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "demographic"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /demographics"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "en"
+                k: "query"
+                n: "language"
+                or: "language"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "origin"
+                or: "origin"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "origin_compare"
+                or: "origin_compare"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "resettlement"
+                or: "resettlement"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "year"
+                or: "year"
+                r: false
+                t: "`$ARRAY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/demographics"
+          q: {
+            exist: [
+              "language"
+              "origin"
+              "origin_compare"
+              "resettlement"
+              "year"
+            ]
+          }
+          s: [
+            {
+              lit: "demographics"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+        {
+          co: {
+            id: "GET /origins/demographics"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/origins/demographics"
+          s: [
+            {
+              lit: "origins"
+            }
+            {
+              lit: "demographics"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,7 +1,7 @@
 # Typed models for the Rsq SDK.
 #
-# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-# params (op.<name>.points[].args.params[]). Field/param types come from the
+# GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+# params (op.<name>.points[].g.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
 #
@@ -35,16 +35,6 @@ class CountryOfAsylumListMatch(TypedDict, total=False):
     language: str
 
 
-class CountryOfOrigin(TypedDict, total=False):
-    code: str
-    name: str
-    region: str
-
-
-class CountryOfOriginListMatch(TypedDict, total=False):
-    language: str
-
-
 class CountryOfResettlement(TypedDict, total=False):
     code: str
     name: str
@@ -56,6 +46,7 @@ class CountryOfResettlementListMatch(TypedDict, total=False):
 
 
 class Demographic(TypedDict, total=False):
+    code: str
     destination: str
     destination_name: str
     femalesAdult: int
@@ -68,9 +59,11 @@ class Demographic(TypedDict, total=False):
     malesTotal: int
     malesUnderage: int
     malesUnknown: int
+    name: str
     origin: str
     origin_name: str
     other: int
+    region: str
     total: int
     year: int
 
@@ -86,11 +79,14 @@ class DemographicListMatch(TypedDict, total=False):
 class Departure(TypedDict, total=False):
     asylum: str
     asylum_name: str
+    code: str
     destination: str
     destination_name: str
+    name: str
     origin: str
     origin_name: str
     persons: int
+    region: str
     year: int
 
 
@@ -132,11 +128,14 @@ class RegionListMatch(TypedDict, total=False):
 class Submission(TypedDict, total=False):
     asylum: str
     asylum_name: str
+    code: str
     destination: str
     destination_name: str
+    name: str
     origin: str
     origin_name: str
     persons: int
+    region: str
     year: int
 
 

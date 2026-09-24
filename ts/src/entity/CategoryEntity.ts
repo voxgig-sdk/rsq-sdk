@@ -19,7 +19,6 @@ import type {
   CategoryListMatch,
 } from '../RsqTypes'
 
-// TODO: needs Entity superclass
 class CategoryEntity extends RsqEntityBase<Category> {
 
   constructor(client: RsqSDK, entopts: any) {

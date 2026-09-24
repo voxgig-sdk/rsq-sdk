@@ -19,7 +19,6 @@ import type {
   SubmissionListMatch,
 } from '../RsqTypes'
 
-// TODO: needs Entity superclass
 class SubmissionEntity extends RsqEntityBase<Submission> {
 
   constructor(client: RsqSDK, entopts: any) {

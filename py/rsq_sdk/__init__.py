@@ -319,12 +319,6 @@ class RsqSDK:
         return CountryOfAsylumEntity(self, data)
 
 
-    def CountryOfOrigin(self, data=None) -> "CountryOfOriginEntity":
-        """Entity factory: client.CountryOfOrigin().list() / client.CountryOfOrigin().load({"id": ...})."""
-        from rsq_sdk.entity.country_of_origin_entity import CountryOfOriginEntity
-        return CountryOfOriginEntity(self, data)
-
-
     def CountryOfResettlement(self, data=None) -> "CountryOfResettlementEntity":
         """Entity factory: client.CountryOfResettlement().list() / client.CountryOfResettlement().load({"id": ...})."""
         from rsq_sdk.entity.country_of_resettlement_entity import CountryOfResettlementEntity
@@ -402,7 +396,6 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from rsq_sdk.entity.category_entity import CategoryEntity
     from rsq_sdk.entity.country_of_asylum_entity import CountryOfAsylumEntity
-    from rsq_sdk.entity.country_of_origin_entity import CountryOfOriginEntity
     from rsq_sdk.entity.country_of_resettlement_entity import CountryOfResettlementEntity
     from rsq_sdk.entity.demographic_entity import DemographicEntity
     from rsq_sdk.entity.departure_entity import DepartureEntity

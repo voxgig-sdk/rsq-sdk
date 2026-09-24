@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.YearEntity = void 0;
 const RsqEntityBase_1 = require("../RsqEntityBase");
-// TODO: needs Entity superclass
 class YearEntity extends RsqEntityBase_1.RsqEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

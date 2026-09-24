@@ -377,24 +377,6 @@ class RsqSDK
     }
 
 
-    private $_country_of_origin = null;
-
-    // Canonical facade: $client->CountryOfOrigin()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->country_of_origin()
-    // resolves here too.
-    public function CountryOfOrigin($data = null)
-    {
-        require_once __DIR__ . '/entity/country_of_origin_entity.php';
-        if ($data === null) {
-            if ($this->_country_of_origin === null) {
-                $this->_country_of_origin = new CountryOfOriginEntity($this, null);
-            }
-            return $this->_country_of_origin;
-        }
-        return new CountryOfOriginEntity($this, $data);
-    }
-
-
     private $_country_of_resettlement = null;
 
     // Canonical facade: $client->CountryOfResettlement()->list() / ->load(["id" => ...]).

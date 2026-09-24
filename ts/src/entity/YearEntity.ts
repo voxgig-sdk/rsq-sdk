@@ -19,7 +19,6 @@ import type {
   YearListMatch,
 } from '../RsqTypes'
 
-// TODO: needs Entity superclass
 class YearEntity extends RsqEntityBase<Year> {
 
   constructor(client: RsqSDK, entopts: any) {

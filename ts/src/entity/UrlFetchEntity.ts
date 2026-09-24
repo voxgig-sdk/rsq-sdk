@@ -19,7 +19,6 @@ import type {
   UrlFetchListMatch,
 } from '../RsqTypes'
 
-// TODO: needs Entity superclass
 class UrlFetchEntity extends RsqEntityBase<UrlFetch> {
 
   constructor(client: RsqSDK, entopts: any) {

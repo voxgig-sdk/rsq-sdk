@@ -42,7 +42,6 @@ class ReadmeExamplesTest extends TestCase
     private const ENTITIES = [
         "Category" => "category",
         "CountryOfAsylum" => "country_of_asylum",
-        "CountryOfOrigin" => "country_of_origin",
         "CountryOfResettlement" => "country_of_resettlement",
         "Demographic" => "demographic",
         "Departure" => "departure",

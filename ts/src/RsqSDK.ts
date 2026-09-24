@@ -2,7 +2,6 @@
 
 import { CategoryEntity } from './entity/CategoryEntity'
 import { CountryOfAsylumEntity } from './entity/CountryOfAsylumEntity'
-import { CountryOfOriginEntity } from './entity/CountryOfOriginEntity'
 import { CountryOfResettlementEntity } from './entity/CountryOfResettlementEntity'
 import { DemographicEntity } from './entity/DemographicEntity'
 import { DepartureEntity } from './entity/DepartureEntity'
@@ -134,7 +133,6 @@ class RsqSDK {
 
     const options = this._options
 
-    // Build spec directly from SDK options + user-provided fetch args.
     const spec: any = {
       base: options.base,
       prefix: options.prefix,
@@ -150,7 +148,6 @@ class RsqSDK {
 
     ctx.spec = spec
 
-    // Merge user-provided headers over SDK defaults.
     if (fetchargs.headers) {
       const uheaders = fetchargs.headers
       for (let key in uheaders) {
@@ -160,7 +157,6 @@ class RsqSDK {
 
     
 
-    // Apply SDK auth (apikey, auth prefix, etc.)
     const authResult = prepareAuth(ctx)
     if (authResult instanceof Error) {
       return authResult
@@ -253,18 +249,6 @@ class RsqSDK {
 
 
 
-  // Raw GraphQL access: the pressure valve that makes the generated
-  // surface's deliberate omissions (per-call selection sets, typed filter
-  // builders, batching, subscriptions) livable — the whole schema stays
-  // reachable.
-  //
-  // Thin wrapper over the same prepare/fetch path `direct` uses, with the
-  // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
-  // HTTP 200 as a top-level `errors` array, so status alone would report a
-  // failed query as ok.
-  //
-  // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
-  // ratelimit or paging features apply.
   async graphql(query: string, variables?: any, ctrl?: any) {
     const options = this._options
 
@@ -322,15 +306,6 @@ class RsqSDK {
   CountryOfAsylum(entopts?: Record<string, any>) {
     const self = this
     return new CountryOfAsylumEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.CountryOfOrigin().list()` / `client.CountryOfOrigin().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  CountryOfOrigin(entopts?: Record<string, any>) {
-    const self = this
-    return new CountryOfOriginEntity(self, entopts)
   }
 
 

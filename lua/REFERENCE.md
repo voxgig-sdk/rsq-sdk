@@ -48,10 +48,6 @@ Create a new `Category` entity instance. Pass `nil` for no initial data.
 
 Create a new `CountryOfAsylum` entity instance. Pass `nil` for no initial data.
 
-#### `CountryOfOrigin(data)`
-
-Create a new `CountryOfOrigin` entity instance. Pass `nil` for no initial data.
-
 #### `CountryOfResettlement(data)`
 
 Create a new `CountryOfResettlement` entity instance. Pass `nil` for no initial data.
@@ -227,60 +223,6 @@ Return the entity name.
 
 ---
 
-## CountryOfOriginEntity
-
-```lua
-local country_of_origin = client:CountryOfOrigin(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `code` | `string` | No |  |
-| `name` | `string` | No |  |
-| `region` | `string` | No |  |
-
-### Operations
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array.
-
-```lua
-local results, err = client:CountryOfOrigin():list()
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `CountryOfOriginEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
 ## CountryOfResettlementEntity
 
 ```lua
@@ -345,6 +287,7 @@ local demographic = client:Demographic(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `code` | `string` | No |  |
 | `destination` | `string` | No |  |
 | `destination_name` | `string` | No |  |
 | `femalesAdult` | `number` | No |  |
@@ -357,9 +300,11 @@ local demographic = client:Demographic(nil)
 | `malesTotal` | `number` | No |  |
 | `malesUnderage` | `number` | No |  |
 | `malesUnknown` | `number` | No |  |
+| `name` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
 | `other` | `number` | No |  |
+| `region` | `string` | No |  |
 | `total` | `number` | No |  |
 | `year` | `number` | No |  |
 
@@ -415,11 +360,14 @@ local departure = client:Departure(nil)
 | --- | --- | --- | --- |
 | `asylum` | `string` | No |  |
 | `asylum_name` | `string` | No |  |
+| `code` | `string` | No |  |
 | `destination` | `string` | No |  |
 | `destination_name` | `string` | No |  |
+| `name` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
 | `persons` | `number` | No |  |
+| `region` | `string` | No |  |
 | `year` | `number` | No |  |
 
 ### Operations
@@ -572,11 +520,14 @@ local submission = client:Submission(nil)
 | --- | --- | --- | --- |
 | `asylum` | `string` | No |  |
 | `asylum_name` | `string` | No |  |
+| `code` | `string` | No |  |
 | `destination` | `string` | No |  |
 | `destination_name` | `string` | No |  |
+| `name` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
 | `persons` | `number` | No |  |
+| `region` | `string` | No |  |
 | `year` | `number` | No |  |
 
 ### Operations

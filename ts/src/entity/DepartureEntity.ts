@@ -19,7 +19,6 @@ import type {
   DepartureListMatch,
 } from '../RsqTypes'
 
-// TODO: needs Entity superclass
 class DepartureEntity extends RsqEntityBase<Departure> {
 
   constructor(client: RsqSDK, entopts: any) {

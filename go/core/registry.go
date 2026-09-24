@@ -16,8 +16,6 @@ var NewCategoryEntityFunc func(client *RsqSDK, entopts map[string]any) RsqEntity
 
 var NewCountryOfAsylumEntityFunc func(client *RsqSDK, entopts map[string]any) RsqEntity
 
-var NewCountryOfOriginEntityFunc func(client *RsqSDK, entopts map[string]any) RsqEntity
-
 var NewCountryOfResettlementEntityFunc func(client *RsqSDK, entopts map[string]any) RsqEntity
 
 var NewDemographicEntityFunc func(client *RsqSDK, entopts map[string]any) RsqEntity

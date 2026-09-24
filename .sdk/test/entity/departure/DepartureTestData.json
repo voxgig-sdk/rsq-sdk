@@ -2,310 +2,73 @@
   "existing": {
     "departure": {
       "DEPARTURE00": {
-        "asylum": "s50",
-        "asylum_name": "s51",
-        "destination": "s52",
-        "destination_name": "s53",
-        "origin": "s54",
-        "origin_name": "s55",
-        "persons": 86,
-        "year": 87
+        "asylum": "s6e",
+        "asylum_name": "s6f",
+        "code": "s70",
+        "destination": "s71",
+        "destination_name": "s72",
+        "name": "s73",
+        "origin": "s74",
+        "origin_name": "s75",
+        "persons": 118,
+        "region": "s77",
+        "year": 120
       },
       "DEPARTURE01": {
-        "asylum": "sa0",
-        "asylum_name": "sa1",
-        "destination": "sa2",
-        "destination_name": "sa3",
-        "origin": "sa4",
-        "origin_name": "sa5",
-        "persons": 166,
-        "year": 167
+        "asylum": "sdc",
+        "asylum_name": "sdd",
+        "code": "sde",
+        "destination": "sdf",
+        "destination_name": "se0",
+        "name": "se1",
+        "origin": "se2",
+        "origin_name": "se3",
+        "persons": 228,
+        "region": "se5",
+        "year": 230
       },
       "DEPARTURE02": {
-        "asylum": "sf0",
-        "asylum_name": "sf1",
-        "destination": "sf2",
-        "destination_name": "sf3",
-        "origin": "sf4",
-        "origin_name": "sf5",
-        "persons": 246,
-        "year": 247
+        "asylum": "s14a",
+        "asylum_name": "s14b",
+        "code": "s14c",
+        "destination": "s14d",
+        "destination_name": "s14e",
+        "name": "s14f",
+        "origin": "s150",
+        "origin_name": "s151",
+        "persons": 338,
+        "region": "s153",
+        "year": 340
       }
     }
   },
   "new": {
     "departure": {
       "departure_ref01": {
-        "asylum": "s140",
-        "asylum_name": "s141",
-        "destination": "s142",
-        "destination_name": "s143",
-        "origin": "s144",
-        "origin_name": "s145",
-        "persons": 326,
-        "year": 327
+        "asylum": "s1b8",
+        "asylum_name": "s1b9",
+        "code": "s1ba",
+        "destination": "s1bb",
+        "destination_name": "s1bc",
+        "name": "s1bd",
+        "origin": "s1be",
+        "origin_name": "s1bf",
+        "persons": 448,
+        "region": "s1c1",
+        "year": 450
       }
     }
   },
   "requests": {
     "GET /departures": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getDepartures",
-        "parameters": [
-          {
-            "description": "Return results will be translated in requested language. Defaults to english",
-            "in": "query",
-            "name": "language",
-            "required": false,
-            "schema": {
-              "default": "en",
-              "enum": [
-                "en",
-                "fr"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "Current page of results",
-            "in": "query",
-            "name": "page",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "One or more available years",
-            "explode": false,
-            "in": "query",
-            "name": "year",
-            "required": false,
-            "schema": {
-              "items": {
-                "type": "integer"
-              },
-              "type": "array"
-            },
-            "style": "form"
-          },
-          {
-            "description": "One or more country of origin codes",
-            "explode": false,
-            "in": "query",
-            "name": "origin",
-            "required": false,
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            },
-            "style": "form"
-          },
-          {
-            "description": "Used in combination with atleast one origin. Groups all other origins as 'All others' entry in results",
-            "in": "query",
-            "name": "originCompare",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "One or more country of asylum codes",
-            "explode": false,
-            "in": "query",
-            "name": "asylum",
-            "required": false,
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            },
-            "style": "form"
-          },
-          {
-            "description": "Used in combination with atleast one asylum. Groups all other asylums as 'All others' entry in results",
-            "in": "query",
-            "name": "asylumCompare",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "One or more country of resettlement codes",
-            "explode": false,
-            "in": "query",
-            "name": "resettlement",
-            "required": false,
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            },
-            "style": "form"
-          },
-          {
-            "description": "Sort results by year ascending or descending",
-            "in": "query",
-            "name": "yearSort",
-            "required": false,
-            "schema": {
-              "enum": [
-                "asc",
-                "desc"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "Sort results by country of origin ascending or descending",
-            "in": "query",
-            "name": "originSort",
-            "required": false,
-            "schema": {
-              "enum": [
-                "asc",
-                "desc"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "Sort results by country of asylum ascending or descending",
-            "in": "query",
-            "name": "asylumSort",
-            "required": false,
-            "schema": {
-              "enum": [
-                "asc",
-                "desc"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "Sort results by country of resettlement ascending or descending",
-            "in": "query",
-            "name": "resettlementSort",
-            "required": false,
-            "schema": {
-              "enum": [
-                "asc",
-                "desc"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "Sort results by number of persons ascending or descending",
-            "in": "query",
-            "name": "personsSort",
-            "required": false,
-            "schema": {
-              "enum": [
-                "asc",
-                "desc"
-              ],
-              "type": "string"
-            }
-          }
-        ],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "chartFilterTypes": {
-                      "properties": {
-                        "asylum": {
-                          "type": "boolean"
-                        },
-                        "origin": {
-                          "type": "boolean"
-                        },
-                        "resettlement": {
-                          "type": "boolean"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "page": {
-                      "example": 1,
-                      "type": "integer"
-                    },
-                    "results": {
-                      "items": {
-                        "properties": {
-                          "asylum": {
-                            "example": "JOR",
-                            "type": "string"
-                          },
-                          "asylum_name": {
-                            "example": "Jordan",
-                            "type": "string"
-                          },
-                          "destination": {
-                            "example": "NOR",
-                            "type": "string"
-                          },
-                          "destination_name": {
-                            "example": "Norway",
-                            "type": "string"
-                          },
-                          "origin": {
-                            "example": "SYR",
-                            "type": "string"
-                          },
-                          "origin_name": {
-                            "example": "Syrian Arab Rep.",
-                            "type": "string"
-                          },
-                          "persons": {
-                            "example": 14,
-                            "type": "integer"
-                          },
-                          "year": {
-                            "example": 2013,
-                            "type": "integer"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "type": "array"
-                    },
-                    "total": {
-                      "example": 12345,
-                      "type": "integer"
-                    },
-                    "totalPages": {
-                      "example": 10,
-                      "type": "integer"
-                    },
-                    "url": {
-                      "example": "#c3X3",
-                      "type": "string"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            },
-            "description": "Valid request"
-          },
-          "default": {
-            "description": "Unexpected error occurred"
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /origins/departures": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
     }
   }
 }

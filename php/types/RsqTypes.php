@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 // Typed models for the Rsq SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 //
@@ -39,20 +39,6 @@ class CountryOfAsylumListMatch
     public ?string $language = null;
 }
 
-/** CountryOfOrigin entity data model. */
-class CountryOfOrigin
-{
-    public ?string $code = null;
-    public ?string $name = null;
-    public ?string $region = null;
-}
-
-/** Request payload for CountryOfOrigin#list. */
-class CountryOfOriginListMatch
-{
-    public ?string $language = null;
-}
-
 /** CountryOfResettlement entity data model. */
 class CountryOfResettlement
 {
@@ -70,6 +56,7 @@ class CountryOfResettlementListMatch
 /** Demographic entity data model. */
 class Demographic
 {
+    public ?string $code = null;
     public ?string $destination = null;
     public ?string $destination_name = null;
     public ?int $femalesAdult = null;
@@ -82,9 +69,11 @@ class Demographic
     public ?int $malesTotal = null;
     public ?int $malesUnderage = null;
     public ?int $malesUnknown = null;
+    public ?string $name = null;
     public ?string $origin = null;
     public ?string $origin_name = null;
     public ?int $other = null;
+    public ?string $region = null;
     public ?int $total = null;
     public ?int $year = null;
 }
@@ -104,11 +93,14 @@ class Departure
 {
     public ?string $asylum = null;
     public ?string $asylum_name = null;
+    public ?string $code = null;
     public ?string $destination = null;
     public ?string $destination_name = null;
+    public ?string $name = null;
     public ?string $origin = null;
     public ?string $origin_name = null;
     public ?int $persons = null;
+    public ?string $region = null;
     public ?int $year = null;
 }
 
@@ -161,11 +153,14 @@ class Submission
 {
     public ?string $asylum = null;
     public ?string $asylum_name = null;
+    public ?string $code = null;
     public ?string $destination = null;
     public ?string $destination_name = null;
+    public ?string $name = null;
     public ?string $origin = null;
     public ?string $origin_name = null;
     public ?int $persons = null;
+    public ?string $region = null;
     public ?int $year = null;
 }
 

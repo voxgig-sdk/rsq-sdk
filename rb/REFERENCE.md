@@ -49,10 +49,6 @@ Create a new `Category` entity instance. Pass `nil` for no initial data.
 
 Create a new `CountryOfAsylum` entity instance. Pass `nil` for no initial data.
 
-#### `CountryOfOrigin(data = nil)`
-
-Create a new `CountryOfOrigin` entity instance. Pass `nil` for no initial data.
-
 #### `CountryOfResettlement(data = nil)`
 
 Create a new `CountryOfResettlement` entity instance. Pass `nil` for no initial data.
@@ -230,60 +226,6 @@ Return the entity name.
 
 ---
 
-## CountryOfOriginEntity
-
-```ruby
-country_of_origin = client.CountryOfOrigin
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `code` | `String` | No |  |
-| `name` | `String` | No |  |
-| `region` | `String` | No |  |
-
-### Operations
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
-
-```ruby
-results = client.CountryOfOrigin.list
-```
-
-### Common Methods
-
-#### `data_get -> Hash`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get -> Hash`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make -> Entity`
-
-Create a new `CountryOfOriginEntity` instance with the same client and
-options.
-
-#### `get_name -> String`
-
-Return the entity name.
-
-
----
-
 ## CountryOfResettlementEntity
 
 ```ruby
@@ -348,6 +290,7 @@ demographic = client.Demographic
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `code` | `String` | No |  |
 | `destination` | `String` | No |  |
 | `destination_name` | `String` | No |  |
 | `femalesAdult` | `Integer` | No |  |
@@ -360,9 +303,11 @@ demographic = client.Demographic
 | `malesTotal` | `Integer` | No |  |
 | `malesUnderage` | `Integer` | No |  |
 | `malesUnknown` | `Integer` | No |  |
+| `name` | `String` | No |  |
 | `origin` | `String` | No |  |
 | `origin_name` | `String` | No |  |
 | `other` | `Integer` | No |  |
+| `region` | `String` | No |  |
 | `total` | `Integer` | No |  |
 | `year` | `Integer` | No |  |
 
@@ -418,11 +363,14 @@ departure = client.Departure
 | --- | --- | --- | --- |
 | `asylum` | `String` | No |  |
 | `asylum_name` | `String` | No |  |
+| `code` | `String` | No |  |
 | `destination` | `String` | No |  |
 | `destination_name` | `String` | No |  |
+| `name` | `String` | No |  |
 | `origin` | `String` | No |  |
 | `origin_name` | `String` | No |  |
 | `persons` | `Integer` | No |  |
+| `region` | `String` | No |  |
 | `year` | `Integer` | No |  |
 
 ### Operations
@@ -575,11 +523,14 @@ submission = client.Submission
 | --- | --- | --- | --- |
 | `asylum` | `String` | No |  |
 | `asylum_name` | `String` | No |  |
+| `code` | `String` | No |  |
 | `destination` | `String` | No |  |
 | `destination_name` | `String` | No |  |
+| `name` | `String` | No |  |
 | `origin` | `String` | No |  |
 | `origin_name` | `String` | No |  |
 | `persons` | `Integer` | No |  |
+| `region` | `String` | No |  |
 | `year` | `Integer` | No |  |
 
 ### Operations

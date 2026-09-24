@@ -72,18 +72,6 @@ Create a new `CountryOfAsylum` entity instance.
 
 **Returns:** `CountryOfAsylumEntity` instance.
 
-#### `CountryOfOrigin(data?: object)`
-
-Create a new `CountryOfOrigin` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `CountryOfOriginEntity` instance.
-
 #### `CountryOfResettlement(data?: object)`
 
 Create a new `CountryOfResettlement` entity instance.
@@ -329,58 +317,6 @@ Return a copy of the entity options.
 
 ---
 
-## CountryOfOriginEntity
-
-```ts
-const country_of_origin = client.CountryOfOrigin()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `code` | `string` | No |  |
-| `name` | `string` | No |  |
-| `region` | `string` | No |  |
-
-### Operations
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Returns an array.
-
-```ts
-const results = await client.CountryOfOrigin().list()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `CountryOfOriginEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `RsqSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
 ## CountryOfResettlementEntity
 
 ```ts
@@ -443,6 +379,7 @@ const demographic = client.Demographic()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `code` | `string` | No |  |
 | `destination` | `string` | No |  |
 | `destination_name` | `string` | No |  |
 | `femalesAdult` | `number` | No |  |
@@ -455,9 +392,11 @@ const demographic = client.Demographic()
 | `malesTotal` | `number` | No |  |
 | `malesUnderage` | `number` | No |  |
 | `malesUnknown` | `number` | No |  |
+| `name` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
 | `other` | `number` | No |  |
+| `region` | `string` | No |  |
 | `total` | `number` | No |  |
 | `year` | `number` | No |  |
 
@@ -511,11 +450,14 @@ const departure = client.Departure()
 | --- | --- | --- | --- |
 | `asylum` | `string` | No |  |
 | `asylum_name` | `string` | No |  |
+| `code` | `string` | No |  |
 | `destination` | `string` | No |  |
 | `destination_name` | `string` | No |  |
+| `name` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
 | `persons` | `number` | No |  |
+| `region` | `string` | No |  |
 | `year` | `number` | No |  |
 
 ### Operations
@@ -662,11 +604,14 @@ const submission = client.Submission()
 | --- | --- | --- | --- |
 | `asylum` | `string` | No |  |
 | `asylum_name` | `string` | No |  |
+| `code` | `string` | No |  |
 | `destination` | `string` | No |  |
 | `destination_name` | `string` | No |  |
+| `name` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `origin_name` | `string` | No |  |
 | `persons` | `number` | No |  |
+| `region` | `string` | No |  |
 | `year` | `number` | No |  |
 
 ### Operations

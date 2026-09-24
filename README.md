@@ -14,13 +14,13 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-> **Features:** `ratelimit`, `retry`, `test`, `timeout` — opt-in,
+> **Features:** `undefined`, `undefined`, `undefined`, `undefined` — opt-in,
 > inactive until switched on, and configured per client. See the Features
 > section of any SDK README below for what each one does.
 
 ## Entities, not endpoints
 
-This SDK exposes the API as **11 semantic entities** that you
+This SDK exposes the API as **10 semantic entities** that you
 call directly, instead of assembling URL paths and query strings. See the [Entities](#entities) table below for the full list. Entities are
 **Capitalised** to mark them as the primary surface, each with the operations they
 support (`list`, `load`):
@@ -164,13 +164,12 @@ Then add it to your agent's MCP config (Claude Desktop, Cursor, etc.):
 
 ## Entities
 
-The API exposes 11 entities:
+The API exposes 10 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
 | **Category** | The Category entity (list). | `/categories` |
 | **CountryOfAsylum** | The CountryOfAsylum entity (list). | `/asylums` |
-| **CountryOfOrigin** | The CountryOfOrigin entity (list). | `/origins/departures` |
 | **CountryOfResettlement** | The CountryOfResettlement entity (list). | `/destinations` |
 | **Demographic** | The Demographic entity (list). | `/demographics` |
 | **Departure** | The Departure entity (list). | `/departures` |

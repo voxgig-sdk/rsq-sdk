@@ -1,7 +1,7 @@
 -- Typed models for the Rsq SDK (LuaLS annotations).
 --
--- GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
--- params (op.<name>.points[].args.params[]). Field/param types come from the
+-- GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+-- params (op.<name>.points[].g.params[]). Field/param types come from the
 -- canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 -- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
 -- edit by hand.
@@ -21,14 +21,6 @@
 ---@class CountryOfAsylumListMatch
 ---@field language? string
 
----@class CountryOfOrigin
----@field code? string
----@field name? string
----@field region? string
-
----@class CountryOfOriginListMatch
----@field language? string
-
 ---@class CountryOfResettlement
 ---@field code? string
 ---@field name? string
@@ -38,6 +30,7 @@
 ---@field language? string
 
 ---@class Demographic
+---@field code? string
 ---@field destination? string
 ---@field destination_name? string
 ---@field femalesAdult? number
@@ -50,9 +43,11 @@
 ---@field malesTotal? number
 ---@field malesUnderage? number
 ---@field malesUnknown? number
+---@field name? string
 ---@field origin? string
 ---@field origin_name? string
 ---@field other? number
+---@field region? string
 ---@field total? number
 ---@field year? number
 
@@ -66,11 +61,14 @@
 ---@class Departure
 ---@field asylum? string
 ---@field asylum_name? string
+---@field code? string
 ---@field destination? string
 ---@field destination_name? string
+---@field name? string
 ---@field origin? string
 ---@field origin_name? string
 ---@field persons? number
+---@field region? string
 ---@field year? number
 
 ---@class DepartureListMatch
@@ -105,11 +103,14 @@
 ---@class Submission
 ---@field asylum? string
 ---@field asylum_name? string
+---@field code? string
 ---@field destination? string
 ---@field destination_name? string
+---@field name? string
 ---@field origin? string
 ---@field origin_name? string
 ---@field persons? number
+---@field region? string
 ---@field year? number
 
 ---@class SubmissionListMatch

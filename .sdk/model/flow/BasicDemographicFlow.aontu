@@ -1,0 +1,22 @@
+# BasicDemographicFlow
+
+main: kit: flow: BasicDemographicFlow:
+{
+  entity: "demographic",
+  kind: "basic",
+  name: "BasicDemographicFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "demographic_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDemographicFlow"
+}

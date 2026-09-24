@@ -85,7 +85,6 @@ func MakeConfig() map[string]any {
 			"entity": map[string]any{
 				"category": map[string]any{},
 				"country_of_asylum": map[string]any{},
-				"country_of_origin": map[string]any{},
 				"country_of_resettlement": map[string]any{},
 				"demographic": map[string]any{},
 				"departure": map[string]any{},
@@ -101,10 +100,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "code",
+						"title": "Code",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
 						"type": "`$STRING`",
 					},
 				},
@@ -115,17 +116,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "en",
-											"kind": "query",
-											"name": "language",
-											"orig": "language",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/categories",
@@ -134,17 +124,29 @@ func MakeConfig() map[string]any {
 										"lit": "categories",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"language",
-									},
+								"parts": []any{
+									"categories",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"categories",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "language",
+											"orig": "language",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "en",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"language",
+									},
 								},
 							},
 						},
@@ -158,14 +160,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "code",
+						"title": "Code",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "region",
+						"title": "Region",
 						"type": "`$STRING`",
 					},
 				},
@@ -176,17 +181,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "en",
-											"kind": "query",
-											"name": "language",
-											"orig": "language",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/asylums",
@@ -195,142 +189,29 @@ func MakeConfig() map[string]any {
 										"lit": "asylums",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"language",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"asylums",
 								},
-							},
-						},
-					},
-				},
-				"relations": map[string]any{
-					"ancestors": []any{},
-				},
-			},
-			"country_of_origin": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"name": "code",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "name",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "region",
-						"type": "`$STRING`",
-					},
-				},
-				"name": "country_of_origin",
-				"op": map[string]any{
-					"list": map[string]any{
-						"input": "data",
-						"name": "list",
-						"points": []any{
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"example": "en",
-											"kind": "query",
 											"name": "language",
 											"orig": "language",
 											"type": "`$STRING`",
+											"kind": "query",
+											"example": "en",
 										},
-									},
-								},
-								"kind": "http",
-								"method": "GET",
-								"orig": "/origins/departures",
-								"segments": []any{
-									map[string]any{
-										"lit": "origins",
-									},
-									map[string]any{
-										"lit": "departures",
 									},
 								},
 								"select": map[string]any{
 									"exist": []any{
 										"language",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"origins",
-									"departures",
-								},
-							},
-							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "en",
-											"kind": "query",
-											"name": "language",
-											"orig": "language",
-											"type": "`$STRING`",
-										},
-									},
-								},
-								"kind": "http",
-								"method": "GET",
-								"orig": "/origins/submissions",
-								"segments": []any{
-									map[string]any{
-										"lit": "origins",
-									},
-									map[string]any{
-										"lit": "submissions",
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"language",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"origins",
-									"submissions",
-								},
-							},
-							map[string]any{
-								"args": map[string]any{},
-								"kind": "http",
-								"method": "GET",
-								"orig": "/origins/demographics",
-								"segments": []any{
-									map[string]any{
-										"lit": "origins",
-									},
-									map[string]any{
-										"lit": "demographics",
-									},
-								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"origins",
-									"demographics",
 								},
 							},
 						},
@@ -344,14 +225,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "code",
+						"title": "Code",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "region",
+						"title": "Region",
 						"type": "`$STRING`",
 					},
 				},
@@ -362,17 +246,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "en",
-											"kind": "query",
-											"name": "language",
-											"orig": "language",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/destinations",
@@ -381,17 +254,29 @@ func MakeConfig() map[string]any {
 										"lit": "destinations",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"language",
-									},
+								"parts": []any{
+									"destinations",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"destinations",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "language",
+											"orig": "language",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "en",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"language",
+									},
 								},
 							},
 						},
@@ -404,71 +289,103 @@ func MakeConfig() map[string]any {
 			"demographic": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"name": "code",
+						"title": "Code",
+						"type": "`$STRING`",
+					},
+					map[string]any{
 						"name": "destination",
+						"title": "Destination",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "destination_name",
+						"title": "Destination Name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "femalesAdult",
+						"title": "Females Adult",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "femalesSenior",
+						"title": "Females Senior",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "femalesTotal",
+						"title": "Females Total",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "femalesUnderage",
+						"title": "Females Underage",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "femalesUnknown",
+						"title": "Females Unknown",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "malesAdult",
+						"title": "Males Adult",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "malesSenior",
+						"title": "Males Senior",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "malesTotal",
+						"title": "Males Total",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "malesUnderage",
+						"title": "Males Underage",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "malesUnknown",
+						"title": "Males Unknown",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
+					},
+					map[string]any{
 						"name": "origin",
+						"title": "Origin",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "origin_name",
+						"title": "Origin Name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "other",
+						"title": "Other",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"name": "region",
+						"title": "Region",
+						"type": "`$STRING`",
+					},
+					map[string]any{
 						"name": "total",
+						"title": "Total",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "year",
+						"title": "Year",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -479,47 +396,55 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "en",
-											"kind": "query",
-											"name": "language",
-											"orig": "language",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "origin",
-											"orig": "origin",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "origin_compare",
-											"orig": "origin_compare",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "resettlement",
-											"orig": "resettlement",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "year",
-											"orig": "year",
-											"type": "`$ARRAY`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/demographics",
 								"segments": []any{
 									map[string]any{
 										"lit": "demographics",
+									},
+								},
+								"parts": []any{
+									"demographics",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.results`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "language",
+											"orig": "language",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "en",
+										},
+										map[string]any{
+											"name": "origin",
+											"orig": "origin",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "origin_compare",
+											"orig": "origin_compare",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "resettlement",
+											"orig": "resettlement",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "year",
+											"orig": "year",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -531,13 +456,30 @@ func MakeConfig() map[string]any {
 										"year",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.results`",
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/origins/demographics",
+								"segments": []any{
+									map[string]any{
+										"lit": "origins",
+									},
+									map[string]any{
+										"lit": "demographics",
+									},
 								},
 								"parts": []any{
+									"origins",
 									"demographics",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -550,34 +492,57 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "asylum",
+						"title": "Asylum",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "asylum_name",
+						"title": "Asylum Name",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "code",
+						"title": "Code",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "destination",
+						"title": "Destination",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "destination_name",
+						"title": "Destination Name",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "name",
+						"title": "Name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "origin",
+						"title": "Origin",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "origin_name",
+						"title": "Origin Name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "persons",
+						"title": "Persons",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"name": "region",
+						"title": "Region",
+						"type": "`$STRING`",
+					},
+					map[string]any{
 						"name": "year",
+						"title": "Year",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -588,95 +553,103 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "asylum",
-											"orig": "asylum",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "asylum_compare",
-											"orig": "asylum_compare",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "asylum_sort",
-											"orig": "asylum_sort",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "en",
-											"kind": "query",
-											"name": "language",
-											"orig": "language",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "origin",
-											"orig": "origin",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "origin_compare",
-											"orig": "origin_compare",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "origin_sort",
-											"orig": "origin_sort",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "persons_sort",
-											"orig": "persons_sort",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "resettlement",
-											"orig": "resettlement",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "resettlement_sort",
-											"orig": "resettlement_sort",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "year",
-											"orig": "year",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "year_sort",
-											"orig": "year_sort",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/departures",
 								"segments": []any{
 									map[string]any{
 										"lit": "departures",
+									},
+								},
+								"parts": []any{
+									"departures",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "asylum",
+											"orig": "asylum",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "asylum_compare",
+											"orig": "asylum_compare",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "asylum_sort",
+											"orig": "asylum_sort",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "language",
+											"orig": "language",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "en",
+										},
+										map[string]any{
+											"name": "origin",
+											"orig": "origin",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "origin_compare",
+											"orig": "origin_compare",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "origin_sort",
+											"orig": "origin_sort",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "persons_sort",
+											"orig": "persons_sort",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "resettlement",
+											"orig": "resettlement",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "resettlement_sort",
+											"orig": "resettlement_sort",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "year",
+											"orig": "year",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "year_sort",
+											"orig": "year_sort",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -696,12 +669,43 @@ func MakeConfig() map[string]any {
 										"year_sort",
 									},
 								},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/origins/departures",
+								"segments": []any{
+									map[string]any{
+										"lit": "origins",
+									},
+									map[string]any{
+										"lit": "departures",
+									},
+								},
+								"parts": []any{
+									"origins",
+									"departures",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"departures",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "language",
+											"orig": "language",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "en",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"language",
+									},
 								},
 							},
 						},
@@ -720,34 +724,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "origin",
-											"orig": "origin",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "resettlement",
-											"orig": "resettlement",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "type",
-											"orig": "type",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "year",
-											"orig": "year",
-											"type": "`$ARRAY`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/export/csv",
@@ -759,6 +735,43 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"export",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "origin",
+											"orig": "origin",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "resettlement",
+											"orig": "resettlement",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "type",
+											"orig": "type",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "year",
+											"orig": "year",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"origin",
@@ -766,14 +779,6 @@ func MakeConfig() map[string]any {
 										"type",
 										"year",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"export",
-									"csv",
 								},
 							},
 						},
@@ -787,6 +792,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "name",
+						"title": "Name",
 						"type": "`$STRING`",
 					},
 				},
@@ -797,17 +803,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "en",
-											"kind": "query",
-											"name": "language",
-											"orig": "language",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/regions",
@@ -816,17 +811,29 @@ func MakeConfig() map[string]any {
 										"lit": "regions",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"language",
-									},
+								"parts": []any{
+									"regions",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"regions",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "language",
+											"orig": "language",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "en",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"language",
+									},
 								},
 							},
 						},
@@ -840,34 +847,57 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "asylum",
+						"title": "Asylum",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "asylum_name",
+						"title": "Asylum Name",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "code",
+						"title": "Code",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "destination",
+						"title": "Destination",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "destination_name",
+						"title": "Destination Name",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "name",
+						"title": "Name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "origin",
+						"title": "Origin",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "origin_name",
+						"title": "Origin Name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "persons",
+						"title": "Persons",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"name": "region",
+						"title": "Region",
+						"type": "`$STRING`",
+					},
+					map[string]any{
 						"name": "year",
+						"title": "Year",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -878,95 +908,103 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "asylum",
-											"orig": "asylum",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "asylum_compare",
-											"orig": "asylum_compare",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "asylum_sort",
-											"orig": "asylum_sort",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "en",
-											"kind": "query",
-											"name": "language",
-											"orig": "language",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "origin",
-											"orig": "origin",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "origin_compare",
-											"orig": "origin_compare",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "origin_sort",
-											"orig": "origin_sort",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "persons_sort",
-											"orig": "persons_sort",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "resettlement",
-											"orig": "resettlement",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "resettlement_sort",
-											"orig": "resettlement_sort",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "year",
-											"orig": "year",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "year_sort",
-											"orig": "year_sort",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/submissions",
 								"segments": []any{
 									map[string]any{
 										"lit": "submissions",
+									},
+								},
+								"parts": []any{
+									"submissions",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "asylum",
+											"orig": "asylum",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "asylum_compare",
+											"orig": "asylum_compare",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "asylum_sort",
+											"orig": "asylum_sort",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "language",
+											"orig": "language",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "en",
+										},
+										map[string]any{
+											"name": "origin",
+											"orig": "origin",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "origin_compare",
+											"orig": "origin_compare",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "origin_sort",
+											"orig": "origin_sort",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "persons_sort",
+											"orig": "persons_sort",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "resettlement",
+											"orig": "resettlement",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "resettlement_sort",
+											"orig": "resettlement_sort",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "year",
+											"orig": "year",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "year_sort",
+											"orig": "year_sort",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -986,12 +1024,43 @@ func MakeConfig() map[string]any {
 										"year_sort",
 									},
 								},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/origins/submissions",
+								"segments": []any{
+									map[string]any{
+										"lit": "origins",
+									},
+									map[string]any{
+										"lit": "submissions",
+									},
+								},
+								"parts": []any{
+									"origins",
+									"submissions",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"submissions",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "language",
+											"orig": "language",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "en",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"language",
+									},
 								},
 							},
 						},
@@ -1005,10 +1074,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "status",
+						"title": "Status",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "url",
+						"title": "Url",
 						"type": "`$STRING`",
 					},
 				},
@@ -1019,24 +1090,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "en",
-											"kind": "query",
-											"name": "language",
-											"orig": "language",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "url_hash",
-											"orig": "url_hash",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/fetchUrl",
@@ -1045,18 +1098,37 @@ func MakeConfig() map[string]any {
 										"lit": "fetchUrl",
 									},
 								},
+								"parts": []any{
+									"fetchUrl",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "language",
+											"orig": "language",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "en",
+										},
+										map[string]any{
+											"name": "url_hash",
+											"orig": "url_hash",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"language",
 										"url_hash",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"fetchUrl",
 								},
 							},
 						},
@@ -1075,7 +1147,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/years",
@@ -1084,17 +1155,18 @@ func MakeConfig() map[string]any {
 										"lit": "years",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"years",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"years",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/years/demographics",
@@ -1106,16 +1178,18 @@ func MakeConfig() map[string]any {
 										"lit": "demographics",
 									},
 								},
-								"select": map[string]any{
-									"$action": "demographic",
+								"parts": []any{
+									"years",
+									"demographics",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"years",
-									"demographics",
+								"args": map[string]any{},
+								"select": map[string]any{
+									"$action": "demographic",
 								},
 							},
 						},

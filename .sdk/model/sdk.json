@@ -24,26 +24,94 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "category": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "code",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "code": {
+              "a": true,
+              "h": "Code",
+              "n": "code",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "category",
           "op": {
             "list": {
@@ -51,40 +119,40 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /categories",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "en",
-                        "kind": "query",
-                        "name": "language",
-                        "orig": "language",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "en",
+                        "k": "query",
+                        "n": "language",
+                        "or": "language",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /categories",
-                    "json": "{\"operationId\":\"getCategories\",\"parameters\":[{\"description\":\"Return results will be translated in requested language. Defaults to english\",\"in\":\"query\",\"name\":\"language\",\"required\":false,\"schema\":{\"default\":\"en\",\"enum\":[\"en\",\"fr\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"code\":{\"example\":\"LPN\",\"type\":\"string\"},\"name\":{\"example\":\"Legal and/or Physical Protection Needs\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Valid request\"},\"default\":{\"description\":\"Unexpected error occurred\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/categories",
-                  "segments": [
-                    {
-                      "lit": "categories"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/categories",
+                  "q": {
                     "exist": [
                       "language"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "categories"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -101,26 +169,29 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "code",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "code": {
+              "a": true,
+              "h": "Code",
+              "n": "code",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "region",
-              "req": false,
-              "type": "`$STRING`"
+            "region": {
+              "a": true,
+              "h": "Region",
+              "n": "region",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "country_of_asylum",
           "op": {
             "list": {
@@ -128,188 +199,40 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /asylums",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "en",
-                        "kind": "query",
-                        "name": "language",
-                        "orig": "language",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "en",
+                        "k": "query",
+                        "n": "language",
+                        "or": "language",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /asylums",
-                    "json": "{\"operationId\":\"getAsylums\",\"parameters\":[{\"description\":\"Return results will be translated in requested language. Defaults to english\",\"in\":\"query\",\"name\":\"language\",\"required\":false,\"schema\":{\"default\":\"en\",\"enum\":[\"en\",\"fr\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"code\":{\"example\":\"HRV\",\"type\":\"string\"},\"name\":{\"example\":\"Croatia\",\"type\":\"string\"},\"region\":{\"example\":\"Europe\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Valid request\"},\"default\":{\"description\":\"Unexpected error occurred\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/asylums",
+                  "q": {
+                    "exist": [
+                      "language"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/asylums",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "asylums"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "language"
-                    ]
-                  },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                }
-              ]
-            }
-          },
-          "relations": {
-            "ancestors": []
-          }
-        },
-        "country_of_origin": {
-          "active": true,
-          "alias": {
-            "field": {}
-          },
-          "fields": [
-            {
-              "active": true,
-              "name": "code",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "region",
-              "req": false,
-              "type": "`$STRING`"
-            }
-          ],
-          "name": "country_of_origin",
-          "op": {
-            "list": {
-              "input": "data",
-              "name": "list",
-              "points": [
-                {
-                  "active": true,
-                  "args": {
-                    "query": [
-                      {
-                        "active": true,
-                        "example": "en",
-                        "kind": "query",
-                        "name": "language",
-                        "orig": "language",
-                        "reqd": false,
-                        "type": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "contract": {
-                    "id": "GET /origins/departures",
-                    "json": "{\"operationId\":\"getOriginsDepartures\",\"parameters\":[{\"description\":\"Return results will be translated in requested language. Defaults to english\",\"in\":\"query\",\"name\":\"language\",\"required\":false,\"schema\":{\"default\":\"en\",\"enum\":[\"en\",\"fr\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"code\":{\"example\":\"HRV\",\"type\":\"string\"},\"name\":{\"example\":\"Croatia\",\"type\":\"string\"},\"region\":{\"example\":\"Europe\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Valid request\"},\"default\":{\"description\":\"Unexpected error occurred\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/origins/departures",
-                  "segments": [
-                    {
-                      "lit": "origins"
-                    },
-                    {
-                      "lit": "departures"
-                    }
-                  ],
-                  "select": {
-                    "exist": [
-                      "language"
-                    ]
-                  },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "active": true,
-                  "args": {
-                    "query": [
-                      {
-                        "active": true,
-                        "example": "en",
-                        "kind": "query",
-                        "name": "language",
-                        "orig": "language",
-                        "reqd": false,
-                        "type": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "contract": {
-                    "id": "GET /origins/submissions",
-                    "json": "{\"operationId\":\"getOriginsSubmissions\",\"parameters\":[{\"description\":\"Return results will be translated in requested language. Defaults to english\",\"in\":\"query\",\"name\":\"language\",\"required\":false,\"schema\":{\"default\":\"en\",\"enum\":[\"en\",\"fr\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"code\":{\"example\":\"HRV\",\"type\":\"string\"},\"name\":{\"example\":\"Croatia\",\"type\":\"string\"},\"region\":{\"example\":\"Europe\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Valid request\"},\"default\":{\"description\":\"Unexpected error occurred\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/origins/submissions",
-                  "segments": [
-                    {
-                      "lit": "origins"
-                    },
-                    {
-                      "lit": "submissions"
-                    }
-                  ],
-                  "select": {
-                    "exist": [
-                      "language"
-                    ]
-                  },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "active": true,
-                  "args": {},
-                  "contract": {
-                    "id": "GET /origins/demographics",
-                    "json": "{\"operationId\":\"getOriginsDemographics\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"code\":{\"example\":\"HRV\",\"type\":\"string\"},\"name\":{\"example\":\"Croatia\",\"type\":\"string\"},\"region\":{\"example\":\"Europe\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Valid request\"},\"default\":{\"description\":\"Unexpected error occurred\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/origins/demographics",
-                  "segments": [
-                    {
-                      "lit": "origins"
-                    },
-                    {
-                      "lit": "demographics"
-                    }
-                  ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -326,26 +249,29 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "code",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "code": {
+              "a": true,
+              "h": "Code",
+              "n": "code",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "region",
-              "req": false,
-              "type": "`$STRING`"
+            "region": {
+              "a": true,
+              "h": "Region",
+              "n": "region",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "country_of_resettlement",
           "op": {
             "list": {
@@ -353,40 +279,40 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /destinations",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "en",
-                        "kind": "query",
-                        "name": "language",
-                        "orig": "language",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "en",
+                        "k": "query",
+                        "n": "language",
+                        "or": "language",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /destinations",
-                    "json": "{\"operationId\":\"getDestinations\",\"parameters\":[{\"description\":\"Return results will be translated in requested language. Defaults to english\",\"in\":\"query\",\"name\":\"language\",\"required\":false,\"schema\":{\"default\":\"en\",\"enum\":[\"en\",\"fr\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"code\":{\"example\":\"HRV\",\"type\":\"string\"},\"name\":{\"example\":\"Croatia\",\"type\":\"string\"},\"region\":{\"example\":\"Europe\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Valid request\"},\"default\":{\"description\":\"Unexpected error occurred\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/destinations",
-                  "segments": [
-                    {
-                      "lit": "destinations"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/destinations",
+                  "q": {
                     "exist": [
                       "language"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "destinations"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -403,110 +329,148 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "destination",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "code": {
+              "a": true,
+              "h": "Code",
+              "n": "code",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "destination_name",
-              "req": false,
-              "type": "`$STRING`"
+            "destination": {
+              "a": true,
+              "h": "Destination",
+              "n": "destination",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "femalesAdult",
-              "req": false,
-              "type": "`$INTEGER`"
+            "destination_name": {
+              "a": true,
+              "h": "Destination Name",
+              "n": "destination_name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "femalesSenior",
-              "req": false,
-              "type": "`$INTEGER`"
+            "femalesAdult": {
+              "a": true,
+              "h": "Females Adult",
+              "n": "femalesAdult",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "femalesTotal",
-              "req": false,
-              "type": "`$INTEGER`"
+            "femalesSenior": {
+              "a": true,
+              "h": "Females Senior",
+              "n": "femalesSenior",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "femalesUnderage",
-              "req": false,
-              "type": "`$INTEGER`"
+            "femalesTotal": {
+              "a": true,
+              "h": "Females Total",
+              "n": "femalesTotal",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "femalesUnknown",
-              "req": false,
-              "type": "`$INTEGER`"
+            "femalesUnderage": {
+              "a": true,
+              "h": "Females Underage",
+              "n": "femalesUnderage",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "malesAdult",
-              "req": false,
-              "type": "`$INTEGER`"
+            "femalesUnknown": {
+              "a": true,
+              "h": "Females Unknown",
+              "n": "femalesUnknown",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "malesSenior",
-              "req": false,
-              "type": "`$INTEGER`"
+            "malesAdult": {
+              "a": true,
+              "h": "Males Adult",
+              "n": "malesAdult",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "malesTotal",
-              "req": false,
-              "type": "`$INTEGER`"
+            "malesSenior": {
+              "a": true,
+              "h": "Males Senior",
+              "n": "malesSenior",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "malesUnderage",
-              "req": false,
-              "type": "`$INTEGER`"
+            "malesTotal": {
+              "a": true,
+              "h": "Males Total",
+              "n": "malesTotal",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "malesUnknown",
-              "req": false,
-              "type": "`$INTEGER`"
+            "malesUnderage": {
+              "a": true,
+              "h": "Males Underage",
+              "n": "malesUnderage",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "origin",
-              "req": false,
-              "type": "`$STRING`"
+            "malesUnknown": {
+              "a": true,
+              "h": "Males Unknown",
+              "n": "malesUnknown",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "origin_name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "other",
-              "req": false,
-              "type": "`$INTEGER`"
+            "origin": {
+              "a": true,
+              "h": "Origin",
+              "n": "origin",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "total",
-              "req": false,
-              "type": "`$INTEGER`"
+            "origin_name": {
+              "a": true,
+              "h": "Origin Name",
+              "n": "origin_name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "year",
-              "req": false,
-              "type": "`$INTEGER`"
+            "other": {
+              "a": true,
+              "h": "Other",
+              "n": "other",
+              "r": false,
+              "t": "`$INTEGER`"
+            },
+            "region": {
+              "a": true,
+              "h": "Region",
+              "n": "region",
+              "r": false,
+              "t": "`$STRING`"
+            },
+            "total": {
+              "a": true,
+              "h": "Total",
+              "n": "total",
+              "r": false,
+              "t": "`$INTEGER`"
+            },
+            "year": {
+              "a": true,
+              "h": "Year",
+              "n": "year",
+              "r": false,
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "name": "demographic",
           "op": {
             "list": {
@@ -514,67 +478,61 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /demographics",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "en",
-                        "kind": "query",
-                        "name": "language",
-                        "orig": "language",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "en",
+                        "k": "query",
+                        "n": "language",
+                        "or": "language",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "origin",
-                        "orig": "origin",
-                        "reqd": false,
-                        "type": "`$ARRAY`"
+                        "a": true,
+                        "k": "query",
+                        "n": "origin",
+                        "or": "origin",
+                        "r": false,
+                        "t": "`$ARRAY`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "origin_compare",
-                        "orig": "origin_compare",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "k": "query",
+                        "n": "origin_compare",
+                        "or": "origin_compare",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "resettlement",
-                        "orig": "resettlement",
-                        "reqd": false,
-                        "type": "`$ARRAY`"
+                        "a": true,
+                        "k": "query",
+                        "n": "resettlement",
+                        "or": "resettlement",
+                        "r": false,
+                        "t": "`$ARRAY`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "year",
-                        "orig": "year",
-                        "reqd": false,
-                        "type": "`$ARRAY`"
+                        "a": true,
+                        "k": "query",
+                        "n": "year",
+                        "or": "year",
+                        "r": false,
+                        "t": "`$ARRAY`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /demographics",
-                    "json": "{\"operationId\":\"getDemographics\",\"parameters\":[{\"description\":\"Return results will be translated in requested language. Defaults to english\",\"in\":\"query\",\"name\":\"language\",\"required\":false,\"schema\":{\"default\":\"en\",\"enum\":[\"en\",\"fr\"],\"type\":\"string\"}},{\"description\":\"One or more available years\",\"explode\":false,\"in\":\"query\",\"name\":\"year\",\"required\":false,\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"One or more country of origin codes\",\"explode\":false,\"in\":\"query\",\"name\":\"origin\",\"required\":false,\"schema\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"Used in combination with atleast one origin. Groups all other origins as 'All others' entry in results\",\"in\":\"query\",\"name\":\"originCompare\",\"required\":false,\"schema\":{\"type\":\"boolean\"}},{\"description\":\"One or more country of resettlement codes\",\"explode\":false,\"in\":\"query\",\"name\":\"resettlement\",\"required\":false,\"schema\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"style\":\"form\"}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"results\":{\"items\":{\"properties\":{\"destination\":{\"example\":\"NOR\",\"type\":\"string\"},\"destination_name\":{\"example\":\"Norway\",\"type\":\"string\"},\"femalesAdult\":{\"example\":300,\"type\":\"integer\"},\"femalesSenior\":{\"example\":45,\"type\":\"integer\"},\"femalesTotal\":{\"example\":375,\"type\":\"integer\"},\"femalesUnderage\":{\"example\":25,\"type\":\"integer\"},\"femalesUnknown\":{\"example\":5,\"type\":\"integer\"},\"malesAdult\":{\"example\":300,\"type\":\"integer\"},\"malesSenior\":{\"example\":45,\"type\":\"integer\"},\"malesTotal\":{\"example\":375,\"type\":\"integer\"},\"malesUnderage\":{\"example\":25,\"type\":\"integer\"},\"malesUnknown\":{\"example\":5,\"type\":\"integer\"},\"origin\":{\"example\":\"SYR\",\"type\":\"string\"},\"origin_name\":{\"example\":\"Syrian Arab Rep.\",\"type\":\"string\"},\"other\":{\"example\":5,\"type\":\"integer\"},\"total\":{\"example\":755,\"type\":\"integer\"},\"year\":{\"example\":2013,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"url\":{\"example\":\"#c3X3\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Valid request\"},\"default\":{\"description\":\"Unexpected error occurred\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/demographics",
-                  "segments": [
-                    {
-                      "lit": "demographics"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/demographics",
+                  "q": {
                     "exist": [
                       "language",
                       "origin",
@@ -583,9 +541,41 @@
                       "year"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "demographics"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.results`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /origins/demographics",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/origins/demographics",
+                  "q": {},
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "origins"
+                    },
+                    {
+                      "lit": "demographics"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
                   }
                 }
               ]
@@ -600,56 +590,85 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "asylum",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "asylum": {
+              "a": true,
+              "h": "Asylum",
+              "n": "asylum",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "asylum_name",
-              "req": false,
-              "type": "`$STRING`"
+            "asylum_name": {
+              "a": true,
+              "h": "Asylum Name",
+              "n": "asylum_name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "destination",
-              "req": false,
-              "type": "`$STRING`"
+            "code": {
+              "a": true,
+              "h": "Code",
+              "n": "code",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "destination_name",
-              "req": false,
-              "type": "`$STRING`"
+            "destination": {
+              "a": true,
+              "h": "Destination",
+              "n": "destination",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "origin",
-              "req": false,
-              "type": "`$STRING`"
+            "destination_name": {
+              "a": true,
+              "h": "Destination Name",
+              "n": "destination_name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "origin_name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "persons",
-              "req": false,
-              "type": "`$INTEGER`"
+            "origin": {
+              "a": true,
+              "h": "Origin",
+              "n": "origin",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "year",
-              "req": false,
-              "type": "`$INTEGER`"
+            "origin_name": {
+              "a": true,
+              "h": "Origin Name",
+              "n": "origin_name",
+              "r": false,
+              "t": "`$STRING`"
+            },
+            "persons": {
+              "a": true,
+              "h": "Persons",
+              "n": "persons",
+              "r": false,
+              "t": "`$INTEGER`"
+            },
+            "region": {
+              "a": true,
+              "h": "Region",
+              "n": "region",
+              "r": false,
+              "t": "`$STRING`"
+            },
+            "year": {
+              "a": true,
+              "h": "Year",
+              "n": "year",
+              "r": false,
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "name": "departure",
           "op": {
             "list": {
@@ -657,131 +676,125 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /departures",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "asylum",
-                        "orig": "asylum",
-                        "reqd": false,
-                        "type": "`$ARRAY`"
+                        "a": true,
+                        "k": "query",
+                        "n": "asylum",
+                        "or": "asylum",
+                        "r": false,
+                        "t": "`$ARRAY`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "asylum_compare",
-                        "orig": "asylum_compare",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "k": "query",
+                        "n": "asylum_compare",
+                        "or": "asylum_compare",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "asylum_sort",
-                        "orig": "asylum_sort",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "asylum_sort",
+                        "or": "asylum_sort",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "en",
-                        "kind": "query",
-                        "name": "language",
-                        "orig": "language",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "en",
+                        "k": "query",
+                        "n": "language",
+                        "or": "language",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "origin",
-                        "orig": "origin",
-                        "reqd": false,
-                        "type": "`$ARRAY`"
+                        "a": true,
+                        "k": "query",
+                        "n": "origin",
+                        "or": "origin",
+                        "r": false,
+                        "t": "`$ARRAY`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "origin_compare",
-                        "orig": "origin_compare",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "k": "query",
+                        "n": "origin_compare",
+                        "or": "origin_compare",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "origin_sort",
-                        "orig": "origin_sort",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "origin_sort",
+                        "or": "origin_sort",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "persons_sort",
-                        "orig": "persons_sort",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "persons_sort",
+                        "or": "persons_sort",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "resettlement",
-                        "orig": "resettlement",
-                        "reqd": false,
-                        "type": "`$ARRAY`"
+                        "a": true,
+                        "k": "query",
+                        "n": "resettlement",
+                        "or": "resettlement",
+                        "r": false,
+                        "t": "`$ARRAY`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "resettlement_sort",
-                        "orig": "resettlement_sort",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "resettlement_sort",
+                        "or": "resettlement_sort",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "year",
-                        "orig": "year",
-                        "reqd": false,
-                        "type": "`$ARRAY`"
+                        "a": true,
+                        "k": "query",
+                        "n": "year",
+                        "or": "year",
+                        "r": false,
+                        "t": "`$ARRAY`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "year_sort",
-                        "orig": "year_sort",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "year_sort",
+                        "or": "year_sort",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /departures",
-                    "json": "{\"operationId\":\"getDepartures\",\"parameters\":[{\"description\":\"Return results will be translated in requested language. Defaults to english\",\"in\":\"query\",\"name\":\"language\",\"required\":false,\"schema\":{\"default\":\"en\",\"enum\":[\"en\",\"fr\"],\"type\":\"string\"}},{\"description\":\"Current page of results\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"type\":\"integer\"}},{\"description\":\"One or more available years\",\"explode\":false,\"in\":\"query\",\"name\":\"year\",\"required\":false,\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"One or more country of origin codes\",\"explode\":false,\"in\":\"query\",\"name\":\"origin\",\"required\":false,\"schema\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"Used in combination with atleast one origin. Groups all other origins as 'All others' entry in results\",\"in\":\"query\",\"name\":\"originCompare\",\"required\":false,\"schema\":{\"type\":\"boolean\"}},{\"description\":\"One or more country of asylum codes\",\"explode\":false,\"in\":\"query\",\"name\":\"asylum\",\"required\":false,\"schema\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"Used in combination with atleast one asylum. Groups all other asylums as 'All others' entry in results\",\"in\":\"query\",\"name\":\"asylumCompare\",\"required\":false,\"schema\":{\"type\":\"boolean\"}},{\"description\":\"One or more country of resettlement codes\",\"explode\":false,\"in\":\"query\",\"name\":\"resettlement\",\"required\":false,\"schema\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"Sort results by year ascending or descending\",\"in\":\"query\",\"name\":\"yearSort\",\"required\":false,\"schema\":{\"enum\":[\"asc\",\"desc\"],\"type\":\"string\"}},{\"description\":\"Sort results by country of origin ascending or descending\",\"in\":\"query\",\"name\":\"originSort\",\"required\":false,\"schema\":{\"enum\":[\"asc\",\"desc\"],\"type\":\"string\"}},{\"description\":\"Sort results by country of asylum ascending or descending\",\"in\":\"query\",\"name\":\"asylumSort\",\"required\":false,\"schema\":{\"enum\":[\"asc\",\"desc\"],\"type\":\"string\"}},{\"description\":\"Sort results by country of resettlement ascending or descending\",\"in\":\"query\",\"name\":\"resettlementSort\",\"required\":false,\"schema\":{\"enum\":[\"asc\",\"desc\"],\"type\":\"string\"}},{\"description\":\"Sort results by number of persons ascending or descending\",\"in\":\"query\",\"name\":\"personsSort\",\"required\":false,\"schema\":{\"enum\":[\"asc\",\"desc\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"chartFilterTypes\":{\"properties\":{\"asylum\":{\"type\":\"boolean\"},\"origin\":{\"type\":\"boolean\"},\"resettlement\":{\"type\":\"boolean\"}},\"type\":\"object\"},\"page\":{\"example\":1,\"type\":\"integer\"},\"results\":{\"items\":{\"properties\":{\"asylum\":{\"example\":\"JOR\",\"type\":\"string\"},\"asylum_name\":{\"example\":\"Jordan\",\"type\":\"string\"},\"destination\":{\"example\":\"NOR\",\"type\":\"string\"},\"destination_name\":{\"example\":\"Norway\",\"type\":\"string\"},\"origin\":{\"example\":\"SYR\",\"type\":\"string\"},\"origin_name\":{\"example\":\"Syrian Arab Rep.\",\"type\":\"string\"},\"persons\":{\"example\":14,\"type\":\"integer\"},\"year\":{\"example\":2013,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"total\":{\"example\":12345,\"type\":\"integer\"},\"totalPages\":{\"example\":10,\"type\":\"integer\"},\"url\":{\"example\":\"#c3X3\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Valid request\"},\"default\":{\"description\":\"Unexpected error occurred\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/departures",
-                  "segments": [
-                    {
-                      "lit": "departures"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/departures",
+                  "q": {
                     "exist": [
                       "asylum",
                       "asylum_compare",
@@ -798,7 +811,55 @@
                       "year_sort"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "departures"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /origins/departures",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "en",
+                        "k": "query",
+                        "n": "language",
+                        "or": "language",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/origins/departures",
+                  "q": {
+                    "exist": [
+                      "language"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "origins"
+                    },
+                    {
+                      "lit": "departures"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -815,7 +876,7 @@
           "alias": {
             "field": {}
           },
-          "fields": [],
+          "fields": {},
           "name": "helper",
           "op": {
             "load": {
@@ -823,61 +884,52 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /export/csv",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "origin",
-                        "orig": "origin",
-                        "reqd": false,
-                        "type": "`$ARRAY`"
+                        "a": true,
+                        "k": "query",
+                        "n": "origin",
+                        "or": "origin",
+                        "r": false,
+                        "t": "`$ARRAY`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "resettlement",
-                        "orig": "resettlement",
-                        "reqd": false,
-                        "type": "`$ARRAY`"
+                        "a": true,
+                        "k": "query",
+                        "n": "resettlement",
+                        "or": "resettlement",
+                        "r": false,
+                        "t": "`$ARRAY`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "type",
-                        "orig": "type",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "type",
+                        "or": "type",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "year",
-                        "orig": "year",
-                        "reqd": false,
-                        "type": "`$ARRAY`"
+                        "a": true,
+                        "k": "query",
+                        "n": "year",
+                        "or": "year",
+                        "r": false,
+                        "t": "`$ARRAY`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /export/csv",
-                    "json": "{\"operationId\":\"exportCsv\",\"parameters\":[{\"description\":\"Type of data to export\",\"in\":\"query\",\"name\":\"type\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"One or more available years\",\"explode\":false,\"in\":\"query\",\"name\":\"year\",\"required\":false,\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"One or more country of origin codes\",\"explode\":false,\"in\":\"query\",\"name\":\"origin\",\"required\":false,\"schema\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"One or more country of resettlement codes\",\"explode\":false,\"in\":\"query\",\"name\":\"resettlement\",\"required\":false,\"schema\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"style\":\"form\"}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"text/csv\":{\"schema\":{\"type\":\"string\"}}},\"description\":\"Valid request\"},\"default\":{\"description\":\"Unexpected error occurred\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/export/csv",
-                  "segments": [
-                    {
-                      "lit": "export"
-                    },
-                    {
-                      "lit": "csv"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/export/csv",
+                  "q": {
                     "exist": [
                       "origin",
                       "resettlement",
@@ -885,7 +937,16 @@
                       "year"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "export"
+                    },
+                    {
+                      "lit": "csv"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -902,14 +963,15 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "region",
           "op": {
             "list": {
@@ -917,40 +979,40 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /regions",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "en",
-                        "kind": "query",
-                        "name": "language",
-                        "orig": "language",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "en",
+                        "k": "query",
+                        "n": "language",
+                        "or": "language",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /regions",
-                    "json": "{\"operationId\":\"getRegions\",\"parameters\":[{\"description\":\"Return results will be translated in requested language. Defaults to english\",\"in\":\"query\",\"name\":\"language\",\"required\":false,\"schema\":{\"default\":\"en\",\"enum\":[\"en\",\"fr\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"name\":{\"example\":\"Middle East and North Africa\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Valid request\"},\"default\":{\"description\":\"Unexpected error occurred\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/regions",
-                  "segments": [
-                    {
-                      "lit": "regions"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/regions",
+                  "q": {
                     "exist": [
                       "language"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "regions"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -967,56 +1029,85 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "asylum",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "asylum": {
+              "a": true,
+              "h": "Asylum",
+              "n": "asylum",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "asylum_name",
-              "req": false,
-              "type": "`$STRING`"
+            "asylum_name": {
+              "a": true,
+              "h": "Asylum Name",
+              "n": "asylum_name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "destination",
-              "req": false,
-              "type": "`$STRING`"
+            "code": {
+              "a": true,
+              "h": "Code",
+              "n": "code",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "destination_name",
-              "req": false,
-              "type": "`$STRING`"
+            "destination": {
+              "a": true,
+              "h": "Destination",
+              "n": "destination",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "origin",
-              "req": false,
-              "type": "`$STRING`"
+            "destination_name": {
+              "a": true,
+              "h": "Destination Name",
+              "n": "destination_name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "origin_name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "persons",
-              "req": false,
-              "type": "`$INTEGER`"
+            "origin": {
+              "a": true,
+              "h": "Origin",
+              "n": "origin",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "year",
-              "req": false,
-              "type": "`$INTEGER`"
+            "origin_name": {
+              "a": true,
+              "h": "Origin Name",
+              "n": "origin_name",
+              "r": false,
+              "t": "`$STRING`"
+            },
+            "persons": {
+              "a": true,
+              "h": "Persons",
+              "n": "persons",
+              "r": false,
+              "t": "`$INTEGER`"
+            },
+            "region": {
+              "a": true,
+              "h": "Region",
+              "n": "region",
+              "r": false,
+              "t": "`$STRING`"
+            },
+            "year": {
+              "a": true,
+              "h": "Year",
+              "n": "year",
+              "r": false,
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "name": "submission",
           "op": {
             "list": {
@@ -1024,131 +1115,125 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /submissions",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "asylum",
-                        "orig": "asylum",
-                        "reqd": false,
-                        "type": "`$ARRAY`"
+                        "a": true,
+                        "k": "query",
+                        "n": "asylum",
+                        "or": "asylum",
+                        "r": false,
+                        "t": "`$ARRAY`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "asylum_compare",
-                        "orig": "asylum_compare",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "k": "query",
+                        "n": "asylum_compare",
+                        "or": "asylum_compare",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "asylum_sort",
-                        "orig": "asylum_sort",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "asylum_sort",
+                        "or": "asylum_sort",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "en",
-                        "kind": "query",
-                        "name": "language",
-                        "orig": "language",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "en",
+                        "k": "query",
+                        "n": "language",
+                        "or": "language",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "origin",
-                        "orig": "origin",
-                        "reqd": false,
-                        "type": "`$ARRAY`"
+                        "a": true,
+                        "k": "query",
+                        "n": "origin",
+                        "or": "origin",
+                        "r": false,
+                        "t": "`$ARRAY`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "origin_compare",
-                        "orig": "origin_compare",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "k": "query",
+                        "n": "origin_compare",
+                        "or": "origin_compare",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "origin_sort",
-                        "orig": "origin_sort",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "origin_sort",
+                        "or": "origin_sort",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "persons_sort",
-                        "orig": "persons_sort",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "persons_sort",
+                        "or": "persons_sort",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "resettlement",
-                        "orig": "resettlement",
-                        "reqd": false,
-                        "type": "`$ARRAY`"
+                        "a": true,
+                        "k": "query",
+                        "n": "resettlement",
+                        "or": "resettlement",
+                        "r": false,
+                        "t": "`$ARRAY`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "resettlement_sort",
-                        "orig": "resettlement_sort",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "resettlement_sort",
+                        "or": "resettlement_sort",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "year",
-                        "orig": "year",
-                        "reqd": false,
-                        "type": "`$ARRAY`"
+                        "a": true,
+                        "k": "query",
+                        "n": "year",
+                        "or": "year",
+                        "r": false,
+                        "t": "`$ARRAY`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "year_sort",
-                        "orig": "year_sort",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "year_sort",
+                        "or": "year_sort",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /submissions",
-                    "json": "{\"operationId\":\"getSubmissions\",\"parameters\":[{\"description\":\"Return results will be translated in requested language. Defaults to english\",\"in\":\"query\",\"name\":\"language\",\"required\":false,\"schema\":{\"default\":\"en\",\"enum\":[\"en\",\"fr\"],\"type\":\"string\"}},{\"description\":\"Current page of results\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"type\":\"integer\"}},{\"description\":\"One or more available years\",\"explode\":false,\"in\":\"query\",\"name\":\"year\",\"required\":false,\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"One or more country of origin codes\",\"explode\":false,\"in\":\"query\",\"name\":\"origin\",\"required\":false,\"schema\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"Used in combination with atleast one origin. Groups all other origins as 'All others' entry in results\",\"in\":\"query\",\"name\":\"originCompare\",\"required\":false,\"schema\":{\"type\":\"boolean\"}},{\"description\":\"One or more country of asylum codes\",\"explode\":false,\"in\":\"query\",\"name\":\"asylum\",\"required\":false,\"schema\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"Used in combination with atleast one asylum. Groups all other asylums as 'All others' entry in results\",\"in\":\"query\",\"name\":\"asylumCompare\",\"required\":false,\"schema\":{\"type\":\"boolean\"}},{\"description\":\"One or more country of resettlement codes\",\"explode\":false,\"in\":\"query\",\"name\":\"resettlement\",\"required\":false,\"schema\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"Sort results by year ascending or descending\",\"in\":\"query\",\"name\":\"yearSort\",\"required\":false,\"schema\":{\"enum\":[\"asc\",\"desc\"],\"type\":\"string\"}},{\"description\":\"Sort results by country of origin ascending or descending\",\"in\":\"query\",\"name\":\"originSort\",\"required\":false,\"schema\":{\"enum\":[\"asc\",\"desc\"],\"type\":\"string\"}},{\"description\":\"Sort results by country of asylum ascending or descending\",\"in\":\"query\",\"name\":\"asylumSort\",\"required\":false,\"schema\":{\"enum\":[\"asc\",\"desc\"],\"type\":\"string\"}},{\"description\":\"Sort results by country of resettlement ascending or descending\",\"in\":\"query\",\"name\":\"resettlementSort\",\"required\":false,\"schema\":{\"enum\":[\"asc\",\"desc\"],\"type\":\"string\"}},{\"description\":\"Sort results by number of persons ascending or descending\",\"in\":\"query\",\"name\":\"personsSort\",\"required\":false,\"schema\":{\"enum\":[\"asc\",\"desc\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"chartFilterTypes\":{\"properties\":{\"asylum\":{\"type\":\"boolean\"},\"origin\":{\"type\":\"boolean\"},\"resettlement\":{\"type\":\"boolean\"}},\"type\":\"object\"},\"page\":{\"example\":1,\"type\":\"integer\"},\"results\":{\"items\":{\"properties\":{\"asylum\":{\"example\":\"JOR\",\"type\":\"string\"},\"asylum_name\":{\"example\":\"Jordan\",\"type\":\"string\"},\"destination\":{\"example\":\"NOR\",\"type\":\"string\"},\"destination_name\":{\"example\":\"Norway\",\"type\":\"string\"},\"origin\":{\"example\":\"SYR\",\"type\":\"string\"},\"origin_name\":{\"example\":\"Syrian Arab Rep.\",\"type\":\"string\"},\"persons\":{\"example\":14,\"type\":\"integer\"},\"year\":{\"example\":2013,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"total\":{\"example\":12345,\"type\":\"integer\"},\"totalPages\":{\"example\":10,\"type\":\"integer\"},\"url\":{\"example\":\"#c3X3\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Valid request\"},\"default\":{\"description\":\"Unexpected error occurred\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/submissions",
-                  "segments": [
-                    {
-                      "lit": "submissions"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/submissions",
+                  "q": {
                     "exist": [
                       "asylum",
                       "asylum_compare",
@@ -1165,7 +1250,55 @@
                       "year_sort"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "submissions"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /origins/submissions",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "en",
+                        "k": "query",
+                        "n": "language",
+                        "or": "language",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/origins/submissions",
+                  "q": {
+                    "exist": [
+                      "language"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "origins"
+                    },
+                    {
+                      "lit": "submissions"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1182,20 +1315,22 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "status",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "status": {
+              "a": true,
+              "h": "Status",
+              "n": "status",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "url_fetch",
           "op": {
             "list": {
@@ -1203,49 +1338,49 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /fetchUrl",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "en",
-                        "kind": "query",
-                        "name": "language",
-                        "orig": "language",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "en",
+                        "k": "query",
+                        "n": "language",
+                        "or": "language",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "url_hash",
-                        "orig": "url_hash",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "url_hash",
+                        "or": "url_hash",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /fetchUrl",
-                    "json": "{\"operationId\":\"fetchUrl\",\"parameters\":[{\"description\":\"# followed by a combination of 4 letters and/or numbers designating a unique query string\",\"in\":\"query\",\"name\":\"urlHash\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Return results will be translated in requested language. Defaults to english\",\"in\":\"query\",\"name\":\"language\",\"required\":false,\"schema\":{\"default\":\"en\",\"enum\":[\"en\",\"fr\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"status\":{\"enum\":[\"success\",\"invalid\"],\"example\":\"success\",\"type\":\"string\"},\"url\":{\"example\":\"http://api.unhcr.org/rsq/v1/submissions?asylum=&asylumCompare=&asylumRegion=&origin=AFG%2CBTN%2CCOD%2CERI%2CIRN%2CIRQ%2CMMR%2CSOM%2CSDN%2CSYR&originCompare=true&resettlement=&type=submissions&year=2013%2C2014%2C2015%2C2016%2C2017\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Valid request\"},\"default\":{\"description\":\"Unexpected error occurred\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/fetchUrl",
-                  "segments": [
-                    {
-                      "lit": "fetchUrl"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/fetchUrl",
+                  "q": {
                     "exist": [
                       "language",
                       "url_hash"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "fetchUrl"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1262,7 +1397,7 @@
           "alias": {
             "field": {}
           },
-          "fields": [],
+          "fields": {},
           "name": "year",
           "op": {
             "list": {
@@ -1270,41 +1405,44 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /years",
-                    "json": "{\"operationId\":\"getYears\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Valid request\"},\"default\":{\"description\":\"Unexpected error occurred\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/years",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/years",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "years"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /years/demographics",
-                    "json": "{\"operationId\":\"getDemographicsYears\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"}}},\"description\":\"Valid request\"},\"default\":{\"description\":\"Unexpected error occurred\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/years/demographics",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/years/demographics",
+                  "q": {
+                    "$action": "demographic"
+                  },
+                  "r": {},
+                  "s": [
                     {
                       "lit": "years"
                     },
@@ -1312,10 +1450,7 @@
                       "lit": "demographics"
                     }
                   ],
-                  "select": {
-                    "$action": "demographic"
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1744,13 +1879,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1770,43 +1905,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
                     "ref": "country_of_asylum_ref01"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        "BasicCountryOfOriginFlow": {
-          "active": true,
-          "entity": "country_of_origin",
-          "key$": "BasicCountryOfOriginFlow",
-          "kind": "basic",
-          "name": "BasicCountryOfOriginFlow",
-          "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
-                {
-                  "apply": "ItemExists",
-                  "def": {
-                    "ref": "country_of_origin_ref01"
                   }
                 }
               ]
@@ -1822,13 +1931,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1848,13 +1957,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1874,13 +1983,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1900,17 +2009,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "helper_ref01",
                 "srcdatavar": "helper_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1930,13 +2039,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1956,13 +2065,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1982,13 +2091,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2008,13 +2117,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {

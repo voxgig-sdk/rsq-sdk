@@ -222,7 +222,6 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
 | `Category` | `(data map[string]any) RsqEntity` | Create a Category entity instance. |
 | `CountryOfAsylum` | `(data map[string]any) RsqEntity` | Create a CountryOfAsylum entity instance. |
-| `CountryOfOrigin` | `(data map[string]any) RsqEntity` | Create a CountryOfOrigin entity instance. |
 | `CountryOfResettlement` | `(data map[string]any) RsqEntity` | Create a CountryOfResettlement entity instance. |
 | `Demographic` | `(data map[string]any) RsqEntity` | Create a Demographic entity instance. |
 | `Departure` | `(data map[string]any) RsqEntity` | Create a Departure entity instance. |
@@ -291,18 +290,6 @@ Operations: List.
 
 API path: `/asylums`
 
-#### CountryOfOrigin
-
-| Field | Description |
-| --- | --- |
-| `"code"` |  |
-| `"name"` |  |
-| `"region"` |  |
-
-Operations: List.
-
-API path: `/origins/departures`
-
 #### CountryOfResettlement
 
 | Field | Description |
@@ -319,6 +306,7 @@ API path: `/destinations`
 
 | Field | Description |
 | --- | --- |
+| `"code"` |  |
 | `"destination"` |  |
 | `"destination_name"` |  |
 | `"femalesAdult"` |  |
@@ -331,9 +319,11 @@ API path: `/destinations`
 | `"malesTotal"` |  |
 | `"malesUnderage"` |  |
 | `"malesUnknown"` |  |
+| `"name"` |  |
 | `"origin"` |  |
 | `"origin_name"` |  |
 | `"other"` |  |
+| `"region"` |  |
 | `"total"` |  |
 | `"year"` |  |
 
@@ -347,11 +337,14 @@ API path: `/demographics`
 | --- | --- |
 | `"asylum"` |  |
 | `"asylum_name"` |  |
+| `"code"` |  |
 | `"destination"` |  |
 | `"destination_name"` |  |
+| `"name"` |  |
 | `"origin"` |  |
 | `"origin_name"` |  |
 | `"persons"` |  |
+| `"region"` |  |
 | `"year"` |  |
 
 Operations: List.
@@ -383,11 +376,14 @@ API path: `/regions`
 | --- | --- |
 | `"asylum"` |  |
 | `"asylum_name"` |  |
+| `"code"` |  |
 | `"destination"` |  |
 | `"destination_name"` |  |
+| `"name"` |  |
 | `"origin"` |  |
 | `"origin_name"` |  |
 | `"persons"` |  |
+| `"region"` |  |
 | `"year"` |  |
 
 Operations: List.
@@ -476,35 +472,6 @@ fmt.Println(countryOfAsylums) // the array of records
 ```
 
 
-### CountryOfOrigin
-
-Create an instance: `countryOfOrigin := client.CountryOfOrigin(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `code` | `string` |  |
-| `name` | `string` |  |
-| `region` | `string` |  |
-
-#### Example: List
-
-```go
-countryOfOrigins, err := client.CountryOfOrigin(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(countryOfOrigins) // the array of records
-```
-
-
 ### CountryOfResettlement
 
 Create an instance: `countryOfResettlement := client.CountryOfResettlement(nil)`
@@ -548,6 +515,7 @@ Create an instance: `demographic := client.Demographic(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `code` | `string` |  |
 | `destination` | `string` |  |
 | `destination_name` | `string` |  |
 | `femalesAdult` | `int` |  |
@@ -560,9 +528,11 @@ Create an instance: `demographic := client.Demographic(nil)`
 | `malesTotal` | `int` |  |
 | `malesUnderage` | `int` |  |
 | `malesUnknown` | `int` |  |
+| `name` | `string` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
 | `other` | `int` |  |
+| `region` | `string` |  |
 | `total` | `int` |  |
 | `year` | `int` |  |
 
@@ -593,11 +563,14 @@ Create an instance: `departure := client.Departure(nil)`
 | --- | --- | --- |
 | `asylum` | `string` |  |
 | `asylum_name` | `string` |  |
+| `code` | `string` |  |
 | `destination` | `string` |  |
 | `destination_name` | `string` |  |
+| `name` | `string` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
 | `persons` | `int` |  |
+| `region` | `string` |  |
 | `year` | `int` |  |
 
 #### Example: List
@@ -675,11 +648,14 @@ Create an instance: `submission := client.Submission(nil)`
 | --- | --- | --- |
 | `asylum` | `string` |  |
 | `asylum_name` | `string` |  |
+| `code` | `string` |  |
 | `destination` | `string` |  |
 | `destination_name` | `string` |  |
+| `name` | `string` |  |
 | `origin` | `string` |  |
 | `origin_name` | `string` |  |
 | `persons` | `int` |  |
+| `region` | `string` |  |
 | `year` | `int` |  |
 
 #### Example: List
